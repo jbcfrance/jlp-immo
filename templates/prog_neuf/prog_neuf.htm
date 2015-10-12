@@ -1,0 +1,81 @@
+<?php if(isset($this->aVars[$this->sRequestPage]['sMessage']) && isset($this->aVars[$this->sRequestPage]['sStatus'])): ?>
+<div class="notif <?php echo $this->aVars[$this->sRequestPage]['sStatus']; ?>">
+    <strong><?php echo ucfirst($this->aVars[$this->sRequestPage]['sStatus']); ?> :</strong> <?php echo $this->aVars[$this->sRequestPage]['sMessage']; ?> 
+</div>
+<?php endif; ?>
+<table>
+	<thead>
+	<tr>
+		<th>ID</th>
+		<th>Titre du programme</th>
+		<th>Identifiant</th>
+		<th>Actions</th>
+	</tr>
+	</thead>
+	<tbody>
+<?php foreach($this->aVars[$this->sRequestPage]['programme'] as $kProg=>$vProg): ?>
+	<tr>
+		<td><?php echo $vProg->getprogramme_id(); ?></td>
+		<td><?php echo $vProg->getprogramme_titre(); ?></td>
+		<td><?php echo $vProg->getprogramme_identifiant(); ?></td>
+		<td class="actions"><a href="<?php echo HTML_ROOT_PATH; ?>prog_neuf/edit_prog/<?php echo $vProg->getprogramme_id(); ?>"><img src="<?php echo HTML_ROOT_PATH; ?>img/icons/actions/edit.png" /></a><a href="" id="<?php echo $vProg->getprogramme_id(); ?>" class="del_link"><img src="<?php echo HTML_ROOT_PATH; ?>img/icons/actions/delete.png" /></a></td>
+	</tr>
+<?php endforeach; ?>
+	</tbody>
+</table>
+<div class="bloc">
+	<div class="title">
+		Ajouter un programme
+	</div>
+	<div class="content">       
+		<form action="<?php echo HTML_ROOT_PATH; ?>prog_neuf/add_prog" name="add_prog" enctype="multipart/form-data" method="post">
+			<div class="input long">
+				<label for="programme_titre">Titre :</label> <input name="programme_titre" id="programme_titre">
+			</div>
+			<div class="input long">
+				<label for="programme_identifiant">Identifiant :</label> <input name="programme_identifiant" id="programme_identifiant">
+			</div>
+			<div class="input textarea">
+            	<label for="programme_description_fr">Description FR</label>
+            	<textarea name="programme_description_fr" id="programme_description_fr" rows="7" class="wysiwyg" cols="4"></textarea>
+       		</div>
+			<div class="input textarea">
+            	<label for="programme_description_en">Description EN</label>
+            	<textarea name="programme_description_en" id="programme_description_en" rows="7" class="wysiwyg" cols="4"></textarea>
+       		</div>
+			<div class="input">
+				<label for="programme_partenaire">Partenaria avec les Thermes ?</label>
+				<input type="radio" name="programme_partenaire" id="partenariat_0" value="0"  checked="checked"/><label for="partenariat_0" class="inline">Non</label> <br/>
+				<input type="radio" name="programme_partenaire" id="partenariat_1" value="1" /><label for="partenariat_1" class="inline">Oui</label>
+			</div>
+			
+			<div class="input">
+            	<span><label for="ref">Référence : (Entrez la référence commune et vous pourrez rechercher toutes les annonces dérivées) </label><input type="text" id="ref"/></span><span class="submit"><input type="button" value="Rechercher les annonces" class="black" id="getProgRef"/></span>
+        	</div>
+			<div class="input long">
+				<label for="programme_annonces">Annonces du programme:</label> <input name="programme_annonces" id="programme_annonces">
+			</div>
+			<div class="input">
+				<label for="img_principale">Image principale (taille finale 300x300 JPG)</label>
+				<input type="file" id="img_principale" name="img_principale" />
+			</div>
+			<div class="input">
+				<label for="img_bg">Arrière plan JPG</label>
+				<input type="file" id="img_bg" name="img_bg" />
+			</div>
+			<div class="input">
+				<label for="images_annexes">Autres images du programme JPG</label>
+				<input type="file" id="images_annexes" name="images_annexes[]" class="multi" accept="jpg|jpeg"/>
+			</div>
+			<div class="bloc">
+				<div class="title">Liste des fichiers en attente de mise en ligne</div>
+				<div class="content loader" id="images_annexes_list">
+				&nbsp;
+				</div>
+			</div>
+			<div class="submit">
+            	<input type="submit" value="Enregistrer"/>
+        	</div>
+		</form>
+	</div>
+</div>

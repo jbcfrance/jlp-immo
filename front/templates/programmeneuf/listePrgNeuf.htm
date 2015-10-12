@@ -1,0 +1,33 @@
+<!--
+	light_box:admin/addPrgNeuf
+	pattern:<input type="button" onclick="%s" value="Créer un programme" />
+	width:800
+	height:600
+	params:&p=125&
+-->
+ <table border="0" cellpadding="3" cellspacing="0" class="ListingPrgNeuf">
+    <tbody> 
+        <!-- foreach:$programmes value:$programme -->
+        <tr>
+			<td>
+            	<table border="0" cellpadding="0" cellspacing="1"> 
+                	<tr>
+                    	<td width="30px">
+			{=$programme->get_programme_id()}
+						</td>
+						<td align="center">
+			{=$programme->get_programme_titre()}
+                        </td>
+                        <td width="50px">
+			{=LightBox::getDirect('admin/updatePrgNeuf', '<a href="javascript:%s" title="Update" style="padding-right:3px;">'.imageTo("edit.png",array("alt"=>"UP","border"=>"0")).'</a>', '', '800', '600', '&prgNeuf_id='. $programme->get_programme_id().'&' ); }
+                        </td>
+                        <td width="50px">
+			{=LightBox::getDirect('themes/deletePrgNeuf', '<a href="javascript:%s" title="Delete" style="padding-right:3px;">'.imageTo("delete.png",array("alt"=>"DEL","border"=>"0")).'</a>', '', '800', '600', '&prgNeuf_id='. $programme->get_programme_id().'&' ); }
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!-- end -->
+    </tbody>
+</table>

@@ -1,0 +1,12 @@
+#Addtype x-mapp-php5 .php
+Options +FollowSymlinks
+RewriteEngine on
+RewriteBase /
+
+
+RewriteCond %{HTTP_HOST} ^jlp-immo.com$ 
+RewriteRule ^(.*) http://www.jlp-immo.com/$1 [QSA,L,R=301]
+
+RewriteRule robots.txt robots.txt [L]
+#RewriteRule .*.php index.php
+RewriteRule ^([^.]*)$ index.php [L]

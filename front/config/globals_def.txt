@@ -1,0 +1,32 @@
+###################################################################################
+#   Definissez ici toutes les constantes du site                                  #
+#   - Titre                                 | TITLE                               #
+#   - Meta                                  | META                                #
+#   - CsS                                   | CSS                                 #
+#   - Scripts                               | SCRIPT                              #
+#   - Balise vase                           | BASE                                #
+#   - Fichiers a inclure autotmatiquement   | INCLUDE                             #
+#                                                                                 #
+#   Utilisez la colonne de droite comme reference                                 #
+#   Exemple :                                                                     #
+#   SCRIPT:/web/js/calendar.js                                                    #
+#                                                                                 #
+#   /!\ ATTENTION /!\                                                             #
+#   Pour les CSS et les Scripts, le dossier de base est le dossier web.           #
+#   Pour les Includes, le dossier de base est celui du site.                      #
+#                                                                                 #
+###################################################################################
+TITLE:JLP Immo: Agence immobilière à Saint-Gervais, Le Fayet, Sallanches et Passy
+INCLUDE:includes/layout/layout.php
+SCRIPT:js/jquery.packed.js
+SCRIPT:js/lightbox/jquery.lightbox.min.js
+SCRIPT:js/jquery.jmpopups.js
+SCRIPT:js/validModules.js
+SCRIPT:js/verifForm.js
+SCRIPT:js/cufon.js
+SCRIPT:js/HelveticaNeueLT_Pro_57_Cn_400.font
+SCRIPT:js/slides.min.jquery.js
+SCRIPT:js/jquery.capSlide.js
+CSS:css/jquery.jdigiclock.css
+SCRIPT:js/jquery.jdigiclock.js
+SCRIPT:js/jquery.pngFix.pack.js

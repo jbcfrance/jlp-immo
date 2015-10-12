@@ -1,0 +1,597 @@
+<!DOCTYPE HTML>
+<!-- if: $_SESSION['lang']== 'fr' -->
+<html xmlns:og="http://ogp.me/ns#" lang="fr">
+<!-- else -->
+<html xmlns:og="http://ogp.me/ns#" lang="en-us">
+<!-- end -->
+<head profile="http://dublincore.org/documents/2008/08/04/dc-html/">
+{=$TITLE}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--<meta name="description" content="{=$Site_desc}" />-->
+<meta name="keywords" content="{=$Site_cle}" />
+{=$META}
+<meta http-equiv="author" content="CPK-WEB - www.cpk-web.com" />
+<meta name="robots" content="index,follow,all">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+<link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" />
+
+<meta name="DC.title" lang="fr" content="Immobilier Saint-Gervais, Le Fayet, Sallanches et Passy : JLP-Immo, Achat vente et Gestion" />
+<meta name="DC.date" scheme="DCTERMS.W3CDTF" content="2012-03-16" />
+<meta name="DC.subject" lang="fr" content="{=$Site_cle}" />
+<meta name="DC.language" scheme="DCTERMS.RFC4646" content="fr-FR" />
+<meta name="DC.description" lang="fr" content="{=$Site_desc}" />
+
+<meta name="geo.position" content="45.905457;6.700974">
+<meta name="geo.placename" content="Agence immobilière JLP-Immo - 66 rue de la Poste Le Fayet, 74170 Saint-Gervais-les-bains France">
+<link href="https://plus.google.com/101422763701011910252" rel="publisher" />
+<link rel="profile" href="http://microformats.org/profile/hcard">
+{=$BASE}
+<!-- if : $sIe != 'notIE'  -->
+	<!-- switch :($sIeV) -->
+			<!-- case : 9 -->
+				<link rel="stylesheet" media="all" href="{=HTML_ROOT_PATH}web/css/layout_ie9.css" />
+			<!-- break -->
+			<!-- case : 8 -->
+				<link rel="stylesheet" media="all" href="{=HTML_ROOT_PATH}web/css/layout_ie8.css" />
+			<!-- break -->
+			<!-- case : 7 -->
+				<link rel="stylesheet" media="all" href="{=HTML_ROOT_PATH}web/css/layout_ie7.css" />
+			<!-- break --> 
+		<!-- end -->
+<!-- else -->
+	<link rel="stylesheet" media="all" href="{=HTML_ROOT_PATH}web/css/layout.css" />
+<!-- end -->
+<!-- if: $_SESSION['lang']== 'fr' -->
+<link rel="stylesheet" type="text/css" href="{=HTML_ROOT_PATH}web/css/fr_layout.css"/>
+<!-- else -->
+<link rel="stylesheet" type="text/css" href="{=HTML_ROOT_PATH}web/css/en_layout.css"/>
+<!-- end -->
+
+<link rel="stylesheet" type="text/css" href="{=HTML_ROOT_PATH}web/css/{=$sStyleAlt}"/>
+<!-- if: $sStyleAlt == 'mobile/layout_iPad.css' || $sStyleAlt == 'mobile/layout_iPhone.css'  -->
+<link rel="stylesheet" type="text/css" href="{=HTML_ROOT_PATH}web/js/lightbox/themes/classic/jquery.lightbox.css"/>
+<meta name="viewport" content="width=1024, maximum-scale=1.0" />
+<!-- else -->
+	<!-- if : $sIe != 'notIE'  -->
+		<link rel="stylesheet" type="text/css" href="{=HTML_ROOT_PATH}web/js/lightbox/themes/classic/jquery.lightbox.css"/>
+	<!-- else -->
+		<link rel="stylesheet" type="text/css" href="{=HTML_ROOT_PATH}web/js/lightbox/themes/evolution/jquery.lightbox.css"/>
+	<!-- end -->
+<!-- end -->
+<!-- if: Links::getActualAction() == 'contact' -->
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAv5qeSh8gvB3hFR4PDtcFXyupim_6sZTg&sensor=true&libraries=places"></script>
+<!-- end -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+{=$CSS}
+{=$JAVASCRIPT}
+<!-- if: Links::getActualAction() == 'programmeneuf' -->
+<!-- InitTrad -->
+	<!-- foreach:$programme key:$kPrg value:$vPrg -->
+	<meta property="og:title" content="{=$vPrg->getprogramme_titre()}" />
+	<meta property="og:type" content="realestate" />
+	<meta property="og:site_name" content="JLP-Immo.com - {@=(agenceimmo)}" />
+	<meta property="og:image" content="{=HTML_ROOT_PATH}web/images/programmeneufs/{=$vPrg->getprogramme_id()}/Bloc_ProgrammeNeufImage.jpg" />
+	<meta property="og:url" content="http://www.jlp-immo.com/prgneuf/{=$vPrg->getprogramme_identifiant()}" />	
+	<!-- end -->
+<!-- end -->
+<!-- if: Links::getActualAction() == 'annonce' -->
+<!-- InitTrad -->
+	<!-- foreach:$annonce key:$kcdc value:$cdc -->
+	<meta property="og:title" content="{@=($cdc->gettypeBien())} {=ucwords(strtolower($cdc->getvillePublique()))} Ref: {=ucwords(strtolower($cdc->getreference()))}" />
+	<meta property="og:type" content="realestate" />
+	<meta property="og:site_name" content="JLP-Immo.com - {@=(agenceimmo)}" />
+	<meta property="og:image" content="{=HTML_ROOT_PATH}web/images/annonces/{=$cdc->getphotoMedium()}" />
+	<meta property="og:url" content="http://www.jlp-immo.com/annonce/{=$cdc->getannonce_id()}" />	
+	<!-- if: $_SESSION['lang']== 'en' -->
+	<meta property="og:description" content="{=$cdc->gettextAnglais()}" />
+	<!-- else -->
+	<meta property="og:description" content="{=$cdc->gettexte()}" />
+	<!-- end -->
+	<!-- end -->
+<!-- end -->
+<script type="text/javascript">
+var w_w	= $(window).width(); 
+$(function() {
+	Cufon.replace('.menu a',{textShadow:'2px 2px 4px #000'}).CSS.ready(function() {
+		var $menu 		= $("#slidingMenu");
+		
+		var $selected	= $menu.find('li.active');
+		
+		<!-- if : $sIe != 'notIE'  -->
+			<!-- if: $sIeV <9 -->
+			var $moving		= $('<li />',{
+				className		: 'move',
+				top			: $selected[0].offsetTop + 'px',
+				width		: $selected[0].offsetWidth + 'px'
+			});
+			<!-- else -->
+			var $moving		= $('<li />',{
+				class		: 'move',
+				top			: $selected[0].offsetTop + 'px',
+				width		: $selected[0].offsetWidth + 'px'
+			});
+			<!-- end -->
+		<!-- else -->
+			var $moving		= $('<li />',{
+				class	: 'move',
+				top			: $selected[0].offsetTop + 'px',
+				width		: $selected[0].offsetWidth + 'px'
+			});	
+		<!-- end -->
+		moveTo($selected,400);
+			
+		$menu.bind('mouseleave',function(){
+				moveTo($selected,400);
+			  })
+			 .append($moving)
+			 .find('li')
+			 .not('.move')
+			 .bind('mouseenter',function(){
+				var $this = $(this);
+				var offsetLeft = $this.offset().right - 10;
+				//move the absolute div to this item
+				moveTo($this,400);
+			  })
+			  .bind('mouseleave',function(){
+				var $this = $(this);
+				var offsetLeft = $this.offset().right - 10;
+			  });
+		
+		function moveTo($elem,speed){
+			$moving.stop(true).animate({
+				top		: $elem[0].offsetTop + 'px',
+				width	: $elem[0].offsetWidth + 'px'
+			}, speed, 'easeOutExpo');
+		}
+	}) ;
+	Cufon.replace('p#title');
+	Cufon.replace('p#search_title');
+	Cufon.replace('h2#sous-titre-page',{textShadow:'2px 2px 4px #000'});
+	Cufon.replace('h2.contact_title',{textShadow:'2px 2px 4px #000'});
+});
+
+		 
+</script>
+
+</head>
+<!-- InitTrad -->
+<body>
+<div id="bg">
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+				<img class="ac_bgimage" id="ac_bgimage0" src="<?php echo HTML_ROOT_PATH;?>web/images/bg/photo_bg.jpg?t={=$tImg}" alt="Site BG"/>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="bg_overlay"></div>
+<div id="wraper">
+    <div class="site" id="content">
+        <div class="header"> 
+			<div class="logo">
+			<!-- if:empty($sTitleH1) -->
+				<h1><a href="<?php echo HTML_ROOT_PATH;?>">JLP-Immo.com</a></h1>
+			<!-- else -->
+				<h1><a href="<?php echo HTML_ROOT_PATH;?>">{=$sTitleH1}</a></h1>
+			<!-- end -->
+			</div>
+			<div class="search shadow_box_med radius_full">
+				<p id="search_title">{@=(rechercherapide)}</p>
+				<!--formRechercheRapide -->
+			</div>
+			<div class="menu">
+				<ul id="slidingMenu" class="slidingMenu">
+					<li class="{=$menu_accueil_active}"><a href="<?php echo HTML_ROOT_PATH;?>" title="{@=(Accueil)}">{@=(Accueil)}</a></li>
+					<li class="{=$menu_acheter_active}"><a href="{=urlTo('acheter')}" title="{@=(Acheter)}">{@=(Acheter)}</a></li>
+					<li class="{=$menu_programmeneuf_active}"><a href="{=urlTo('programmeneuf')}" title="{@=(ProgrammeNeuf)}">{@=(ProgrammeNeuf)}</a></li>
+					<li class="{=$menu_contact_active}"><a href="{=urlTo('contact')}" title="{@=(Contact)}">{@=(Contact)}</a></li>
+				</ul>
+			</div>
+			<div class="carroussel">
+            	<!--<div class="slides_title radius_top">Nos Coups de Coeur</div>-->
+				<div id="slides"> 
+					<div class="slides_container">
+						<!--for:$i from:0 to:count($Slider) add:3 -->
+							<table class="slide_table" cellpadding="0" cellspacing="0">
+								<tr>
+									<td class="slide_bien slide_left">
+										<!-- if:isset($Slider[$i+1]) -->
+                                        <div class="slide_content">
+										<a href="{=$Slider[$i]['url']}" title="Achat {@=(strtolower($Slider[$i]['type']))} {=$Slider[$i]['lieu']}"><img src="<?php echo HTML_ROOT_PATH;?>{=$Slider[$i]['image']}" alt="Achat {@=(strtolower($Slider[$i]['type']))} {=$Slider[$i]['lieu']}"/></a>
+										<span class="slide_txt txt_loc">{=$Slider[$i]['lieu']}</span>
+										<span class="slide_txt txt_type">{@=(strtolower($Slider[$i]['type']))}</span>
+										<span class="slide_txt txt_ref">Réf : {=$Slider[$i]['ref']}</span>
+										<span class="slide_txt txt_prix">
+										<!-- if:$Slider[$i]['prix']!= 0 -->
+										 <!-- if:round($Slider[$i]['prix'])== $Slider[$i]['prix']-->
+										{=number_format($Slider[$i]['prix'],0,","," ")} &euro;
+										<!-- else-->
+										{=number_format($Slider[$i]['prix'],2,","," ")} &euro;
+										<!-- end -->
+										<!-- else -->
+										NC &euro;
+										<!-- end --></span>
+										</div>                                       	
+                                        <!-- end -->
+									</td>
+									<td class="slide_bien slide_center">
+										<!-- if:isset($Slider[$i+1]) && isset($Slider[$i+2]) -->
+                                        <div class="slide_content">
+                                            <a href="{=$Slider[$i+1]['url']}" title="Achat {@=(strtolower($Slider[$i+1]['type']))} {=$Slider[$i+1]['lieu']}"><img src="<?php echo HTML_ROOT_PATH;?>{=$Slider[$i+1]['image']}" alt="Achat {@=(strtolower($Slider[$i+1]['type']))} {=$Slider[$i+1]['lieu']}"/></a>
+										<span class="slide_txt txt_loc">{=$Slider[$i+1]['lieu']}</span>
+										<span class="slide_txt txt_type">{@=(strtolower($Slider[$i+1]['type']))}</span>
+										<span class="slide_txt txt_ref">Réf : {=$Slider[$i+1]['ref']}</span>
+										<span class="slide_txt txt_prix">
+										<!-- if:$Slider[$i+1]['prix']!= 0 -->
+										 <!-- if:round($Slider[$i+1]['prix'])== $Slider[$i+1]['prix']-->
+										{=number_format($Slider[$i+1]['prix'],0,","," ")} &euro;
+										<!-- else-->
+										{=number_format($Slider[$i+1]['prix'],2,","," ")} &euro;
+										<!-- end -->
+										<!-- else -->
+										NC &euro;
+										<!-- end --></span>
+										</div>
+                                        <!-- else -->
+                                            	<!-- if:!isset($Slider[$i+1]) -->
+                                        <div class="slide_content">
+                                           		<a href="{=$Slider[$i]['url']}" title="Achat {@=(strtolower($Slider[$i]['type']))} {=$Slider[$i]['lieu']}"><img src="<?php echo HTML_ROOT_PATH;?>{=$Slider[$i]['image']}" alt="Achat {@=(strtolower($Slider[$i]['type']))} {=$Slider[$i]['lieu']}"/></a>
+										<span class="slide_txt txt_loc">{=$Slider[$i]['lieu']}</span>
+										<span class="slide_txt txt_type">{@=(strtolower($Slider[$i]['type']))}</span>
+										<span class="slide_txt txt_ref">Réf : {=$Slider[$i]['ref']}</span>
+										<span class="slide_txt txt_prix">
+										<!-- if:$Slider[$i]['prix']!= 0 -->
+										 <!-- if:round($Slider[$i]['prix'])== $Slider[$i]['prix']-->
+										{=number_format($Slider[$i]['prix'],0,","," ")} &euro;
+										<!-- else-->
+										{=number_format($Slider[$i]['prix'],2,","," ")} &euro;
+										<!-- end -->
+										<!-- else -->
+										NC &euro;
+										<!-- end --></span>
+										</div>
+                                        		<!-- end -->
+                                        <!-- end -->
+									</td>
+                                    <td class="slide_bien slide_right">
+                                    	<!-- if:isset($Slider[$i+1]) && isset($Slider[$i+2]) -->
+                                        <div class="slide_content">
+											<a href="{=$Slider[$i+2]['url']}" title="Achat {@=(strtolower($Slider[$i+2]['type']))} {=$Slider[$i+2]['lieu']}"><img src="<?php echo HTML_ROOT_PATH;?>{=$Slider[$i+2]['image']}" alt="Achat {@=(strtolower($Slider[$i+2]['type']))} {=$Slider[$i+2]['lieu']}"/></a>
+										<span class="slide_txt txt_loc">{=$Slider[$i+2]['lieu']}</span>
+										<span class="slide_txt txt_type">{@=(strtolower($Slider[$i+2]['type']))}</span>
+										<span class="slide_txt txt_ref">Réf : {=$Slider[$i+2]['ref']}</span>
+										<span class="slide_txt txt_prix">
+										<!-- if:$Slider[$i+2]['prix']!= 0 -->
+										 <!-- if:round($Slider[$i+2]['prix'])== $Slider[$i+2]['prix']-->
+										{=number_format($Slider[$i+2]['prix'],0,","," ")} &euro;
+										<!-- else-->
+										{=number_format($Slider[$i+2]['prix'],2,","," ")} &euro;
+										<!-- end -->
+										<!-- else -->
+										NC &euro;
+										<!-- end --></span>
+										</div>
+                                        <!-- else -->
+                                        	<!-- if:isset($Slider[$i+1]) -->
+                                        <div class="slide_content">
+                                                 <a href="{=$Slider[$i+1]['url']}" title="Achat {@=(strtolower($Slider[$i+1]['type']))} {=$Slider[$i+1]['lieu']}"><img src="<?php echo HTML_ROOT_PATH;?>{=$Slider[$i+1]['image']}" alt="Achat {@=(strtolower($Slider[$i+1]['type']))} {=$Slider[$i+1]['lieu']}"/></a>  
+										<span class="slide_txt txt_loc">{=$Slider[$i+1]['lieu']}</span>
+										<span class="slide_txt txt_type">{@=(strtolower($Slider[$i+1]['type']))}</span>
+										<span class="slide_txt txt_ref">Réf : {=$Slider[$i+1]['ref']}</span>
+										<span class="slide_txt txt_prix">
+										<!-- if:$Slider[$i+1]['prix']!= 0 -->
+										 <!-- if:round($Slider[$i+1]['prix'])== $Slider[$i+1]['prix']-->
+										{=number_format($Slider[$i+1]['prix'],0,","," ")} &euro;
+										<!-- else-->
+										{=number_format($Slider[$i+1]['prix'],2,","," ")} &euro;
+										<!-- end -->
+										<!-- else -->
+										NC &euro;
+										<!-- end --></span>
+										</div>                                         		
+                                        	<!-- end -->
+                                        <!-- end -->
+									</td>
+								</tr>
+							</table>
+						<!-- end -->
+					
+					</div>
+				</div>
+			</div>	
+        </div>
+		<div class="content">
+		<!-- switch :(Links::getActualAction()) -->
+			<!-- case : ('accueil') -->
+				<h2 id="sous-titre-page">{@=(Accueil)}</h2>
+			<!-- break -->
+			<!-- case : ('acheter') -->
+				<h2 id="sous-titre-page">{@=(Acheter)}</h2>
+			<!-- break -->
+			<!-- case : ('programmeneuf') -->
+				<h2 id="sous-titre-page">{@=(ProgrammeNeuf)}</h2>
+			<!-- break -->
+			<!-- case : ('contact') -->
+				<h2 id="sous-titre-page">{@=(Contact)}</h2>
+			<!-- break -->
+			<!-- case : ('annonce') -->
+				<!-- if:isset($sTitleH2) -->
+					<!--<h2 id="sous-titre-page">{=$sTitleH2}</h2>-->
+					<h2 id="sous-titre-page">{@=(Annonce)}</h2>
+				<!-- else -->
+					<h2 id="sous-titre-page">{@=(Annonce)}</h2>
+				<!-- end -->
+			<!-- break -->
+			<!-- case : ('mentionlegale') -->
+				<h2 id="sous-titre-page">{@=(mentions)}</h2>
+			<!-- break -->
+			<!-- default -->
+				<h2 id="sous-titre-page">{@=(Accueil)}</h2>
+			<!-- break -->
+		<!-- end -->
+		{=$CONTENT} 
+<div class="vcard">
+   <span class="fn"> <span class="value-title" title="Jean-Lou Perroud"></span></span> 
+  <span class="org"> <span class="value-title" title="Jlp-Immo"></span></span>
+     <div class="adr"> 
+        <span class="street-address"><span class="value-title" title="66 rue de la Poste LE FAYET"></span></span>, <span class="locality"><span class="value-title" title="Saint-Gervais-les-bains"></span></span>, <span class="region"><span class="value-title" title="Haute-Savoie"></span></span>
+     </div>  
+<span class="geo">
+        <span class="latitude">
+           <span class="value-title" title="45.905457"></span>
+        </span>
+        <span class="longitude">
+           <span class="value-title" title="6.700974"></span>
+        </span>
+   </span>
+   <span class="tel"><span class="value-title" title="+33 (0)4 50 78 27 44"></span></span>
+   <span class="url"><span class="value-title" title="http://www.jlp-immo.com/"></span></span>
+</div>
+		</div>
+    </div>
+	<div class="footer" id="footer">
+		<div class="wrapper_foot">
+			<table class="table_footer">
+				<tr>
+					<td id="foot_agence">
+						<span class="logo"><img src="<?php echo HTML_ROOT_PATH;?>web/images/logo-footer.png" alt="Logo Footer" /></span>
+						<p id="links"><a href="{=urlTo( 'mentionlegale', 'default')}" id="foot_link_mentions">{@=(mentions)}</a>  -  <a href="http://www.cpk-web.com" target="_blank" id="foot_link_webmaster">{@=(webmaster)} CPK-Web</a></p>
+						<p id="agence">{@=(agenceimmo)}<br />Saint-Gervais / Le Fayet<br />Passy / Sallanches</p>
+					</td>
+					<td class="spacer_col"></td>
+					<td id="foot_menu"><a href="<?php echo HTML_ROOT_PATH;?>">{@=(Accueil)}</a><br /><a href="{=urlTo('acheter', 'default')}">{@=(Acheter)}</a><br /><a href="{=urlTo('programmeneuf', 'default')}">{@=(ProgrammeNeuf)}</a><br /><a href="{=urlTo('contact', 'default')}">{@=(Contact)}</a></td>
+					<td class="spacer_col"></td>
+					<td id="foot_contact">
+						<p style="text-align:right;padding:0 5px 0 5px;"><img src="<?php echo HTML_ROOT_PATH;?>web/images/footer_phone.png" style="float:left;" alt="Img téléphone"/>+33 (0)4 50 78 27 44</p>
+						<p style="padding:0 0px 0 5px;"><a href="mailto:contact@jlp-immo.com">contact@jlp-immo.com</a><a href="mailto:contact@jlp-immo.com"><img src="<?php echo HTML_ROOT_PATH;?>web/images/footer_mail.png"  style="float:right;" alt="Img Mail"/></a></p>
+						<p>
+						<a href="https://www.facebook.com/jlpimmo/" target="_blank"><img src="<?php echo HTML_ROOT_PATH;?>web/images/footer_fb.png" alt="Facebook" style="float:left;"/></a>
+						<a href="?lang=fr" title="Site en français"><img src="<?php echo HTML_ROOT_PATH;?>web/images/flag-fr.png" alt="Drapeau Fr"  width="50"/></a>
+						<!-- if : $sIeV == 7  -->
+						<a href="?lang=en" title="Website in english"><img src="<?php echo HTML_ROOT_PATH;?>web/images/flag-en.png" alt="Flag En" width="50"/></a>
+						<!-- else -->
+						<a href="?lang=en" title="Website in english"><img src="<?php echo HTML_ROOT_PATH;?>web/images/flag-en.png" alt="Flag En" style="float:right"width="50"/></a
+						><!-- end -->
+						</p>
+					</td>
+					<td class="spacer_col"></td>
+					<td id="digi"><div id="digiclock"></div></td>
+				</tr>
+			</table>
+		</div>
+    </div>
+</div>
+
+<script type="text/javascript">
+/* {=$ProgPhoto} */
+$(document).ready(function(){
+    <!-- if: Links::getActualAction() == 'contact' -->
+	 $("#lbgallery").click(function() {
+      $.lightbox(
+	  [
+	  <!-- foreach: $aImages key:$kImg value:$vImg -->
+"<?php echo HTML_ROOT_PATH;?>web/images/contact/agence/{=$vImg}" <!-- if: $kImg < count($aImages)-1 -->,
+<!-- end -->
+<!-- end --> 
+]);
+      return false;
+    }); 
+
+<!-- end -->
+<!-- if: Links::getActualAction() == 'programmeneuf' && Links::getActualMethod() == 'detailPrgNeuf'  && !empty($aArrayLightBox) -->
+	$("#prgGalery").click(function() {
+<!-- if: count($aArrayLightBox)>1 --> 
+	 $.lightbox(
+	  [
+	  <!-- foreach: $aArrayLightBox key:$kLightBox value:$vLightBox -->
+"<?php echo HTML_ROOT_PATH;?>{=$vLightBox}" 
+<!-- if: $kLightBox < count($aArrayLightBox)-1 -->
+,
+<!-- end -->
+<!-- end --> 
+]);
+<!-- else -->
+ $.lightbox( "<?php echo HTML_ROOT_PATH;?>{=$aArrayLightBox[0]}");
+<!-- end -->
+
+      
+    });
+<!-- end -->
+	
+	$('a.lightbox').lightbox();
+
+<!-- if: isset($ProgPhoto) -->
+	$("img.ac_bgimage").attr('src',"<?php echo HTML_ROOT_PATH;?>web/images/{=$ProgPhoto}?t={=$tImg}");
+<!-- else -->
+	$("img.ac_bgimage").attr('src',"<?php echo HTML_ROOT_PATH;?>web/images/bg/photo_bg.jpg?t={=$tImg}");
+<!-- end -->
+
+	startBg();
+	$('#slides').slides({
+				preload: true,
+				preloadImage: '<?php echo HTML_ROOT_PATH;?>web/images/slides/loading.gif',
+				play: 7000,//1000
+				pause: 2500,//
+				slideSpeed : 300,
+				slideEasing : 'linear',
+				hoverPause: true
+			});
+	$('#digiclock').jdigiclock(
+	{
+		globalImagesPath : '<?php echo HTML_ROOT_PATH;?>web/',
+		clockImagesPath: '<?php echo HTML_ROOT_PATH;?>web/images/clock/',
+		weatherImagesPath: '<?php echo HTML_ROOT_PATH;?>web/images/weather/',
+		lang: 'en',
+		am_pm: false,
+		weatherLocationCode: 'EUR|FR|FR022|Saint-Gervais-les-Bains',
+		weatherMetric: 'C',	
+		proxyType: 'php'
+	});
+});
+/*Var BG*/
+	var Img = new Array();
+		Img[0]= '<?php echo HTML_ROOT_PATH;?>web/images/bg/photo_bg_1.jpg';
+		Img[1] = '<?php echo HTML_ROOT_PATH;?>web/images/bg/photo_bg_2.jpg';
+		Img[2] = '<?php echo HTML_ROOT_PATH;?>web/images/bg/photo_bg_3.jpg';
+		Img[3] = '<?php echo HTML_ROOT_PATH;?>web/images/bg/photo_bg_4.jpg';
+		Img[4] = '<?php echo HTML_ROOT_PATH;?>web/images/bg/photo_bg_5.jpg';
+		Img[5] = '<?php echo HTML_ROOT_PATH;?>web/images/bg/photo_bg_6.jpg';
+		Img[6] = '<?php echo HTML_ROOT_PATH;?>web/images/bg/photo_bg_7.jpg';
+		var nCount = 1;
+		var nTime = 10000;
+		var iImgNb;
+	
+	function startBg(){
+		adjustBgSize();
+		reloadOverlay();	
+	}
+	
+/*Var redim BG*/
+	var w_w	= $(window).width();
+	var w_h	= $(window).height();
+	var $ac_background	= $('#bg');
+	var $ac_bgimage		= $("img.ac_bgimage");
+	var pos_l = 0;
+	var pos_t = 0;
+	var w_img = 0;
+	var h_img = 0;
+	var r_win = 0;
+	var r_img = 0;
+		
+function adjustBgSize() {
+	w_w	= $(window).width();
+	w_h	= $(window).height();
+	
+	min_w_img = $ac_bgimage.width();
+	min_h_img = $ac_bgimage.height();
+	
+	if(w_w>w_h){
+		r_win = w_h / w_w;
+		r_img = min_h_img / min_w_img;
+		
+		if(r_win>r_img) { 
+			h_img = w_h;
+			w_img = w_h / r_img;
+		}else{
+			h_img = w_w * r_img;
+			w_img = w_w;
+		}
+		
+		pos_l = (w_w - w_img) / 2;
+		pos_t = (w_h - h_img) / 2;
+	}else{
+		r_win = w_w / w_h;
+		r_img = min_w_img / min_h_img;
+		
+		if(r_win>r_img) {
+			w_img = w_w;
+			h_img = w_w / r_img;
+		}else{
+			w_img = w_h * r_img;
+			h_img = w_h;
+		}
+		
+		pos_l = (w_w - w_img) / 2;
+		pos_t = (w_h - h_img) / 2;
+		
+	}
+	$ac_bgimage.css('width',w_img + 'px');
+	$ac_bgimage.css('height',h_img + 'px');
+	$ac_bgimage.css('left',pos_l + 'px');
+	$ac_bgimage.css('top',pos_t + 'px');
+	$ac_bgimage.css('z-index','4');
+}
+
+function reloadOverlay(){
+	$("#ac_overlay").css('width',w_img + 'px');
+	$("#ac_overlay").css('height',h_img + 'px');
+	$("#ac_overlay").css('z-index','5');
+
+}
+<!-- if: $sStyleAlt != 'mobile/layout_iPad.css' && $sStyleAlt != 'mobile/layout_iPhone.css'  -->
+$(window).bind('resize',function(){
+	adjustBgSize();
+	reloadOverlay();
+});
+<!-- end -->
+</script>
+<script type="text/javascript">
+<!--
+function getWindowHeight() {
+	var windowHeight = 0;
+	if (typeof(window.innerHeight) == 'number') {
+		windowHeight = window.innerHeight;
+	}
+	else {
+		if (document.documentElement && document.documentElement.clientHeight) {
+			windowHeight = document.documentElement.clientHeight;
+		}
+		else {
+			if (document.body && document.body.clientHeight) {
+				windowHeight = document.body.clientHeight;
+			}
+		}
+	}
+	return windowHeight;
+}
+function setFooter() {
+	if (document.getElementById) {
+		var windowHeight = getWindowHeight();
+		if (windowHeight > 0) {
+			var contentHeight = document.getElementById('content').offsetHeight;
+			var footerElement = document.getElementById('footer');
+			var footerHeight  = footerElement.offsetHeight;
+			if (windowHeight - (contentHeight + footerHeight) >= 0) {
+				footerElement.style.position = 'absolute';
+				footerElement.style.top = (windowHeight - footerHeight) + 'px';
+			}
+			else {
+				footerElement.style.position = 'static';
+			}
+		}
+	}
+}
+window.onload = function() {
+	setFooter();
+}
+window.onresize = function() {
+	setFooter();
+}
+//-->
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12123124-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<div class="PrgNeufListe">
+
+<div class="TextePresPrgNeuf">
+<p>
+<!-- if:$_SESSION["lang"] == "en" -->
+With all his years experience and his perfect knowledge of the local market, Jean-Lou Perroud has managed to build a high quality network of promoters and experts in the renovation industry.<br /><br />
+Therefore this contributes to offer you competitive prices particularly adapted to your needs.<br /><br />
+<b>Have a look at our recent projects ………</b>
+<!-- else -->
+Au fil des années et grâce à sa parfaite connaissance du marché local, Jean–Lou Perroud a su tisser un partenariat privilégié avec un certain nombre de promoteurs et de spécialistes de la rénovation. <br /><br />
+Cette étroite collaboration se concrétise par des programmes particulièrement compétitifs et adaptés  à vos attentes. <br /><br />
+<b>Consultez nos nouvelles réalisations………</b>
+<!-- end -->
+</p>
+</div>
+<!-- if : $sIe != 'notIE'  -->
+<table class="PrgNeufSolo" cellpadding="0" cellspacing="5" border="0" >
+<!-- else -->
+<table class="PrgNeufSolo" cellpadding="0" cellspacing="0" border="0" >
+<!-- end -->
+<!--for:$i from:0 to:count($PrgNeuf) add:3 -->
+	<tr>
+		<!-- if: (isset($PrgNeuf[$i])) -->
+			<td class="PrgNeufLeft">
+				<a href="{=HTML_ROOT_PATH}prgneuf/{=$PrgNeuf[$i]->getprogramme_identifiant()}"><img src="{=HTML_ROOT_PATH}web/images/programmeneufs/{=$PrgNeuf[$i]->getprogramme_id()}/Bloc_ProgrammeNeufImage.jpg"/></a>
+				<p class="titre_prog">{=$PrgNeuf[$i]->getprogramme_titre()}</p>
+				<!-- if:$_SESSION["lang"] == "en" -->
+				<div class="desc_prog">{=$PrgNeuf[$i]->getprogramme_description_en()}</div>
+				<!-- else -->
+				<div class="desc_prog">{=$PrgNeuf[$i]->getprogramme_description_fr()}</div>
+				<!-- end -->
+			</td>
+		<!-- end -->
+		<!-- if: (isset($PrgNeuf[$i+1])) -->
+			<td class="PrgNeufCenter">
+				<a href="{=HTML_ROOT_PATH}prgneuf/{=$PrgNeuf[$i+1]->getprogramme_identifiant()}"><img src="{=HTML_ROOT_PATH}web/images/programmeneufs/{=$PrgNeuf[$i+1]->getprogramme_id()}/Bloc_ProgrammeNeufImage.jpg"/></a>
+				<p class="titre_prog">{=$PrgNeuf[$i+1]->getprogramme_titre()}</p>
+				<!-- if:$_SESSION["lang"] == "en" -->
+				<div class="desc_prog">{=$PrgNeuf[$i+1]->getprogramme_description_en()}</div>
+				<!-- else -->
+				<div class="desc_prog">{=$PrgNeuf[$i+1]->getprogramme_description_fr()}</div>
+				<!-- end -->
+			</td>
+		<!-- end -->
+		<!-- if: (isset($PrgNeuf[$i+2])) -->
+			<td class="PrgNeufRight">
+				<a href="{=HTML_ROOT_PATH}prgneuf/{=$PrgNeuf[$i+2]->getprogramme_identifiant()}"><img src="{=HTML_ROOT_PATH}web/images/programmeneufs/{=$PrgNeuf[$i+2]->getprogramme_id()}/Bloc_ProgrammeNeufImage.jpg"/></a>
+				<p class="titre_prog">{=$PrgNeuf[$i+2]->getprogramme_titre()}</p>
+				<!-- if:$_SESSION["lang"] == "en" -->
+				<div class="desc_prog">{=$PrgNeuf[$i+2]->getprogramme_description_en()}</div>
+				<!-- else -->
+				<div class="desc_prog">{=$PrgNeuf[$i+2]->getprogramme_description_fr()}</div>
+				<!-- end -->
+			</td>
+		<!-- end -->
+	</tr>
+<!-- end -->
+</table>
+</div>

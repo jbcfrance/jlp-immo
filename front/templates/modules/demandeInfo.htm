@@ -1,0 +1,27 @@
+<!-- InitTrad -->
+<div class='ModuleDemandeInfoForm'>
+    <p class="title">Formulaire de demande d'information</p>
+    <form method="post" action="{=HTML_ROOT_PATH}includes/utils/modules.php"  class="classForm" id="demandeInfo" />
+        <input type="hidden" name="action" value="DemandeInfo" />
+         <input type="hidden" name="annonce_id" value="{=$sAnnonceId}" />
+        <input type="hidden" name="annonce_reference" value="{=$sAnnonceRef}"/>
+		<input type="hidden" name="type_form" value="{=$sTypeForm}" />
+        <p class="field">
+            <span class="label">{@=(nom)} *</span>
+            <input type="text" name="demandeInfo_client_nom" />
+        </p>
+        <br />
+        <p class="field">
+            <span class="label">{@=(mail)} *</span>
+            <input type="text" name="demandeInfo_client_mail" />
+        </p>
+        <p class="field">
+            <span class="label">{@=(telephone)}</span>
+            <input type="text" name="demandeInfo_client_tel" />
+        </p>
+        <br />
+        <p align="center">
+            <a class="button_style" onClick="javascript:$('.classForm').submit();">{@=(SubmitModule)}</a>
+        </p>
+    </form>
+</div>

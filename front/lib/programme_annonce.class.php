@@ -1,0 +1,4 @@
+<?php
+class PROGRAMME_ANNONCE extends PROGRAMME_ANNONCE_BASE {
+}
+?>

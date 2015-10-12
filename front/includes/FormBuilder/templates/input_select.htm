@@ -1,0 +1,8 @@
+				<td valign="top" align="right">
+					<label for="{=$ID}">{=$LABEL}</label>
+				</td>
+				<td valign="top" align="left">
+					<select {=$PARAMS}><!-- foreach:$OBJ->getOptions() value:$oOpt -->
+<!-- call:$oOpt->display() --><!-- end -->
+					</select>
+				</td>

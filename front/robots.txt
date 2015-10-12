@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /templates/
+Disallow: /actions/
+Disallow: /cache/
+Disallow: /includes/
+Disallow: /lib/
+Disallow: /config/
+
+Sitemap: http://www.jlp-immo.com/sitemap.xml

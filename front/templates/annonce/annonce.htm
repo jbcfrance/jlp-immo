@@ -1,0 +1,177 @@
+<!-- InitTrad -->
+<!--if:empty($annonce)-->
+<div class="radius_full bloc_error">
+{@=(noannonce)}<br />
+<a href="mailto:contact@jlp-immo.com">{@=(moreinfo)}</a>
+</div>
+<!-- end -->
+<!-- foreach:$annonce key:$kcdc value:$cdc -->
+<div class="Annonce">
+	<div class="AnnonceTitre radius_full">
+		<ul>
+			<li id="titreLeft"><h3>{@=($cdc->gettypeBien())} {=ucwords(strtolower($cdc->getvillePublique()))}</h3></li>
+			<li id="titreRight">				 
+			<!-- if:$cdc->getmontant()!= 0 -->
+			 <!-- if:round($cdc->getmontant())== $cdc->getmontant()-->
+			{=number_format($cdc->getmontant(),0,","," ")} &euro;
+			<!-- else-->
+			{=number_format($cdc->getmontant(),2,","," ")} &euro;
+			<!-- end -->
+			<!-- else -->
+			NC &euro;
+			<!-- end --> 
+           	              
+            </li>
+		</ul>
+	</div>
+    <div class="AnnonceInfo radius_right">
+	<table cellpadding="0" cellspacing="0" class="AnnonceTable">
+		<tr class="LignePaire" >
+			<td class="LabelLigne">{@=(reference)}</td><td>{=ucfirst(strtolower($cdc->getreference()))}</td>
+		</tr>
+        <tr class="LigneImpaire">
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<!--<tr class="LignePaire">
+			<td class="LabelLigne">{@=(typeBien)}</td><td>{=ucfirst(strtolower($cdc->gettypeBien()))}</td>
+		</tr>
+        <tr class="LigneImpaire">
+			<td colspan="2">&nbsp;</td>
+		</tr>-->
+		<tr class="LignePaire">
+			<td class="LabelLigne">{@=(chambres)}</td><td>{=ucfirst(strtolower($cdc->getchambres()))}</td>
+		</tr>
+        <tr class="LigneImpaire">
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr class="LignePaire">
+			<td class="LabelLigne">{@=(nbSallesDEau)}</td><td>{=ucfirst(strtolower($cdc->getnbSallesDEau()+$cdc->getsdb()))}</td>
+		</tr>
+        <tr class="LigneImpaire">
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr class="LignePaire">
+			<td class="LabelLigne">{@=(nbParking)}</td><td>{=ucfirst(strtolower($cdc->getnbParking()))}</td>
+		</tr>
+        <tr class="LigneImpaire">
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr class="LignePaire">
+			<td class="LabelLigne">{@=(surface)}</td><td>{=ucfirst(strtolower($cdc->getsurface()))} m&sup2;</td>
+		</tr>
+        <tr class="LigneImpaire">
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr class="LignePaire">
+			<td class="LabelLigne">{@=(surfaceTerrain)}</td><td>{=ucfirst(strtolower($cdc->getsurfaceTerrain()))} m&sup2;</td>
+		</tr>
+        <tr class="LigneImpaire">
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr class="LignePaire">
+			<td class="LabelLigne">{@=(ascenseur)}</td><td>{=ucfirst(strtolower($cdc->getascenseur()))}</td>
+		</tr>
+        <tr class="LigneImpaire">
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<!--<tr class="LignePaire">
+			<td class="LabelLigne">{@=(balcon)}</td><td>{=ucfirst(strtolower($cdc->getbalcon()))}</td>
+		</tr>
+        <tr class="LigneImpaire">
+			<td colspan="2">&nbsp;</td>
+		</tr>-->
+		<tr class="LignePaire">
+			<td class="LabelLigne">{@=(nbGarages)}</td><td>{=ucfirst(strtolower($cdc->getnbGarages()))}</td>
+		</tr>
+        <tr class="LigneImpaire">
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr class="LignePaire">
+			<td class="LabelLigne">{@=(typeChauffage)}</td><td>{=ucfirst(strtolower($cdc->gettypeChauffage()))}</td>
+		</tr>
+	</table>
+     <ul class="AnnonceLinks">
+    	<li>
+        	&nbsp;
+        </li>
+		<!-- if : $sProgramme_identifiant != ''  -->
+		<li>
+			<a href="{=HTML_ROOT_PATH}prgneuf/{=$sProgramme_identifiant}" class="button_style">Fiche programme neuf</a>
+		</li>
+		<!-- else -->
+		<!-- if:$cdc->getconsommationenergie()!= 0 && $cdc->getemissionges()!= 0-->
+        <li>
+
+	<!-- if : $sIe != 'notIE'  -->
+            <a href="{=HTML_ROOT_PATH}graphs/DPE_GES/{=$cdc->getconsommationenergie()}_{=$cdc->getemissionges()}/?lightbox[iframe]=true&lightbox[width]=450&lightbox[height]=190" class="lightbox button_style">{@=(bilanenergetique)}</a>
+	<!-- else -->
+		<a href="{=HTML_ROOT_PATH}graphs/DPE_GES/{=$cdc->getconsommationenergie()}_{=$cdc->getemissionges()}/?lightbox[iframe]=true&lightbox[width]=422&lightbox[height]=169" class="lightbox button_style">{@=(bilanenergetique)}</a>
+	<!-- end -->
+<!-- else -->
+
+    	</li>
+		<!-- end -->
+		<!-- end -->
+        <li>
+            <a href="{=HTML_ROOT_PATH}modules/sendToAFriend/{=$cdc->getannonce_id()}/?lightbox[iframe]=true&lightbox[width]=480&lightbox[height]=490" class="lightbox button_style" title="{@=(SendAmis)}">
+                {@=(SendAmis)}
+            </a>
+        </li>
+        <li>
+            <a href="{=HTML_ROOT_PATH}modules/demandeInfo/{=$cdc->getannonce_id()}/{=$cdc->getreference()}/annonce/?lightbox[iframe]=true&lightbox[width]=530&lightbox[height]=200" class="lightbox button_style" title="{@=(DemandeInfo)}">
+                {@=(DemandeInfo)}
+            </a>
+        </li>
+        <li>
+            <a href="{=HTML_ROOT_PATH}modules/print/{=$cdc->getannonce_id()}/{=$cdc->getreference()}/" class="button_style" target="_blank">{@=(imprimer)}</a>
+        </li>
+		 <li>
+			<div class="addthis_toolbox addthis_32x32_style">
+				<ul>
+					<li><a class="addthis_button_facebook"></a></li>
+					<li><a class="addthis_button_twitter"></a></li>
+					<li><a class="addthis_button_google"></a></li>
+					<li><a class="addthis_button_email"></a></li>
+					<li><a class="addthis_button_favorites"></a></li>
+				</ul>
+			</div>
+			<script type="text/javascript" language="javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=xa-4eeb2b183e5a88a9"></script>
+        </li>
+        <li>
+        	&nbsp;
+        </li>
+        <!-- if:$cdc->geturlVisiteVirtuelle()!='' -->
+        <!--<li>
+       		<a href="{=$cdc->geturlVisiteVirtuelle()}" target="_blank">{@=(visiteVirtuelleLink)}</a>
+        </li>-->
+        <!-- end -->
+    </ul>
+   
+    <!--<div class="AnnonceVisiteVirtuelle">
+    	
+	</div>-->
+   
+	</div>
+	<div class="AnnoncePhoto radius_left">
+        <div class="AnnoncePhotoCadre">
+            <a href="../web/import/annonces/{=$firstImage}" class="lightbox AnnoncePhotoLink" title="{=ucfirst(strtolower($cdc->gettypeBien()))} {=ucfirst(strtolower($cdc->getvillePublique()))} 1/{=count($lightBoxArray)+1}" rel="group1">
+                <img src="../web/images/annonces/{=$cdc->getphotoMedium()}" style="border:0px;" alt="AnnoncePhotoImg" class="AnnoncePhotoImg"/>
+                <span class="AnnoncePhotoBandeau {=$sClassBandeau}"></span>
+                <span class="AnnoncePhotoOverlay"></span>
+            </a>
+        </div>
+        
+	</div>
+   	<div class="AnnonceDescription radius_full">
+	<!-- if: $_SESSION['lang']== 'en' -->
+	{=$cdc->gettextAnglais()}
+	<!-- else -->
+	{=$cdc->gettexte()}
+	<!-- end -->
+	</div>
+<div class="AnnonceMargeBasse"></div>
+	<!-- foreach:$lightBoxArray key:$kLightBox value:$vLightBox -->
+		<a href='{="../web/import/annonces/".$vLightBox}' class='lightbox' style="display:none;" title="{@=($cdc->gettypeBien())} {=ucfirst(strtolower($cdc->getvillePublique()))} {=$kLightBox+2}/{=count($lightBoxArray)+1}" rel="group1">{="../web/import/annonces/".$vLightBox}</a>
+	<!-- end -->
+</div>
+<!-- end -->

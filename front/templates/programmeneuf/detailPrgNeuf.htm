@@ -1,0 +1,127 @@
+<!-- InitTrad -->
+<!-- foreach:$programme key:$kPrg value:$vPrg -->
+<div class="DetailPrgNeuf">
+    <div class="TitrePrgNeuf">
+    {=$vPrg->getprogramme_titre()}
+    </div>
+	<table class="Pres_Prog" cellpadding="0" cellspacing="0" border="0">
+		<tr>
+			<td id="Photo">
+				<!--<div class="PrgPhoto">
+					<div class="PrgPhotoCadre">
+						<a href="{=HTML_ROOT_PATH}web/images/programmeneufs/{=$vPrg->getprogramme_id()}/Orig_ProgrammeNeufImage_0.jpg" class="lightbox PrgPhotoLink" title="{=$vPrg->getprogramme_titre()}">
+							<img src="{=HTML_ROOT_PATH}web/images/programmeneufs/{=$vPrg->getprogramme_id()}/Bloc_ProgrammeNeufImage.jpg"  style="border:0px;" alt="PrgPhotoImg"/>
+							<span class="PrgPhotoOverlay"></span>
+						</a>
+					</div>
+					
+				</div>-->
+				<a id="prgGalery" style="cursor:pointer;" class="PrgPhotoLink" ><img src="{=HTML_ROOT_PATH}web/images/programmeneufs/{=$vPrg->getprogramme_id()}/Bloc_ProgrammeNeufImage.jpg"  style="border:0px;" alt="ImgPrgNeuf"/>
+				<span class="PrgPhotoOverlay"></span></a>
+			</td>
+			<td id="Texte">
+			<div class="bloc_txt">
+				<div class="spacer_top"></div>
+				<!-- if:$_SESSION["lang"] == "en" -->
+				{=stripslashes($vPrg->getprogramme_description_en())}
+				<!-- else -->
+				{=stripslashes($vPrg->getprogramme_description_fr())}
+				<!-- end -->
+				<div class="spacer_bottom"></div>
+				<!-- AddThis Button BEGIN -->
+				<div class="addthis_toolbox addthis_default_style">
+				<a class="addthis_button_facebook"></a>
+				<a class="addthis_button_twitter"></a>
+				<a class="addthis_button_google"></a>
+				<a class="addthis_button_email"></a>
+				<a class="addthis_button_favorites"></a>
+				<a class="addthis_button_linkedin"></a>
+				</div>
+				<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=xa-4eeb2b183e5a88a9"></script>
+				<!-- AddThis Button END -->
+				</div>
+			
+			</td>
+		</tr>
+	</table>
+<table class="PrgNeufAnnonces" id="ListeAnnonce" cellpadding="0" cellspacing="0">
+	<tr>
+		<th>{@=(reference)}</th>
+		<th>{@=(typeBien)}</th>
+		<th>{@=(chambres)}</th>
+		<th>{@=(nbSallesDEau)}</th>
+		<th>{@=(surface)}</th>
+		<th>{@=(montant)}</th>
+		<th></th>
+	</tr>
+<!-- foreach:$listeAnnonce key:$klisteAnnonce value:$vlisteAnnonce -->
+	<!-- if: $vlisteAnnonce->getannonce(0)->getreference() !='' -->
+   	<!--if: $klisteAnnonce%2==0 -->
+		<!-- if : $sIe == 'notIE'  -->
+			<tr style="background:rgba(80,80,80,0.85);">
+		<!-- else -->
+			<tr style="background:url('{=HTML_ROOT_PATH}web/images/bg_ie_rgb80_a85.png');">
+		<!-- end -->
+	<!-- else -->
+		<!-- if : $sIe == 'notIE'  -->
+			<tr style="background:rgba(150,150,150,0.85);">
+		<!-- else -->
+			<tr style="background:url('{=HTML_ROOT_PATH}web/images/bg_ie_rgb150_a85.png');">
+		<!-- end -->
+	<!-- end -->
+		<td><a href='{=HTML_ROOT_PATH}annonce/{=$vlisteAnnonce->getannonce(0)->getannonce_id()}'>{=$vlisteAnnonce->getannonce(0)->getreference()}</a></td>
+		<td>
+			<!-- if:$vlisteAnnonce->getannonce(0)->getcategorie()!=''-->
+			{=ucfirst($vlisteAnnonce->getannonce(0)->getcategorie())}
+			<!-- else -->
+			{=ucfirst($vlisteAnnonce->getannonce(0)->gettypeBien())}
+			<!-- end -->
+		</td>
+		<td>{=ucfirst(strtolower($vlisteAnnonce->getannonce(0)->getchambres()))}</td>
+		<td>{=ucfirst(strtolower($vlisteAnnonce->getannonce(0)->getnbSallesDEau()))}</td>
+		<td>{=ucfirst(strtolower($vlisteAnnonce->getannonce(0)->getsurface()))} m&sup2;</td>
+		<td>	
+			<!-- if:$vlisteAnnonce->getannonce(0)->getmontant()!= 0 -->
+			 <!-- if:round($vlisteAnnonce->getannonce(0)->getmontant())== $vlisteAnnonce->getannonce(0)->getmontant()-->
+			{=number_format($vlisteAnnonce->getannonce(0)->getmontant(),0,","," ")} &euro;
+			<!-- else-->
+			{=number_format($vlisteAnnonce->getannonce(0)->getmontant(),2,","," ")} &euro;
+			<!-- end -->
+			<!-- else -->
+			NC &euro;
+			<!-- end -->
+		</td>
+		<td><a href='{=HTML_ROOT_PATH}web/import/annonces/{=$aListePlan[$vlisteAnnonce->getannonce(0)->getannonce_id()]}' class='lightbox'>Plan</a></td>
+	</tr>
+	<!-- end -->
+<!-- end -->
+</table>
+<div style="margin:0 auto;">
+	<a href="{=HTML_ROOT_PATH}modules/demandeInfo/{=$vPrg->getprogramme_id()}/{=$vPrg->getprogramme_identifiant()}/progneuf/?lightbox[iframe]=true&lightbox[width]=580&lightbox[height]=200" class="lightbox button_style" title="{@=(DemandeInfo)}">
+		{@=(DemandeInfo)}
+	</a>
+</div>
+<!-- if:$bShowPartenaire -->
+<div class="Partenaire">
+	<table>
+		<tr>
+			<td id="logo" colspan="2">
+				<a href="http://www.thermes-saint-gervais.com" target="_blank"><img src="{=HTML_ROOT_PATH}web/images/partenaire/logo.gif" /></a>
+			</td>
+		</tr>
+		<tr>
+			<td id="link">
+				<a href="http://www.spa-thermal-mont-blanc.com" target="_blank"><img src="{=HTML_ROOT_PATH}web/images/partenaire/spa.jpeg" /></a>
+			</td>
+			<td id="link">
+				<a href="http://www.cures-thermales-st-gervais.com" target="_blank"><img src="{=HTML_ROOT_PATH}web/images/partenaire/cure.jpeg" /></a>
+			</td>
+		</tr>
+	</table>
+</div> 
+<!-- else -->
+<div style="height:50px;">
+</div>
+<!-- end -->
+</div>
+<!-- end -->

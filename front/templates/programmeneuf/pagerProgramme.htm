@@ -1,0 +1,76 @@
+<table border="1" cellpadding="1" cellspacing="1" class="pagerProgramme">
+	<!-- if:$this->needToPaginate() -->
+		<tbody class="footer">
+			<tr>
+				<td colspan="{=count($this->getTitles())}" align="center">
+					<!-- if:$this->getPage() != $this->firstPage() -->
+						{= $this->PagerLink('<a href="%s">&lt;&lt;</a>', $this->firstPage(), $this->getActualOrder(), $this->getSense($this->getActualOrder()) ) }&nbsp;
+					<!-- else -->
+						&nbsp;{= $this->PagerLink('<a href="%s">&lt;</a>', $this->previousPage(), $this->getActualOrder(), $this->getSense($this->getActualOrder())) }&nbsp;
+					<!-- end -->
+					
+					<!-- for:$i from:$this->getPage()-$this->getMargins() to:$this->getPage()+$this->getMargins() -->
+						<!-- if:($i>0)&&($i<=$this->lastPage()) -->
+							<!-- if:($i==$this->getPage()) -->
+								&nbsp;{=$i}&nbsp;
+							<!-- else -->
+								&nbsp;{= $this->PagerLink('<a href="%s">'.$i.'</a>', $i, $this->getActualOrder(), $this->getSense($this->getActualOrder())) }&nbsp;
+							<!-- end -->
+						<!-- end -->
+					<!-- end -->
+					
+					<!-- if:$this->getPage() != $this->nextPage() -->
+						&nbsp;{= $this->PagerLink('<a href="%s">&gt;</a>', $this->nextPage(), $this->getActualOrder(), $this->getSense($this->getActualOrder())) }&nbsp;
+					<!-- else -->
+						&nbsp;{=$this->PagerLink('<a href="%s">&gt;&gt;</a>', $this->lastPage(), $this->getActualOrder(), $this->getSense($this->getActualOrder()))}
+					<!-- end -->
+				</td>
+			</tr>
+		</tbody>
+	<!-- end -->
+	<thead class="header">
+		<tr>
+			<!-- foreach:$this->getTitles() key:$sField value:$sTitle -->
+			<th>{= $this->PagerLink('<a href="%s">'. $sTitle .'</a>', $this->getPage(), $sField, $this->getNewSense($sField)) }</th>
+			<!-- end -->
+		</tr>
+	</thead>
+	<tbody class="content">
+		<!-- for:$i to:$this->getCount() -->
+		<tr>
+			<!-- foreach:$this->getTitles() key:$sField value:$sTitle -->
+			<td>{=$this->getValue($i, $sField)}</td>
+			<!-- end -->
+		</tr>
+		<!-- end -->
+	</tbody>
+	<!-- if:$this->needToPaginate() -->
+		<tbody class="footer">
+			<tr>
+				<td colspan="{=count($this->getTitles())}" align="center">
+					<!-- if:$this->getPage() != $this->firstPage() -->
+						{= $this->PagerLink('<a href="%s">&lt;&lt;</a>', $this->firstPage(), $this->getActualOrder(), $this->getSense($this->getActualOrder()) ) }&nbsp;
+					<!-- else -->
+						&nbsp;{= $this->PagerLink('<a href="%s">&lt;</a>', $this->previousPage(), $this->getActualOrder(), $this->getSense($this->getActualOrder())) }&nbsp;
+					<!-- end -->
+					
+					<!-- for:$i from:$this->getPage()-$this->getMargins() to:$this->getPage()+$this->getMargins() -->
+						<!-- if:($i>0)&&($i<=$this->lastPage()) -->
+							<!-- if:($i==$this->getPage()) -->
+								&nbsp;{=$i}&nbsp;
+							<!-- else -->
+								&nbsp;{= $this->PagerLink('<a href="%s">'.$i.'</a>', $i, $this->getActualOrder(), $this->getSense($this->getActualOrder())) }&nbsp;
+							<!-- end -->
+						<!-- end -->
+					<!-- end -->
+					
+					<!-- if:$this->getPage() != $this->nextPage() -->
+						&nbsp;{= $this->PagerLink('<a href="%s">&gt;</a>', $this->nextPage(), $this->getActualOrder(), $this->getSense($this->getActualOrder())) }&nbsp;
+					<!-- else -->
+						&nbsp;{=$this->PagerLink('<a href="%s">&gt;&gt;</a>', $this->lastPage(), $this->getActualOrder(), $this->getSense($this->getActualOrder()))}
+					<!-- end -->
+				</td>
+			</tr>
+		</tbody>
+	<!-- end -->
+</table>
