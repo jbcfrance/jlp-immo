@@ -1,10 +1,11 @@
-/img/*
-/front/cache/*
-/front/web/css/*
-/front/web/flash/*
-/front/web/font/*
-/front/web/images/*
-/front/web/js/*
-/front/web/import/*.txt
-/front/web/import/annonces/*.jpg
+/oldSite/img/*
+/oldSite/front/cache/*
+/oldSite/front/web/css/*
+/oldSite/front/web/flash/*
+/oldSite/front/web/font/*
+/oldSite/front/web/images/*
+/oldSite/front/web/js/*
+/oldSite/front/web/import/*.txt
+/oldSite/front/web/import/annonces/*.jpg
 
+/nbproject/private/
