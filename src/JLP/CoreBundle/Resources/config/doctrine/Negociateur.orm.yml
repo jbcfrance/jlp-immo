@@ -1,0 +1,48 @@
+JLP\CoreBundle\Entity\Negociateur:
+    type: entity
+    table: negociateur
+    id:
+        negociateurId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: negociateur_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        negociateurAgenceId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: negociateur_agence_id
+        prenomnegociateur:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: prenomNegociateur
+        nomnegociateur:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: nomNegociateur
+        telephonenegociateur:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: telephoneNegociateur
+        emailnegociateur:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: emailNegociateur
+    lifecycleCallbacks: {  }

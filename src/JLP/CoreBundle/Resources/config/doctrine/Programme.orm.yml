@@ -1,0 +1,56 @@
+JLP\CoreBundle\Entity\Programme:
+    type: entity
+    table: programme
+    id:
+        programmeId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: programme_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        programmeTitre:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: programme_titre
+        programmeTitreColor:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: programme_titre_color
+        programmeDescriptionFr:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: programme_description_fr
+        programmeDescriptionEn:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: programme_description_en
+        programmePartenaire:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: programme_partenaire
+        programmeIdentifiant:
+            type: string
+            nullable: false
+            length: 4
+            options:
+                fixed: false
+            column: programme_identifiant
+    lifecycleCallbacks: {  }

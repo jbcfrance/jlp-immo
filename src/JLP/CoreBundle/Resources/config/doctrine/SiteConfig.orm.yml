@@ -1,0 +1,43 @@
+JLP\CoreBundle\Entity\SiteConfig:
+    type: entity
+    table: site_config
+    id:
+        siteId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: site_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        siteCle:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: site_cle
+        siteDesc:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: site_desc
+        siteIntroFr:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: site_intro_fr
+        siteIntroEn:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: site_intro_en
+    lifecycleCallbacks: {  }
