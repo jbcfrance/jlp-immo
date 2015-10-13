@@ -1,3 +1,11 @@
+jlp_passerelle:
+    resource: "@JLPPasserelleBundle/Resources/config/routing.yml"
+    prefix:   /
+
+jlp_core:
+    resource: "@JLPCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

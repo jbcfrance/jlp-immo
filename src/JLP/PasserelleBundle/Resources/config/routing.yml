@@ -1,0 +1,3 @@
+jlp_passerelle_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: JLPPasserelleBundle:Default:index }
