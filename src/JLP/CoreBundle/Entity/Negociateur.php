@@ -2,170 +2,186 @@
 
 namespace JLP\CoreBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Negociateur
+ * 
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="JLP\CoreBundleBundle\Entity\NegociateurRepository")
  */
 class Negociateur
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $negociateurId;
+    private $id;
+    /**
+    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Agence")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $agence;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=255)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="telephone", type="integer")
      */
-    private $negociateurAgenceId;
+    private $telephone;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255)
      */
-    private $prenomnegociateur;
-
-    /**
-     * @var string
-     */
-    private $nomnegociateur;
-
-    /**
-     * @var integer
-     */
-    private $telephonenegociateur;
-
-    /**
-     * @var string
-     */
-    private $emailnegociateur;
+    private $email;
 
 
     /**
-     * Get negociateurId
+     * Get id
      *
      * @return integer
      */
-    public function getNegociateurId()
+    public function getId()
     {
-        return $this->negociateurId;
+        return $this->id;
     }
 
     /**
-     * Set negociateurAgenceId
+     * Set prenom
      *
-     * @param integer $negociateurAgenceId
+     * @param string $prenom
      *
      * @return Negociateur
      */
-    public function setNegociateurAgenceId($negociateurAgenceId)
+    public function setPrenom($prenom)
     {
-        $this->negociateurAgenceId = $negociateurAgenceId;
+        $this->prenom = $prenom;
 
         return $this;
     }
 
     /**
-     * Get negociateurAgenceId
+     * Get prenom
+     *
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Negociateur
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set telephone
+     *
+     * @param integer $telephone
+     *
+     * @return Negociateur
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    /**
+     * Get telephone
      *
      * @return integer
      */
-    public function getNegociateurAgenceId()
+    public function getTelephone()
     {
-        return $this->negociateurAgenceId;
+        return $this->telephone;
     }
 
     /**
-     * Set prenomnegociateur
+     * Set email
      *
-     * @param string $prenomnegociateur
+     * @param string $email
      *
      * @return Negociateur
      */
-    public function setPrenomnegociateur($prenomnegociateur)
+    public function setEmail($email)
     {
-        $this->prenomnegociateur = $prenomnegociateur;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get prenomnegociateur
+     * Get email
      *
      * @return string
      */
-    public function getPrenomnegociateur()
+    public function getEmail()
     {
-        return $this->prenomnegociateur;
+        return $this->email;
     }
 
     /**
-     * Set nomnegociateur
+     * Set agence
      *
-     * @param string $nomnegociateur
+     * @param \JLP\CoreBundle\Entity\Agence $agence
      *
      * @return Negociateur
      */
-    public function setNomnegociateur($nomnegociateur)
+    public function setAgence(\JLP\CoreBundle\Entity\Agence $agence)
     {
-        $this->nomnegociateur = $nomnegociateur;
+        $this->agence = $agence;
 
         return $this;
     }
 
     /**
-     * Get nomnegociateur
+     * Get agence
      *
-     * @return string
+     * @return \JLP\CoreBundle\Entity\Agence
      */
-    public function getNomnegociateur()
+    public function getAgence()
     {
-        return $this->nomnegociateur;
-    }
-
-    /**
-     * Set telephonenegociateur
-     *
-     * @param integer $telephonenegociateur
-     *
-     * @return Negociateur
-     */
-    public function setTelephonenegociateur($telephonenegociateur)
-    {
-        $this->telephonenegociateur = $telephonenegociateur;
-
-        return $this;
-    }
-
-    /**
-     * Get telephonenegociateur
-     *
-     * @return integer
-     */
-    public function getTelephonenegociateur()
-    {
-        return $this->telephonenegociateur;
-    }
-
-    /**
-     * Set emailnegociateur
-     *
-     * @param string $emailnegociateur
-     *
-     * @return Negociateur
-     */
-    public function setEmailnegociateur($emailnegociateur)
-    {
-        $this->emailnegociateur = $emailnegociateur;
-
-        return $this;
-    }
-
-    /**
-     * Get emailnegociateur
-     *
-     * @return string
-     */
-    public function getEmailnegociateur()
-    {
-        return $this->emailnegociateur;
+        return $this->agence;
     }
 }
-

@@ -2,528 +2,597 @@
 
 namespace JLP\CoreBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 /**
  * Annonce
+ * 
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="JLP\CoreBundleBundle\Entity\AnnonceRepository")
  */
 class Annonce
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $annonceId;
+    private $id;
 
     /**
-     * @var integer
-     */
-    private $annonceAgenceId;
+    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Agence")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $agence;
 
     /**
-     * @var integer
-     */
-    private $annonceNegociateurId;
-
+    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Negociateur")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $negociateur;
+    
+    /**
+    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\ProgrammeNeuf")
+    */
+    private $programmeNeuf;
+    
     /**
      * @var string
+     *
+     * @ORM\Column(name="statusAnnonce", type="string", length=255)
      */
     private $statusAnnonce;
 
     /**
-     * @var string
+     * @var integer
+     * 
+     * @ORM\Column(name="reference", type="integer")
      */
     private $reference;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="numMandat", type="integer")
      */
-    private $nummandat;
+    private $numMandat;
 
     /**
-     * @var string
-     */
-    private $typemandat;
+    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\TypeMandat", cascade={"persist"})
+    */
+    private $typeMandat;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="categorieOffre", type="integer")
      */
-    private $categorieoffre;
+    private $categorieOffre;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\TypeBien", cascade={"persist"})
+    */
+    private $typeBien;
 
     /**
      * @var string
-     */
-    private $typebien;
-
-    /**
-     * @var string
+     *
+     * @ORM\Column(name="categorie", type="string", length=255)
      */
     private $categorie;
 
     /**
-     * @var integer
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateCreation", type="datetimetz")
      */
-    private $datecreation;
+    private $dateCreation;
 
     /**
-     * @var integer
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateModification", type="datetimetz")
      */
-    private $datemodification;
+    private $dateModification;
 
     /**
-     * @var integer
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateDebutMandat", type="datetimetz")
      */
-    private $datedebutmandat;
+    private $dateDebutMandat;
 
     /**
-     * @var integer
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateEcheanceMandat", type="datetimetz")
      */
-    private $dateecheancemandat;
+    private $dateEcheanceMandat;
 
     /**
-     * @var integer
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateDisponibiliteOuLiberation", type="datetimetz")
      */
-    private $datedisponibiliteouliberation;
+    private $dateDisponibiliteOuLiberation;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255)
      */
     private $adresse;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="codePostalPublic", type="integer")
      */
-    private $codepostalpublic;
+    private $codePostalPublic;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="villePublique", type="string", length=255)
      */
-    private $villepublique;
+    private $villePublique;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="villeAAfficher", type="string", length=255)
      */
-    private $villeaafficher;
+    private $villeAAfficher;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="pays", type="string", length=255)
      */
     private $pays;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="quartier", type="string", length=255)
      */
     private $quartier;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="environnement", type="string", length=255)
      */
     private $environnement;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="proximite", type="string", length=255)
      */
     private $proximite;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="transports", type="string", length=255)
      */
     private $transports;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="montant", type="integer")
      */
     private $montant;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="charges", type="integer")
      */
     private $charges;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="loyer", type="integer")
      */
     private $loyer;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="depotGarantie", type="integer")
      */
-    private $depotgarantie;
+    private $depotGarantie;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="fraisDivers", type="integer")
      */
-    private $fraisdivers;
+    private $fraisDivers;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="loyerGarage", type="integer")
      */
-    private $loyergarage;
+    private $loyerGarage;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="ageTete", type="integer")
      */
-    private $agetete;
+    private $ageTete;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="typeRente", type="string", length=255)
      */
-    private $typerente;
+    private $typeRente;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="taxeHabitation", type="integer")
      */
-    private $taxehabitation;
+    private $taxeHabitation;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="taxeFonciere", type="integer")
      */
-    private $taxefonciere;
+    private $taxeFonciere;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="fraisDeNotaireReduits", type="integer")
      */
-    private $fraisdenotairereduits;
+    private $fraisDeNotaireReduits;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="pieces", type="integer")
      */
     private $pieces;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="chambres", type="integer")
      */
     private $chambres;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="sdb", type="integer")
      */
     private $sdb;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="nbSallesDEau", type="integer")
      */
-    private $nbsallesdeau;
+    private $nbSallesDEau;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="nbWc", type="integer")
      */
-    private $nbwc;
+    private $nbWc;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="nbParking", type="integer")
      */
-    private $nbparking;
+    private $nbParking;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="nbGarages", type="integer")
      */
-    private $nbgarages;
+    private $nbGarages;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="niveaux", type="integer")
      */
     private $niveaux;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="nbEtages", type="integer")
      */
-    private $nbetages;
+    private $nbEtages;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="etage", type="integer")
      */
     private $etage;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="surface", type="integer")
      */
     private $surface;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="surfaceCarrezOuHabitable", type="integer")
      */
-    private $surfacecarrezouhabitable;
+    private $surfaceCarrezOuHabitable;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="surfaceTerrain", type="integer")
      */
-    private $surfaceterrain;
+    private $surfaceTerrain;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="surfaceSejour", type="integer")
      */
-    private $surfacesejour;
+    private $surfaceSejour;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="surfaceTerrasse", type="integer")
      */
-    private $surfaceterrasse;
+    private $surfaceTerrasse;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="surfaceBalcon", type="integer")
      */
-    private $surfacebalcon;
+    private $surfaceBalcon;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="accesHandicape", type="integer")
      */
-    private $acceshandicape;
+    private $accesHandicape;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="alarme", type="integer")
      */
     private $alarme;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="ascenseur", type="integer")
      */
     private $ascenseur;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="balcon", type="integer")
      */
     private $balcon;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="bureau", type="integer")
      */
     private $bureau;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="cave", type="integer")
      */
     private $cave;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="cellier", type="integer")
      */
     private $cellier;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="dependances", type="integer")
      */
     private $dependances;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="dressing", type="integer")
      */
     private $dressing;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="gardien", type="integer")
      */
     private $gardien;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="interphone", type="integer")
      */
     private $interphone;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="lotissement", type="integer")
      */
     private $lotissement;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="meuble", type="integer")
      */
     private $meuble;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="mitoyenne", type="integer")
      */
     private $mitoyenne;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="piscine", type="integer")
      */
     private $piscine;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="terrasse", type="integer")
      */
     private $terrasse;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="anciennete", type="string", length=255)
      */
     private $anciennete;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="anneeConstruction", type="integer")
      */
-    private $anneeconstruction;
+    private $anneeConstruction;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="exposition", type="integer")
      */
     private $exposition;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="typeChauffage", type="string", length=255)
      */
-    private $typechauffage;
+    private $typeChauffage;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="natureChauffage", type="string", length=255)
      */
-    private $naturechauffage;
+    private $natureChauffage;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="modeChauffage", type="string", length=255)
      */
-    private $modechauffage;
+    private $modeChauffage;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="typeCuisine", type="string", length=255)
      */
-    private $typecuisine;
+    private $typeCuisine;
+
+    /**
+     * @ORM\Column(name="coupDeCoeur", type="boolean")
+     */
+    private $coupDeCoeur;
 
     /**
      * @var string
-     */
-    private $coupdecoeur;
-
-    /**
-     * @var string
+     *
+     * @ORM\Column(name="texte", type="text")
      */
     private $texte;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="textAnglais", type="text")
      */
-    private $textanglais;
+    private $textAnglais;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="urlVisiteVirtuelle", type="string", length=255)
      */
-    private $urlvisitevirtuelle;
-
-    /**
-     * @var string
-     */
-    private $photocoeur;
-
-    /**
-     * @var string
-     */
-    private $photomedium;
-
-    /**
-     * @var string
-     */
-    private $listephotoorig;
-
-    /**
-     * @var string
-     */
-    private $photothumb;
-
-    /**
-     * @var string
-     */
-    private $photoorigmd;
+    private $urlVisiteVirtuelle;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="consommationEnergie", type="integer")
      */
-    private $consommationenergie;
+    private $consommationEnergie;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="emissionGes", type="integer")
      */
-    private $emissionges;
+    private $emissionGes;
 
     /**
-     * @var string
+     * Constructor
      */
-    private $photoorigmd5;
-
+    public function __construct()
+    {
+        $this->statusAnnonce = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->typeBien = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
-     * Get annonceId
+     * Get id
      *
      * @return integer
      */
-    public function getAnnonceId()
+    public function getId()
     {
-        return $this->annonceId;
-    }
-
-    /**
-     * Set annonceAgenceId
-     *
-     * @param integer $annonceAgenceId
-     *
-     * @return Annonce
-     */
-    public function setAnnonceAgenceId($annonceAgenceId)
-    {
-        $this->annonceAgenceId = $annonceAgenceId;
-
-        return $this;
-    }
-
-    /**
-     * Get annonceAgenceId
-     *
-     * @return integer
-     */
-    public function getAnnonceAgenceId()
-    {
-        return $this->annonceAgenceId;
-    }
-
-    /**
-     * Set annonceNegociateurId
-     *
-     * @param integer $annonceNegociateurId
-     *
-     * @return Annonce
-     */
-    public function setAnnonceNegociateurId($annonceNegociateurId)
-    {
-        $this->annonceNegociateurId = $annonceNegociateurId;
-
-        return $this;
-    }
-
-    /**
-     * Get annonceNegociateurId
-     *
-     * @return integer
-     */
-    public function getAnnonceNegociateurId()
-    {
-        return $this->annonceNegociateurId;
-    }
-
-    /**
-     * Set statusAnnonce
-     *
-     * @param string $statusAnnonce
-     *
-     * @return Annonce
-     */
-    public function setStatusAnnonce($statusAnnonce)
-    {
-        $this->statusAnnonce = $statusAnnonce;
-
-        return $this;
-    }
-
-    /**
-     * Get statusAnnonce
-     *
-     * @return string
-     */
-    public function getStatusAnnonce()
-    {
-        return $this->statusAnnonce;
+        return $this->id;
     }
 
     /**
      * Set reference
      *
-     * @param string $reference
+     * @param integer $reference
      *
      * @return Annonce
      */
@@ -537,7 +606,7 @@ class Annonce
     /**
      * Get reference
      *
-     * @return string
+     * @return integer
      */
     public function getReference()
     {
@@ -545,99 +614,75 @@ class Annonce
     }
 
     /**
-     * Set nummandat
+     * Set numMandat
      *
-     * @param integer $nummandat
+     * @param integer $numMandat
      *
      * @return Annonce
      */
-    public function setNummandat($nummandat)
+    public function setNumMandat($numMandat)
     {
-        $this->nummandat = $nummandat;
+        $this->numMandat = $numMandat;
 
         return $this;
     }
 
     /**
-     * Get nummandat
+     * Get numMandat
      *
      * @return integer
      */
-    public function getNummandat()
+    public function getNumMandat()
     {
-        return $this->nummandat;
+        return $this->numMandat;
     }
 
     /**
-     * Set typemandat
+     * Set typeMandat
      *
-     * @param string $typemandat
+     * @param string $typeMandat
      *
      * @return Annonce
      */
-    public function setTypemandat($typemandat)
+    public function setTypeMandat($typeMandat)
     {
-        $this->typemandat = $typemandat;
+        $this->typeMandat = $typeMandat;
 
         return $this;
     }
 
     /**
-     * Get typemandat
+     * Get typeMandat
      *
      * @return string
      */
-    public function getTypemandat()
+    public function getTypeMandat()
     {
-        return $this->typemandat;
+        return $this->typeMandat;
     }
 
     /**
-     * Set categorieoffre
+     * Set categorieOffre
      *
-     * @param integer $categorieoffre
+     * @param integer $categorieOffre
      *
      * @return Annonce
      */
-    public function setCategorieoffre($categorieoffre)
+    public function setCategorieOffre($categorieOffre)
     {
-        $this->categorieoffre = $categorieoffre;
+        $this->categorieOffre = $categorieOffre;
 
         return $this;
     }
 
     /**
-     * Get categorieoffre
+     * Get categorieOffre
      *
      * @return integer
      */
-    public function getCategorieoffre()
+    public function getCategorieOffre()
     {
-        return $this->categorieoffre;
-    }
-
-    /**
-     * Set typebien
-     *
-     * @param string $typebien
-     *
-     * @return Annonce
-     */
-    public function setTypebien($typebien)
-    {
-        $this->typebien = $typebien;
-
-        return $this;
-    }
-
-    /**
-     * Get typebien
-     *
-     * @return string
-     */
-    public function getTypebien()
-    {
-        return $this->typebien;
+        return $this->categorieOffre;
     }
 
     /**
@@ -665,123 +710,123 @@ class Annonce
     }
 
     /**
-     * Set datecreation
+     * Set dateCreation
      *
-     * @param integer $datecreation
+     * @param \DateTime $dateCreation
      *
      * @return Annonce
      */
-    public function setDatecreation($datecreation)
+    public function setDateCreation($dateCreation)
     {
-        $this->datecreation = $datecreation;
+        $this->dateCreation = $dateCreation;
 
         return $this;
     }
 
     /**
-     * Get datecreation
+     * Get dateCreation
      *
-     * @return integer
+     * @return \DateTime
      */
-    public function getDatecreation()
+    public function getDateCreation()
     {
-        return $this->datecreation;
+        return $this->dateCreation;
     }
 
     /**
-     * Set datemodification
+     * Set dateModification
      *
-     * @param integer $datemodification
+     * @param \DateTime $dateModification
      *
      * @return Annonce
      */
-    public function setDatemodification($datemodification)
+    public function setDateModification($dateModification)
     {
-        $this->datemodification = $datemodification;
+        $this->dateModification = $dateModification;
 
         return $this;
     }
 
     /**
-     * Get datemodification
+     * Get dateModification
      *
-     * @return integer
+     * @return \DateTime
      */
-    public function getDatemodification()
+    public function getDateModification()
     {
-        return $this->datemodification;
+        return $this->dateModification;
     }
 
     /**
-     * Set datedebutmandat
+     * Set dateDebutMandat
      *
-     * @param integer $datedebutmandat
+     * @param \DateTime $dateDebutMandat
      *
      * @return Annonce
      */
-    public function setDatedebutmandat($datedebutmandat)
+    public function setDateDebutMandat($dateDebutMandat)
     {
-        $this->datedebutmandat = $datedebutmandat;
+        $this->dateDebutMandat = $dateDebutMandat;
 
         return $this;
     }
 
     /**
-     * Get datedebutmandat
+     * Get dateDebutMandat
      *
-     * @return integer
+     * @return \DateTime
      */
-    public function getDatedebutmandat()
+    public function getDateDebutMandat()
     {
-        return $this->datedebutmandat;
+        return $this->dateDebutMandat;
     }
 
     /**
-     * Set dateecheancemandat
+     * Set dateEcheanceMandat
      *
-     * @param integer $dateecheancemandat
+     * @param \DateTime $dateEcheanceMandat
      *
      * @return Annonce
      */
-    public function setDateecheancemandat($dateecheancemandat)
+    public function setDateEcheanceMandat($dateEcheanceMandat)
     {
-        $this->dateecheancemandat = $dateecheancemandat;
+        $this->dateEcheanceMandat = $dateEcheanceMandat;
 
         return $this;
     }
 
     /**
-     * Get dateecheancemandat
+     * Get dateEcheanceMandat
      *
-     * @return integer
+     * @return \DateTime
      */
-    public function getDateecheancemandat()
+    public function getDateEcheanceMandat()
     {
-        return $this->dateecheancemandat;
+        return $this->dateEcheanceMandat;
     }
 
     /**
-     * Set datedisponibiliteouliberation
+     * Set dateDisponibiliteOuLiberation
      *
-     * @param integer $datedisponibiliteouliberation
+     * @param \DateTime $dateDisponibiliteOuLiberation
      *
      * @return Annonce
      */
-    public function setDatedisponibiliteouliberation($datedisponibiliteouliberation)
+    public function setDateDisponibiliteOuLiberation($dateDisponibiliteOuLiberation)
     {
-        $this->datedisponibiliteouliberation = $datedisponibiliteouliberation;
+        $this->dateDisponibiliteOuLiberation = $dateDisponibiliteOuLiberation;
 
         return $this;
     }
 
     /**
-     * Get datedisponibiliteouliberation
+     * Get dateDisponibiliteOuLiberation
      *
-     * @return integer
+     * @return \DateTime
      */
-    public function getDatedisponibiliteouliberation()
+    public function getDateDisponibiliteOuLiberation()
     {
-        return $this->datedisponibiliteouliberation;
+        return $this->dateDisponibiliteOuLiberation;
     }
 
     /**
@@ -809,75 +854,75 @@ class Annonce
     }
 
     /**
-     * Set codepostalpublic
+     * Set codePostalPublic
      *
-     * @param integer $codepostalpublic
+     * @param integer $codePostalPublic
      *
      * @return Annonce
      */
-    public function setCodepostalpublic($codepostalpublic)
+    public function setCodePostalPublic($codePostalPublic)
     {
-        $this->codepostalpublic = $codepostalpublic;
+        $this->codePostalPublic = $codePostalPublic;
 
         return $this;
     }
 
     /**
-     * Get codepostalpublic
+     * Get codePostalPublic
      *
      * @return integer
      */
-    public function getCodepostalpublic()
+    public function getCodePostalPublic()
     {
-        return $this->codepostalpublic;
+        return $this->codePostalPublic;
     }
 
     /**
-     * Set villepublique
+     * Set villePublique
      *
-     * @param string $villepublique
+     * @param string $villePublique
      *
      * @return Annonce
      */
-    public function setVillepublique($villepublique)
+    public function setVillePublique($villePublique)
     {
-        $this->villepublique = $villepublique;
+        $this->villePublique = $villePublique;
 
         return $this;
     }
 
     /**
-     * Get villepublique
+     * Get villePublique
      *
      * @return string
      */
-    public function getVillepublique()
+    public function getVillePublique()
     {
-        return $this->villepublique;
+        return $this->villePublique;
     }
 
     /**
-     * Set villeaafficher
+     * Set villeAAfficher
      *
-     * @param string $villeaafficher
+     * @param string $villeAAfficher
      *
      * @return Annonce
      */
-    public function setVilleaafficher($villeaafficher)
+    public function setVilleAAfficher($villeAAfficher)
     {
-        $this->villeaafficher = $villeaafficher;
+        $this->villeAAfficher = $villeAAfficher;
 
         return $this;
     }
 
     /**
-     * Get villeaafficher
+     * Get villeAAfficher
      *
      * @return string
      */
-    public function getVilleaafficher()
+    public function getVilleAAfficher()
     {
-        return $this->villeaafficher;
+        return $this->villeAAfficher;
     }
 
     /**
@@ -1073,195 +1118,195 @@ class Annonce
     }
 
     /**
-     * Set depotgarantie
+     * Set depotGarantie
      *
-     * @param integer $depotgarantie
+     * @param integer $depotGarantie
      *
      * @return Annonce
      */
-    public function setDepotgarantie($depotgarantie)
+    public function setDepotGarantie($depotGarantie)
     {
-        $this->depotgarantie = $depotgarantie;
+        $this->depotGarantie = $depotGarantie;
 
         return $this;
     }
 
     /**
-     * Get depotgarantie
+     * Get depotGarantie
      *
      * @return integer
      */
-    public function getDepotgarantie()
+    public function getDepotGarantie()
     {
-        return $this->depotgarantie;
+        return $this->depotGarantie;
     }
 
     /**
-     * Set fraisdivers
+     * Set fraisDivers
      *
-     * @param integer $fraisdivers
+     * @param integer $fraisDivers
      *
      * @return Annonce
      */
-    public function setFraisdivers($fraisdivers)
+    public function setFraisDivers($fraisDivers)
     {
-        $this->fraisdivers = $fraisdivers;
+        $this->fraisDivers = $fraisDivers;
 
         return $this;
     }
 
     /**
-     * Get fraisdivers
+     * Get fraisDivers
      *
      * @return integer
      */
-    public function getFraisdivers()
+    public function getFraisDivers()
     {
-        return $this->fraisdivers;
+        return $this->fraisDivers;
     }
 
     /**
-     * Set loyergarage
+     * Set loyerGarage
      *
-     * @param integer $loyergarage
+     * @param integer $loyerGarage
      *
      * @return Annonce
      */
-    public function setLoyergarage($loyergarage)
+    public function setLoyerGarage($loyerGarage)
     {
-        $this->loyergarage = $loyergarage;
+        $this->loyerGarage = $loyerGarage;
 
         return $this;
     }
 
     /**
-     * Get loyergarage
+     * Get loyerGarage
      *
      * @return integer
      */
-    public function getLoyergarage()
+    public function getLoyerGarage()
     {
-        return $this->loyergarage;
+        return $this->loyerGarage;
     }
 
     /**
-     * Set agetete
+     * Set ageTete
      *
-     * @param integer $agetete
+     * @param integer $ageTete
      *
      * @return Annonce
      */
-    public function setAgetete($agetete)
+    public function setAgeTete($ageTete)
     {
-        $this->agetete = $agetete;
+        $this->ageTete = $ageTete;
 
         return $this;
     }
 
     /**
-     * Get agetete
+     * Get ageTete
      *
      * @return integer
      */
-    public function getAgetete()
+    public function getAgeTete()
     {
-        return $this->agetete;
+        return $this->ageTete;
     }
 
     /**
-     * Set typerente
+     * Set typeRente
      *
-     * @param string $typerente
+     * @param string $typeRente
      *
      * @return Annonce
      */
-    public function setTyperente($typerente)
+    public function setTypeRente($typeRente)
     {
-        $this->typerente = $typerente;
+        $this->typeRente = $typeRente;
 
         return $this;
     }
 
     /**
-     * Get typerente
+     * Get typeRente
      *
      * @return string
      */
-    public function getTyperente()
+    public function getTypeRente()
     {
-        return $this->typerente;
+        return $this->typeRente;
     }
 
     /**
-     * Set taxehabitation
+     * Set taxeHabitation
      *
-     * @param integer $taxehabitation
+     * @param integer $taxeHabitation
      *
      * @return Annonce
      */
-    public function setTaxehabitation($taxehabitation)
+    public function setTaxeHabitation($taxeHabitation)
     {
-        $this->taxehabitation = $taxehabitation;
+        $this->taxeHabitation = $taxeHabitation;
 
         return $this;
     }
 
     /**
-     * Get taxehabitation
+     * Get taxeHabitation
      *
      * @return integer
      */
-    public function getTaxehabitation()
+    public function getTaxeHabitation()
     {
-        return $this->taxehabitation;
+        return $this->taxeHabitation;
     }
 
     /**
-     * Set taxefonciere
+     * Set taxeFonciere
      *
-     * @param integer $taxefonciere
+     * @param integer $taxeFonciere
      *
      * @return Annonce
      */
-    public function setTaxefonciere($taxefonciere)
+    public function setTaxeFonciere($taxeFonciere)
     {
-        $this->taxefonciere = $taxefonciere;
+        $this->taxeFonciere = $taxeFonciere;
 
         return $this;
     }
 
     /**
-     * Get taxefonciere
+     * Get taxeFonciere
      *
      * @return integer
      */
-    public function getTaxefonciere()
+    public function getTaxeFonciere()
     {
-        return $this->taxefonciere;
+        return $this->taxeFonciere;
     }
 
     /**
-     * Set fraisdenotairereduits
+     * Set fraisDeNotaireReduits
      *
-     * @param integer $fraisdenotairereduits
+     * @param integer $fraisDeNotaireReduits
      *
      * @return Annonce
      */
-    public function setFraisdenotairereduits($fraisdenotairereduits)
+    public function setFraisDeNotaireReduits($fraisDeNotaireReduits)
     {
-        $this->fraisdenotairereduits = $fraisdenotairereduits;
+        $this->fraisDeNotaireReduits = $fraisDeNotaireReduits;
 
         return $this;
     }
 
     /**
-     * Get fraisdenotairereduits
+     * Get fraisDeNotaireReduits
      *
      * @return integer
      */
-    public function getFraisdenotairereduits()
+    public function getFraisDeNotaireReduits()
     {
-        return $this->fraisdenotairereduits;
+        return $this->fraisDeNotaireReduits;
     }
 
     /**
@@ -1337,99 +1382,99 @@ class Annonce
     }
 
     /**
-     * Set nbsallesdeau
+     * Set nbSallesDEau
      *
-     * @param integer $nbsallesdeau
+     * @param integer $nbSallesDEau
      *
      * @return Annonce
      */
-    public function setNbsallesdeau($nbsallesdeau)
+    public function setNbSallesDEau($nbSallesDEau)
     {
-        $this->nbsallesdeau = $nbsallesdeau;
+        $this->nbSallesDEau = $nbSallesDEau;
 
         return $this;
     }
 
     /**
-     * Get nbsallesdeau
+     * Get nbSallesDEau
      *
      * @return integer
      */
-    public function getNbsallesdeau()
+    public function getNbSallesDEau()
     {
-        return $this->nbsallesdeau;
+        return $this->nbSallesDEau;
     }
 
     /**
-     * Set nbwc
+     * Set nbWc
      *
-     * @param integer $nbwc
+     * @param integer $nbWc
      *
      * @return Annonce
      */
-    public function setNbwc($nbwc)
+    public function setNbWc($nbWc)
     {
-        $this->nbwc = $nbwc;
+        $this->nbWc = $nbWc;
 
         return $this;
     }
 
     /**
-     * Get nbwc
+     * Get nbWc
      *
      * @return integer
      */
-    public function getNbwc()
+    public function getNbWc()
     {
-        return $this->nbwc;
+        return $this->nbWc;
     }
 
     /**
-     * Set nbparking
+     * Set nbParking
      *
-     * @param integer $nbparking
+     * @param integer $nbParking
      *
      * @return Annonce
      */
-    public function setNbparking($nbparking)
+    public function setNbParking($nbParking)
     {
-        $this->nbparking = $nbparking;
+        $this->nbParking = $nbParking;
 
         return $this;
     }
 
     /**
-     * Get nbparking
+     * Get nbParking
      *
      * @return integer
      */
-    public function getNbparking()
+    public function getNbParking()
     {
-        return $this->nbparking;
+        return $this->nbParking;
     }
 
     /**
-     * Set nbgarages
+     * Set nbGarages
      *
-     * @param integer $nbgarages
+     * @param integer $nbGarages
      *
      * @return Annonce
      */
-    public function setNbgarages($nbgarages)
+    public function setNbGarages($nbGarages)
     {
-        $this->nbgarages = $nbgarages;
+        $this->nbGarages = $nbGarages;
 
         return $this;
     }
 
     /**
-     * Get nbgarages
+     * Get nbGarages
      *
      * @return integer
      */
-    public function getNbgarages()
+    public function getNbGarages()
     {
-        return $this->nbgarages;
+        return $this->nbGarages;
     }
 
     /**
@@ -1457,27 +1502,27 @@ class Annonce
     }
 
     /**
-     * Set nbetages
+     * Set nbEtages
      *
-     * @param integer $nbetages
+     * @param integer $nbEtages
      *
      * @return Annonce
      */
-    public function setNbetages($nbetages)
+    public function setNbEtages($nbEtages)
     {
-        $this->nbetages = $nbetages;
+        $this->nbEtages = $nbEtages;
 
         return $this;
     }
 
     /**
-     * Get nbetages
+     * Get nbEtages
      *
      * @return integer
      */
-    public function getNbetages()
+    public function getNbEtages()
     {
-        return $this->nbetages;
+        return $this->nbEtages;
     }
 
     /**
@@ -1529,147 +1574,147 @@ class Annonce
     }
 
     /**
-     * Set surfacecarrezouhabitable
+     * Set surfaceCarrezOuHabitable
      *
-     * @param integer $surfacecarrezouhabitable
+     * @param integer $surfaceCarrezOuHabitable
      *
      * @return Annonce
      */
-    public function setSurfacecarrezouhabitable($surfacecarrezouhabitable)
+    public function setSurfaceCarrezOuHabitable($surfaceCarrezOuHabitable)
     {
-        $this->surfacecarrezouhabitable = $surfacecarrezouhabitable;
+        $this->surfaceCarrezOuHabitable = $surfaceCarrezOuHabitable;
 
         return $this;
     }
 
     /**
-     * Get surfacecarrezouhabitable
+     * Get surfaceCarrezOuHabitable
      *
      * @return integer
      */
-    public function getSurfacecarrezouhabitable()
+    public function getSurfaceCarrezOuHabitable()
     {
-        return $this->surfacecarrezouhabitable;
+        return $this->surfaceCarrezOuHabitable;
     }
 
     /**
-     * Set surfaceterrain
+     * Set surfaceTerrain
      *
-     * @param integer $surfaceterrain
+     * @param integer $surfaceTerrain
      *
      * @return Annonce
      */
-    public function setSurfaceterrain($surfaceterrain)
+    public function setSurfaceTerrain($surfaceTerrain)
     {
-        $this->surfaceterrain = $surfaceterrain;
+        $this->surfaceTerrain = $surfaceTerrain;
 
         return $this;
     }
 
     /**
-     * Get surfaceterrain
+     * Get surfaceTerrain
      *
      * @return integer
      */
-    public function getSurfaceterrain()
+    public function getSurfaceTerrain()
     {
-        return $this->surfaceterrain;
+        return $this->surfaceTerrain;
     }
 
     /**
-     * Set surfacesejour
+     * Set surfaceSejour
      *
-     * @param integer $surfacesejour
+     * @param integer $surfaceSejour
      *
      * @return Annonce
      */
-    public function setSurfacesejour($surfacesejour)
+    public function setSurfaceSejour($surfaceSejour)
     {
-        $this->surfacesejour = $surfacesejour;
+        $this->surfaceSejour = $surfaceSejour;
 
         return $this;
     }
 
     /**
-     * Get surfacesejour
+     * Get surfaceSejour
      *
      * @return integer
      */
-    public function getSurfacesejour()
+    public function getSurfaceSejour()
     {
-        return $this->surfacesejour;
+        return $this->surfaceSejour;
     }
 
     /**
-     * Set surfaceterrasse
+     * Set surfaceTerrasse
      *
-     * @param integer $surfaceterrasse
+     * @param integer $surfaceTerrasse
      *
      * @return Annonce
      */
-    public function setSurfaceterrasse($surfaceterrasse)
+    public function setSurfaceTerrasse($surfaceTerrasse)
     {
-        $this->surfaceterrasse = $surfaceterrasse;
+        $this->surfaceTerrasse = $surfaceTerrasse;
 
         return $this;
     }
 
     /**
-     * Get surfaceterrasse
+     * Get surfaceTerrasse
      *
      * @return integer
      */
-    public function getSurfaceterrasse()
+    public function getSurfaceTerrasse()
     {
-        return $this->surfaceterrasse;
+        return $this->surfaceTerrasse;
     }
 
     /**
-     * Set surfacebalcon
+     * Set surfaceBalcon
      *
-     * @param integer $surfacebalcon
+     * @param integer $surfaceBalcon
      *
      * @return Annonce
      */
-    public function setSurfacebalcon($surfacebalcon)
+    public function setSurfaceBalcon($surfaceBalcon)
     {
-        $this->surfacebalcon = $surfacebalcon;
+        $this->surfaceBalcon = $surfaceBalcon;
 
         return $this;
     }
 
     /**
-     * Get surfacebalcon
+     * Get surfaceBalcon
      *
      * @return integer
      */
-    public function getSurfacebalcon()
+    public function getSurfaceBalcon()
     {
-        return $this->surfacebalcon;
+        return $this->surfaceBalcon;
     }
 
     /**
-     * Set acceshandicape
+     * Set accesHandicape
      *
-     * @param integer $acceshandicape
+     * @param integer $accesHandicape
      *
      * @return Annonce
      */
-    public function setAcceshandicape($acceshandicape)
+    public function setAccesHandicape($accesHandicape)
     {
-        $this->acceshandicape = $acceshandicape;
+        $this->accesHandicape = $accesHandicape;
 
         return $this;
     }
 
     /**
-     * Get acceshandicape
+     * Get accesHandicape
      *
      * @return integer
      */
-    public function getAcceshandicape()
+    public function getAccesHandicape()
     {
-        return $this->acceshandicape;
+        return $this->accesHandicape;
     }
 
     /**
@@ -2057,27 +2102,27 @@ class Annonce
     }
 
     /**
-     * Set anneeconstruction
+     * Set anneeConstruction
      *
-     * @param integer $anneeconstruction
+     * @param integer $anneeConstruction
      *
      * @return Annonce
      */
-    public function setAnneeconstruction($anneeconstruction)
+    public function setAnneeConstruction($anneeConstruction)
     {
-        $this->anneeconstruction = $anneeconstruction;
+        $this->anneeConstruction = $anneeConstruction;
 
         return $this;
     }
 
     /**
-     * Get anneeconstruction
+     * Get anneeConstruction
      *
      * @return integer
      */
-    public function getAnneeconstruction()
+    public function getAnneeConstruction()
     {
-        return $this->anneeconstruction;
+        return $this->anneeConstruction;
     }
 
     /**
@@ -2105,123 +2150,123 @@ class Annonce
     }
 
     /**
-     * Set typechauffage
+     * Set typeChauffage
      *
-     * @param string $typechauffage
+     * @param string $typeChauffage
      *
      * @return Annonce
      */
-    public function setTypechauffage($typechauffage)
+    public function setTypeChauffage($typeChauffage)
     {
-        $this->typechauffage = $typechauffage;
+        $this->typeChauffage = $typeChauffage;
 
         return $this;
     }
 
     /**
-     * Get typechauffage
+     * Get typeChauffage
      *
      * @return string
      */
-    public function getTypechauffage()
+    public function getTypeChauffage()
     {
-        return $this->typechauffage;
+        return $this->typeChauffage;
     }
 
     /**
-     * Set naturechauffage
+     * Set natureChauffage
      *
-     * @param string $naturechauffage
+     * @param string $natureChauffage
      *
      * @return Annonce
      */
-    public function setNaturechauffage($naturechauffage)
+    public function setNatureChauffage($natureChauffage)
     {
-        $this->naturechauffage = $naturechauffage;
+        $this->natureChauffage = $natureChauffage;
 
         return $this;
     }
 
     /**
-     * Get naturechauffage
+     * Get natureChauffage
      *
      * @return string
      */
-    public function getNaturechauffage()
+    public function getNatureChauffage()
     {
-        return $this->naturechauffage;
+        return $this->natureChauffage;
     }
 
     /**
-     * Set modechauffage
+     * Set modeChauffage
      *
-     * @param string $modechauffage
+     * @param string $modeChauffage
      *
      * @return Annonce
      */
-    public function setModechauffage($modechauffage)
+    public function setModeChauffage($modeChauffage)
     {
-        $this->modechauffage = $modechauffage;
+        $this->modeChauffage = $modeChauffage;
 
         return $this;
     }
 
     /**
-     * Get modechauffage
+     * Get modeChauffage
      *
      * @return string
      */
-    public function getModechauffage()
+    public function getModeChauffage()
     {
-        return $this->modechauffage;
+        return $this->modeChauffage;
     }
 
     /**
-     * Set typecuisine
+     * Set typeCuisine
      *
-     * @param string $typecuisine
+     * @param string $typeCuisine
      *
      * @return Annonce
      */
-    public function setTypecuisine($typecuisine)
+    public function setTypeCuisine($typeCuisine)
     {
-        $this->typecuisine = $typecuisine;
+        $this->typeCuisine = $typeCuisine;
 
         return $this;
     }
 
     /**
-     * Get typecuisine
+     * Get typeCuisine
      *
      * @return string
      */
-    public function getTypecuisine()
+    public function getTypeCuisine()
     {
-        return $this->typecuisine;
+        return $this->typeCuisine;
     }
 
     /**
-     * Set coupdecoeur
+     * Set coupDeCoeur
      *
-     * @param string $coupdecoeur
+     * @param boolean $coupDeCoeur
      *
      * @return Annonce
      */
-    public function setCoupdecoeur($coupdecoeur)
+    public function setCoupDeCoeur($coupDeCoeur)
     {
-        $this->coupdecoeur = $coupdecoeur;
+        $this->coupDeCoeur = $coupDeCoeur;
 
         return $this;
     }
 
     /**
-     * Get coupdecoeur
+     * Get coupDeCoeur
      *
-     * @return string
+     * @return boolean
      */
-    public function getCoupdecoeur()
+    public function getCoupDeCoeur()
     {
-        return $this->coupdecoeur;
+        return $this->coupDeCoeur;
     }
 
     /**
@@ -2249,243 +2294,290 @@ class Annonce
     }
 
     /**
-     * Set textanglais
+     * Set textAnglais
      *
-     * @param string $textanglais
+     * @param string $textAnglais
      *
      * @return Annonce
      */
-    public function setTextanglais($textanglais)
+    public function setTextAnglais($textAnglais)
     {
-        $this->textanglais = $textanglais;
+        $this->textAnglais = $textAnglais;
 
         return $this;
     }
 
     /**
-     * Get textanglais
+     * Get textAnglais
      *
      * @return string
      */
-    public function getTextanglais()
+    public function getTextAnglais()
     {
-        return $this->textanglais;
+        return $this->textAnglais;
     }
 
     /**
-     * Set urlvisitevirtuelle
+     * Set urlVisiteVirtuelle
      *
-     * @param string $urlvisitevirtuelle
+     * @param string $urlVisiteVirtuelle
      *
      * @return Annonce
      */
-    public function setUrlvisitevirtuelle($urlvisitevirtuelle)
+    public function setUrlVisiteVirtuelle($urlVisiteVirtuelle)
     {
-        $this->urlvisitevirtuelle = $urlvisitevirtuelle;
+        $this->urlVisiteVirtuelle = $urlVisiteVirtuelle;
 
         return $this;
     }
 
     /**
-     * Get urlvisitevirtuelle
+     * Get urlVisiteVirtuelle
      *
      * @return string
      */
-    public function getUrlvisitevirtuelle()
+    public function getUrlVisiteVirtuelle()
     {
-        return $this->urlvisitevirtuelle;
+        return $this->urlVisiteVirtuelle;
     }
 
     /**
-     * Set photocoeur
+     * Set consommationEnergie
      *
-     * @param string $photocoeur
+     * @param integer $consommationEnergie
      *
      * @return Annonce
      */
-    public function setPhotocoeur($photocoeur)
+    public function setConsommationEnergie($consommationEnergie)
     {
-        $this->photocoeur = $photocoeur;
+        $this->consommationEnergie = $consommationEnergie;
 
         return $this;
     }
 
     /**
-     * Get photocoeur
-     *
-     * @return string
-     */
-    public function getPhotocoeur()
-    {
-        return $this->photocoeur;
-    }
-
-    /**
-     * Set photomedium
-     *
-     * @param string $photomedium
-     *
-     * @return Annonce
-     */
-    public function setPhotomedium($photomedium)
-    {
-        $this->photomedium = $photomedium;
-
-        return $this;
-    }
-
-    /**
-     * Get photomedium
-     *
-     * @return string
-     */
-    public function getPhotomedium()
-    {
-        return $this->photomedium;
-    }
-
-    /**
-     * Set listephotoorig
-     *
-     * @param string $listephotoorig
-     *
-     * @return Annonce
-     */
-    public function setListephotoorig($listephotoorig)
-    {
-        $this->listephotoorig = $listephotoorig;
-
-        return $this;
-    }
-
-    /**
-     * Get listephotoorig
-     *
-     * @return string
-     */
-    public function getListephotoorig()
-    {
-        return $this->listephotoorig;
-    }
-
-    /**
-     * Set photothumb
-     *
-     * @param string $photothumb
-     *
-     * @return Annonce
-     */
-    public function setPhotothumb($photothumb)
-    {
-        $this->photothumb = $photothumb;
-
-        return $this;
-    }
-
-    /**
-     * Get photothumb
-     *
-     * @return string
-     */
-    public function getPhotothumb()
-    {
-        return $this->photothumb;
-    }
-
-    /**
-     * Set photoorigmd
-     *
-     * @param string $photoorigmd
-     *
-     * @return Annonce
-     */
-    public function setPhotoorigmd($photoorigmd)
-    {
-        $this->photoorigmd = $photoorigmd;
-
-        return $this;
-    }
-
-    /**
-     * Get photoorigmd
-     *
-     * @return string
-     */
-    public function getPhotoorigmd()
-    {
-        return $this->photoorigmd;
-    }
-
-    /**
-     * Set consommationenergie
-     *
-     * @param integer $consommationenergie
-     *
-     * @return Annonce
-     */
-    public function setConsommationenergie($consommationenergie)
-    {
-        $this->consommationenergie = $consommationenergie;
-
-        return $this;
-    }
-
-    /**
-     * Get consommationenergie
+     * Get consommationEnergie
      *
      * @return integer
      */
-    public function getConsommationenergie()
+    public function getConsommationEnergie()
     {
-        return $this->consommationenergie;
+        return $this->consommationEnergie;
     }
 
     /**
-     * Set emissionges
+     * Set emissionGes
      *
-     * @param integer $emissionges
+     * @param integer $emissionGes
      *
      * @return Annonce
      */
-    public function setEmissionges($emissionges)
+    public function setEmissionGes($emissionGes)
     {
-        $this->emissionges = $emissionges;
+        $this->emissionGes = $emissionGes;
 
         return $this;
     }
 
     /**
-     * Get emissionges
+     * Get emissionGes
      *
      * @return integer
      */
-    public function getEmissionges()
+    public function getEmissionGes()
     {
-        return $this->emissionges;
+        return $this->emissionGes;
     }
 
     /**
-     * Set photoorigmd5
+     * Set agence
      *
-     * @param string $photoorigmd5
+     * @param \JLP\CoreBundle\Entity\Agence $agence
      *
      * @return Annonce
      */
-    public function setPhotoorigmd5($photoorigmd5)
+    public function setAgence(\JLP\CoreBundle\Entity\Agence $agence)
     {
-        $this->photoorigmd5 = $photoorigmd5;
+        $this->agence = $agence;
 
         return $this;
     }
 
     /**
-     * Get photoorigmd5
+     * Get agence
      *
-     * @return string
+     * @return \JLP\CoreBundle\Entity\Agence
      */
-    public function getPhotoorigmd5()
+    public function getAgence()
     {
-        return $this->photoorigmd5;
+        return $this->agence;
+    }
+
+    /**
+     * Set negociateur
+     *
+     * @param \JLP\CoreBundle\Entity\Negociateur $negociateur
+     *
+     * @return Annonce
+     */
+    public function setNegociateur(\JLP\CoreBundle\Entity\Negociateur $negociateur)
+    {
+        $this->negociateur = $negociateur;
+
+        return $this;
+    }
+
+    /**
+     * Get negociateur
+     *
+     * @return \JLP\CoreBundle\Entity\Negociateur
+     */
+    public function getNegociateur()
+    {
+        return $this->negociateur;
+    }
+
+    /**
+     * Set programmeNeuf
+     *
+     * @param \OC\PlatformBundle\Entity\ProgrammeNeuf $programmeNeuf
+     *
+     * @return Annonce
+     */
+    public function setProgrammeNeuf(\OC\PlatformBundle\Entity\ProgrammeNeuf $programmeNeuf = null)
+    {
+        $this->programmeNeuf = $programmeNeuf;
+
+        return $this;
+    }
+
+    /**
+     * Get programmeNeuf
+     *
+     * @return \OC\PlatformBundle\Entity\ProgrammeNeuf
+     */
+    public function getProgrammeNeuf()
+    {
+        return $this->programmeNeuf;
+    }
+
+    /**
+     * Add statusAnnonce
+     *
+     * @param \JLP\CoreBundle\Entity\StatusAnnonce $statusAnnonce
+     *
+     * @return Annonce
+     */
+    public function addStatusAnnonce(\JLP\CoreBundle\Entity\StatusAnnonce $statusAnnonce)
+    {
+        $this->statusAnnonce[] = $statusAnnonce;
+
+        return $this;
+    }
+
+    /**
+     * Remove statusAnnonce
+     *
+     * @param \JLP\CoreBundle\Entity\StatusAnnonce $statusAnnonce
+     */
+    public function removeStatusAnnonce(\JLP\CoreBundle\Entity\StatusAnnonce $statusAnnonce)
+    {
+        $this->statusAnnonce->removeElement($statusAnnonce);
+    }
+
+    /**
+     * Get statusAnnonce
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStatusAnnonce()
+    {
+        return $this->statusAnnonce;
+    }
+
+    /**
+     * Add typeBien
+     *
+     * @param \JLP\CoreBundle\Entity\TypeBien $typeBien
+     *
+     * @return Annonce
+     */
+    public function addTypeBien(\JLP\CoreBundle\Entity\TypeBien $typeBien)
+    {
+        $this->typeBien[] = $typeBien;
+
+        return $this;
+    }
+
+    /**
+     * Remove typeBien
+     *
+     * @param \JLP\CoreBundle\Entity\TypeBien $typeBien
+     */
+    public function removeTypeBien(\JLP\CoreBundle\Entity\TypeBien $typeBien)
+    {
+        $this->typeBien->removeElement($typeBien);
+    }
+
+    /**
+     * Get typeBien
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTypeBien()
+    {
+        return $this->typeBien;
+    }
+
+    /**
+     * Set statusAnnonce
+     *
+     * @param string $statusAnnonce
+     *
+     * @return Annonce
+     */
+    public function setStatusAnnonce($statusAnnonce)
+    {
+        $this->statusAnnonce = $statusAnnonce;
+
+        return $this;
+    }
+
+    /**
+     * Add typeMandat
+     *
+     * @param \JLP\CoreBundle\Entity\TypeMandat $typeMandat
+     *
+     * @return Annonce
+     */
+    public function addTypeMandat(\JLP\CoreBundle\Entity\TypeMandat $typeMandat)
+    {
+        $this->typeMandat[] = $typeMandat;
+
+        return $this;
+    }
+
+    /**
+     * Remove typeMandat
+     *
+     * @param \JLP\CoreBundle\Entity\TypeMandat $typeMandat
+     */
+    public function removeTypeMandat(\JLP\CoreBundle\Entity\TypeMandat $typeMandat)
+    {
+        $this->typeMandat->removeElement($typeMandat);
+    }
+
+    /**
+     * Set typeBien
+     *
+     * @param \JLP\CoreBundle\Entity\TypeBien $typeBien
+     *
+     * @return Annonce
+     */
+    public function setTypeBien(\JLP\CoreBundle\Entity\TypeBien $typeBien = null)
+    {
+        $this->typeBien = $typeBien;
+
+        return $this;
     }
 }
-

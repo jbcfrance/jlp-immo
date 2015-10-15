@@ -2,141 +2,156 @@
 
 namespace JLP\CoreBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * SiteConfig
+ * 
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="JLP\CoreBundleBundle\Entity\SiteConfigRepository")
  */
 class SiteConfig
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $siteId;
+    private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="motCle", type="string", length=255)
      */
-    private $siteCle;
+    private $motCle;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="desc", type="string", length=255)
      */
-    private $siteDesc;
+    private $desc;
 
     /**
-     * @var string
+     * @var text
+     *
+     * @ORM\Column(name="introFr", type="text")
      */
-    private $siteIntroFr;
+    private $introFr;
 
     /**
-     * @var string
+     * @var text
+     *
+     * @ORM\Column(name="introEn", type="text")
      */
-    private $siteIntroEn;
-
+    private $introEn;
 
     /**
-     * Get siteId
+     * Get id
      *
      * @return integer
      */
-    public function getSiteId()
+    public function getId()
     {
-        return $this->siteId;
+        return $this->id;
     }
 
     /**
-     * Set siteCle
+     * Set motCle
      *
-     * @param string $siteCle
+     * @param string $motCle
      *
      * @return SiteConfig
      */
-    public function setSiteCle($siteCle)
+    public function setMotCle($motCle)
     {
-        $this->siteCle = $siteCle;
+        $this->motCle = $motCle;
 
         return $this;
     }
 
     /**
-     * Get siteCle
+     * Get motCle
      *
      * @return string
      */
-    public function getSiteCle()
+    public function getMotCle()
     {
-        return $this->siteCle;
+        return $this->motCle;
     }
 
     /**
-     * Set siteDesc
+     * Set desc
      *
-     * @param string $siteDesc
+     * @param string $desc
      *
      * @return SiteConfig
      */
-    public function setSiteDesc($siteDesc)
+    public function setDesc($desc)
     {
-        $this->siteDesc = $siteDesc;
+        $this->desc = $desc;
 
         return $this;
     }
 
     /**
-     * Get siteDesc
+     * Get desc
      *
      * @return string
      */
-    public function getSiteDesc()
+    public function getDesc()
     {
-        return $this->siteDesc;
+        return $this->desc;
     }
 
     /**
-     * Set siteIntroFr
+     * Set introFr
      *
-     * @param string $siteIntroFr
+     * @param string $introFr
      *
      * @return SiteConfig
      */
-    public function setSiteIntroFr($siteIntroFr)
+    public function setIntroFr($introFr)
     {
-        $this->siteIntroFr = $siteIntroFr;
+        $this->introFr = $introFr;
 
         return $this;
     }
 
     /**
-     * Get siteIntroFr
+     * Get introFr
      *
      * @return string
      */
-    public function getSiteIntroFr()
+    public function getIntroFr()
     {
-        return $this->siteIntroFr;
+        return $this->introFr;
     }
 
     /**
-     * Set siteIntroEn
+     * Set introEn
      *
-     * @param string $siteIntroEn
+     * @param string $introEn
      *
      * @return SiteConfig
      */
-    public function setSiteIntroEn($siteIntroEn)
+    public function setIntroEn($introEn)
     {
-        $this->siteIntroEn = $siteIntroEn;
+        $this->introEn = $introEn;
 
         return $this;
     }
 
     /**
-     * Get siteIntroEn
+     * Get introEn
      *
      * @return string
      */
-    public function getSiteIntroEn()
+    public function getIntroEn()
     {
-        return $this->siteIntroEn;
+        return $this->introEn;
     }
 }
-

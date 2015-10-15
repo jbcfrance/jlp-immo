@@ -2,315 +2,342 @@
 
 namespace JLP\CoreBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 /**
  * Agence
+ * 
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="JLP\CoreBundleBundle\Entity\AgenceRepository")
  */
 class Agence
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $agenceId;
+    private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="raisonSociale", type="string", length=255)
      */
-    private $raisonsocialeagence;
+    private $raisonSociale;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="enseigne", type="string", length=255)
      */
-    private $enseigneagence;
+    private $enseigne;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255)
      */
-    private $adresseagence;
+    private $adresse;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="codePostal", type="integer")
      */
-    private $codepostalagence;
+    private $codePostal;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=255)
      */
-    private $villeagence;
+    private $ville;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="pays", type="string", length=255)
      */
-    private $paysagence;
+    private $pays;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="telephone", type="integer")
      */
-    private $telephoneagence;
+    private $telephone;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="fax", type="integer")
      */
-    private $faxagence;
+    private $fax;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255)
      */
-    private $emailagence;
+    private $email;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="siteWeb", type="string", length=255)
      */
-    private $sitewebagence;
+    private $siteWeb;
 
 
     /**
-     * Get agenceId
+     * Get id
      *
      * @return integer
      */
-    public function getAgenceId()
+    public function getId()
     {
-        return $this->agenceId;
+        return $this->id;
     }
 
     /**
-     * Set raisonsocialeagence
+     * Set raisonSociale
      *
-     * @param string $raisonsocialeagence
+     * @param string $raisonSociale
      *
      * @return Agence
      */
-    public function setRaisonsocialeagence($raisonsocialeagence)
+    public function setRaisonSociale($raisonSociale)
     {
-        $this->raisonsocialeagence = $raisonsocialeagence;
+        $this->raisonSociale = $raisonSociale;
 
         return $this;
     }
 
     /**
-     * Get raisonsocialeagence
+     * Get raisonSociale
      *
      * @return string
      */
-    public function getRaisonsocialeagence()
+    public function getRaisonSociale()
     {
-        return $this->raisonsocialeagence;
+        return $this->raisonSociale;
     }
 
     /**
-     * Set enseigneagence
+     * Set enseigne
      *
-     * @param string $enseigneagence
+     * @param string $enseigne
      *
      * @return Agence
      */
-    public function setEnseigneagence($enseigneagence)
+    public function setEnseigne($enseigne)
     {
-        $this->enseigneagence = $enseigneagence;
+        $this->enseigne = $enseigne;
 
         return $this;
     }
 
     /**
-     * Get enseigneagence
+     * Get enseigne
      *
      * @return string
      */
-    public function getEnseigneagence()
+    public function getEnseigne()
     {
-        return $this->enseigneagence;
+        return $this->enseigne;
     }
 
     /**
-     * Set adresseagence
+     * Set adresse
      *
-     * @param string $adresseagence
+     * @param string $adresse
      *
      * @return Agence
      */
-    public function setAdresseagence($adresseagence)
+    public function setAdresse($adresse)
     {
-        $this->adresseagence = $adresseagence;
+        $this->adresse = $adresse;
 
         return $this;
     }
 
     /**
-     * Get adresseagence
+     * Get adresse
      *
      * @return string
      */
-    public function getAdresseagence()
+    public function getAdresse()
     {
-        return $this->adresseagence;
+        return $this->adresse;
     }
 
     /**
-     * Set codepostalagence
+     * Set codePostal
      *
-     * @param integer $codepostalagence
+     * @param integer $codePostal
      *
      * @return Agence
      */
-    public function setCodepostalagence($codepostalagence)
+    public function setCodePostal($codePostal)
     {
-        $this->codepostalagence = $codepostalagence;
+        $this->codePostal = $codePostal;
 
         return $this;
     }
 
     /**
-     * Get codepostalagence
+     * Get codePostal
      *
      * @return integer
      */
-    public function getCodepostalagence()
+    public function getCodePostal()
     {
-        return $this->codepostalagence;
+        return $this->codePostal;
     }
 
     /**
-     * Set villeagence
+     * Set ville
      *
-     * @param string $villeagence
+     * @param string $ville
      *
      * @return Agence
      */
-    public function setVilleagence($villeagence)
+    public function setVille($ville)
     {
-        $this->villeagence = $villeagence;
+        $this->ville = $ville;
 
         return $this;
     }
 
     /**
-     * Get villeagence
+     * Get ville
      *
      * @return string
      */
-    public function getVilleagence()
+    public function getVille()
     {
-        return $this->villeagence;
+        return $this->ville;
     }
 
     /**
-     * Set paysagence
+     * Set pays
      *
-     * @param string $paysagence
+     * @param string $pays
      *
      * @return Agence
      */
-    public function setPaysagence($paysagence)
+    public function setPays($pays)
     {
-        $this->paysagence = $paysagence;
+        $this->pays = $pays;
 
         return $this;
     }
 
     /**
-     * Get paysagence
+     * Get pays
      *
      * @return string
      */
-    public function getPaysagence()
+    public function getPays()
     {
-        return $this->paysagence;
+        return $this->pays;
     }
 
     /**
-     * Set telephoneagence
+     * Set telephone
      *
-     * @param integer $telephoneagence
+     * @param integer $telephone
      *
      * @return Agence
      */
-    public function setTelephoneagence($telephoneagence)
+    public function setTelephone($telephone)
     {
-        $this->telephoneagence = $telephoneagence;
+        $this->telephone = $telephone;
 
         return $this;
     }
 
     /**
-     * Get telephoneagence
+     * Get telephone
      *
      * @return integer
      */
-    public function getTelephoneagence()
+    public function getTelephone()
     {
-        return $this->telephoneagence;
+        return $this->telephone;
     }
 
     /**
-     * Set faxagence
+     * Set fax
      *
-     * @param integer $faxagence
+     * @param integer $fax
      *
      * @return Agence
      */
-    public function setFaxagence($faxagence)
+    public function setFax($fax)
     {
-        $this->faxagence = $faxagence;
+        $this->fax = $fax;
 
         return $this;
     }
 
     /**
-     * Get faxagence
+     * Get fax
      *
      * @return integer
      */
-    public function getFaxagence()
+    public function getFax()
     {
-        return $this->faxagence;
+        return $this->fax;
     }
 
     /**
-     * Set emailagence
+     * Set email
      *
-     * @param string $emailagence
+     * @param string $email
      *
      * @return Agence
      */
-    public function setEmailagence($emailagence)
+    public function setEmail($email)
     {
-        $this->emailagence = $emailagence;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get emailagence
+     * Get email
      *
      * @return string
      */
-    public function getEmailagence()
+    public function getEmail()
     {
-        return $this->emailagence;
+        return $this->email;
     }
 
     /**
-     * Set sitewebagence
+     * Set siteWeb
      *
-     * @param string $sitewebagence
+     * @param string $siteWeb
      *
      * @return Agence
      */
-    public function setSitewebagence($sitewebagence)
+    public function setSiteWeb($siteWeb)
     {
-        $this->sitewebagence = $sitewebagence;
+        $this->siteWeb = $siteWeb;
 
         return $this;
     }
 
     /**
-     * Get sitewebagence
+     * Get siteWeb
      *
      * @return string
      */
-    public function getSitewebagence()
+    public function getSiteWeb()
     {
-        return $this->sitewebagence;
+        return $this->siteWeb;
     }
 }
-

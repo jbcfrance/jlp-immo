@@ -2,83 +2,95 @@
 
 namespace JLP\CoreBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Admin
+ * 
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="JLP\CoreBundleBundle\Entity\AdminRepository")
  */
 class Admin
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $adminId;
+    private $id;
 
     /**
      * @var string
+     * 
+     * @ORM\Column(name="login", type="string", length=255)
      */
-    private $adminLogin;
+    private $login;
 
     /**
      * @var string
+     * 
+     * @ORM\Column(name="password", type="string", length=255)
      */
-    private $adminPassword;
+    private $password;
 
 
     /**
-     * Get adminId
+     * Get id
      *
      * @return integer
      */
-    public function getAdminId()
+    public function getId()
     {
-        return $this->adminId;
+        return $this->id;
     }
 
     /**
-     * Set adminLogin
+     * Set login
      *
-     * @param string $adminLogin
+     * @param string $login
      *
      * @return Admin
      */
-    public function setAdminLogin($adminLogin)
+    public function setLogin($login)
     {
-        $this->adminLogin = $adminLogin;
+        $this->login = $login;
 
         return $this;
     }
 
     /**
-     * Get adminLogin
+     * Get login
      *
      * @return string
      */
-    public function getAdminLogin()
+    public function getLogin()
     {
-        return $this->adminLogin;
+        return $this->login;
     }
 
     /**
-     * Set adminPassword
+     * Set password
      *
-     * @param string $adminPassword
+     * @param string $password
      *
      * @return Admin
      */
-    public function setAdminPassword($adminPassword)
+    public function setPassword($password)
     {
-        $this->adminPassword = $adminPassword;
+        $this->password = $password;
 
         return $this;
     }
 
     /**
-     * Get adminPassword
+     * Get password
      *
      * @return string
      */
-    public function getAdminPassword()
+    public function getPassword()
     {
-        return $this->adminPassword;
+        return $this->password;
     }
 }
-
