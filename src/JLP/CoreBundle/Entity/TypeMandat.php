@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * TypeMandat
  * 
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="JLP\CoreBundleBundle\Entity\TypeMandatRepository")
+ * @ORM\Entity(repositoryClass="JLP\CoreBundle\Entity\TypeMandatRepository")
  */
 class TypeMandat
 {

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * TypeImage
  * 
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="JLP\CoreBundleBundle\Entity\TypeImageRepository")
+ * @ORM\Entity(repositoryClass="JLP\CoreBundle\Entity\TypeImageRepository")
  */
 class TypeImage
 {
@@ -27,6 +27,21 @@ class TypeImage
      * @ORM\Column(name="type", type="string", length=255)
      */
     private $type;
+    
+    /**
+     * @var integer
+     * 
+     * @ORM\Column(name="width", type="integer")
+     */
+    private $width;
+    
+    /**
+     * @var integer
+     * 
+     * @ORM\Column(name="height", type="integer")
+     */
+    private $height;
+    
 
     /**
      * Get id
@@ -84,5 +99,53 @@ class TypeImage
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set width
+     *
+     * @param integer $width
+     *
+     * @return TypeImage
+     */
+    public function setWidth($width)
+    {
+        $this->width = $width;
+
+        return $this;
+    }
+
+    /**
+     * Get width
+     *
+     * @return integer
+     */
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    /**
+     * Set height
+     *
+     * @param integer $height
+     *
+     * @return TypeImage
+     */
+    public function setHeight($height)
+    {
+        $this->height = $height;
+
+        return $this;
+    }
+
+    /**
+     * Get height
+     *
+     * @return integer
+     */
+    public function getHeight()
+    {
+        return $this->height;
     }
 }

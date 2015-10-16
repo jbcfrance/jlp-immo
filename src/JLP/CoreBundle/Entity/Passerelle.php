@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Passerelle
  * 
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="JLP\CoreBundleBundle\Entity\PasserelleRepository")
+ * @ORM\Entity(repositoryClass="JLP\CoreBundle\Entity\PasserelleRepository")
  */
 class Passerelle
 {

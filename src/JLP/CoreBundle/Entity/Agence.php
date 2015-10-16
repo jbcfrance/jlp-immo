@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Agence
  * 
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="JLP\CoreBundleBundle\Entity\AgenceRepository")
+ * @ORM\Entity(repositoryClass="JLP\CoreBundle\Entity\AgenceRepository")
  */
 class Agence
 {
