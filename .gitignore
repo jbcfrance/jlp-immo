@@ -6,6 +6,7 @@
 /oldSite/front/web/images/*
 /oldSite/front/web/js/*
 /oldSite/front/web/import/*.txt
+/oldSite/connectimmo/*
 /oldSite/front/web/import/annonces/*.jpg
 
 /nbproject/private/

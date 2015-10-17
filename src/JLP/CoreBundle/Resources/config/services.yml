@@ -1,4 +1,4 @@
 services:
-#    jlp_core.example:
-#        class: JLP\CoreBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    jlp_core.passerelle:
+        class: JLP\CoreBundle\Services\JLPPasserelle
+        arguments: ["debug"]

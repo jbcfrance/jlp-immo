@@ -5,6 +5,9 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Output\ConsoleOutputInterface;
+use Symfony\Component\Console\Logger\ConsoleLogger;
+use Psr\Log\LoggerInterface;
+use Psr\Log\LogLevel;
 
 
 /**
@@ -32,49 +35,33 @@ class PasserelleExecuteCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
-            $output->writeln("\n\r<question>Execution de la cron Option cockpit</question>");
+            
+            $verbosityLevelMap = array(
+                LogLevel::NOTICE => OutputInterface::VERBOSITY_NORMAL,
+                LogLevel::INFO   => OutputInterface::VERBOSITY_NORMAL
+            );
+            
+            
+            $logger = new ConsoleLogger($output,$verbosityLevelMap);
+            
+            $output->writeln("\n\r<question>Execution de la passerelle JLP-IMMO</question>");
 
             // Appel du service correpondant au CRON
-            $services = $this->getContainer()->get('jlp.passerelle');
-            $responseServices = $services->execute();
+            $services = $this->getContainer()->get('jlp_core.passerelle');
+            $responseServices = $services->execute($logger);
 
             $output->writeln(
-                "\t<info>Nombre de client ajouter dans le referentiel client cockpit ARS : " . $responseServices->getNbTraite(
-                ) . '</info>'
+                "\t<info>Passerelle informations : " . $responseServices . '</info>'
             );
-            foreach ($responseServices->getTraites() as $index => $traite) {
-                $output->writeln(
-                    "\t\t<info>" . ($index + 1) . " ) [" . $traite['idClient'] . "] => " . $traite['libelle'] . "</info>"
-                );
-            }
+            
             $output->writeln(
-                "\t<comment>Nombre de cas traite en erreur : " . $responseServices->getNbErreur() . '</comment>'
+                "\t<error>Passerelle informations : " . $responseServices . '</error>'
             );
-            foreach ($responseServices->getErreurs() as $index => $error) {
-                $output->writeln(
-                    "\t\t<comment>" . ($index + 1) . " ) [" . $error['idClient'] . "] => " . $error['libelle'] . "</comment>"
-                );
-            }
+            
             $output->writeln("\n\r");
+            
         } catch (\Exception $e) {
-
-            $logger = $this->getContainer()->get('logger');
-
-            $message = sprintf(
-                '%s: %s (exception) fichier %s ligne %s durant l\'execution de la command CronOption',
-                get_class($e),
-                $e->getMessage(),
-                $e->getFile(),
-                $e->getLine()
-            );
-            $logger->crit($message);
-            $this->getApplication()->renderException($e, $output->getErrorOutput());
-
-            $statusCode = $e->getCode();
-
-            $statusCode = is_numeric($statusCode) && $statusCode ? $statusCode : 1;
-
-            exit($statusCode);
+            
         }
     }
 }
