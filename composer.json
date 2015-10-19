@@ -20,7 +20,8 @@
         "doctrine/doctrine-fixtures-bundle": "~2.2"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3"
+        "sensio/generator-bundle": "~2.3",
+        "phpunit/phpunit-skeleton-generator": "*"
     },
     "scripts": {
         "post-install-cmd": [
