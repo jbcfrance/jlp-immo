@@ -33,6 +33,13 @@ class JLPPasserelle
         $this->logger = $logger;
         $filesystem = new Filesystem();
 
+        if(!$this->PrepAnnonces(self::LOCAL_PATH.self::ZIP_FILE)){
+		
+            /*STOP FICHIER NON IMPORTER*/
+            $this->logger->error('Erreur lors de la preparation des annonces : Import stoppé !');
+            exit;
+	}
+        
         $oZip = new \ZipArchive();
           $oZip->open("web/bundles/jlpcorebundle/upload/connectimmo.zip");
           $bFile = $oZip->extractTo("web/bundles/jlpcorebundle/upload/connectimmo");
@@ -46,38 +53,42 @@ class JLPPasserelle
 
     }
     
-    private function PrepAnnonces($sFileName) {
+    private function prepAnnonces($sFileName) {
         $filesystem = new Filesystem();
         
-        self::ToLog("ZIP : ".$sFileName);
+        $this->logger->info("ZIP : ".$sFileName);
         if ( $filesystem->exists($sFileName) ) {
+            $this->logger->info("File Exists true");
             //Nettoyage du dossier de destination
             $aFilesDel = $this->searchdir(self::TARGET_UNZIP_DIR,0,"FILES");
             foreach ($aFilesDel as $k=>$v) {
                     unlink($v);
             }
             //Upload du Zip
-            if($this->UpAndExtract($sFileName,self::TARGET_UNZIP_DIR)){
-                    self::ToLog("Extraction du fichier ".$sFileName." réussit");
+            if($this->upAndExtract($sFileName,self::TARGET_UNZIP_DIR)){
+                    $this->logger->info("Extraction du fichier ".$sFileName." réussit");    
                     //$oZipFile->delete();
                     $this->bStatusPasserelle = 1;
                     return true;
             }else{
-                    self::ToLog("Erreur lors de l'extraction du fichier ".$sFileName);
+                    $this->logger->error("Erreur lors de l'extraction du fichier ".$sFileName);
                     $this->bStatusPasserelle = 0;
                     return false;
             }
+        }else{
+            $this->logger->error("$sFileName does not exists !");
         }	
     }
     
-    private function UpAndExtract($sZipName,$sDir) {
+    private function upAndExtract($sZipName,$sDir) {
 
+        $this->logger->info("upAndExtract Start");
         //$oFichier->copy($sDir);
-        $oZip = new ZipArchive();
+        $oZip = new \ZipArchive();
         $oZip->open($sZipName);
         $bFile = $oZip->extractTo($sDir);
         $oZip->close();
-        $aFilesOrig = $this->searchdir($sDir,0,"FILES");
+        $aFilesOrig = $this->searchDir($sDir,0,"FILES");
         $i = 0;
         foreach ($aFilesOrig as $k=>$v) {
                 list($width, $height, $type, $attr) = getimagesize($v);
@@ -95,10 +106,12 @@ class JLPPasserelle
                         return true;
                 }
         }
+        
         return $bFile;
     }
     
-    private function searchdir ( $path , $maxdepth = -1 , $mode = "FULL" , $d = 0 ){
+    private function searchDir ( $path , $maxdepth = -1 , $mode = "FULL" , $d = 0 ){
+        $this->logger->info("searchDir on path : $path");
         if ( substr ( $path , strlen ( $path ) - 1 ) != '/' ) {
             $path .= '/' ;
         }     
@@ -115,7 +128,7 @@ class JLPPasserelle
                                      $dirlist[] = $file ; 
                         } 
                     } elseif ( $d >=0 && ($d < $maxdepth || $maxdepth < 0) ) {
-                        $result = searchdir ( $file . '/' , $maxdepth , $mode , $d + 1 ) ;
+                        $result = searchDir ( $file . '/' , $maxdepth , $mode , $d + 1 ) ;
                         $dirlist = array_merge ( $dirlist , $result ) ;
                     }
                 }
@@ -123,6 +136,8 @@ class JLPPasserelle
             closedir ( $handle ) ;
        }
        if ( $d == 0 ) { natcasesort ( $dirlist ) ; }
+       $this->logger->info("searchDir return : ".print_r($dirlist,true));
+       
        return ( $dirlist ) ;
     }
   

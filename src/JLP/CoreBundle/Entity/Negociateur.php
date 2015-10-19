@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Negociateur
  * 
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="JLP\CoreBundle\Entity\NegociateurRepository")
+ * @ORM\Entity(repositoryClass="JLP\CoreBundle\Repository\NegociateurRepository")
  */
 class Negociateur
 {

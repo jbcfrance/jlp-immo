@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Annonce
  * 
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="JLP\CoreBundle\Entity\AnnonceRepository")
+ * @ORM\Entity(repositoryClass="JLP\CoreBundle\Repository\AnnonceRepository")
  */
 class Annonce
 {

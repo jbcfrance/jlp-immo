@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * TypeBien
  * 
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="JLP\CoreBundle\Entity\TypeBienRepository")
+ * @ORM\Entity(repositoryClass="JLP\CoreBundle\Repository\TypeBienRepository")
  */
 class TypeBien
 {
