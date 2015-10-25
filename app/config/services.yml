@@ -7,3 +7,15 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+  kernel.listener.command_dispatch:
+    class: JLP\CoreBundle\EventListener\ErrorLoggerListener
+    arguments:
+      logger: "@logger"
+    tags:
+      - { name: kernel.event_listener, event: console.terminate }
+  kernel.listener.command_dispatch:
+    class: JLP\CoreBundle\EventListener\ConsoleExceptionListener
+    arguments:
+      logger: "@logger"
+    tags:
+      - { name: kernel.event_listener, event: console.exception }

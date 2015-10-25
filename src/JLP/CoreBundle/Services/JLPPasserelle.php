@@ -70,8 +70,8 @@ class JLPPasserelle
     }
     
     var_dump($this->aAgenceInfo);
-    var_dump($this->aNegociateurInfo);
-    var_dump($this->aAnnonceInfo);
+    //var_dump($this->aNegociateurInfo);
+    //var_dump($this->aAnnonceInfo);
 
   }
 
