@@ -16,11 +16,13 @@ class JLPPasserelle
   private $logger;
   
   const   LOCAL_PATH        = "web/bundles/jlpcorebundle/upload/";
-  const   FLASH_XML_DIR     = "front/web/flash/";
+  //const   FLASH_XML_DIR     = "front/web/flash/";
   const   TARGET_UNZIP_DIR  = "web/bundles/jlpcorebundle/upload/connectimmo";
   const   TARGET_IMAGE_DIR  = "web/bundles/jlpcorebundle/images/source/";
-  const   LOG_FILE          = "front/web/import/";
+  //const   LOG_FILE          = "front/web/import/";
   const   ZIP_FILE          = "connectimmo.zip";
+  const   AGENCE            = "Agence";
+  const   NEGOCIATEUR       = "Negociateur";
 
   private $sLog = '',
           $iNbAnnonceTraite = 0,
@@ -48,33 +50,42 @@ class JLPPasserelle
       exit;
     }
     
-    //$this->oXml = new Crawler(self::TARGET_UNZIP_DIR."/annonces.xml");
-    $this->oXml = simplexml_load_file(self::TARGET_UNZIP_DIR."/annonces.xml");
-    
-    foreach($this->oXml->annonce as $oNode) {
-      /*Traitement préliminaire du XML*/
-      foreach ($oNode->children() as $elementAnnonce) {
-        if(strstr($elementAnnonce->getName(),"A")=="Agence") {
-          $tmp = $elementAnnonce;
-          $this->aAgenceInfo = array_merge($this->aAgenceInfo,array($elementAnnonce->getName()=>(string)$tmp));
-        }
-        if(strstr($elementAnnonce->getName(),"N")=="Negociateur") {
-          $tmp = $elementAnnonce;
-          $this->aNegociateurInfo = array_merge($this->aNegociateurInfo,array($elementAnnonce->getName()=>(string)$tmp));
-        }
-        if((strstr($elementAnnonce->getName(),"A")!="Agence") && (strstr($elementAnnonce->getName(),"N")!="Negociateur")) {
-          $tmp = $elementAnnonce;
-          $this->aAnnonceInfo = array_merge($this->aAnnonceInfo,array($elementAnnonce->getName()=>(string)$tmp));
-        }
-      }
+    if(!$this->parsingXml(self::TARGET_UNZIP_DIR."/annonces.xml")){
+      $this->logger->error('Erreur de parsing du XML !');
+      exit;
     }
-    
+
     var_dump($this->aAgenceInfo);
     //var_dump($this->aNegociateurInfo);
     //var_dump($this->aAnnonceInfo);
 
   }
-
+  
+  private function parsingXml ($sXMLFileName)
+  {
+    $this->oXml = simplexml_load_file($sXMLFileName);
+    
+    foreach($this->oXml->annonce as $oNode) {
+      /*Traitement préliminaire du XML*/
+      foreach ($oNode->children() as $elementAnnonce) {
+          $this->splitArrays($elementAnnonce);
+      }
+    }
+  }
+  
+  private function splitArrays($elementAnnonce){
+    $tmp = $elementAnnonce;
+    if(strstr($elementAnnonce->getName(),"A") == self::Agence) {
+      $this->aAgenceInfo = array_merge($this->aAgenceInfo,array($elementAnnonce->getName()=>(string)$tmp));
+    }
+    if(strstr($elementAnnonce->getName(),"N") == self::Negociateur) {
+      $this->aNegociateurInfo = array_merge($this->aNegociateurInfo,array($elementAnnonce->getName()=>(string)$tmp));
+    }
+    if((strstr($elementAnnonce->getName(),"A")!=self::Agence) && (strstr($elementAnnonce->getName(),"N")!=self::Negociateur)) {
+      $this->aAnnonceInfo = array_merge($this->aAnnonceInfo,array($elementAnnonce->getName()=>(string)$tmp));
+    }
+  }
+  
   private function prepAnnonces($sFileName) {
     $filesystem = new Filesystem();
 
