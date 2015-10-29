@@ -7,7 +7,7 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Finder\Finder;
-use Symfony\Component\DomCrawler\Crawler;
+//use Symfony\Component\DomCrawler\Crawler;
 
 
 class JLPPasserelle
@@ -63,7 +63,7 @@ class JLPPasserelle
   
   private function parsingXml ($sXMLFileName)
   {
-    $this->oXml = simplexml_load_file($sXMLFileName);
+      $this->oXml = simplexml_load_file($sXMLFileName);
     
     foreach($this->oXml->annonce as $oNode) {
       /*Traitement préliminaire du XML*/
@@ -71,6 +71,7 @@ class JLPPasserelle
           $this->splitArrays($elementAnnonce);
       }
     }
+    return true;   
   }
   
   private function splitArrays($elementAnnonce){
