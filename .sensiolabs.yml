@@ -1,0 +1,8 @@
+exclude_patterns:
+  - app/check.php
+  - app/SymfonyRequirements.php
+  - web/config.php
+  - phpunit.phar
+  - web/app_*.php
+  - web/app.php
+  - oldSite/*
