@@ -12,17 +12,19 @@ use Symfony\Component\Finder\Finder;
 
 class JLPPasserelle
 {
-  private $debug;
-  private $logger;
-  
   const   LOCAL_PATH        = "web/bundles/jlpcorebundle/upload/";
   //const   FLASH_XML_DIR     = "front/web/flash/";
   const   TARGET_UNZIP_DIR  = "web/bundles/jlpcorebundle/upload/connectimmo";
   const   TARGET_IMAGE_DIR  = "web/bundles/jlpcorebundle/images/source/";
   //const   LOG_FILE          = "front/web/import/";
-  const   ZIP_FILE          = "connectimmo.zip";
   const   AGENCE            = "Agence";
   const   NEGOCIATEUR       = "Negociateur";
+  
+  private $debug;
+  private $logger;
+  
+  private $zipFilename;
+  private $xmlFilename;
 
   private $sLog = '',
           $iNbAnnonceTraite = 0,
@@ -37,54 +39,35 @@ class JLPPasserelle
   private $aAnnonceInfo 		= array();
   
     
-  public function __construct($debug = false){
-    $this->debug = $debug;  
+  public function __construct($zipFilename, $xmlFilename, $debug = false){
+    $this->debug = $debug; 
+    $this->zipFilename = $zipFilename;
+    $this->xmlFilename = $xmlFilename;
   }
   
   public function execute($logger){
 
       $this->logger = $logger;
-
-    if(!$this->prepAnnonces(self::LOCAL_PATH.self::ZIP_FILE)){
+      
+    if(!$this->prepAnnonces(self::LOCAL_PATH.$this->zipFilename)){
       $this->logger->error('Erreur lors de la preparation des annonces : Import stoppé !');
       exit;
     }
     
-    if(!$this->parsingXml(self::TARGET_UNZIP_DIR."/annonces.xml")){
+    
+    
+    $agenceParser = $this->getContainer()->get('jlp_core.agence_parser');
+    $agenceParser->execute(self::TARGET_UNZIP_DIR."/".$this->xmlFilename);
+    
+    /*if(!$this->parsingXml(self::TARGET_UNZIP_DIR."/".$this->xmlFilename)){
       $this->logger->error('Erreur de parsing du XML !');
       exit;
-    }
+    }*/
 
-    var_dump($this->aAgenceInfo);
+    var_dump($agenceParser->getRawAgenceInfo());
     //var_dump($this->aNegociateurInfo);
     //var_dump($this->aAnnonceInfo);
 
-  }
-  
-  private function parsingXml ($sXMLFileName)
-  {
-      $this->oXml = simplexml_load_file($sXMLFileName);
-    
-    foreach($this->oXml->annonce as $oNode) {
-      /*Traitement préliminaire du XML*/
-      foreach ($oNode->children() as $elementAnnonce) {
-          $this->splitArrays($elementAnnonce);
-      }
-    }
-    return true;   
-  }
-  
-  private function splitArrays($elementAnnonce){
-    $tmp = $elementAnnonce;
-    if(strstr($elementAnnonce->getName(),"A") == self::Agence) {
-      $this->aAgenceInfo = array_merge($this->aAgenceInfo,array($elementAnnonce->getName()=>(string)$tmp));
-    }
-    if(strstr($elementAnnonce->getName(),"N") == self::Negociateur) {
-      $this->aNegociateurInfo = array_merge($this->aNegociateurInfo,array($elementAnnonce->getName()=>(string)$tmp));
-    }
-    if((strstr($elementAnnonce->getName(),"A")!=self::Agence) && (strstr($elementAnnonce->getName(),"N")!=self::Negociateur)) {
-      $this->aAnnonceInfo = array_merge($this->aAnnonceInfo,array($elementAnnonce->getName()=>(string)$tmp));
-    }
   }
   
   private function prepAnnonces($sFileName) {

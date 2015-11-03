@@ -20,9 +20,28 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('jlp_core');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode
+            ->children()
+                ->arrayNode('passerelle')
+                  ->children()
+                    ->scalarNode('zip_name')
+                      ->isRequired()
+                      ->info("Nom de l'archive contenant l'export du logiciel.")
+                    ->end()
+                    ->scalarNode('xml_filename')
+                      ->isRequired()
+                      ->info("Nom du fichier xml contenant les annonces.")
+                      ->defaultValue('annonces.xml')
+                    ->end()
+                    ->scalarNode('xml_annonce_node')
+                      ->isRequired()
+                      ->info("Nom du noeud contentant une annonce dans le xml.")
+                      ->defaultValue('annonce')
+                    ->end()
+                  ->end()
+                ->end()
+            ->end()
+        ;
 
         return $treeBuilder;
     }

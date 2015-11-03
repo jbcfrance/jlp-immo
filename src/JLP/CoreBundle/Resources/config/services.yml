@@ -1,4 +1,8 @@
 services:
     jlp_core.passerelle:
         class: JLP\CoreBundle\Services\JLPPasserelle
-        arguments: ["debug"]
+        arguments: [%jlp_core.passerelle.zip_name%,%jlp_core.passerelle.xml_filename%,"debug"]
+    
+    jlp_core.agence_parser:
+        class: JLP\CoreBundle\Services\JLPAgenceParser
+        arguments: [@doctrine.orm.entity_manager,@simpleXmlElement,%jlp_core.passerelle.xml_annonce_node%]

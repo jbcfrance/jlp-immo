@@ -1,13 +1,4 @@
-/oldSite/img/*
-/oldSite/front/cache/*
-/oldSite/front/web/css/*
-/oldSite/front/web/flash/*
-/oldSite/front/web/font/*
-/oldSite/front/web/images/*
-/oldSite/front/web/js/*
-/oldSite/front/web/import/*.txt
-/oldSite/connectimmo/*
-/oldSite/front/web/import/annonces/*.jpg
+/oldSite/*
 
 /nbproject/private/
 /web/bundles/
