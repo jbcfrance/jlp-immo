@@ -1,4 +1,5 @@
 /oldSite/*
+site_jlp.sql
 
 /nbproject/private/
 /web/bundles/
@@ -12,4 +13,4 @@
 /build/
 /vendor/
 /bin/
-/composer.phar
+
