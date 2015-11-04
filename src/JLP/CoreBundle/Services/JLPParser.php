@@ -23,17 +23,18 @@ class JLPParser {
   protected $oXml;
 
   // On injecte l'EntityManager
-  public function __construct(EntityManagerInterface $oEm, \SimpleXMLElement $oXml)
+  public function __construct($oKernel, EntityManagerInterface $oEm, \SimpleXMLElement $oXml)
   {
     $this->oEm = $oEm;
     $this->oXml = $oXml;
+    $this->oKernel = $oKernel;
   }
   
   protected function parsingXml ($sXMLFileName)
   {
     $this->oXml = simplexml_load_file($sXMLFileName);
     
-    $sMainNodeName = $this->getContainer()->getParameter('jlp_core.passerelle.xml_annonce_node');
+    $sMainNodeName = $this->oKernel->getContainer()->getParameter('jlp_core.passerelle.xml_annonce_node');
     
     foreach($this->oXml->{$sMainNodeName} as $oNode) {
       /*Traitement préliminaire du XML*/

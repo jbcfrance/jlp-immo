@@ -22,6 +22,7 @@ class JLPPasserelle
   
   private $debug;
   private $logger;
+  private $kernel;
   
   private $zipFilename;
   private $xmlFilename;
@@ -39,10 +40,11 @@ class JLPPasserelle
   private $aAnnonceInfo 		= array();
   
     
-  public function __construct($zipFilename, $xmlFilename, $debug = false){
+  public function __construct($kernel,$debug = false){
     $this->debug = $debug; 
-    $this->zipFilename = $zipFilename;
-    $this->xmlFilename = $xmlFilename;
+    $this->kernel = $kernel;
+    $this->zipFilename = $this->kernel->getContainer()->getParameter('jlp_core.passerelle.zip_name');
+    $this->xmlFilename = $this->kernel->getContainer()->getParameter('jlp_core.passerelle.xml_filename');
   }
   
   public function execute($logger){
@@ -56,7 +58,7 @@ class JLPPasserelle
     
     
     
-    $agenceParser = $this->getContainer()->get('jlp_core.agence_parser');
+    $agenceParser = $this->kernel->getContainer()->get('jlp_core.agence_parser');
     $agenceParser->execute(self::TARGET_UNZIP_DIR."/".$this->xmlFilename);
     
     /*if(!$this->parsingXml(self::TARGET_UNZIP_DIR."/".$this->xmlFilename)){

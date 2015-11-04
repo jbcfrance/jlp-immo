@@ -11,9 +11,9 @@ parameters:
     
 jlp_core:
   passerelle:
-    zip_name: "connectimmo.zip"
-    xml_filename: "annonces.xml"
-    xml_annonce_node: "annonce"
+    zip_name: "%jlpimmo.zip_name%"
+    xml_filename: "%jlpimmo.xml_filename%"
+    xml_annonce_node: "%jlpimmo.xml_annonce_node%"
     
 
 framework:
