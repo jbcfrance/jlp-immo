@@ -53,12 +53,10 @@ class JLPPasserelle
       
     if(!$this->prepAnnonces(self::LOCAL_PATH.$this->zipFilename)){
       $this->logger->error('Erreur lors de la preparation des annonces : Import stoppé !');
-      exit;
+      throw new Exception('Erreur lors de la preparation des annonces : Import stoppé !');
     }
     
-    
-    
-    $agenceParser = $this->kernel->getContainer()->get('jlp_core.agence_parser');
+    $agenceParser = $this->kernel->getContainer()->get('jlp_core.parser.agence');
     $agenceParser->execute(self::TARGET_UNZIP_DIR."/".$this->xmlFilename);
     
     /*if(!$this->parsingXml(self::TARGET_UNZIP_DIR."/".$this->xmlFilename)){

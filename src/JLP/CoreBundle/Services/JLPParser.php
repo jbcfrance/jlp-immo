@@ -45,6 +45,8 @@ class JLPParser {
     return true;   
   }
   
-  
+  public function getName(){
+    return 'jlp_core.parser';
+  }
   
 }

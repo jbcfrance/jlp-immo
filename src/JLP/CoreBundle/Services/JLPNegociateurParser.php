@@ -30,4 +30,8 @@ class JLPNegociateurParser extends JLPParser {
     return $this->aNegociateurInfo;
   }
   
+  public function getName(){
+    return 'jlp_core.parser.negociateur';
+  }
+  
 }

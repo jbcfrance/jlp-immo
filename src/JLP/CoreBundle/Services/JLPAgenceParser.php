@@ -22,6 +22,8 @@ class JLPAgenceParser extends JLPParser {
   }
   
   protected function extractInformation($elementAnnonce){
+    $this->logger->info('Demarrage du Parser Agence');
+    
     $tmp = $elementAnnonce;
     if(strstr($elementAnnonce->getName(),"A") == self::Agence) {
       $this->aAgenceInfo = array_merge($this->aAgenceInfo,array($elementAnnonce->getName()=>(string)$tmp));
@@ -30,6 +32,10 @@ class JLPAgenceParser extends JLPParser {
   
   public function getRawAgenceInfo(){
     return $this->aAgenceInfo;
+  }
+  
+  public function getName(){
+    return 'jlp_core.parser.agence';
   }
   
 }

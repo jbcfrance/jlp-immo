@@ -31,4 +31,7 @@ class JLPAnnonceParser extends JLPParser {
     return $this->aAnnonceInfo;
   }
   
+  public function getName(){
+    return 'jlp_core.parser.annonce';
+  }
 }
