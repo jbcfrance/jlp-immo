@@ -24,5 +24,8 @@ class JLPCoreExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+        //$loader->load('passerelle.yml');
+        
+        //$container->setParameter('passerelle_parser_config', $loader->load('passerelle.yml'));
     }
 }

@@ -7,6 +7,7 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Finder\Finder;
+use \Symfony\Component\Yaml\Yaml;
 //use Symfony\Component\DomCrawler\Crawler;
 
 
@@ -23,6 +24,7 @@ class JLPPasserelle
   private $debug;
   private $logger;
   private $kernel;
+  private $ymlMapping;
   
   private $zipFilename;
   private $xmlFilename;
@@ -40,11 +42,12 @@ class JLPPasserelle
   private $aAnnonceInfo 		= array();
   
     
-  public function __construct($kernel,$debug = false){
+  public function __construct($kernel,$ymlMapping,$debug = false){
     $this->debug = $debug; 
     $this->kernel = $kernel;
-    $this->zipFilename = $this->kernel->getContainer()->getParameter('jlp_core.passerelle.zip_name');
-    $this->xmlFilename = $this->kernel->getContainer()->getParameter('jlp_core.passerelle.xml_filename');
+    $this->ymlMapping = Yaml::parse($ymlMapping);
+    $this->zipFilename = $this->ymlMapping['passerelle']['zip_name'];
+    $this->xmlFilename = $this->ymlMapping['passerelle']['xml_filename'];
   }
   
   public function execute($logger){
@@ -65,6 +68,8 @@ class JLPPasserelle
     }*/
 
     var_dump($agenceParser->getRawAgenceInfo());
+        
+    $agenceParser->buildEntity();
     //var_dump($this->aNegociateurInfo);
     //var_dump($this->aAnnonceInfo);
 
@@ -119,12 +124,12 @@ class JLPPasserelle
     $finder->files()->name('*.jpg');
 
     foreach($finder->in(self::TARGET_UNZIP_DIR) as $image){
-      $moveImageProcess = new Process('mv '.self::TARGET_UNZIP_DIR.'/'.$image->getFilename().' '.self::TARGET_IMAGE_DIR.$image->getFilename());
+      /*$moveImageProcess = new Process('mv '.self::TARGET_UNZIP_DIR.'/'.$image->getFilename().' '.self::TARGET_IMAGE_DIR.$image->getFilename());
       $moveImageProcess->run();
       if (!$moveImageProcess->isSuccessful()) {
         throw new ProcessFailedException($moveImageProcess);
       }
-      unset($moveImageProcess);
+      unset($moveImageProcess);*/
     }
   }
       

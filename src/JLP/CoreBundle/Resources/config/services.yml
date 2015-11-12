@@ -1,11 +1,15 @@
+parameters:
+    passerelle.class: JLP\CoreBundle\Service\Passerelle
+    passerelle.yaml_config_file: "%kernel.root_dir%/../src/JLP/CoreBundle/Resources/config/%passerelle_logiciel_name%.yml"
+
 services:
     jlp_core.passerelle:
         class: JLP\CoreBundle\Services\JLPPasserelle
-        arguments: [@kernel,"debug","%jlp_core.passerelle.zip_name%"]
+        arguments: [@kernel,%passerelle.yaml_config_file%,"debug"]
     
     jlp_core.parser.agence:
         class: JLP\CoreBundle\Services\JLPAgenceParser
-        arguments: [@kernel,@doctrine.orm.entity_manager]
+        arguments: [@kernel,@doctrine.orm.entity_manager,@logger,%passerelle.yaml_config_file%]
     
     jlp_core.exporter:
         class: JLP\CoreBundle\Services\JLPExporter

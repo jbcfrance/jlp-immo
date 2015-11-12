@@ -1,0 +1,18 @@
+passerelle:
+   zip_name: "connectimmo.zip"
+   xml_filename: "annonces.xml"
+   xml_annonce_node: "annonce"
+   
+   parser:
+     mapping_agence:
+       id: "idAgence"
+       raisonSociale: "raisonSocialeAgence"
+       enseigne: "enseigneAgence"
+       adresse: "adresseAgence"
+       codePostal: "codePostalAgence"
+       ville: "villeAgence"
+       pays: "paysAgence"
+       telephone: "telephoneAgence"
+       fax: "faxAgence"
+       email: "emailAgence"
+       siteWeb: "siteWebAgence"
