@@ -7,8 +7,8 @@ services:
         class: JLP\CoreBundle\Services\JLPPasserelle
         arguments: [@kernel,%passerelle.yaml_config_file%,"debug"]
     
-    jlp_core.parser.agence:
-        class: JLP\CoreBundle\Services\JLPAgenceParser
+    jlp_core.parser:
+        class: JLP\CoreBundle\Services\JLPParser
         arguments: [@kernel,@doctrine.orm.entity_manager,@logger,%passerelle.yaml_config_file%]
     
     jlp_core.exporter:

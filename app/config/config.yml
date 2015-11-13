@@ -8,14 +8,6 @@ imports:
 parameters:
     locale: en
     
-    
-jlp_core:
-  passerelle:
-    zip_name: "%jlpimmo.zip_name%"
-    xml_filename: "%jlpimmo.xml_filename%"
-    xml_annonce_node: "%jlpimmo.xml_annonce_node%"
-    
-
 framework:
     #esi:             ~
     #translator:      { fallbacks: ["%locale%"] }

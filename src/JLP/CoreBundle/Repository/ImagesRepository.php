@@ -1,6 +1,6 @@
 <?php
 
-namespace JLP\CoreBundle\Entity;
+namespace JLP\CoreBundle\Repository;
 
 /**
  * ImagesRepository

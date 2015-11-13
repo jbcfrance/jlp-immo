@@ -59,20 +59,9 @@ class JLPPasserelle
       throw new Exception('Erreur lors de la preparation des annonces : Import stoppé !');
     }
     
-    $agenceParser = $this->kernel->getContainer()->get('jlp_core.parser.agence');
-    $agenceParser->execute(self::TARGET_UNZIP_DIR."/".$this->xmlFilename);
+    $oParser = $this->kernel->getContainer()->get('jlp_core.parser');
+    $oParser->execute(self::TARGET_UNZIP_DIR."/".$this->xmlFilename);
     
-    /*if(!$this->parsingXml(self::TARGET_UNZIP_DIR."/".$this->xmlFilename)){
-      $this->logger->error('Erreur de parsing du XML !');
-      exit;
-    }*/
-
-    var_dump($agenceParser->getRawAgenceInfo());
-        
-    $agenceParser->buildEntity();
-    //var_dump($this->aNegociateurInfo);
-    //var_dump($this->aAnnonceInfo);
-
   }
   
   private function prepAnnonces($sFileName) {

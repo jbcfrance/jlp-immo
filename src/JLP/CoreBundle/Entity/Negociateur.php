@@ -17,7 +17,6 @@ class Negociateur
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
     /**
@@ -25,7 +24,6 @@ class Negociateur
     * @ORM\JoinColumn(nullable=false)
     */
     private $agence;
-
     /**
      * @var string
      *
@@ -54,7 +52,19 @@ class Negociateur
      */
     private $email;
 
+     /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return Negociateur
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
 
+        return $this;
+    }
     /**
      * Get id
      *
@@ -64,7 +74,7 @@ class Negociateur
     {
         return $this->id;
     }
-
+    
     /**
      * Set prenom
      *

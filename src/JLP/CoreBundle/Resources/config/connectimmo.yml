@@ -3,16 +3,282 @@ passerelle:
    xml_filename: "annonces.xml"
    xml_annonce_node: "annonce"
    
+   keys_parser:
+    idAgence: 
+     entity: "Agence"
+     field: "id"
+    idNegociateur: 
+     entity: "Negociateur"
+     field: "id"
+    identifiant: 
+     entity: "Annonce"
+     field: "id"
+     
    parser:
-     mapping_agence:
-       id: "idAgence"
-       raisonSociale: "raisonSocialeAgence"
-       enseigne: "enseigneAgence"
-       adresse: "adresseAgence"
-       codePostal: "codePostalAgence"
-       ville: "villeAgence"
-       pays: "paysAgence"
-       telephone: "telephoneAgence"
-       fax: "faxAgence"
-       email: "emailAgence"
-       siteWeb: "siteWebAgence"
+    raisonSocialeAgence: 
+     entity: "Agence"
+     field: "raisonSociale"
+    enseigneAgence: 
+     entity: "Agence"
+     field: "enseigne"
+    adresseAgence: 
+     entity: "Agence"
+     field: "adresse"
+    codePostalAgence: 
+     entity: "Agence"
+     field: "codePostal"
+    villeAgence: 
+     entity: "Agence"
+     field: "ville"
+    paysAgence: 
+     entity: "Agence"
+     field: "pays"
+    telephoneAgence: 
+     entity: "Agence"
+     field: "telephone"
+    faxAgence: 
+     entity: "Agence"
+     field: "fax"
+    emailAgence: 
+     entity: "Agence"
+     field: "email"
+    siteWebAgence: 
+     entity: "Agence"
+     field: "siteWeb"
+    prenomNegociateur: 
+     entity: "Negociateur"
+     field: "prenom"
+    nomNegociateur: 
+     entity: "Negociateur"
+     field: "nom"
+    telephoneNegociateur: 
+     entity: "Negociateur"
+     field: "telephone"
+    emailNegociateur: 
+     entity: "Negociateur"
+     field: "email"
+    statusAnnonce: 
+     entity: "Annonce"
+     field: "statusAnnonce"
+    reference: 
+     entity: "Annonce"
+     field: "reference"
+    numMandat: 
+     entity: "Annonce"
+     field: "numMandat"
+    categorieOffre: 
+     entity: "Annonce"
+     field: "categorieOffre"
+    categorie: 
+     entity: "Annonce"
+     field: "categorie"
+    dateCreation: 
+     entity: "Annonce"
+     field: "dateCreation"
+    dateModification: 
+     entity: "Annonce"
+     field: "dateModification"
+    dateDebutMandat: 
+     entity: "Annonce"
+     field: "dateDebutMandat"
+    dateEcheanceMandat: 
+     entity: "Annonce"
+     field: "dateEcheanceMandat"
+    dateDisponibiliteOuLiberation: 
+     entity: "Annonce"
+     field: "dateDisponibiliteOuLiberation"
+    adresse: 
+     entity: "Annonce"
+     field: "adresse"
+    codePostalPublic: 
+     entity: "Annonce"
+     field: "codePostalPublic"
+    villePublique: 
+     entity: "Annonce"
+     field: "villePublique"
+    villeAAfficher: 
+     entity: "Annonce"
+     field: "villeAAfficher"
+    pays: 
+     entity: "Annonce"
+     field: "pays"
+    quartier: 
+     entity: "Annonce"
+     field: "quartier"
+    environnement: 
+     entity: "Annonce"
+     field: "environnement"
+    proximite: 
+     entity: "Annonce"
+     field: "proximite"
+    transports: 
+     entity: "Annonce"
+     field: "transports"
+    montant: 
+     entity: "Annonce"
+     field: "montant"
+    charges: 
+     entity: "Annonce"
+     field: "charges"
+    loyer: 
+     entity: "Annonce"
+     field: "loyer"
+    depotGarantie: 
+     entity: "Annonce"
+     field: "depotGarantie"
+    fraisDivers: 
+     entity: "Annonce"
+     field: "fraisDivers"
+    loyerGarage: 
+     entity: "Annonce"
+     field: "loyerGarage"
+    ageTete: 
+     entity: "Annonce"
+     field: "ageTete"
+    typeRente: 
+     entity: "Annonce"
+     field: "typeRente"
+    taxeHabitation: 
+     entity: "Annonce"
+     field: "taxeHabitation"
+    taxeFonciere: 
+     entity: "Annonce"
+     field: "taxeFonciere"
+    fraisDeNotaireReduits: 
+     entity: "Annonce"
+     field: "fraisDeNotaireReduits"
+    pieces: 
+     entity: "Annonce"
+     field: "pieces"
+    chambres: 
+     entity: "Annonce"
+     field: "chambres"
+    sdb: 
+     entity: "Annonce"
+     field: "sdb"
+    nbSallesDEau: 
+     entity: "Annonce"
+     field: "nbSallesDEau"
+    nbWc: 
+     entity: "Annonce"
+     field: "nbWc"
+    nbParking: 
+     entity: "Annonce"
+     field: "nbParking"
+    nbGarages: 
+     entity: "Annonce"
+     field: "nbGarages"
+    niveaux: 
+     entity: "Annonce"
+     field: "niveaux"
+    nbEtages: 
+     entity: "Annonce"
+     field: "nbEtages"
+    etage: 
+     entity: "Annonce"
+     field: "etage"
+    surface: 
+     entity: "Annonce"
+     field: "surface"
+    surfaceCarrezOuHabitable: 
+     entity: "Annonce"
+     field: "surfaceCarrezOuHabitable"
+    surfaceTerrain: 
+     entity: "Annonce"
+     field: "surfaceTerrain"
+    surfaceSejour: 
+     entity: "Annonce"
+     field: "surfaceSejour"
+    surfaceTerrasse: 
+     entity: "Annonce"
+     field: "surfaceTerrasse"
+    surfaceBalcon: 
+     entity: "Annonce"
+     field: "surfaceBalcon"
+    accesHandicape: 
+     entity: "Annonce"
+     field: "accesHandicape"
+    alarme: 
+     entity: "Annonce"
+     field: "alarme"
+    ascenseur: 
+     entity: "Annonce"
+     field: "ascenseur"
+    balcon: 
+     entity: "Annonce"
+     field: "balcon"
+    bureau: 
+     entity: "Annonce"
+     field: "bureau"
+    cave: 
+     entity: "Annonce"
+     field: "cave"
+    cellier: 
+     entity: "Annonce"
+     field: "cellier"
+    dependances: 
+     entity: "Annonce"
+     field: "dependances"
+    dressing: 
+     entity: "Annonce"
+     field: "dressing"
+    gardien: 
+     entity: "Annonce"
+     field: "gardien"
+    interphone: 
+     entity: "Annonce"
+     field: "interphone"
+    lotissement: 
+     entity: "Annonce"
+     field: "lotissement"
+    meuble: 
+     entity: "Annonce"
+     field: "meuble"
+    mitoyenne: 
+     entity: "Annonce"
+     field: "mitoyenne"
+    piscine: 
+     entity: "Annonce"
+     field: "piscine"
+    terrasse: 
+     entity: "Annonce"
+     field: "terrasse"
+    anciennete: 
+     entity: "Annonce"
+     field: "anciennete"
+    anneeConstruction: 
+     entity: "Annonce"
+     field: "anneeConstruction"
+    exposition: 
+     entity: "Annonce"
+     field: "exposition"
+    typeChauffage: 
+     entity: "Annonce"
+     field: "typeChauffage"
+    natureChauffage: 
+     entity: "Annonce"
+     field: "natureChauffage"
+    modeChauffage: 
+     entity: "Annonce"
+     field: "modeChauffage"
+    typeCuisine: 
+     entity: "Annonce"
+     field: "typeCuisine"
+    coupDeCoeur: 
+     entity: "Annonce"
+     field: "coupDeCoeur"
+    texte: 
+     entity: "Annonce"
+     field: "texte"
+    textAnglais: 
+     entity: "Annonce"
+     field: "textAnglais"
+    urlVisiteVirtuelle: 
+     entity: "Annonce"
+     field: "urlVisiteVirtuelle"
+    consommationEnergie: 
+     entity: "Annonce"
+     field: "consommationEnergie"
+    emissionGes: 
+     entity: "Annonce"
+     field: "emissionGes"

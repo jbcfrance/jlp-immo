@@ -16,10 +16,9 @@ class Annonce
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
     /**
     * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Agence")
     * @ORM\JoinColumn(nullable=false)
@@ -578,7 +577,20 @@ class Annonce
         $this->statusAnnonce = new \Doctrine\Common\Collections\ArrayCollection();
         $this->typeBien = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    
+    /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return Annonce
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
 
+        return $this;
+    }
     /**
      * Get id
      *
@@ -588,7 +600,7 @@ class Annonce
     {
         return $this->id;
     }
-
+    
     /**
      * Set reference
      *
