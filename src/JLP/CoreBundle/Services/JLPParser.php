@@ -58,6 +58,12 @@ class JLPParser {
   protected $oAnnonceEntity = null;
   protected $aYmlAnnonceMapping = array();
   
+  /*TypeBien Variables*/
+  protected $oTypeBienEntity = null;
+  
+  /*TypeMandat Variables*/
+  protected $oTypeMandatEntity = null;
+  
   // On injecte l'EntityManager
   public function __construct($oKernel, EntityManagerInterface $oEm , LoggerInterface $oLogger, $sYmlMapping)
   {
@@ -76,6 +82,7 @@ class JLPParser {
     
     
     $aXmlMappedKey = $this->oYmlMapping['passerelle']['keys_parser'];
+    $aXmlTypeFields = $this->oYmlMapping['passerelle']['type_fields'];
     $aXmlMappedFields = $this->oYmlMapping['passerelle']['parser'];
     
     foreach($this->oXml->{$sMainNodeName} as $oNode)
@@ -86,38 +93,66 @@ class JLPParser {
         $sObjectName = "o".$aKeyInfos['entity'];
         $sEntityObjectName = 'o'.$aKeyInfos['entity']."Entity";
         
-        $$sObjectName = $this->oEm->getRepository('JLPCoreBundle:'.$aKeyInfos['entity'])->findOneBy(array($aKeyInfos['field']=>$oNode->$sKeyName));
+        $oObjectName = $this->oEm->getRepository('JLPCoreBundle:'.$aKeyInfos['entity'])->findOneBy(array($aKeyInfos['field']=>$oNode->$sKeyName->__toString()));
     
         if(!empty($$sObjectName)){
-          $this->$sEntityObjectName = $$sObjectName();
+          $this->$sEntityObjectName = $oObjectName(); 
         }else{
           $sEntityClassName = "JLP\CoreBundle\Entity\\".$aKeyInfos['entity'];
           $this->$sEntityObjectName = new $sEntityClassName;
-        }        
+          $sSetFunc = 'set'.ucfirst($aKeyInfos['field']);
+        
+          $this->$sEntityObjectName->$sSetFunc($oNode->{$sKeyName}->__toString());
+        }
       }
-      foreach ($aXmlMappedFields as $sFieldName => $aFieldInfos) 
+      
+      foreach($aXmlTypeFields as $sTypeName => $aTypeInfos)
+      {
+        $this->prepareTypeField($sTypeName,$aTypeInfos,$oNode);
+      }
+      
+      foreach ($aXmlMappedFields as $sFieldName => $aFieldInfos)  
       { 
+        
         $sEntityObjectName = 'o'.$aFieldInfos['entity']."Entity";
         $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
-        
-        $this->$sEntityObjectName->$sSetFunc = $oNode->{$sFieldName};
+
+        $this->$sEntityObjectName->$sSetFunc($oNode->{$sFieldName}->__toString());
+
       }
       /* Persisting the entities*/
-      
-      $this->oEm->persist($this->oAgenceEntity);
-      $this->oNegociateurEntity->setAgence($this->oAgenceEntity);
-      $this->oEm->persist($this->oNegociateurEntity);
-      $this->oAnnonceEntity->setAgence($this->oAgenceEntity);
-      $this->oAnnonceEntity->setNegociateur($this->oNegociateurEntity);
-      //$this->oEm->persist($this->oAnnonceEntity);
-      
-      $this->oEm->flush();
+      $this->persistAndFlushEntitites();
     }
     
     
     
     return true;   
   } 
+  
+  public function persistAndFlushEntitites()
+  {
+    $this->oEm->getClassMetaData(get_class($this->oAgenceEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
+    $this->oEm->getClassMetaData(get_class($this->oNegociateurEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);  
+    $this->oEm->getClassMetaData(get_class($this->oAnnonceEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
+    
+    $this->oEm->merge($this->oAgenceEntity);
+    $this->oNegociateurEntity->setAgence($this->oAgenceEntity);
+    $this->oEm->merge($this->oNegociateurEntity);
+    $this->oAnnonceEntity->setAgence($this->oAgenceEntity);
+    $this->oAnnonceEntity->setNegociateur($this->oNegociateurEntity);
+
+    $this->oEm->merge($this->oAnnonceEntity);
+
+    $this->oEm->flush();
+  }
+  
+  public function prepareTypeField($sFieldName,$aFieldInfos,$oNode)
+  {
+    $sEntityObjectName = 'o'.$aFieldInfos['parent_entity']."Entity";
+    $oTypeEntity = $this->oEm->getRepository('JLPCoreBundle:'.$aFieldInfos['entity'])->findOneBy(array("type"=>$oNode->{$sFieldName}->__toString()));
+    $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
+    $this->$sEntityObjectName->$sSetFunc($oTypeEntity);
+  }
   
   public function prepMapping($oElementAnnonce)
   {

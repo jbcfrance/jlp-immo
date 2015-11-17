@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Negociateur
  * 
- * @ORM\Table()
+ * @ORM\Table(name="negociateur")
  * @ORM\Entity(repositoryClass="JLP\CoreBundle\Repository\NegociateurRepository")
  */
 class Negociateur
@@ -17,6 +17,7 @@ class Negociateur
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
     /**

@@ -13,7 +13,17 @@ passerelle:
     identifiant: 
      entity: "Annonce"
      field: "id"
-     
+   
+   type_fields:
+     typeBien:
+      parent_entity: "Annonce"
+      entity: "typeBien"
+      field: "typeBien"
+     typeMandat:
+       parent_entity: "Annonce"
+       entity: "typeMandat"
+       field: "typeMandat"
+   
    parser:
     raisonSocialeAgence: 
      entity: "Agence"

@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Agence
  * 
- * @ORM\Table()
+ * @ORM\Table(name="agence")
  * @ORM\Entity(repositoryClass="JLP\CoreBundle\Repository\AgenceRepository")
  */
 class Agence
@@ -16,6 +16,7 @@ class Agence
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
     

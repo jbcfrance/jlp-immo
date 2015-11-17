@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * TypeImage
  * 
- * @ORM\Table()
+ * @ORM\Table(name="type_image")
  * @ORM\Entity(repositoryClass="JLP\CoreBundle\Repository\TypeImageRepository")
  */
 class TypeImage

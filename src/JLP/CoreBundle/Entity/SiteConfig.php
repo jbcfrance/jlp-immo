@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * SiteConfig
  * 
- * @ORM\Table()
+ * @ORM\Table(name="site_config")
  * @ORM\Entity(repositoryClass="JLP\CoreBundle\Repository\SiteConfigRepository")
  */
 class SiteConfig

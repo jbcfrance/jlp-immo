@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Annonce
  * 
- * @ORM\Table()
+ * @ORM\Table(name="annonce")
  * @ORM\Entity(repositoryClass="JLP\CoreBundle\Repository\AnnonceRepository")
  */
 class Annonce
@@ -16,6 +16,7 @@ class Annonce
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
     
@@ -84,35 +85,35 @@ class Annonce
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateCreation", type="datetimetz")
+     * @ORM\Column(name="dateCreation", type="datetime")
      */
     private $dateCreation;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateModification", type="datetimetz")
+     * @ORM\Column(name="dateModification", type="datetime")
      */
     private $dateModification;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateDebutMandat", type="datetimetz")
+     * @ORM\Column(name="dateDebutMandat", type="datetime")
      */
     private $dateDebutMandat;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateEcheanceMandat", type="datetimetz")
+     * @ORM\Column(name="dateEcheanceMandat", type="datetime")
      */
     private $dateEcheanceMandat;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateDisponibiliteOuLiberation", type="datetimetz")
+     * @ORM\Column(name="dateDisponibiliteOuLiberation", type="datetime")
      */
     private $dateDisponibiliteOuLiberation;
 
@@ -730,7 +731,8 @@ class Annonce
      */
     public function setDateCreation($dateCreation)
     {
-        $this->dateCreation = $dateCreation;
+    
+        $this->dateCreation = $this->fixDateFormat($dateCreation);
 
         return $this;
     }
@@ -754,7 +756,8 @@ class Annonce
      */
     public function setDateModification($dateModification)
     {
-        $this->dateModification = $dateModification;
+        
+        $this->dateModification = $this->fixDateFormat($dateModification);
 
         return $this;
     }
@@ -778,7 +781,7 @@ class Annonce
      */
     public function setDateDebutMandat($dateDebutMandat)
     {
-        $this->dateDebutMandat = $dateDebutMandat;
+        $this->dateDebutMandat = $this->fixDateFormat($dateDebutMandat);
 
         return $this;
     }
@@ -802,7 +805,7 @@ class Annonce
      */
     public function setDateEcheanceMandat($dateEcheanceMandat)
     {
-        $this->dateEcheanceMandat = $dateEcheanceMandat;
+        $this->dateEcheanceMandat = $this->fixDateFormat($dateEcheanceMandat);
 
         return $this;
     }
@@ -826,7 +829,7 @@ class Annonce
      */
     public function setDateDisponibiliteOuLiberation($dateDisponibiliteOuLiberation)
     {
-        $this->dateDisponibiliteOuLiberation = $dateDisponibiliteOuLiberation;
+        $this->dateDisponibiliteOuLiberation = $this->fixDateFormat($dateDisponibiliteOuLiberation);
 
         return $this;
     }
@@ -2591,5 +2594,26 @@ class Annonce
         $this->typeBien = $typeBien;
 
         return $this;
+    }
+    
+    
+    public function fixDateFormat($date)
+    {
+      if($date != '')
+      {
+        if(false === strpos("/",$date)){
+          $oDate = $date;
+        }else{
+          list($d,$m,$y) = explode("/",$date);
+
+          $oDate = new \DateTime("$y-$m-$d");
+        }
+      }else{
+        $oDate = $date;
+      }
+      
+      
+      
+      return $oDate;
     }
 }
