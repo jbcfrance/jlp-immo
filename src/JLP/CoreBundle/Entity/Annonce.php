@@ -97,23 +97,23 @@ class Annonce
     private $dateModification;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="dateDebutMandat", type="datetime")
+     * @ORM\Column(name="dateDebutMandat", type="string", length=255)
      */
     private $dateDebutMandat;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="dateEcheanceMandat", type="datetime")
+     * @ORM\Column(name="dateEcheanceMandat", type="string", length=255)
      */
     private $dateEcheanceMandat;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="dateDisponibiliteOuLiberation", type="datetime")
+     * @ORM\Column(name="dateDisponibiliteOuLiberation", type="string", length=255)
      */
     private $dateDisponibiliteOuLiberation;
 
@@ -578,20 +578,7 @@ class Annonce
         $this->statusAnnonce = new \Doctrine\Common\Collections\ArrayCollection();
         $this->typeBien = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
-    /**
-     * Set id
-     *
-     * @param integer $id
-     *
-     * @return Annonce
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
 
-        return $this;
-    }
     /**
      * Get id
      *
@@ -775,7 +762,7 @@ class Annonce
     /**
      * Set dateDebutMandat
      *
-     * @param \DateTime $dateDebutMandat
+     * @param string $dateDebutMandat
      *
      * @return Annonce
      */
@@ -789,7 +776,7 @@ class Annonce
     /**
      * Get dateDebutMandat
      *
-     * @return \DateTime
+     * @return string
      */
     public function getDateDebutMandat()
     {
@@ -799,7 +786,7 @@ class Annonce
     /**
      * Set dateEcheanceMandat
      *
-     * @param \DateTime $dateEcheanceMandat
+     * @param string $dateEcheanceMandat
      *
      * @return Annonce
      */
@@ -813,7 +800,7 @@ class Annonce
     /**
      * Get dateEcheanceMandat
      *
-     * @return \DateTime
+     * @return string
      */
     public function getDateEcheanceMandat()
     {
@@ -823,7 +810,7 @@ class Annonce
     /**
      * Set dateDisponibiliteOuLiberation
      *
-     * @param \DateTime $dateDisponibiliteOuLiberation
+     * @param string $dateDisponibiliteOuLiberation
      *
      * @return Annonce
      */
@@ -837,7 +824,7 @@ class Annonce
     /**
      * Get dateDisponibiliteOuLiberation
      *
-     * @return \DateTime
+     * @return string
      */
     public function getDateDisponibiliteOuLiberation()
     {
@@ -2599,7 +2586,7 @@ class Annonce
     
     public function fixDateFormat($date)
     {
-      if($date != '')
+      /*if($date != '')
       {
         if(false === strpos("/",$date)){
           $oDate = $date;
@@ -2610,8 +2597,8 @@ class Annonce
         }
       }else{
         $oDate = $date;
-      }
-      
+      }*/
+      $oDate = $date;
       
       
       return $oDate;

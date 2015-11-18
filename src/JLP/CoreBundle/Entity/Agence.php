@@ -89,20 +89,6 @@ class Agence
      * @ORM\Column(name="siteWeb", type="string", length=255)
      */
     private $siteWeb;
-
-    /**
-     * Set id
-     *
-     * @param integer $id
-     *
-     * @return Agence
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
     
     /**
      * Get id

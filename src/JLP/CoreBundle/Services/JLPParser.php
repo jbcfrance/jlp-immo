@@ -116,8 +116,14 @@ class JLPParser {
         
         $sEntityObjectName = 'o'.$aFieldInfos['entity']."Entity";
         $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
-
-        $this->$sEntityObjectName->$sSetFunc($oNode->{$sFieldName}->__toString());
+        if(true === isset($aFieldInfos['date']) && true === $aFieldInfos['date'])
+        {
+          $oDate = $this->cleanDateFormat($oNode->{$sFieldName}->__toString());   
+          $this->$sEntityObjectName->$sSetFunc($oDate);
+        }else{
+          $this->$sEntityObjectName->$sSetFunc($oNode->{$sFieldName}->__toString());
+        }
+        
 
       }
       /* Persisting the entities*/
@@ -129,19 +135,32 @@ class JLPParser {
     return true;   
   } 
   
+  public function cleanDateFormat($date)
+  {
+    if(false === strpos("/",$date)){
+      $oDate = $date;
+    }else{
+      list($d,$m,$y) = explode("/",$date);
+
+      $oDate = new \DateTime("$y-$m-$d");
+    }
+    
+    return $oDate;
+  }
+  
   public function persistAndFlushEntitites()
   {
     $this->oEm->getClassMetaData(get_class($this->oAgenceEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
     $this->oEm->getClassMetaData(get_class($this->oNegociateurEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);  
     $this->oEm->getClassMetaData(get_class($this->oAnnonceEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
     
-    $this->oEm->merge($this->oAgenceEntity);
+    $this->oEm->persist($this->oAgenceEntity);
     $this->oNegociateurEntity->setAgence($this->oAgenceEntity);
-    $this->oEm->merge($this->oNegociateurEntity);
+    $this->oEm->persist($this->oNegociateurEntity);
     $this->oAnnonceEntity->setAgence($this->oAgenceEntity);
     $this->oAnnonceEntity->setNegociateur($this->oNegociateurEntity);
 
-    $this->oEm->merge($this->oAnnonceEntity);
+    $this->oEm->persist($this->oAnnonceEntity);
 
     $this->oEm->flush();
   }
