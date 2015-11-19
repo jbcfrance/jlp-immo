@@ -52,7 +52,18 @@ class Negociateur
      * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
-
+    /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return Negociateur
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
     /**
      * Get id
      *

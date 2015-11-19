@@ -91,6 +91,19 @@ class Agence
     private $siteWeb;
     
     /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return Agence
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+    
+    /**
      * Get id
      *
      * @return integer

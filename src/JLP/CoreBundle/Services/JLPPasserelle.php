@@ -60,7 +60,7 @@ class JLPPasserelle
     }
     
     $oParser = $this->kernel->getContainer()->get('jlp_core.parser');
-    $oParser->execute(self::TARGET_UNZIP_DIR."/".$this->xmlFilename);
+    $oParser->execute(self::TARGET_UNZIP_DIR."/".$this->xmlFilename,$logger);
     
   }
   

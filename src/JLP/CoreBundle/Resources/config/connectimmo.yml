@@ -4,15 +4,15 @@ passerelle:
    xml_annonce_node: "annonce"
    
    keys_parser:
-    raisonSocialeAgence: 
+    idAgence: 
      entity: "Agence"
-     field: "raisonSociale"
-    emailNegociateur: 
+     field: "id"
+    idNegociateur: 
      entity: "Negociateur"
-     field: "email"
-    reference: 
+     field: "id"
+    identifiant: 
      entity: "Annonce"
-     field: "reference"
+     field: "id"
    
    type_fields:
      typeBien:
@@ -25,6 +25,9 @@ passerelle:
        field: "typeMandat"
    
    parser:
+    raisonSocialeAgence: 
+     entity: "Agence"
+     field: "raisonSociale"
     enseigneAgence: 
      entity: "Agence"
      field: "enseigne"
@@ -61,9 +64,15 @@ passerelle:
     telephoneNegociateur: 
      entity: "Negociateur"
      field: "telephone"
+    emailNegociateur: 
+     entity: "Negociateur"
+     field: "email"
     statusAnnonce: 
      entity: "Annonce"
      field: "statusAnnonce"
+    reference: 
+     entity: "Annonce"
+     field: "reference"
     numMandat: 
      entity: "Annonce"
      field: "numMandat"

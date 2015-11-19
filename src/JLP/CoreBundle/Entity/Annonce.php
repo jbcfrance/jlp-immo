@@ -531,7 +531,7 @@ class Annonce
     private $typeCuisine;
 
     /**
-     * @ORM\Column(name="coupDeCoeur", type="boolean")
+     * @ORM\Column(name="coupDeCoeur", type="integer")
      */
     private $coupDeCoeur;
 
@@ -578,7 +578,18 @@ class Annonce
         $this->statusAnnonce = new \Doctrine\Common\Collections\ArrayCollection();
         $this->typeBien = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
+     /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return Annonce
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
     /**
      * Get id
      *
@@ -2250,7 +2261,7 @@ class Annonce
     /**
      * Set coupDeCoeur
      *
-     * @param boolean $coupDeCoeur
+     * @param integer $coupDeCoeur
      *
      * @return Annonce
      */
@@ -2264,7 +2275,7 @@ class Annonce
     /**
      * Get coupDeCoeur
      *
-     * @return boolean
+     * @return integer
      */
     public function getCoupDeCoeur()
     {
