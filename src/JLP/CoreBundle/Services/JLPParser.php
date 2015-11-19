@@ -137,13 +137,7 @@ class JLPParser {
   
   public function cleanDateFormat($date)
   {
-    if(false === strpos("/",$date)){
-      $oDate = $date;
-    }else{
-      list($d,$m,$y) = explode("/",$date);
-
-      $oDate = new \DateTime("$y-$m-$d");
-    }
+    $oDate = \DateTime::createFromFormat('j/m/Y',$date);
     
     return $oDate;
   }
