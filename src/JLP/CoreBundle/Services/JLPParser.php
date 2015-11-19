@@ -92,17 +92,13 @@ class JLPParser {
       /*Traitement préliminaire du XML*/
       foreach ($aXmlMappedKey as $sKeyName => $aKeyInfos)
       {
-        $sObjectName = "o".$aKeyInfos['entity'];
         $sEntityObjectName = 'o'.$aKeyInfos['entity']."Entity";
         
         $oObjectName = $this->oEm->getRepository('JLPCoreBundle:'.$aKeyInfos['entity'])->findOneBy(array($aKeyInfos['field']=>$oNode->$sKeyName->__toString()));
-        $this->oLogger->info(" Search Entities ");
-        if(!empty($oObjectName)){
-          $this->oLogger->info(" Entity found 'JLPCoreBundle:'".$aKeyInfos['entity']); 
+        if(!empty($oObjectName)){ 
           $this->$sEntityObjectName = $oObjectName; 
         }else{
           $sEntityClassName = "JLP\CoreBundle\Entity\\".$aKeyInfos['entity'];
-          $this->oLogger->info(" New JLP\CoreBundle\Entity\\".$aKeyInfos['entity']);
           $this->$sEntityObjectName = new $sEntityClassName;
           $sSetFunc = 'set'.ucfirst($aKeyInfos['field']);
         
@@ -143,14 +139,12 @@ class JLPParser {
   {
     $sEntityObjectName = 'o'.$aFieldInfos['parent_entity']."Entity";
     $oTypeEntity = $this->oEm->getRepository('JLPCoreBundle:'.$aFieldInfos['entity'])->findOneBy(array("type"=>strtolower($oNode->{$sFieldName}->__toString())));
-    $this->oLogger->info($aFieldInfos['entity']." = ".$oNode->{$sFieldName}->__toString());
     if(!empty($oTypeEntity))
     {
       $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
       $this->$sEntityObjectName->$sSetFunc($oTypeEntity);
     }else{
       $sEntityTypeClassName = "JLP\CoreBundle\Entity\\".$aFieldInfos['entity'];
-      $this->oLogger->info(" New JLP\CoreBundle\Entity\\".$aFieldInfos['entity']);
       $oTypeEntity = new $sEntityTypeClassName;
       $oTypeEntity->setType(strtolower($oNode->{$sFieldName}->__toString()));
       $this->oEm->persist($oTypeEntity);
@@ -168,7 +162,6 @@ class JLPParser {
   
   public function persistAndFlushEntitites()
   {
-    $this->oLogger->info(" persistAndFlushEntitites ");
     $this->oEm->getClassMetaData(get_class($this->oAgenceEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
     $this->oEm->getClassMetaData(get_class($this->oNegociateurEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);  
     $this->oEm->getClassMetaData(get_class($this->oAnnonceEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
