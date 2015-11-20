@@ -14,10 +14,10 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class JLPPasserelle
 {
-  const   LOCAL_PATH        = "src/JLP/CoreBundle/Ressources/public/upload/";
-  const   FLASH_XML_DIR     = "src/JLP/CoreBundle/Ressources/public/flash/";
-  const   TARGET_UNZIP_DIR  = "src/JLP/CoreBundle/Ressources/public/upload/connectimmo/";
-  const   TARGET_IMAGE_DIR  = "src/JLP/CoreBundle/Ressources/public/images/source/";
+  const   LOCAL_PATH        = "web/bundles/jlpcore/upload/";
+  //const   FLASH_XML_DIR     = "front/web/flash/";
+  const   TARGET_UNZIP_DIR  = "web/bundles/jlpcore/upload/connectimmo/";
+  const   TARGET_IMAGE_DIR  = "web/bundles/jlpcore/images/source/";
   //const   LOG_FILE          = "front/web/import/";
   const   AGENCE            = "Agence";
   const   NEGOCIATEUR       = "Negociateur";
