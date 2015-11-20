@@ -13,4 +13,6 @@ site_jlp.sql
 /build/
 /vendor/
 /bin/
+/src/JLP/CoreBundle/Ressources/public/images/source/*
+/src/JLP/CoreBundle/Ressources/public/images/upload/connectimmo/*
 
