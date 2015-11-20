@@ -3,9 +3,9 @@
 
 namespace JLP\CoreBundle\Services;
 
-//use JLP\CoreBundle\Entity\Annonce;
-//use Symfony\Component\Finder\Finder;
-//use Symfony\Component\DomCrawler\Crawler;
+use JLP\CoreBundle\Entity\Annonce;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\DomCrawler\Crawler;
 
 
 /*

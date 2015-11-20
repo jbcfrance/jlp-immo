@@ -8,7 +8,6 @@ use Symfony\Component\Finder\Finder;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use \Symfony\Component\Yaml\Yaml;
-//use Symfony\Component\DomCrawler\Crawler;
 
 
 /*
@@ -72,7 +71,7 @@ class JLPImageTool
   public function extractImageFromAnnonce($oNode)
   {
     $aAnnonceImages = $oNode->{$this->oYmlMapping['passerelle']['xml_images_node']};
-    var_dump($aAnnonceImages);
+    
     foreach($aAnnonceImages as $sImageName)
     {
       $this->createImageByType($sImageName);
@@ -84,6 +83,7 @@ class JLPImageTool
   public function createImageByType($sImageName)
   {
     $aTypeImage = $this->oEm->getRepository('JLPCoreBundle:TypeImage')->findAll();
+
     
     foreach($aTypeImage as $oTypeImage){
       

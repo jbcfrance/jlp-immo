@@ -84,7 +84,6 @@ class JLPParser {
     
     foreach($this->oXml->{$sMainNodeName} as $oNode)
     {
-      //$this->oLogger->info(" oNode : ".print_r($oNode,true));
       /*Traitement préliminaire du XML*/
       
       $this->prepareMappedKey($oNode);
@@ -94,7 +93,7 @@ class JLPParser {
       $this->prepareMappedFields($oNode);
 
       /* Persisting the entities*/
-      //$this->oAnnonceEntity->setStatusAnnonce("active");
+      $this->oAnnonceEntity->setStatusAnnonce("active");
       $this->persistAndFlushEntitites();
     }
 

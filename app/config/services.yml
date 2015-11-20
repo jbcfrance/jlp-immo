@@ -19,3 +19,4 @@ services:
       logger: "@logger"
     tags:
       - { name: kernel.event_listener, event: console.exception }
+      
