@@ -2,6 +2,7 @@ passerelle:
    zip_name: "connectimmo.zip"
    xml_filename: "annonces.xml"
    xml_annonce_node: "annonce"
+   xml_images_node: "photos"
    
    keys_parser:
     idAgence: 

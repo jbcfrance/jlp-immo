@@ -60,6 +60,10 @@ class JLPParser {
   /*TypeMandat Variables*/
   protected $oTypeMandatEntity = null;
   
+  /*Counts */
+  public $iNbAnnonceTraite = 0;
+  
+  
   // On injecte l'EntityManager
   public function __construct($oKernel, EntityManagerInterface $oEm , LoggerInterface $oLogger, $sYmlMapping)
   {
@@ -76,7 +80,8 @@ class JLPParser {
     $this->oXml = simplexml_load_file($sXMLFileName);
     $this->oLogger->info("Execute JLPParser");
     $sMainNodeName = $this->oYmlMapping['passerelle']['xml_annonce_node'];
-
+    
+    
     foreach($this->oXml->{$sMainNodeName} as $oNode)
     {
       //$this->oLogger->info(" oNode : ".print_r($oNode,true));
@@ -93,7 +98,7 @@ class JLPParser {
       $this->persistAndFlushEntitites();
     }
 
-    return true;   
+    return true; 
   } 
   
   public function prepareMappedKey($oNode)
@@ -183,8 +188,16 @@ class JLPParser {
 
     $this->oEm->persist($this->oAnnonceEntity);
 
-    $this->oEm->flush();
+    if($this->oEm->flush())
+    {
+      $this->iNbAnnonceTraite++;
+    }
   } 
+  
+  public function getNbAnnonceTraite()
+  {
+    return $this->iNbAnnonceTraite;
+  }
   
   public function getName(){
     return 'jlp_core.parser';

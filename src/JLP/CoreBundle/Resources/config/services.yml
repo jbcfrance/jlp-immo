@@ -11,6 +11,10 @@ services:
         class: JLP\CoreBundle\Services\JLPParser
         arguments: [@kernel,@doctrine.orm.entity_manager,@logger,%passerelle.yaml_config_file%]
     
+    jlp_core.image_tool:
+        class: JLP\CoreBundle\Services\JLPImageTool
+        arguments: [@kernel,@doctrine.orm.entity_manager,@logger,%passerelle.yaml_config_file%]
+    
     jlp_core.exporter:
         class: JLP\CoreBundle\Services\JLPExporter
         arguments: [@kernel,@doctrine.orm.entity_manager]

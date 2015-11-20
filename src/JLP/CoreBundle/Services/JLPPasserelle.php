@@ -14,13 +14,14 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class JLPPasserelle
 {
-  const   LOCAL_PATH        = "web/bundles/jlpcorebundle/upload/";
-  //const   FLASH_XML_DIR     = "front/web/flash/";
-  const   TARGET_UNZIP_DIR  = "web/bundles/jlpcorebundle/upload/connectimmo";
-  const   TARGET_IMAGE_DIR  = "web/bundles/jlpcorebundle/images/source/";
+  const   LOCAL_PATH        = "src/JLP/CoreBundle/Ressources/public/upload/";
+  const   FLASH_XML_DIR     = "src/JLP/CoreBundle/Ressources/public/flash/";
+  const   TARGET_UNZIP_DIR  = "src/JLP/CoreBundle/Ressources/public/upload/connectimmo/";
+  const   TARGET_IMAGE_DIR  = "src/JLP/CoreBundle/Ressources/public/images/source/";
   //const   LOG_FILE          = "front/web/import/";
   const   AGENCE            = "Agence";
   const   NEGOCIATEUR       = "Negociateur";
+  const   ANNONCE           = "Annonce";
   
   private $debug;
   private $logger;
@@ -51,7 +52,6 @@ class JLPPasserelle
     $this->ymlMapping = Yaml::parse($ymlMapping);
     $this->zipFilename = $this->ymlMapping['passerelle']['zip_name'];
     $this->xmlFilename = $this->ymlMapping['passerelle']['xml_filename'];
-    
   }
   
   public function execute($logger){
@@ -65,7 +65,12 @@ class JLPPasserelle
     
     $oParser = $this->kernel->getContainer()->get('jlp_core.parser');
     $oParser->execute(self::TARGET_UNZIP_DIR."/".$this->xmlFilename,$logger);
+    $this->iNbAnnonceTraite = $oParser->getNbAnnonceTraite();
     $this->deleteStandByAnnonce();
+    
+    $oImageTool = $this->kernel->getContainer()->get('jlp_core.image_tool');
+    $oImageTool->execute(self::TARGET_UNZIP_DIR."/".$this->xmlFilename,$logger);
+    
   }
   
   private function prepAnnonces($sFileName) {
@@ -120,12 +125,12 @@ class JLPPasserelle
     $finder->files()->name('*.jpg');
 
     foreach($finder->in(self::TARGET_UNZIP_DIR) as $image){
-      /*$moveImageProcess = new Process('mv '.self::TARGET_UNZIP_DIR.'/'.$image->getFilename().' '.self::TARGET_IMAGE_DIR.$image->getFilename());
+      $moveImageProcess = new Process('mv '.self::TARGET_UNZIP_DIR.'/'.$image->getFilename().' '.self::TARGET_IMAGE_DIR.$image->getFilename());
       $moveImageProcess->run();
       if (!$moveImageProcess->isSuccessful()) {
         throw new ProcessFailedException($moveImageProcess);
       }
-      unset($moveImageProcess);*/
+      unset($moveImageProcess);
     }
   }
   
