@@ -7,10 +7,6 @@ namespace JLP\CoreBundle\Services;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use \Symfony\Component\Yaml\Yaml;
-use JLP\CoreBundle\Entity\Agence;
-use JLP\CoreBundle\Entity\Negociateur;
-use JLP\CoreBundle\Entity\Annonce;
-
 
 /**
  * Description of JLPParser
@@ -78,84 +74,97 @@ class JLPParser {
   {
     $this->oLogger = $logger;
     $this->oXml = simplexml_load_file($sXMLFileName);
-    $this->oLogger->info(" execute ");
+    $this->oLogger->info("Execute JLPParser");
     $sMainNodeName = $this->oYmlMapping['passerelle']['xml_annonce_node'];
-    
-    
-    $aXmlMappedKey = $this->oYmlMapping['passerelle']['keys_parser'];
-    $aXmlTypeFields = $this->oYmlMapping['passerelle']['type_fields'];
-    $aXmlMappedFields = $this->oYmlMapping['passerelle']['parser'];
-    
+
     foreach($this->oXml->{$sMainNodeName} as $oNode)
     {
       //$this->oLogger->info(" oNode : ".print_r($oNode,true));
       /*Traitement préliminaire du XML*/
-      foreach ($aXmlMappedKey as $sKeyName => $aKeyInfos)
-      {
-        $sEntityObjectName = 'o'.$aKeyInfos['entity']."Entity";
-        
-        $oObjectName = $this->oEm->getRepository('JLPCoreBundle:'.$aKeyInfos['entity'])->findOneBy(array($aKeyInfos['field']=>$oNode->$sKeyName->__toString()));
-        if(!empty($oObjectName)){ 
-          $this->$sEntityObjectName = $oObjectName; 
-        }else{
-          $sEntityClassName = "JLP\CoreBundle\Entity\\".$aKeyInfos['entity'];
-          $this->$sEntityObjectName = new $sEntityClassName;
-          $sSetFunc = 'set'.ucfirst($aKeyInfos['field']);
-        
-          $this->$sEntityObjectName->$sSetFunc($oNode->{$sKeyName}->__toString());
-        }
-      }
       
-      foreach($aXmlTypeFields as $sTypeName => $aTypeInfos)
-      {
-        $this->prepareTypeField($sTypeName,$aTypeInfos,$oNode);
-      }
+      $this->prepareMappedKey($oNode);
       
-      foreach ($aXmlMappedFields as $sFieldName => $aFieldInfos)  
-      { 
-        
-        $sEntityObjectName = 'o'.$aFieldInfos['entity']."Entity";
-        $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
-        if(true === isset($aFieldInfos['date']) && true === $aFieldInfos['date'])
-        {
-          $oDate = $this->cleanDateFormat($oNode->{$sFieldName}->__toString());   
-          $this->$sEntityObjectName->$sSetFunc($oDate);
-        }else{
-          $this->$sEntityObjectName->$sSetFunc($oNode->{$sFieldName}->__toString());
-        }
-        
+      $this->prepareTypeField($oNode);
+      
+      $this->prepareMappedFields($oNode);
 
-      }
       /* Persisting the entities*/
+      //$this->oAnnonceEntity->setStatusAnnonce("active");
       $this->persistAndFlushEntitites();
     }
-    
-    
-    
+
     return true;   
   } 
   
-  public function prepareTypeField($sFieldName,$aFieldInfos,$oNode)
+  public function prepareMappedKey($oNode)
   {
-    $sEntityObjectName = 'o'.$aFieldInfos['parent_entity']."Entity";
-    $oTypeEntity = $this->oEm->getRepository('JLPCoreBundle:'.$aFieldInfos['entity'])->findOneBy(array("type"=>strtolower($oNode->{$sFieldName}->__toString())));
-    if(!empty($oTypeEntity))
+    $aXmlMappedKey = $this->oYmlMapping['passerelle']['keys_parser'];
+    foreach ($aXmlMappedKey as $sKeyName => $aKeyInfos)  
     {
-      $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
-      $this->$sEntityObjectName->$sSetFunc($oTypeEntity);
-    }else{
-      $sEntityTypeClassName = "JLP\CoreBundle\Entity\\".$aFieldInfos['entity'];
-      $oTypeEntity = new $sEntityTypeClassName;
-      $oTypeEntity->setType(strtolower($oNode->{$sFieldName}->__toString()));
-      $this->oEm->persist($oTypeEntity);
-      $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
-      $this->$sEntityObjectName->$sSetFunc($oTypeEntity);
+      $sEntityObjectName = 'o'.$aKeyInfos['entity']."Entity";
+
+      $oObjectName = $this->oEm->getRepository('JLPCoreBundle:'.$aKeyInfos['entity'])
+                               ->findOneBy(array($aKeyInfos['field']=>$oNode->$sKeyName->__toString()));
+      if(!empty($oObjectName)){ 
+        $this->$sEntityObjectName = $oObjectName; 
+      }else{
+        $sEntityClassName = "JLP\CoreBundle\Entity\\".$aKeyInfos['entity'];
+        $this->$sEntityObjectName = new $sEntityClassName;
+        $sSetFunc = 'set'.ucfirst($aKeyInfos['field']);
+
+        $this->$sEntityObjectName->$sSetFunc($oNode->{$sKeyName}->__toString());
+      }
+      unset($sEntityObjectName,$sSetFunc,$oObjectName);
+    }
+  }
+  public function prepareTypeField($oNode)
+  {
+    $aXmlTypeFields = $this->oYmlMapping['passerelle']['type_fields'];
+    foreach ($aXmlTypeFields as $sFieldName => $aFieldInfos)  
+    { 
+      $sEntityObjectName = 'o'.$aFieldInfos['parent_entity']."Entity";
+      $oTypeEntity = $this->oEm->getRepository('JLPCoreBundle:'.$aFieldInfos['entity'])
+                               ->findOneBy(array("type"=>strtolower($oNode->{$sFieldName}->__toString())));
+      if(!empty($oTypeEntity))
+      {
+        $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
+        $this->$sEntityObjectName->$sSetFunc($oTypeEntity);
+      }else{
+        $sEntityTypeClassName = "JLP\CoreBundle\Entity\\".$aFieldInfos['entity'];
+        $oTypeEntity = new $sEntityTypeClassName;
+        $oTypeEntity->setType(strtolower($oNode->{$sFieldName}->__toString()));
+        $this->oEm->persist($oTypeEntity);
+        $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
+        $this->$sEntityObjectName->$sSetFunc($oTypeEntity);
+      }
+      unset($sEntityObjectName,$sSetFunc,$oTypeEntity);
     }
   }
   
-  public function cleanDateFormat($date)
+  public function prepareMappedFields($oNode)
   {
-    $oDate = \DateTime::createFromFormat('j/m/Y',$date);
+    $aXmlMappedFields = $this->oYmlMapping['passerelle']['parser'];
+    foreach ($aXmlMappedFields as $sFieldName => $aFieldInfos)  
+    { 
+      $sEntityObjectName = 'o'.$aFieldInfos['entity']."Entity";
+      $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
+      if(true === isset($aFieldInfos['date']) && true === $aFieldInfos['date'])
+      {
+
+        $sDateFormat = isset($aFieldInfos['date_format']) ? $aFieldInfos['date_format'] : 'j/m/Y';
+
+        $oDate = $this->cleanDateFormat($sDateFormat,$oNode->{$sFieldName}->__toString());   
+        $this->$sEntityObjectName->$sSetFunc($oDate);
+      }else{
+        $this->$sEntityObjectName->$sSetFunc($oNode->{$sFieldName}->__toString());
+      }
+      unset($sEntityObjectName,$sSetFunc,$sDateFormat,$oDate);
+    }
+  }
+  
+  public function cleanDateFormat($sDateFormat,$date)
+  {
+    $oDate = \DateTime::createFromFormat($sDateFormat,$date);
     
     return $oDate;
   }
@@ -175,78 +184,7 @@ class JLPParser {
     $this->oEm->persist($this->oAnnonceEntity);
 
     $this->oEm->flush();
-  }
-  
-  
-  
-  public function prepMapping($oElementAnnonce)
-  {
-    $aParserMapping = $this->oYmlMapping['passerelle']['parser'];
-    
-    $aFieldMapping = $aParserMapping[$oElementAnnonce->getName()];
-    
-    /*switch($aFieldMapping['entity'])
-    {
-      case 'agence':
-        $this->findOrCreateAgence($oElementAnnonce);
-      break;
-      case 'negociateur':
-        $this->findOrCreateNegociateur($oElementAnnonce);
-      break;
-      case 'annonce':
-        $this->findOrCreateAgence($oElementAnnonce);
-      break;
-      default:
-        throw new Exception ('Unkown mapping for this element : '.$oElementAnnonce->getName());
-    }*/
-    
-    var_dump($aFieldMapping);die();
-  }
-  
-  
-  public function buildEntities()
-  {
-    foreach($this->aEntitiesFields as $sEntityFieldName){
-
-      $sFunc = 'set'.ucfirst($sEntityFieldName);
-      $this->oNegociateurEntity->{$sFunc}($this->aNegociateurInfo[$this->aYmlNegociateurMapping[$sEntityFieldName]]);
-
-      $this->oEm->persist($this->oNegociateurEntity);
-    }
-    $this->oEm->flush();
-  }
-  
-  public function prepAgence()
-  {
-    $aClassProperties = $this->oEm->getClassMetadata('JLPCoreBundle:Agence')->getFieldNames();
-    $aEntitiesFields = array_merge(
-                  $aClassProperties, 
-                  $this->oEm->getClassMetadata('JLPCoreBundle:Agence')->getAssociationNames()
-    );
-      
-    $oAgence = $this->oEm->getRepository('JLPCoreBundle:Agence')->findOneBy(array("agenceId"=>$this->aAgenceInfo[$this->aYmlAgenceMapping["agenceId"]])); 
-    if(!empty($oAgence)){
-      $this->oAgenceEntity = $oAgence;
-    }
-    foreach($aEntitiesFields as $sEntityFieldName){
-      if($sEntityFieldName != 'id')
-      {
-        $sFunc = 'set'.ucfirst($sEntityFieldName);
-        $this->oAgenceEntity->{$sFunc}($this->aAgenceInfo[$this->aYmlAgenceMapping[$sEntityFieldName]]);
-        unset($sFunc);
-      }
-      $this->oEm->persist($this->oAgenceEntity);
-    }
-    $this->oEm->flush();
-    unset($aClassProperties,$aEntitiesFields);
-    
-  }
-  
-  public function prepNegociateur()
-  {
-    
-  }
-
+  } 
   
   public function getName(){
     return 'jlp_core.parser';

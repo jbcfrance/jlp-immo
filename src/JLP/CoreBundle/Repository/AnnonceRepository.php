@@ -9,5 +9,5 @@ namespace JLP\CoreBundle\Repository;
  * repository methods below.
  */
 class AnnonceRepository extends \Doctrine\ORM\EntityRepository
-{
+{  
 }

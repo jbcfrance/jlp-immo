@@ -8,6 +8,7 @@ use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Finder\Finder;
 use \Symfony\Component\Yaml\Yaml;
+use Doctrine\ORM\EntityManagerInterface;
 //use Symfony\Component\DomCrawler\Crawler;
 
 
@@ -25,6 +26,7 @@ class JLPPasserelle
   private $logger;
   private $kernel;
   private $ymlMapping;
+  private $em;
   
   private $zipFilename;
   private $xmlFilename;
@@ -42,12 +44,14 @@ class JLPPasserelle
   private $aAnnonceInfo 		= array();
   
     
-  public function __construct($kernel,$ymlMapping,$debug = false){
+  public function __construct($kernel,$ymlMapping,EntityManagerInterface $em,$debug = false){
     $this->debug = $debug; 
     $this->kernel = $kernel;
+    $this->em = $em;
     $this->ymlMapping = Yaml::parse($ymlMapping);
     $this->zipFilename = $this->ymlMapping['passerelle']['zip_name'];
     $this->xmlFilename = $this->ymlMapping['passerelle']['xml_filename'];
+    
   }
   
   public function execute($logger){
@@ -61,7 +65,7 @@ class JLPPasserelle
     
     $oParser = $this->kernel->getContainer()->get('jlp_core.parser');
     $oParser->execute(self::TARGET_UNZIP_DIR."/".$this->xmlFilename,$logger);
-    
+    $this->deleteStandByAnnonce();
   }
   
   private function prepAnnonces($sFileName) {
@@ -76,6 +80,9 @@ class JLPPasserelle
         $this->moveSourceImage();
         //$oZipFile->delete();
         $this->bStatusPasserelle = 1;
+        
+        $this->putAnnonceInStandBy();
+        
         return true;
       }else{
         $this->logger->error("Erreur lors de l'extraction du fichier ".$sFileName);
@@ -121,7 +128,32 @@ class JLPPasserelle
       unset($moveImageProcess);*/
     }
   }
-      
+  
+  private function putAnnonceInStandBy()
+  {
+    $aAnnonceEntities = $this->em->getRepository('JLPCoreBundle:Annonce')->findAll();
+ 
+    foreach($aAnnonceEntities as $oAnnonce)
+    {
+
+      $oAnnonce->setStatusAnnonce('standby');
+      $this->em->persist($oAnnonce);
+      $this->em->flush($oAnnonce);
+
+    }
+    
+  }
+  
+  private function deleteStandByAnnonce()
+  {
+    $aAnnonceEntities = $this->em->getRepository('JLPCoreBundle:Annonce')->findBy(array('statusAnnonce'=>'standby'));
+        
+    foreach($aAnnonceEntities as $oAnnonce)
+    {
+      $this->em->remove($oAnnonce);
+      $this->em->flush($oAnnonce);
+    }
+  }
   public function informations(){
     return 'Coucou !! ';
   }

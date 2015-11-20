@@ -730,7 +730,7 @@ class Annonce
     public function setDateCreation($dateCreation)
     {
     
-        $this->dateCreation = $this->fixDateFormat($dateCreation);
+        $this->dateCreation = $dateCreation;
 
         return $this;
     }
@@ -755,7 +755,7 @@ class Annonce
     public function setDateModification($dateModification)
     {
         
-        $this->dateModification = $this->fixDateFormat($dateModification);
+        $this->dateModification = $dateModification;
 
         return $this;
     }
@@ -779,7 +779,7 @@ class Annonce
      */
     public function setDateDebutMandat($dateDebutMandat)
     {
-        $this->dateDebutMandat = $this->fixDateFormat($dateDebutMandat);
+        $this->dateDebutMandat = $dateDebutMandat;
 
         return $this;
     }
@@ -803,7 +803,7 @@ class Annonce
      */
     public function setDateEcheanceMandat($dateEcheanceMandat)
     {
-        $this->dateEcheanceMandat = $this->fixDateFormat($dateEcheanceMandat);
+        $this->dateEcheanceMandat = $dateEcheanceMandat;
 
         return $this;
     }
@@ -827,7 +827,7 @@ class Annonce
      */
     public function setDateDisponibiliteOuLiberation($dateDisponibiliteOuLiberation)
     {
-        $this->dateDisponibiliteOuLiberation = $this->fixDateFormat($dateDisponibiliteOuLiberation);
+        $this->dateDisponibiliteOuLiberation = $dateDisponibiliteOuLiberation;
 
         return $this;
     }
@@ -2592,26 +2592,5 @@ class Annonce
         $this->typeBien = $typeBien;
 
         return $this;
-    }
-    
-    
-    public function fixDateFormat($date)
-    {
-      /*if($date != '')
-      {
-        if(false === strpos("/",$date)){
-          $oDate = $date;
-        }else{
-          list($d,$m,$y) = explode("/",$date);
-
-          $oDate = new \DateTime("$y-$m-$d");
-        }
-      }else{
-        $oDate = $date;
-      }*/
-      $oDate = $date;
-      
-      
-      return $oDate;
     }
 }

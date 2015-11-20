@@ -86,10 +86,12 @@ passerelle:
      entity: "Annonce"
      field: "dateCreation"
      date: true
+     date_format : "j/m/Y"
     dateModification: 
      entity: "Annonce"
      field: "dateModification"
      date: true
+     date_format : "j/m/Y"
     dateDebutMandat: 
      entity: "Annonce"
      field: "dateDebutMandat"
