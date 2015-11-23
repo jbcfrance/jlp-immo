@@ -15,4 +15,4 @@ site_jlp.sql
 /bin/
 /src/JLP/CoreBundle/Ressources/public/images/source/*
 /src/JLP/CoreBundle/Ressources/public/images/upload/connectimmo/*
-
+/src/JLP/CoreBundle/Ressources/public/images/StockZip/*
