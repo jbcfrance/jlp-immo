@@ -42,6 +42,13 @@ class TypeImage
      */
     private $height;
     
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="dir", type="string", length=255)
+     */
+    private $dir;
+    
 
     /**
      * Get id
@@ -147,5 +154,29 @@ class TypeImage
     public function getHeight()
     {
         return $this->height;
+    }
+
+    /**
+     * Set dir
+     *
+     * @param string $dir
+     *
+     * @return TypeImage
+     */
+    public function setDir($dir)
+    {
+        $this->dir = $dir;
+
+        return $this;
+    }
+
+    /**
+     * Get dir
+     *
+     * @return string
+     */
+    public function getDir()
+    {
+        return $this->dir;
     }
 }

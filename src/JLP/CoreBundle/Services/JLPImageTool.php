@@ -9,6 +9,10 @@ use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use \Symfony\Component\Yaml\Yaml;
 
+use Imagine\Image\Box;
+use Imagine\Image\ImageInterface;
+use Imagine\Imagick\Imagine;
+
 
 /*
  * Objectif : Traiter les images des chaque annonces et les sauvegarder dans le system de fichier du site. 
@@ -72,18 +76,24 @@ class JLPImageTool
   {
     $aAnnonceImages = $oNode->{$this->oYmlMapping['passerelle']['xml_images_node']};
     
-    foreach($aAnnonceImages as $sImageName)
+    foreach($aAnnonceImages as $oImageName)
     {
-      $this->createImageByType($sImageName);
+      $this->createImageByType($oImageName->{'photo'});
     }
     
     
   }
   
-  public function createImageByType($sImageName)
+  public function createImageByType($oImageName)
   {
     $aTypeImage = $this->oEm->getRepository('JLPCoreBundle:TypeImage')->findAll();
-
+    $sImageName = $oImageName->__toString();
+    
+    var_dump($aTypeImage);
+    var_dump($oImageName);
+    var_dump($sImageName);
+    
+    exit;
     
     foreach($aTypeImage as $oTypeImage){
       
