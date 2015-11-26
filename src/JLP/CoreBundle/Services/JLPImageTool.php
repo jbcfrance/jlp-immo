@@ -20,7 +20,8 @@ use Imagine\Imagick\Imagine;
 
 class JLPImageTool
 {
-  
+  const   BUNDLE_IMAGE_DIR = "web/bundles/jlpcore/images/";
+
   /**
    * @var EntityManagerInterface
    */
@@ -92,7 +93,14 @@ class JLPImageTool
     
     
     foreach($aTypeImage as $oTypeImage){
-      
+      $oImagine = new \Imagine();
+      $oImagine->open(self::BUNDLE_IMAGE_DIR."source/".$sImageName)
+              ->resize(new Box($oTypeImage->getHeight(),$oTypeImage->getWidth()))
+              ->save(self::BUNDLE_IMAGE_DIR.$oTypeImage->getDir().'/'.$sImageName);
+      $oImageEntity = new Images();
+      $oImageEntity->setFileName($sImageName);
+      $oImageEntity->setTypeImage($oTypeImage);
+      $this->oEm->persist($oImageEntity);
     }
   }
   
