@@ -6,12 +6,12 @@ namespace JLP\CoreBundle\Services;
 use JLP\CoreBundle\Entity\Annonce;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\DomCrawler\Crawler;
+use Doctrine\ORM\EntityManagerInterface;
 
 
 /*
  * Objectif : exporter un listing des annonces selon certain paramètres sous un format au choix : xml, json, csv 
  */
-
 class JLPExporter
 {
   

@@ -89,11 +89,7 @@ class JLPImageTool
     $aTypeImage = $this->oEm->getRepository('JLPCoreBundle:TypeImage')->findAll();
     $sImageName = $oImageName->__toString();
     
-    var_dump($aTypeImage);
-    var_dump($oImageName);
-    var_dump($sImageName);
     
-    exit;
     
     foreach($aTypeImage as $oTypeImage){
       

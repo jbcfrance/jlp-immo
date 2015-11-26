@@ -9,6 +9,7 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Finder\Finder;
 use \Symfony\Component\Yaml\Yaml;
 use Doctrine\ORM\EntityManagerInterface;
+use Assetic\Exception\Exception;
 
 
 

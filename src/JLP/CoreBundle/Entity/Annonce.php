@@ -3,6 +3,7 @@
 namespace JLP\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JLP\CoreBundle\Entity\StatusAnnonce;
 /**
  * Annonce
  * 
