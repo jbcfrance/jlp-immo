@@ -39,6 +39,12 @@ class Annonce
     private $programmeNeuf;
     
     /**
+    * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Images", mappedBy="images", cascade={"persist", "remove"})
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $images;
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="statusAnnonce", type="string", length=255)
@@ -2593,5 +2599,39 @@ class Annonce
         $this->typeBien = $typeBien;
 
         return $this;
+    }
+
+    /**
+     * Add image
+     *
+     * @param \JLP\CoreBundle\Entity\Images $image
+     *
+     * @return Annonce
+     */
+    public function addImage(\JLP\CoreBundle\Entity\Images $image)
+    {
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param \JLP\CoreBundle\Entity\Images $image
+     */
+    public function removeImage(\JLP\CoreBundle\Entity\Images $image)
+    {
+        $this->images->removeElement($image);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 }

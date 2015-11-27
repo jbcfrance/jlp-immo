@@ -4,6 +4,7 @@
 namespace JLP\CoreBundle\Services;
 
 use JLP\CoreBundle\Entity\Annonce;
+use JLP\CoreBundle\Entity\Images;
 use Symfony\Component\Finder\Finder;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
@@ -11,7 +12,7 @@ use \Symfony\Component\Yaml\Yaml;
 
 use Imagine\Image\Box;
 use Imagine\Image\ImageInterface;
-use Imagine\Imagick\Imagine;
+use Imagine\Gd\Imagine;
 
 
 /*
@@ -77,31 +78,38 @@ class JLPImageTool
   {
     $aAnnonceImages = $oNode->{$this->oYmlMapping['passerelle']['xml_images_node']};
     
+    $iIdAnnonce = $oNode->{'identifiant'}->__toString();
+    
     foreach($aAnnonceImages as $oImageName)
     {
-      $this->createImageByType($oImageName->{'photo'});
+      $this->createImageByType($iIdAnnonce,$oImageName->{'photo'});
     }
     
+    $this->oEm->flush();
     
   }
   
-  public function createImageByType($oImageName)
+  public function createImageByType($iIdAnnonce,$oImageName)
   {
     $aTypeImage = $this->oEm->getRepository('JLPCoreBundle:TypeImage')->findAll();
     $sImageName = $oImageName->__toString();
     
+    $oAnnonceEntity = $this->oEm->getRepository('JLPCoreBundle:Annonce')->findOneBy(array('id'=>$iIdAnnonce));
     
     
     foreach($aTypeImage as $oTypeImage){
-      $oImagine = new \Imagine();
+      $oImagine = new Imagine();
       $oImagine->open(self::BUNDLE_IMAGE_DIR."source/".$sImageName)
-              ->resize(new Box($oTypeImage->getHeight(),$oTypeImage->getWidth()))
-              ->save(self::BUNDLE_IMAGE_DIR.$oTypeImage->getDir().'/'.$sImageName);
+              ->resize(new Box($oTypeImage->getWidth(),$oTypeImage->getHeight()))
+              ->save(self::BUNDLE_IMAGE_DIR.$oTypeImage->getDir().'/'.$sImageName, array('jpeg_quality' => 100));
       $oImageEntity = new Images();
       $oImageEntity->setFileName($sImageName);
       $oImageEntity->setTypeImage($oTypeImage);
       $this->oEm->persist($oImageEntity);
+      $oAnnonceEntity->addImage($oImageEntity);
+      $this->oEm->persist($oAnnonceEntity);
     }
+    
   }
   
   public function getName(){

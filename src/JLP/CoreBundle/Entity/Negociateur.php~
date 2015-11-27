@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Negociateur
  * 
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="JLP\CoreBundle\Entity\NegociateurRepository")
+ * @ORM\Table(name="negociateur")
+ * @ORM\Entity(repositoryClass="JLP\CoreBundle\Repository\NegociateurRepository")
  */
 class Negociateur
 {
@@ -25,7 +25,6 @@ class Negociateur
     * @ORM\JoinColumn(nullable=false)
     */
     private $agence;
-
     /**
      * @var string
      *
@@ -53,8 +52,18 @@ class Negociateur
      * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
-
-
+    /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return Negociateur
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
     /**
      * Get id
      *
@@ -64,7 +73,7 @@ class Negociateur
     {
         return $this->id;
     }
-
+    
     /**
      * Set prenom
      *

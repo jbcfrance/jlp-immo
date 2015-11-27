@@ -6,8 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Agence
  * 
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="JLP\CoreBundle\Entity\AgenceRepository")
+ * @ORM\Table(name="agence")
+ * @ORM\Entity(repositoryClass="JLP\CoreBundle\Repository\AgenceRepository")
  */
 class Agence
 {
@@ -19,7 +19,7 @@ class Agence
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
     /**
      * @var string
      *
@@ -89,8 +89,20 @@ class Agence
      * @ORM\Column(name="siteWeb", type="string", length=255)
      */
     private $siteWeb;
-
-
+    
+    /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return Agence
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+    
     /**
      * Get id
      *
@@ -100,7 +112,7 @@ class Agence
     {
         return $this->id;
     }
-
+    
     /**
      * Set raisonSociale
      *

@@ -155,4 +155,28 @@ class TypeImage
     {
         return $this->height;
     }
+
+    /**
+     * Set dir
+     *
+     * @param string $dir
+     *
+     * @return TypeImage
+     */
+    public function setDir($dir)
+    {
+        $this->dir = $dir;
+
+        return $this;
+    }
+
+    /**
+     * Get dir
+     *
+     * @return string
+     */
+    public function getDir()
+    {
+        return $this->dir;
+    }
 }

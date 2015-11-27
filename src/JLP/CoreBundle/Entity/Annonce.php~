@@ -3,11 +3,12 @@
 namespace JLP\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JLP\CoreBundle\Entity\StatusAnnonce;
 /**
  * Annonce
  * 
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="JLP\CoreBundle\Entity\AnnonceRepository")
+ * @ORM\Table(name="annonce")
+ * @ORM\Entity(repositoryClass="JLP\CoreBundle\Repository\AnnonceRepository")
  */
 class Annonce
 {
@@ -19,7 +20,7 @@ class Annonce
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
     /**
     * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Agence")
     * @ORM\JoinColumn(nullable=false)
@@ -36,6 +37,12 @@ class Annonce
     * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\ProgrammeNeuf")
     */
     private $programmeNeuf;
+    
+    /**
+    * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Images", mappedBy="images", cascade={"persist", "remove"})
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $images;
     
     /**
      * @var string
@@ -85,35 +92,35 @@ class Annonce
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateCreation", type="datetimetz")
+     * @ORM\Column(name="dateCreation", type="datetime")
      */
     private $dateCreation;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateModification", type="datetimetz")
+     * @ORM\Column(name="dateModification", type="datetime")
      */
     private $dateModification;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="dateDebutMandat", type="datetimetz")
+     * @ORM\Column(name="dateDebutMandat", type="string", length=255)
      */
     private $dateDebutMandat;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="dateEcheanceMandat", type="datetimetz")
+     * @ORM\Column(name="dateEcheanceMandat", type="string", length=255)
      */
     private $dateEcheanceMandat;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="dateDisponibiliteOuLiberation", type="datetimetz")
+     * @ORM\Column(name="dateDisponibiliteOuLiberation", type="string", length=255)
      */
     private $dateDisponibiliteOuLiberation;
 
@@ -531,7 +538,7 @@ class Annonce
     private $typeCuisine;
 
     /**
-     * @ORM\Column(name="coupDeCoeur", type="boolean")
+     * @ORM\Column(name="coupDeCoeur", type="integer")
      */
     private $coupDeCoeur;
 
@@ -578,7 +585,18 @@ class Annonce
         $this->statusAnnonce = new \Doctrine\Common\Collections\ArrayCollection();
         $this->typeBien = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
+     /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return Annonce
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
     /**
      * Get id
      *
@@ -588,7 +606,7 @@ class Annonce
     {
         return $this->id;
     }
-
+    
     /**
      * Set reference
      *
@@ -718,6 +736,7 @@ class Annonce
      */
     public function setDateCreation($dateCreation)
     {
+    
         $this->dateCreation = $dateCreation;
 
         return $this;
@@ -742,6 +761,7 @@ class Annonce
      */
     public function setDateModification($dateModification)
     {
+        
         $this->dateModification = $dateModification;
 
         return $this;
@@ -760,7 +780,7 @@ class Annonce
     /**
      * Set dateDebutMandat
      *
-     * @param \DateTime $dateDebutMandat
+     * @param string $dateDebutMandat
      *
      * @return Annonce
      */
@@ -774,7 +794,7 @@ class Annonce
     /**
      * Get dateDebutMandat
      *
-     * @return \DateTime
+     * @return string
      */
     public function getDateDebutMandat()
     {
@@ -784,7 +804,7 @@ class Annonce
     /**
      * Set dateEcheanceMandat
      *
-     * @param \DateTime $dateEcheanceMandat
+     * @param string $dateEcheanceMandat
      *
      * @return Annonce
      */
@@ -798,7 +818,7 @@ class Annonce
     /**
      * Get dateEcheanceMandat
      *
-     * @return \DateTime
+     * @return string
      */
     public function getDateEcheanceMandat()
     {
@@ -808,7 +828,7 @@ class Annonce
     /**
      * Set dateDisponibiliteOuLiberation
      *
-     * @param \DateTime $dateDisponibiliteOuLiberation
+     * @param string $dateDisponibiliteOuLiberation
      *
      * @return Annonce
      */
@@ -822,7 +842,7 @@ class Annonce
     /**
      * Get dateDisponibiliteOuLiberation
      *
-     * @return \DateTime
+     * @return string
      */
     public function getDateDisponibiliteOuLiberation()
     {
@@ -2248,7 +2268,7 @@ class Annonce
     /**
      * Set coupDeCoeur
      *
-     * @param boolean $coupDeCoeur
+     * @param integer $coupDeCoeur
      *
      * @return Annonce
      */
@@ -2262,7 +2282,7 @@ class Annonce
     /**
      * Get coupDeCoeur
      *
-     * @return boolean
+     * @return integer
      */
     public function getCoupDeCoeur()
     {
@@ -2579,5 +2599,39 @@ class Annonce
         $this->typeBien = $typeBien;
 
         return $this;
+    }
+
+    /**
+     * Add image
+     *
+     * @param \JLP\CoreBundle\Entity\Images $image
+     *
+     * @return Annonce
+     */
+    public function addImage(\JLP\CoreBundle\Entity\Images $image)
+    {
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param \JLP\CoreBundle\Entity\Images $image
+     */
+    public function removeImage(\JLP\CoreBundle\Entity\Images $image)
+    {
+        $this->images->removeElement($image);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 }
