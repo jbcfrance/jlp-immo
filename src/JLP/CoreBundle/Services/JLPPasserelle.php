@@ -69,9 +69,6 @@ class JLPPasserelle
     $this->iNbAnnonceTraite = $oParser->getNbAnnonceTraite();
     $this->deleteStandByAnnonce();
     
-    $oImageTool = $this->kernel->getContainer()->get('jlp_core.image_tool');
-    $oImageTool->execute(self::TARGET_UNZIP_DIR."/".$this->xmlFilename,$logger);
-    
   }
   
   private function prepAnnonces($sFileName) {

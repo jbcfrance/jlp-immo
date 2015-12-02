@@ -7,11 +7,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Image
  *
- * @ORM\Table(name="images")
+ * @ORM\Table(name="images",uniqueConstraints={@ORM\UniqueConstraint(name="image_unique",columns={"annonce_id","fileName"})})
  * @ORM\Entity(repositoryClass="JLP\CoreBundle\Repository\ImagesRepository")
  */
 class Images
 {
+  
+    
     /**
      * @var integer
      *
@@ -27,11 +29,12 @@ class Images
      * @ORM\Column(name="fileName", type="string", length=255)
      */
     private $fileName;
-
+    
     /**
-    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\TypeImage", cascade={"persist"})
+    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Annonce", inversedBy="images")
+    * @ORM\JoinColumn(nullable=false)
     */
-    private $typeImage;
+    private $annonce;
 
     /**
      * Constructor
@@ -122,4 +125,30 @@ class Images
 
         return $this;
     }
+
+    /**
+     * Set annonce
+     *
+     * @param \JLP\CoreBundle\Entity\Annonce $annonce
+     *
+     * @return Images
+     */
+    public function setAnnonce(\JLP\CoreBundle\Entity\Annonce $annonce)
+    {
+        $this->annonce = $annonce;
+
+        return $this;
+    }
+
+    /**
+     * Get annonce
+     *
+     * @return \JLP\CoreBundle\Entity\Annonce
+     */
+    public function getAnnonce()
+    {
+        return $this->annonce;
+    }
+    
+    
 }

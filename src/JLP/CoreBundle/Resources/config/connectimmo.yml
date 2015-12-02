@@ -3,6 +3,7 @@ passerelle:
    xml_filename: "annonces.xml"
    xml_annonce_node: "annonce"
    xml_images_node: "photos"
+   xml_annonce_key: "identifiant"
    
    keys_parser:
     idAgence: 

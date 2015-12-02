@@ -37,12 +37,11 @@ class Annonce
     * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\ProgrammeNeuf")
     */
     private $programmeNeuf;
-    
+        
     /**
-    * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Images", mappedBy="images", cascade={"persist", "remove"})
-    * @ORM\JoinColumn(nullable=false)
+    * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Images", mappedBy="annonce")
     */
-    private $images;
+    private $images; // Notez le « s », une annonce est liée à plusieurs candidatures
     
     /**
      * @var string

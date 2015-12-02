@@ -4,6 +4,9 @@
 
 namespace JLP\CoreBundle\Services;
 
+use JLP\CoreBundle\Entity\Images;
+
+
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use \Symfony\Component\Yaml\Yaml;
@@ -95,6 +98,10 @@ class JLPParser {
       /* Persisting the entities*/
       $this->oAnnonceEntity->setStatusAnnonce("active");
       $this->persistAndFlushEntitites();
+      
+      $this->deleteImageFromAnnonce($oNode);
+      $this->extractImageFromAnnonce($oNode);
+      
     }
 
     return true; 
@@ -192,6 +199,51 @@ class JLPParser {
       $this->iNbAnnonceTraite++;
     }
   } 
+  
+  public function deleteImageFromAnnonce($oNode){
+    $iIdAnnonce = $oNode->{$this->oYmlMapping['passerelle']['xml_annonce_key']}->__toString();
+    
+    $oAnnonceEntity = $this->oEm->getRepository('JLPCoreBundle:Annonce')->findOneBy(array('id'=>$iIdAnnonce));
+    
+    $aImagesCollection = $oAnnonceEntity->getImages();
+    
+    
+    
+    if(!empty($aImagesCollection))
+    {
+      $this->oLogger->info("deleteImageFromAnnonce : ".$iIdAnnonce." nbImages : ".count($aImagesCollection));
+      foreach($aImagesCollection as $oAnnonceImages)
+      {
+        $this->oLogger->info("deleteImage sImageName : ".$oAnnonceImages->getFileName());
+        $this->oEm->remove($oAnnonceImages);
+      }
+      $this->oEm->flush();
+    }
+
+  }
+    
+  public function extractImageFromAnnonce($oNode)
+  {
+    $aAnnonceImages = $oNode->{$this->oYmlMapping['passerelle']['xml_images_node']};
+    
+    $iIdAnnonce = $oNode->{$this->oYmlMapping['passerelle']['xml_annonce_key']}->__toString();
+    
+    $oAnnonceEntity = $this->oEm->getRepository('JLPCoreBundle:Annonce')->findOneBy(array('id'=>$iIdAnnonce));
+    
+    foreach($aAnnonceImages->{'photo'} as $oImageName)
+    {
+      $sImageName = $oImageName->__toString();
+      $this->oLogger->info("extractImageFromAnnonce : ".$iIdAnnonce." sImageName : ".$sImageName);
+      $oImageEntity = new Images();
+      $oImageEntity->setFileName($sImageName);
+      $oImageEntity->setAnnonce($oAnnonceEntity);
+      $this->oEm->persist($oImageEntity);
+      
+    }
+
+    $this->oEm->flush();
+    
+  }
   
   public function getNbAnnonceTraite()
   {

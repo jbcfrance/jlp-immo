@@ -27,11 +27,12 @@ class Images
      * @ORM\Column(name="fileName", type="string", length=255)
      */
     private $fileName;
-
+    
     /**
-    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\TypeImage", cascade={"persist"})
+    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Annonce", inversedBy="images")
+    * @ORM\JoinColumn(nullable=false)
     */
-    private $typeImage;
+    private $annonce;
 
     /**
      * Constructor
