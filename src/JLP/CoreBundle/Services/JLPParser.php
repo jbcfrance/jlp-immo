@@ -211,10 +211,8 @@ class JLPParser {
     
     if(!empty($aImagesCollection))
     {
-      $this->oLogger->info("deleteImageFromAnnonce : ".$iIdAnnonce." nbImages : ".count($aImagesCollection));
       foreach($aImagesCollection as $oAnnonceImages)
       {
-        $this->oLogger->info("deleteImage sImageName : ".$oAnnonceImages->getFileName());
         $this->oEm->remove($oAnnonceImages);
       }
       $this->oEm->flush();
@@ -233,7 +231,6 @@ class JLPParser {
     foreach($aAnnonceImages->{'photo'} as $oImageName)
     {
       $sImageName = $oImageName->__toString();
-      $this->oLogger->info("extractImageFromAnnonce : ".$iIdAnnonce." sImageName : ".$sImageName);
       $oImageEntity = new Images();
       $oImageEntity->setFileName($sImageName);
       $oImageEntity->setAnnonce($oAnnonceEntity);
