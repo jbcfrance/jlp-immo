@@ -68,6 +68,8 @@ class JLPPasserelle
     $oParser->execute(self::TARGET_UNZIP_DIR."/".$this->xmlFilename,$logger);
     $this->iNbAnnonceTraite = $oParser->getNbAnnonceTraite();
     $this->deleteStandByAnnonce();
+    $this->checkNegociateur();
+    $this->checkAgence();
     
   }
   
@@ -147,18 +149,48 @@ class JLPPasserelle
     
   }
   
+  public function checkNegociateur(){
+    $this->logger->info("Delete Negociateur without any annonce."); 
+    $aNegociateurEntities = $this->em->getRepository('JLPCoreBundle:Negociateur')->getNegociateurWithoutAnnonce();
+    foreach($aNegociateurEntities as $oNegociateur)
+    {
+      $this->em->remove($oNegociateur);
+      $this->em->flush($oNegociateur);
+    }
+  }
+  
+  public function checkAgence(){
+    $this->logger->info("Delete Agence without any Negociateur.");
+    $aAgenceEntities = $this->em->getRepository('JLPCoreBundle:Agence')->getAgenceWithoutNegociateur();
+    foreach($aAgenceEntities as $oAgence)
+    {
+      $this->em->remove($oAgence);
+      $this->em->flush($oAgence);
+    }
+  }
+  
   private function deleteStandByAnnonce()
   {
+    $this->logger->info("Delete Annonce still in standby"); 
     $aAnnonceEntities = $this->em->getRepository('JLPCoreBundle:Annonce')->findBy(array('statusAnnonce'=>'standby'));
         
     foreach($aAnnonceEntities as $oAnnonce)
     {
+      $aImagesCollection = $oAnnonce->getImages();
+      if(!empty($aImagesCollection))
+      {
+        foreach($aImagesCollection as $oAnnonceImages)
+        {
+          $this->em->remove($oAnnonceImages);
+        }
+        $this->em->flush();
+      }
       $this->em->remove($oAnnonce);
       $this->em->flush($oAnnonce);
     }
   }
   public function informations(){
-    return 'Coucou !! ';
+   $this->checkNegociateur();
   }
   
   public function getName(){

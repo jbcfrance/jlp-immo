@@ -21,6 +21,11 @@ class Agence
     private $id;
     
     /**
+    * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Negociateur", mappedBy="agence")
+    */
+    private $negociateurs; // Notez le « s », une annonce est liée à plusieurs candidatures
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="raisonSociale", type="string", length=255)
@@ -351,5 +356,46 @@ class Agence
     public function getSiteWeb()
     {
         return $this->siteWeb;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->negociateurs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add negociateur
+     *
+     * @param \JLP\CoreBundle\Entity\Negociateur $negociateur
+     *
+     * @return Agence
+     */
+    public function addNegociateur(\JLP\CoreBundle\Entity\Negociateur $negociateur)
+    {
+        $this->negociateurs[] = $negociateur;
+
+        return $this;
+    }
+
+    /**
+     * Remove negociateur
+     *
+     * @param \JLP\CoreBundle\Entity\Negociateur $negociateur
+     */
+    public function removeNegociateur(\JLP\CoreBundle\Entity\Negociateur $negociateur)
+    {
+        $this->negociateurs->removeElement($negociateur);
+    }
+
+    /**
+     * Get negociateurs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNegociateurs()
+    {
+        return $this->negociateurs;
     }
 }

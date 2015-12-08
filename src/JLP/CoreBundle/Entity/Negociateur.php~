@@ -25,6 +25,12 @@ class Negociateur
     * @ORM\JoinColumn(nullable=false)
     */
     private $agence;
+    
+    /**
+    * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Annonce", mappedBy="negociateur")
+    */
+    private $annonces; // Notez le « s », une annonce est liée à plusieurs candidatures
+        
     /**
      * @var string
      *

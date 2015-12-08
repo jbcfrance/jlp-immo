@@ -25,6 +25,12 @@ class Negociateur
     * @ORM\JoinColumn(nullable=false)
     */
     private $agence;
+    
+    /**
+    * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Annonce", mappedBy="negociateur")
+    */
+    private $annonces; // Notez le « s », une annonce est liée à plusieurs candidatures
+        
     /**
      * @var string
      *
@@ -192,5 +198,46 @@ class Negociateur
     public function getAgence()
     {
         return $this->agence;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->annonces = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add annonce
+     *
+     * @param \JLP\CoreBundle\Entity\Annonce $annonce
+     *
+     * @return Negociateur
+     */
+    public function addAnnonce(\JLP\CoreBundle\Entity\Annonce $annonce)
+    {
+        $this->annonces[] = $annonce;
+
+        return $this;
+    }
+
+    /**
+     * Remove annonce
+     *
+     * @param \JLP\CoreBundle\Entity\Annonce $annonce
+     */
+    public function removeAnnonce(\JLP\CoreBundle\Entity\Annonce $annonce)
+    {
+        $this->annonces->removeElement($annonce);
+    }
+
+    /**
+     * Get annonces
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAnnonces()
+    {
+        return $this->annonces;
     }
 }

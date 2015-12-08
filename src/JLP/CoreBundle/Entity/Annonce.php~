@@ -22,13 +22,13 @@ class Annonce
     private $id;
     
     /**
-    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Agence")
+    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Agence", cascade={"persist", "remove"})
     * @ORM\JoinColumn(nullable=false)
     */
     private $agence;
 
     /**
-    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Negociateur")
+    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Negociateur", cascade={"persist", "remove"})
     * @ORM\JoinColumn(nullable=false)
     */
     private $negociateur;
@@ -39,7 +39,7 @@ class Annonce
     private $programmeNeuf;
         
     /**
-    * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Images", mappedBy="images")
+    * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Images", mappedBy="annonce")
     */
     private $images; // Notez le « s », une annonce est liée à plusieurs candidatures
     
