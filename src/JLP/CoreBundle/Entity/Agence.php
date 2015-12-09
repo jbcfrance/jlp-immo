@@ -21,8 +21,8 @@ class Agence
     private $id;
     
     /**
-    * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Negociateur", mappedBy="agence")
-    */
+     * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Negociateur", mappedBy="agence")
+     */
     private $negociateurs; // Notez le « s », une annonce est liée à plusieurs candidatures
     
     /**

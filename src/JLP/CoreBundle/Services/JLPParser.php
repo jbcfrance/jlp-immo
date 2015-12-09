@@ -5,8 +5,6 @@
 namespace JLP\CoreBundle\Services;
 
 use JLP\CoreBundle\Entity\Images;
-
-
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use \Symfony\Component\Yaml\Yaml;
@@ -21,7 +19,8 @@ use Symfony\Component\DependencyInjection\SimpleXMLElement;
 * @bundle      CoreBundle
 *
 */
-class JLPParser {
+class JLPParser
+{
   /**
    * @var EntityManagerInterface
    */
@@ -73,7 +72,7 @@ class JLPParser {
   
   
   // On injecte l'EntityManager
-  public function __construct($oKernel, EntityManagerInterface $oEm , LoggerInterface $oLogger, $sYmlMapping)
+  public function __construct($oKernel, EntityManagerInterface $oEm, LoggerInterface $oLogger, $sYmlMapping)
   {
     $this->oEm = $oEm;
     $this->oKernel = $oKernel;
@@ -90,7 +89,7 @@ class JLPParser {
     * @param string $sXMLFileName
     * @param LoggerInterface $logger
     */  
-  public function execute ($sXMLFileName,$logger)
+  public function execute($sXMLFileName, $logger)
   {
     $this->oLogger = $logger;
     $this->oXml = simplexml_load_file($sXMLFileName);
@@ -98,7 +97,7 @@ class JLPParser {
     $sMainNodeName = $this->oYmlMapping['passerelle']['xml_annonce_node'];
     
     
-    foreach($this->oXml->{$sMainNodeName} as $oNode)
+    foreach ($this->oXml->{$sMainNodeName} as $oNode)
     {
       /*Traitement préliminaire du XML*/
       
@@ -136,16 +135,16 @@ class JLPParser {
 
       $oObjectName = $this->oEm->getRepository('JLPCoreBundle:'.$aKeyInfos['entity'])
                                ->findOneBy(array($aKeyInfos['field']=>$oNode->$sKeyName->__toString()));
-      if(!empty($oObjectName)){ 
+      if (!empty($oObjectName)) { 
         $this->$sEntityObjectName = $oObjectName; 
-      }else{
+      } else {
         $sEntityClassName = "JLP\CoreBundle\Entity\\".$aKeyInfos['entity'];
         $this->$sEntityObjectName = new $sEntityClassName;
         $sSetFunc = 'set'.ucfirst($aKeyInfos['field']);
 
         $this->$sEntityObjectName->$sSetFunc($oNode->{$sKeyName}->__toString());
       }
-      unset($sEntityObjectName,$sSetFunc,$oObjectName);
+      unset($sEntityObjectName, $sSetFunc, $oObjectName);
     }
   }
   
@@ -164,11 +163,11 @@ class JLPParser {
       $sEntityObjectName = 'o'.$aFieldInfos['parent_entity']."Entity";
       $oTypeEntity = $this->oEm->getRepository('JLPCoreBundle:'.$aFieldInfos['entity'])
                                ->findOneBy(array("type"=>strtolower($oNode->{$sFieldName}->__toString())));
-      if(!empty($oTypeEntity))
+      if (!empty($oTypeEntity))
       {
         $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
         $this->$sEntityObjectName->$sSetFunc($oTypeEntity);
-      }else{
+      } else {
         $sEntityTypeClassName = "JLP\CoreBundle\Entity\\".$aFieldInfos['entity'];
         $oTypeEntity = new $sEntityTypeClassName;
         $oTypeEntity->setType(strtolower($oNode->{$sFieldName}->__toString()));
@@ -176,7 +175,7 @@ class JLPParser {
         $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
         $this->$sEntityObjectName->$sSetFunc($oTypeEntity);
       }
-      unset($sEntityObjectName,$sSetFunc,$oTypeEntity);
+      unset($sEntityObjectName, $sSetFunc, $oTypeEntity);
     }
   }
   
@@ -194,17 +193,17 @@ class JLPParser {
     { 
       $sEntityObjectName = 'o'.$aFieldInfos['entity']."Entity";
       $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
-      if(true === isset($aFieldInfos['date']) && true === $aFieldInfos['date'])
+      if (true === isset($aFieldInfos['date']) && true === $aFieldInfos['date'])
       {
 
         $sDateFormat = isset($aFieldInfos['date_format']) ? $aFieldInfos['date_format'] : 'j/m/Y';
 
-        $oDate = $this->cleanDateFormat($sDateFormat,$oNode->{$sFieldName}->__toString());   
+        $oDate = $this->cleanDateFormat($sDateFormat, $oNode->{$sFieldName}->__toString());   
         $this->$sEntityObjectName->$sSetFunc($oDate);
-      }else{
+      } else {
         $this->$sEntityObjectName->$sSetFunc($oNode->{$sFieldName}->__toString());
       }
-      unset($sEntityObjectName,$sSetFunc,$sDateFormat,$oDate);
+      unset($sEntityObjectName, $sSetFunc, $sDateFormat, $oDate);
     }
   }
   
@@ -218,9 +217,9 @@ class JLPParser {
     *
     * @return \Datetime 
     */
-  private function cleanDateFormat($sDateFormat,$date)
+  private function cleanDateFormat($sDateFormat, $date)
   {
-    $oDate = \DateTime::createFromFormat($sDateFormat,$date);
+    $oDate = \DateTime::createFromFormat($sDateFormat, $date);
     
     return $oDate;
   }
@@ -246,7 +245,7 @@ class JLPParser {
 
     $this->oEm->persist($this->oAnnonceEntity);
 
-    if($this->oEm->flush())
+    if ($this->oEm->flush())
     {
       $this->iNbAnnonceTraite++;
     }
@@ -268,9 +267,9 @@ class JLPParser {
     
     
     
-    if(!empty($aImagesCollection))
+    if (!empty($aImagesCollection))
     {
-      foreach($aImagesCollection as $oAnnonceImages)
+      foreach ($aImagesCollection as $oAnnonceImages)
       {
         $this->oEm->remove($oAnnonceImages);
       }
@@ -294,7 +293,7 @@ class JLPParser {
     
     $oAnnonceEntity = $this->oEm->getRepository('JLPCoreBundle:Annonce')->findOneBy(array('id'=>$iIdAnnonce));
     
-    foreach($aAnnonceImages->{'photo'} as $oImageName)
+    foreach ($aAnnonceImages->{'photo'} as $oImageName)
     {
       $sImageName = $oImageName->__toString();
       $oImageEntity = new Images();
@@ -313,7 +312,7 @@ class JLPParser {
     return $this->iNbAnnonceTraite;
   }
   
-  public function getName(){
+  public function getName() {
     return 'jlp_core.parser';
   }
   

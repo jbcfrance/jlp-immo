@@ -40,7 +40,7 @@ class PasserelleExecuteCommand extends ContainerAwareCommand
             );
             
             
-            $logger = new ConsoleLogger($output,$verbosityLevelMap);
+            $logger = new ConsoleLogger($output, $verbosityLevelMap);
             
             $output->writeln("\n\r<question>Execution de la passerelle JLP-IMMO</question>");
 
@@ -52,7 +52,7 @@ class PasserelleExecuteCommand extends ContainerAwareCommand
             
         } catch (\Exception $e) {
             $output->writeln(
-                "\t<error>Passerelle Exception : " . $e . '</error>'
+                "\t<error>Passerelle Exception : ".$e.'</error>'
             );
         }
     }

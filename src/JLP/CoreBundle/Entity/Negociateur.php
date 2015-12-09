@@ -21,14 +21,14 @@ class Negociateur
      */
     private $id;
     /**
-    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Agence")
-    * @ORM\JoinColumn(nullable=false)
-    */
+     * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Agence")
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $agence;
     
     /**
-    * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Annonce", mappedBy="negociateur")
-    */
+     * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Annonce", mappedBy="negociateur")
+     */
     private $annonces; // Notez le « s », une annonce est liée à plusieurs candidatures
         
     /**

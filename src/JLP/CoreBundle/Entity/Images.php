@@ -31,9 +31,9 @@ class Images
     private $fileName;
     
     /**
-    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Annonce", inversedBy="images")
-    * @ORM\JoinColumn(nullable=false)
-    */
+     * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Annonce", inversedBy="images")
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $annonce;
 
     /**

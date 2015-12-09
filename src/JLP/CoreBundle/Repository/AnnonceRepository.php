@@ -9,10 +9,10 @@ namespace JLP\CoreBundle\Repository;
  * repository methods below.
  */
 class AnnonceRepository extends \Doctrine\ORM\EntityRepository
-{  
+{
   
-  public function getCoupsDeCoeurs()
-  {
+    public function getCoupsDeCoeurs()
+    {
     $oQb = $this
         ->createQueryBuilder('a')
         ->innerJoin('a.typeBien','tbbien')
@@ -22,12 +22,12 @@ class AnnonceRepository extends \Doctrine\ORM\EntityRepository
         ->addSelect('tmandat')  
         ->addSelect('img')
         ->where('a.coupDeCoeur',true)
-      ;
+        ;
 
         return $oQb
         ->getQuery()
         ->getResult()
-      ;
-  }
+        ;
+    }
 
 }

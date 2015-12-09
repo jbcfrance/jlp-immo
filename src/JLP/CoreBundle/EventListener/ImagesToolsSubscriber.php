@@ -49,10 +49,10 @@ class ImagesToolsSubscriber implements EventSubscriber
 
     public function createImages($aTypeImage, $sImageName)
     {
-      foreach($aTypeImage as $oTypeImage) {
+      foreach ($aTypeImage as $oTypeImage) {
        $oImagine = new Imagine();
        $oImagine->open(self::BUNDLE_IMAGE_DIR."source/".$sImageName)
-               ->resize(new Box($oTypeImage->getWidth(),$oTypeImage->getHeight()))
+               ->resize(new Box($oTypeImage->getWidth(), $oTypeImage->getHeight()))
                ->save(self::BUNDLE_IMAGE_DIR.$oTypeImage->getDir().'/'.$sImageName, array('jpeg_quality' => 100));
       }
     }
@@ -72,14 +72,14 @@ class ImagesToolsSubscriber implements EventSubscriber
     
     public function deleteImages($aTypeImage, $sImageName)
     {
-      foreach($aTypeImage as $oTypeImage){
+      foreach ($aTypeImage as $oTypeImage) {
         $sImageLink = self::BUNDLE_IMAGE_DIR.$oTypeImage->getDir()."/".$sImageName;
         $deleteImageProcess = new Process('rm '.$sImageLink);
         $deleteImageProcess->run();
         if (!$deleteImageProcess->isSuccessful()) {
           throw new ProcessFailedException($deleteImageProcess);
         }
-        unset($deleteImageProcess,$sImageLink);
+        unset($deleteImageProcess, $sImageLink);
       }
     }
 }
