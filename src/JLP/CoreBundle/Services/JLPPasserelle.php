@@ -12,7 +12,16 @@ use Doctrine\ORM\EntityManagerInterface;
 use Assetic\Exception\Exception;
 
 
-
+/**
+* Service Passerelle
+* 
+* @author      Jean-Baptiste CIEPKA
+* @version     1.0
+* @package     JLP
+* @bundle      CoreBundle
+*
+* 
+*/
 class JLPPasserelle
 {
   const   LOCAL_PATH        = "web/bundles/jlpcore/upload/";
@@ -55,6 +64,13 @@ class JLPPasserelle
     $this->xmlFilename = $this->ymlMapping['passerelle']['xml_filename'];
   }
   
+  /**
+    * execute
+    * 
+    * Method lauching the process. 
+    *
+    * @param Logger  $logger
+    */
   public function execute($logger){
 
       $this->logger = $logger;
@@ -73,6 +89,14 @@ class JLPPasserelle
     
   }
   
+  /**
+    * prepAnnonces
+    * 
+    * Methode preparing the Annonces by extracting the zip archive and moving the images to the images dir. 
+    *  
+    *
+    * @param string  $sFileName
+    */
   private function prepAnnonces($sFileName) {
     $filesystem = new Filesystem();
 
@@ -98,7 +122,14 @@ class JLPPasserelle
       $this->logger->error("$sFileName does not exists !");
     }	
   }
-
+  
+  /**
+    * extractionProcess
+    * 
+    * Method cleaning the target dir inorder to proceed to a new extraction of the ZIP Archive.
+    *
+    * @param string  $sFileToExtract
+    */
   private function extractionProcess( $sFileToExtract){  
     $cleaningProcess = new Process('rm -rf '.self::TARGET_UNZIP_DIR);
     $cleaningProcess->run();
@@ -119,7 +150,14 @@ class JLPPasserelle
     }
     return true;
   }
-
+  
+  /**
+    * moveSourceImage
+    * 
+    * Method searching the images jpg in the dir extracted from the zip and moving them in the images/source dir.
+    *
+    * @param void
+    */
   private function moveSourceImage(){
     $finder = new Finder();
     $finder->files()->name('*.jpg');
@@ -134,6 +172,13 @@ class JLPPasserelle
     }
   }
   
+  /**
+    * putAnnonceInStandBy
+    * 
+    * Method updating the status of each annonce to "Standby".
+    *
+    * @param void
+    */
   private function putAnnonceInStandBy()
   {
     $aAnnonceEntities = $this->em->getRepository('JLPCoreBundle:Annonce')->findAll();
@@ -149,7 +194,14 @@ class JLPPasserelle
     
   }
   
-  public function checkNegociateur(){
+  /**
+    * checkNegociateur
+    * 
+    * Method removing the negociateur without any annonce left. 
+    *
+    * @param void
+    */
+  private function checkNegociateur(){
     $this->logger->info("Delete Negociateur without any annonce."); 
     $aNegociateurEntities = $this->em->getRepository('JLPCoreBundle:Negociateur')->getNegociateurWithoutAnnonce();
     foreach($aNegociateurEntities as $oNegociateur)
@@ -159,7 +211,14 @@ class JLPPasserelle
     }
   }
   
-  public function checkAgence(){
+  /**
+    * checkAgence
+    * 
+    * Method removing the agence without any negociateur left. 
+    *
+    * @param void
+    */
+  private function checkAgence(){
     $this->logger->info("Delete Agence without any Negociateur.");
     $aAgenceEntities = $this->em->getRepository('JLPCoreBundle:Agence')->getAgenceWithoutNegociateur();
     foreach($aAgenceEntities as $oAgence)
@@ -169,6 +228,14 @@ class JLPPasserelle
     }
   }
   
+  /**
+    * deleteStandByAnnonce
+    * 
+    * This method delete the annonce that a left in standby status by the passerelle's process. 
+    * It's mean that they are not present in the XML source anymore. The images associated with the annonce are deleted two. 
+    *
+    * @param void
+    */
   private function deleteStandByAnnonce()
   {
     $this->logger->info("Delete Annonce still in standby"); 
@@ -189,8 +256,9 @@ class JLPPasserelle
       $this->em->flush($oAnnonce);
     }
   }
+  
   public function informations(){
-   $this->checkNegociateur();
+   return 'Information';
   }
   
   public function getName(){

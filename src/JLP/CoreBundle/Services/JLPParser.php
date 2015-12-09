@@ -12,10 +12,14 @@ use Psr\Log\LoggerInterface;
 use \Symfony\Component\Yaml\Yaml;
 
 /**
- * Description of JLPParser
- *
- * @author jciepka
- */
+* Service Parser
+* 
+* @author      Jean-Baptiste CIEPKA
+* @version     1.0
+* @package     JLP
+* @bundle      CoreBundle
+*
+*/
 class JLPParser {
   /**
    * @var EntityManagerInterface
@@ -76,7 +80,15 @@ class JLPParser {
     $this->oYmlMapping = Yaml::parse($sYmlMapping);
        
   }
-    
+  
+  /**
+    * execute
+    * 
+    * Method lauching the process.
+    *
+    * @param string $sXMLFileName
+    * @param Logger $logger
+    */  
   public function execute ($sXMLFileName,$logger)
   {
     $this->oLogger = $logger;
@@ -107,7 +119,14 @@ class JLPParser {
     return true; 
   } 
   
-  public function prepareMappedKey($oNode)
+  /**
+    * prepareMappedKey
+    * 
+    * Method initializing the Entitites by their primary key and creating new one if the id is not found.
+    *  
+    * @param simpleXMLElement  $oNode
+    */
+  private function prepareMappedKey($oNode)
   {
     $aXmlMappedKey = $this->oYmlMapping['passerelle']['keys_parser'];
     foreach ($aXmlMappedKey as $sKeyName => $aKeyInfos)  
@@ -128,7 +147,15 @@ class JLPParser {
       unset($sEntityObjectName,$sSetFunc,$oObjectName);
     }
   }
-  public function prepareTypeField($oNode)
+  
+  /**
+    * prepareTypeField
+    * 
+    * Method initializing the Annocne's Sub-Entitites by their primary key and creating new one if the id is not found.
+    *  
+    * @param simpleXMLElement  $oNode
+    */
+  private function prepareTypeField($oNode)
   {
     $aXmlTypeFields = $this->oYmlMapping['passerelle']['type_fields'];
     foreach ($aXmlTypeFields as $sFieldName => $aFieldInfos)  
@@ -152,7 +179,14 @@ class JLPParser {
     }
   }
   
-  public function prepareMappedFields($oNode)
+  /**
+    * prepareMappedFields
+    * 
+    * Method fetching the value for each entity field from the xml following the mapping given in conf. 
+    *  
+    * @param simpleXMLElement  $oNode
+    */
+  private function prepareMappedFields($oNode)
   {
     $aXmlMappedFields = $this->oYmlMapping['passerelle']['parser'];
     foreach ($aXmlMappedFields as $sFieldName => $aFieldInfos)  
@@ -173,14 +207,31 @@ class JLPParser {
     }
   }
   
-  public function cleanDateFormat($sDateFormat,$date)
+  /**
+    * cleanDateFormat
+    * 
+    * Method returning a Datatime object from a date with a specific format. 
+    *  
+    * @param string  $sDateFormat
+    * @param string  $date
+    *
+    * @return Datetime 
+    */
+  private function cleanDateFormat($sDateFormat,$date)
   {
     $oDate = \DateTime::createFromFormat($sDateFormat,$date);
     
     return $oDate;
   }
   
-  public function persistAndFlushEntitites()
+  /**
+    * persistAndFlushEntitites
+    * 
+    * Method cascading the persits of every entities updated during the process of one annonce. 
+    *  
+    * @param void
+    */
+  private function persistAndFlushEntitites()
   {
     $this->oEm->getClassMetaData(get_class($this->oAgenceEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
     $this->oEm->getClassMetaData(get_class($this->oNegociateurEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);  
@@ -200,7 +251,14 @@ class JLPParser {
     }
   } 
   
-  public function deleteImageFromAnnonce($oNode){
+  /**
+    * deleteImageFromAnnonce
+    * 
+    * Method deleting the existing images of the annonce.
+    *  
+    * @param void
+    */
+  private function deleteImageFromAnnonce($oNode){
     $iIdAnnonce = $oNode->{$this->oYmlMapping['passerelle']['xml_annonce_key']}->__toString();
     
     $oAnnonceEntity = $this->oEm->getRepository('JLPCoreBundle:Annonce')->findOneBy(array('id'=>$iIdAnnonce));
@@ -219,8 +277,15 @@ class JLPParser {
     }
 
   }
-    
-  public function extractImageFromAnnonce($oNode)
+   
+  /**
+    * extractImageFromAnnonce
+    * 
+    * Method inserting the images of each annonce in the bdd. 
+    *  
+    * @param void
+    */
+  private function extractImageFromAnnonce($oNode)
   {
     $aAnnonceImages = $oNode->{$this->oYmlMapping['passerelle']['xml_images_node']};
     
