@@ -6,7 +6,8 @@ namespace JLP\CoreBundle\Tests\Moke;
  *
  * @author jciepka
  */
-abstract class PasserelleMoke {
+abstract class PasserelleMoke
+{
   
     public static function mokePasserelleZip($bReturnConformZip = true)
     {

@@ -22,19 +22,19 @@ class JLPExporter
         $this->oEm = $oEm;
     }
   
-    public function setExportFormat(){
+    public function setExportFormat() {
     
     }
   
-    public function setParameters(){
+    public function setParameters() {
     
     }
   
-    public function export(){
+    public function export() {
     
     }
   
-    public function getName(){
+    public function getName() {
     return 'jlp_core.exporter';
     }
 }

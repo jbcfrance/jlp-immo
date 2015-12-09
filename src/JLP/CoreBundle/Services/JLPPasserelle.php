@@ -68,7 +68,7 @@ class JLPPasserelle
             $bStatusPasserelle = 0;
    
     
-    public function __construct($oKernel,$oYmlMapping,EntityManagerInterface $oEm,$bDebug = false){
+    public function __construct($oKernel, $oYmlMapping, EntityManagerInterface $oEm, $bDebug = false) {
     $this->bDebug = $bDebug; 
     $this->oKernel = $oKernel;
     $this->oEm = $oEm;
@@ -84,17 +84,17 @@ class JLPPasserelle
      *
      * @param Logger  $oLogger
      */
-    public function execute($oLogger){
+    public function execute($oLogger) {
 
         $this->oLogger = $oLogger;
       
-    if(!$this->prepAnnonces(self::LOCAL_PATH.$this->zipFilename)){
+    if (!$this->prepAnnonces(self::LOCAL_PATH.$this->zipFilename)) {
         $this->oLogger->error('Erreur lors de la preparation des annonces : Import stoppé !');
         throw new Exception('Erreur lors de la preparation des annonces : Import stoppé !');
     }
     
     $oParser = $this->oKernel->getContainer()->get('jlp_core.parser');
-    $oParser->execute(self::TARGET_UNZIP_DIR."/".$this->xmlFilename,$oLogger);
+    $oParser->execute(self::TARGET_UNZIP_DIR."/".$this->xmlFilename, $oLogger);
     $this->iNbAnnonceTraite = $oParser->getNbAnnonceTraite();
     $this->deleteStandByAnnonce();
     $this->checkNegociateur();
@@ -110,14 +110,15 @@ class JLPPasserelle
      *
      * @param string  $sFileName
      */
-    private function prepAnnonces($sFileName) {
+    private function prepAnnonces($sFileName)
+    {
     $oFilesystem = new Filesystem();
 
     $this->oLogger->info("ZIP : ".$sFileName);
-    if ( $oFilesystem->exists($sFileName) ) {
+    if ($oFilesystem->exists($sFileName)) {
         $this->oLogger->info("File Exists true");            
         //Upload du Zip
-        if($this->extractionProcess($sFileName)){
+        if ($this->extractionProcess($sFileName)) {
         $this->oLogger->info("Extraction du fichier ".$sFileName." réussit");    
         $this->moveSourceImage();
         //$oZipFile->delete();
@@ -126,12 +127,12 @@ class JLPPasserelle
         $this->putAnnonceInStandBy();
         
         return true;
-        }else{
+        } else {
         $this->oLogger->error("Erreur lors de l'extraction du fichier ".$sFileName);
         $this->bStatusPasserelle = 0;
         return false;
         }
-    }else{
+    } else {
         $this->oLogger->error("$sFileName does not exists !");
     }	
     }
@@ -143,7 +144,7 @@ class JLPPasserelle
      *
      * @param string  $sFileToExtract
      */
-    private function extractionProcess( $sFileToExtract){  
+    private function extractionProcess($sFileToExtract) {  
     $oCleaningProcess = new Process('rm -rf '.self::TARGET_UNZIP_DIR);
     $oCleaningProcess->run();
     if (!$oCleaningProcess->isSuccessful()) {
@@ -174,11 +175,11 @@ class JLPPasserelle
      *
      * @param void
      */
-    private function moveSourceImage(){
+    private function moveSourceImage() {
     $oFinder = new Finder();
     $oFinder->files()->name('*.jpg');
 
-    foreach($oFinder->in(self::TARGET_UNZIP_DIR) as $oImage){
+    foreach ($oFinder->in(self::TARGET_UNZIP_DIR) as $oImage) {
         $oMoveImageProcess = new Process('mv '.self::TARGET_UNZIP_DIR.'/'.$oImage->getFilename().' '.self::TARGET_IMAGE_DIR.$oImage->getFilename());
         $oMoveImageProcess->run();
         if (!$oMoveImageProcess->isSuccessful()) {
@@ -217,10 +218,10 @@ class JLPPasserelle
      *
      * @param void
      */
-    private function checkNegociateur(){
+    private function checkNegociateur() {
     $this->oLogger->info("Delete Negociateur without any annonce."); 
     $aNegociateurEntities = $this->oEm->getRepository('JLPCoreBundle:Negociateur')->getNegociateurWithoutAnnonce();
-    foreach($aNegociateurEntities as $oNegociateur)
+    foreach ($aNegociateurEntities as $oNegociateur)
     {
         $this->oEm->remove($oNegociateur);
         $this->oEm->flush($oNegociateur);
@@ -234,10 +235,10 @@ class JLPPasserelle
      *
      * @param void
      */
-    private function checkAgence(){
+    private function checkAgence() {
     $this->oLogger->info("Delete Agence without any Negociateur.");
     $aAgenceEntities = $this->oEm->getRepository('JLPCoreBundle:Agence')->getAgenceWithoutNegociateur();
-    foreach($aAgenceEntities as $oAgence)
+    foreach ($aAgenceEntities as $oAgence)
     {
         $this->oEm->remove($oAgence);
         $this->oEm->flush($oAgence);
@@ -275,9 +276,9 @@ class JLPPasserelle
      */
     private function deleteImages($aImagesCollection)
     {
-    if(!empty($aImagesCollection))
+    if (!empty($aImagesCollection))
     {
-        foreach($aImagesCollection as $oAnnonceImages)
+        foreach ($aImagesCollection as $oAnnonceImages)
         {
         $this->oEm->remove($oAnnonceImages);
         }
@@ -286,11 +287,11 @@ class JLPPasserelle
     }
   
   
-    public function informations(){
+    public function informations() {
     return 'Information';
     }
   
-    public function getName(){
+    public function getName() {
     return 'jlp_core.passerelle';
     }
 }
