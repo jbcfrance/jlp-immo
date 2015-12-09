@@ -21,76 +21,76 @@ use Symfony\Component\DependencyInjection\SimpleXMLElement;
 */
 class JLPParser
 {
-  /**
-   * @var EntityManagerInterface
-   */
-  protected $oEm;
+    /**
+     * @var EntityManagerInterface
+     */
+    protected $oEm;
   
-  /**
-   * @var Kernel
-   */
-  protected $oKernel;
+    /**
+     * @var Kernel
+     */
+    protected $oKernel;
   
-  /**
-   * @var SimpleXMLElement
-   */
-  protected $oXml;
+    /**
+     * @var SimpleXMLElement
+     */
+    protected $oXml;
   
-  /**
-   * @var LoggerInterface
-   */
-  protected $oLogger;
+    /**
+     * @var LoggerInterface
+     */
+    protected $oLogger;
   
-  /**
-   * @var YamlConfig
-   */
-  protected $oYmlMapping;
+    /**
+     * @var YamlConfig
+     */
+    protected $oYmlMapping;
   
-  /*Agence Variables*/
-  protected $aAgenceInfo = array();
-  protected $oAgenceEntity = null;
-  protected $aYmlAgenceMapping = array();
+    /*Agence Variables*/
+    protected $aAgenceInfo = array();
+    protected $oAgenceEntity = null;
+    protected $aYmlAgenceMapping = array();
   
-  /*Negociateur Variables*/
-  protected $aNegociateurInfo = array();
-  protected $oNegociateurEntity = null;
-  protected $aYmlNegociateurMapping = array();
+    /*Negociateur Variables*/
+    protected $aNegociateurInfo = array();
+    protected $oNegociateurEntity = null;
+    protected $aYmlNegociateurMapping = array();
   
-  /*Annonce Variables*/
-  protected $aAnnonceInfo = array();
-  protected $oAnnonceEntity = null;
-  protected $aYmlAnnonceMapping = array();
+    /*Annonce Variables*/
+    protected $aAnnonceInfo = array();
+    protected $oAnnonceEntity = null;
+    protected $aYmlAnnonceMapping = array();
   
-  /*TypeBien Variables*/
-  protected $oTypeBienEntity = null;
+    /*TypeBien Variables*/
+    protected $oTypeBienEntity = null;
   
-  /*TypeMandat Variables*/
-  protected $oTypeMandatEntity = null;
+    /*TypeMandat Variables*/
+    protected $oTypeMandatEntity = null;
   
-  /*Counts */
-  public $iNbAnnonceTraite = 0;
+    /*Counts */
+    public $iNbAnnonceTraite = 0;
   
   
-  // On injecte l'EntityManager
-  public function __construct($oKernel, EntityManagerInterface $oEm, LoggerInterface $oLogger, $sYmlMapping)
-  {
+    // On injecte l'EntityManager
+    public function __construct($oKernel, EntityManagerInterface $oEm, LoggerInterface $oLogger, $sYmlMapping)
+    {
     $this->oEm = $oEm;
     $this->oKernel = $oKernel;
     $this->oLogger = $oLogger;
     $this->oYmlMapping = Yaml::parse($sYmlMapping);
        
-  }
+    }
   
-  /**
-    * execute
-    * 
-    * Method lauching the process.
-    *
-    * @param string $sXMLFileName
-    * @param LoggerInterface $logger
-    */  
-  public function execute($sXMLFileName, $logger)
-  {
+    /**
+     * execute
+     * 
+     * Method lauching the process.
+     *
+     * @param string $sXMLFileName
+     * @param LoggerInterface $logger
+     */  
+    public function execute($sXMLFileName, $logger)
+    {
     $this->oLogger = $logger;
     $this->oXml = simplexml_load_file($sXMLFileName);
     $this->oLogger->info("Execute JLPParser");
@@ -99,140 +99,140 @@ class JLPParser
     
     foreach ($this->oXml->{$sMainNodeName} as $oNode)
     {
-      /*Traitement préliminaire du XML*/
+        /*Traitement préliminaire du XML*/
       
-      $this->prepareMappedKey($oNode);
+        $this->prepareMappedKey($oNode);
       
-      $this->prepareTypeField($oNode);
+        $this->prepareTypeField($oNode);
       
-      $this->prepareMappedFields($oNode);
+        $this->prepareMappedFields($oNode);
 
-      /* Persisting the entities*/
-      $this->oAnnonceEntity->setStatusAnnonce("active");
-      $this->persistAndFlushEntitites();
+        /* Persisting the entities*/
+        $this->oAnnonceEntity->setStatusAnnonce("active");
+        $this->persistAndFlushEntitites();
       
-      $this->deleteImageFromAnnonce($oNode);
-      $this->extractImageFromAnnonce($oNode);
+        $this->deleteImageFromAnnonce($oNode);
+        $this->extractImageFromAnnonce($oNode);
       
     }
 
     return true; 
-  } 
+    } 
   
-  /**
-    * prepareMappedKey
-    * 
-    * Method initializing the Entitites by their primary key and creating new one if the id is not found.
-    *  
-    * @param SimpleXMLElement  $oNode
-    */
-  private function prepareMappedKey(SimpleXMLElement $oNode)
-  {
+    /**
+     * prepareMappedKey
+     * 
+     * Method initializing the Entitites by their primary key and creating new one if the id is not found.
+     *  
+     * @param SimpleXMLElement  $oNode
+     */
+    private function prepareMappedKey(SimpleXMLElement $oNode)
+    {
     $aXmlMappedKey = $this->oYmlMapping['passerelle']['keys_parser'];
     foreach ($aXmlMappedKey as $sKeyName => $aKeyInfos)  
     {
-      $sEntityObjectName = 'o'.$aKeyInfos['entity']."Entity";
+        $sEntityObjectName = 'o'.$aKeyInfos['entity']."Entity";
 
-      $oObjectName = $this->oEm->getRepository('JLPCoreBundle:'.$aKeyInfos['entity'])
-                               ->findOneBy(array($aKeyInfos['field']=>$oNode->$sKeyName->__toString()));
-      if (!empty($oObjectName)) { 
+        $oObjectName = $this->oEm->getRepository('JLPCoreBundle:'.$aKeyInfos['entity'])
+                                ->findOneBy(array($aKeyInfos['field']=>$oNode->$sKeyName->__toString()));
+        if (!empty($oObjectName)) { 
         $this->$sEntityObjectName = $oObjectName; 
-      } else {
+        } else {
         $sEntityClassName = "JLP\CoreBundle\Entity\\".$aKeyInfos['entity'];
         $this->$sEntityObjectName = new $sEntityClassName;
         $sSetFunc = 'set'.ucfirst($aKeyInfos['field']);
 
         $this->$sEntityObjectName->$sSetFunc($oNode->{$sKeyName}->__toString());
-      }
-      unset($sEntityObjectName, $sSetFunc, $oObjectName);
+        }
+        unset($sEntityObjectName, $sSetFunc, $oObjectName);
     }
-  }
+    }
   
-  /**
-    * prepareTypeField
-    * 
-    * Method initializing the Annocne's Sub-Entitites by their primary key and creating new one if the id is not found.
-    *  
-    * @param SimpleXMLElement  $oNode
-    */
-  private function prepareTypeField(SimpleXMLElement $oNode)
-  {
+    /**
+     * prepareTypeField
+     * 
+     * Method initializing the Annocne's Sub-Entitites by their primary key and creating new one if the id is not found.
+     *  
+     * @param SimpleXMLElement  $oNode
+     */
+    private function prepareTypeField(SimpleXMLElement $oNode)
+    {
     $aXmlTypeFields = $this->oYmlMapping['passerelle']['type_fields'];
     foreach ($aXmlTypeFields as $sFieldName => $aFieldInfos)  
     { 
-      $sEntityObjectName = 'o'.$aFieldInfos['parent_entity']."Entity";
-      $oTypeEntity = $this->oEm->getRepository('JLPCoreBundle:'.$aFieldInfos['entity'])
-                               ->findOneBy(array("type"=>strtolower($oNode->{$sFieldName}->__toString())));
-      if (!empty($oTypeEntity))
-      {
+        $sEntityObjectName = 'o'.$aFieldInfos['parent_entity']."Entity";
+        $oTypeEntity = $this->oEm->getRepository('JLPCoreBundle:'.$aFieldInfos['entity'])
+                                ->findOneBy(array("type"=>strtolower($oNode->{$sFieldName}->__toString())));
+        if (!empty($oTypeEntity))
+        {
         $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
         $this->$sEntityObjectName->$sSetFunc($oTypeEntity);
-      } else {
+        } else {
         $sEntityTypeClassName = "JLP\CoreBundle\Entity\\".$aFieldInfos['entity'];
         $oTypeEntity = new $sEntityTypeClassName;
         $oTypeEntity->setType(strtolower($oNode->{$sFieldName}->__toString()));
         $this->oEm->persist($oTypeEntity);
         $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
         $this->$sEntityObjectName->$sSetFunc($oTypeEntity);
-      }
-      unset($sEntityObjectName, $sSetFunc, $oTypeEntity);
+        }
+        unset($sEntityObjectName, $sSetFunc, $oTypeEntity);
     }
-  }
+    }
   
-  /**
-    * prepareMappedFields
-    * 
-    * Method fetching the value for each entity field from the xml following the mapping given in conf. 
-    *  
-    * @param SimpleXMLElement  $oNode
-    */
-  private function prepareMappedFields(SimpleXMLElement $oNode)
-  {
+    /**
+     * prepareMappedFields
+     * 
+     * Method fetching the value for each entity field from the xml following the mapping given in conf. 
+     *  
+     * @param SimpleXMLElement  $oNode
+     */
+    private function prepareMappedFields(SimpleXMLElement $oNode)
+    {
     $aXmlMappedFields = $this->oYmlMapping['passerelle']['parser'];
     foreach ($aXmlMappedFields as $sFieldName => $aFieldInfos)  
     { 
-      $sEntityObjectName = 'o'.$aFieldInfos['entity']."Entity";
-      $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
-      if (true === isset($aFieldInfos['date']) && true === $aFieldInfos['date'])
-      {
+        $sEntityObjectName = 'o'.$aFieldInfos['entity']."Entity";
+        $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
+        if (true === isset($aFieldInfos['date']) && true === $aFieldInfos['date'])
+        {
 
         $sDateFormat = isset($aFieldInfos['date_format']) ? $aFieldInfos['date_format'] : 'j/m/Y';
 
         $oDate = $this->cleanDateFormat($sDateFormat, $oNode->{$sFieldName}->__toString());   
         $this->$sEntityObjectName->$sSetFunc($oDate);
-      } else {
+        } else {
         $this->$sEntityObjectName->$sSetFunc($oNode->{$sFieldName}->__toString());
-      }
-      unset($sEntityObjectName, $sSetFunc, $sDateFormat, $oDate);
+        }
+        unset($sEntityObjectName, $sSetFunc, $sDateFormat, $oDate);
     }
-  }
+    }
   
-  /**
-    * cleanDateFormat
-    * 
-    * Method returning a Datatime object from a date with a specific format. 
-    *  
-    * @param string  $sDateFormat
-    * @param string  $date
-    *
-    * @return \Datetime 
-    */
-  private function cleanDateFormat($sDateFormat, $date)
-  {
+    /**
+     * cleanDateFormat
+     * 
+     * Method returning a Datatime object from a date with a specific format. 
+     *  
+     * @param string  $sDateFormat
+     * @param string  $date
+     *
+     * @return \Datetime 
+     */
+    private function cleanDateFormat($sDateFormat, $date)
+    {
     $oDate = \DateTime::createFromFormat($sDateFormat, $date);
     
     return $oDate;
-  }
+    }
   
-  /**
-    * persistAndFlushEntitites
-    * 
-    * Method cascading the persits of every entities updated during the process of one annonce. 
-    *  
-    * @param void
-    */
-  private function persistAndFlushEntitites()
-  {
+    /**
+     * persistAndFlushEntitites
+     * 
+     * Method cascading the persits of every entities updated during the process of one annonce. 
+     *  
+     * @param void
+     */
+    private function persistAndFlushEntitites()
+    {
     $this->oEm->getClassMetaData(get_class($this->oAgenceEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
     $this->oEm->getClassMetaData(get_class($this->oNegociateurEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);  
     $this->oEm->getClassMetaData(get_class($this->oAnnonceEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
@@ -247,18 +247,18 @@ class JLPParser
 
     if ($this->oEm->flush())
     {
-      $this->iNbAnnonceTraite++;
+        $this->iNbAnnonceTraite++;
     }
-  } 
+    } 
   
-  /**
-    * deleteImageFromAnnonce
-    * 
-    * Method deleting the existing images of the annonce.
-    *  
-    * @param SimpleXMLElement $oNode
-    */
-  private function deleteImageFromAnnonce(SimpleXMLElement $oNode){
+    /**
+     * deleteImageFromAnnonce
+     * 
+     * Method deleting the existing images of the annonce.
+     *  
+     * @param SimpleXMLElement $oNode
+     */
+    private function deleteImageFromAnnonce(SimpleXMLElement $oNode){
     $iIdAnnonce = $oNode->{$this->oYmlMapping['passerelle']['xml_annonce_key']}->__toString();
     
     $oAnnonceEntity = $this->oEm->getRepository('JLPCoreBundle:Annonce')->findOneBy(array('id'=>$iIdAnnonce));
@@ -269,24 +269,24 @@ class JLPParser
     
     if (!empty($aImagesCollection))
     {
-      foreach ($aImagesCollection as $oAnnonceImages)
-      {
+        foreach ($aImagesCollection as $oAnnonceImages)
+        {
         $this->oEm->remove($oAnnonceImages);
-      }
-      $this->oEm->flush();
+        }
+        $this->oEm->flush();
     }
 
-  }
+    }
    
-  /**
-    * extractImageFromAnnonce
-    * 
-    * Method inserting the images of each annonce in the bdd. 
-    *  
-    * @param SimpleXMLElement $oNode
-    */
-  private function extractImageFromAnnonce(SimpleXMLElement $oNode)
-  {
+    /**
+     * extractImageFromAnnonce
+     * 
+     * Method inserting the images of each annonce in the bdd. 
+     *  
+     * @param SimpleXMLElement $oNode
+     */
+    private function extractImageFromAnnonce(SimpleXMLElement $oNode)
+    {
     $aAnnonceImages = $oNode->{$this->oYmlMapping['passerelle']['xml_images_node']};
     
     $iIdAnnonce = $oNode->{$this->oYmlMapping['passerelle']['xml_annonce_key']}->__toString();
@@ -295,25 +295,25 @@ class JLPParser
     
     foreach ($aAnnonceImages->{'photo'} as $oImageName)
     {
-      $sImageName = $oImageName->__toString();
-      $oImageEntity = new Images();
-      $oImageEntity->setFileName($sImageName);
-      $oImageEntity->setAnnonce($oAnnonceEntity);
-      $this->oEm->persist($oImageEntity);
+        $sImageName = $oImageName->__toString();
+        $oImageEntity = new Images();
+        $oImageEntity->setFileName($sImageName);
+        $oImageEntity->setAnnonce($oAnnonceEntity);
+        $this->oEm->persist($oImageEntity);
       
     }
 
     $this->oEm->flush();
     
-  }
+    }
   
-  public function getNbAnnonceTraite()
-  {
+    public function getNbAnnonceTraite()
+    {
     return $this->iNbAnnonceTraite;
-  }
+    }
   
-  public function getName() {
+    public function getName() {
     return 'jlp_core.parser';
-  }
+    }
   
 }

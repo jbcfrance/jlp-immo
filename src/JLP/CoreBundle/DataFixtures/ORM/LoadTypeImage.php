@@ -10,7 +10,7 @@ use JLP\CoreBundle\Entity\TypeImage;
 class LoadTypeImage implements FixtureInterface
 {
     public function load(ObjectManager $oManager)
-    {  
+    {
     $aTypes = array(
         "Thumb" => array("width"=>180, "height"=>120, "dir"=>"thumb"),
         "Sd" => array("width"=>720, "height"=>483, "dir"=>"sd"),

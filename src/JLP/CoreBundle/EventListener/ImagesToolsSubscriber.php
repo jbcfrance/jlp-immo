@@ -34,52 +34,52 @@ class ImagesToolsSubscriber implements EventSubscriber
     public function postPersist(LifecycleEventArgs $args)
     {
       
-      $oEntity = $args->getEntity();
-      $oEm = $args->getEntityManager();
+        $oEntity = $args->getEntity();
+        $oEm = $args->getEntityManager();
       
-      if ($oEntity instanceof Images) {  
+        if ($oEntity instanceof Images) {  
         
         $aTypeImage = $oEm->getRepository('JLPCoreBundle:TypeImage')->findAll();
         $sImageName = $oEntity->getFilename();
         $this->logger->info("postPersist Images : ".$sImageName);
         $this->createImages($aTypeImage, $sImageName);
         unset($aTypeImage, $sImageName);
-      }
+        }
     }
 
     public function createImages($aTypeImage, $sImageName)
     {
-      foreach ($aTypeImage as $oTypeImage) {
-       $oImagine = new Imagine();
-       $oImagine->open(self::BUNDLE_IMAGE_DIR."source/".$sImageName)
-               ->resize(new Box($oTypeImage->getWidth(), $oTypeImage->getHeight()))
-               ->save(self::BUNDLE_IMAGE_DIR.$oTypeImage->getDir().'/'.$sImageName, array('jpeg_quality' => 100));
-      }
+        foreach ($aTypeImage as $oTypeImage) {
+        $oImagine = new Imagine();
+        $oImagine->open(self::BUNDLE_IMAGE_DIR."source/".$sImageName)
+                ->resize(new Box($oTypeImage->getWidth(), $oTypeImage->getHeight()))
+                ->save(self::BUNDLE_IMAGE_DIR.$oTypeImage->getDir().'/'.$sImageName, array('jpeg_quality' => 100));
+        }
     }
     
     
     public function preRemove(LifecycleEventArgs $args)
     {
-      $oEntity = $args->getEntity();
-      $oEm = $args->getEntityManager();
-      if ($oEntity instanceof Images && $oEntity->getId() === null) {
+        $oEntity = $args->getEntity();
+        $oEm = $args->getEntityManager();
+        if ($oEntity instanceof Images && $oEntity->getId() === null) {
         $aTypeImage = $oEm->getRepository('JLPCoreBundle:TypeImage')->findAll();
         $sImageName = $oEntity->getFilename();
         $this->deleteImages($aTypeImage, $sImageName);
         unset($aTypeImage, $sImageName);
-      }
+        }
     }
     
     public function deleteImages($aTypeImage, $sImageName)
     {
-      foreach ($aTypeImage as $oTypeImage) {
+        foreach ($aTypeImage as $oTypeImage) {
         $sImageLink = self::BUNDLE_IMAGE_DIR.$oTypeImage->getDir()."/".$sImageName;
         $deleteImageProcess = new Process('rm '.$sImageLink);
         $deleteImageProcess->run();
         if (!$deleteImageProcess->isSuccessful()) {
-          throw new ProcessFailedException($deleteImageProcess);
+            throw new ProcessFailedException($deleteImageProcess);
         }
         unset($deleteImageProcess, $sImageLink);
-      }
+        }
     }
 }
