@@ -10,6 +10,7 @@ use JLP\CoreBundle\Entity\Images;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use \Symfony\Component\Yaml\Yaml;
+use Symfony\Component\DependencyInjection\SimpleXMLElement;
 
 /**
 * Service Parser
@@ -256,9 +257,9 @@ class JLPParser {
     * 
     * Method deleting the existing images of the annonce.
     *  
-    * @param void
+    * @param SimpleXMLElement $oNode
     */
-  private function deleteImageFromAnnonce($oNode){
+  private function deleteImageFromAnnonce(SimpleXMLElement $oNode){
     $iIdAnnonce = $oNode->{$this->oYmlMapping['passerelle']['xml_annonce_key']}->__toString();
     
     $oAnnonceEntity = $this->oEm->getRepository('JLPCoreBundle:Annonce')->findOneBy(array('id'=>$iIdAnnonce));
@@ -283,9 +284,9 @@ class JLPParser {
     * 
     * Method inserting the images of each annonce in the bdd. 
     *  
-    * @param void
+    * @param SimpleXMLElement $oNode
     */
-  private function extractImageFromAnnonce($oNode)
+  private function extractImageFromAnnonce(SimpleXMLElement $oNode)
   {
     $aAnnonceImages = $oNode->{$this->oYmlMapping['passerelle']['xml_images_node']};
     
