@@ -4,9 +4,7 @@ namespace JLP\CoreBundle\Command;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Output\ConsoleOutputInterface;
 use Symfony\Component\Console\Logger\ConsoleLogger;
-use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 
 

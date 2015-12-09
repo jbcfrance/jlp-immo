@@ -3,7 +3,7 @@
 namespace JLP\CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\QueryBuilder;
+
 
 
 class NegociateurRepository extends EntityRepository

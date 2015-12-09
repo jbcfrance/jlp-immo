@@ -77,7 +77,15 @@ class ProgrammeNeuf
      */
     private $alt;
     
+    /**
+     * @var string
+     */
     private $file;
+    
+    /**
+     * @var string
+     */
+    private $tempFilename;
 
     public function getFile()
     {

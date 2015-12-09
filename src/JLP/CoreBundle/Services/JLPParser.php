@@ -8,7 +8,6 @@ use JLP\CoreBundle\Entity\Images;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use \Symfony\Component\Yaml\Yaml;
-use Symfony\Component\DependencyInjection\SimpleXMLElement;
 
 /**
 * Service Parser
@@ -32,7 +31,7 @@ class JLPParser
     protected $oKernel;
   
     /**
-     * @var SimpleXMLElement
+     * @var \SimpleXMLElement
      */
     protected $oXml;
   
@@ -124,9 +123,9 @@ class JLPParser
      * 
      * Method initializing the Entitites by their primary key and creating new one if the id is not found.
      *  
-     * @param SimpleXMLElement  $oNode
+     * @param \SimpleXMLElement  $oNode
      */
-    private function prepareMappedKey(SimpleXMLElement $oNode)
+    private function prepareMappedKey(\SimpleXMLElement $oNode)
     {
     $aXmlMappedKey = $this->oYmlMapping['passerelle']['keys_parser'];
     foreach ($aXmlMappedKey as $sKeyName => $aKeyInfos)  
@@ -153,9 +152,9 @@ class JLPParser
      * 
      * Method initializing the Annocne's Sub-Entitites by their primary key and creating new one if the id is not found.
      *  
-     * @param SimpleXMLElement  $oNode
+     * @param \SimpleXMLElement  $oNode
      */
-    private function prepareTypeField(SimpleXMLElement $oNode)
+    private function prepareTypeField(\SimpleXMLElement $oNode)
     {
     $aXmlTypeFields = $this->oYmlMapping['passerelle']['type_fields'];
     foreach ($aXmlTypeFields as $sFieldName => $aFieldInfos)  
@@ -184,9 +183,9 @@ class JLPParser
      * 
      * Method fetching the value for each entity field from the xml following the mapping given in conf. 
      *  
-     * @param SimpleXMLElement  $oNode
+     * @param \SimpleXMLElement  $oNode
      */
-    private function prepareMappedFields(SimpleXMLElement $oNode)
+    private function prepareMappedFields(\SimpleXMLElement $oNode)
     {
     $aXmlMappedFields = $this->oYmlMapping['passerelle']['parser'];
     foreach ($aXmlMappedFields as $sFieldName => $aFieldInfos)  
@@ -256,9 +255,9 @@ class JLPParser
      * 
      * Method deleting the existing images of the annonce.
      *  
-     * @param SimpleXMLElement $oNode
+     * @param \SimpleXMLElement $oNode
      */
-    private function deleteImageFromAnnonce(SimpleXMLElement $oNode)
+    private function deleteImageFromAnnonce(\SimpleXMLElement $oNode)
     {
     $iIdAnnonce = $oNode->{$this->oYmlMapping['passerelle']['xml_annonce_key']}->__toString();
     
@@ -284,9 +283,9 @@ class JLPParser
      * 
      * Method inserting the images of each annonce in the bdd. 
      *  
-     * @param SimpleXMLElement $oNode
+     * @param \SimpleXMLElement $oNode
      */
-    private function extractImageFromAnnonce(SimpleXMLElement $oNode)
+    private function extractImageFromAnnonce( \SimpleXMLElement $oNode)
     {
     $aAnnonceImages = $oNode->{$this->oYmlMapping['passerelle']['xml_images_node']};
     
