@@ -8,8 +8,8 @@ use Doctrine\ORM\QueryBuilder;
 
 class NegociateurRepository extends EntityRepository
 {
-  public function getNegociateurWithoutAnnonce()
-  {
+    public function getNegociateurWithoutAnnonce()
+    {
 
     $qb = $this->createQueryBuilder('n')
             ->leftJoin('n.annonces', 'a')
@@ -18,6 +18,6 @@ class NegociateurRepository extends EntityRepository
     $aResult = $qb->getQuery()->getResult();
     
     return $aResult;
-  }
+    }
   
 }

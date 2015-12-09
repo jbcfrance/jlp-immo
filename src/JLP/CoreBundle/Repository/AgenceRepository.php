@@ -11,8 +11,8 @@ namespace JLP\CoreBundle\Repository;
 class AgenceRepository extends \Doctrine\ORM\EntityRepository
 {
   
-  public function getAgenceWithoutNegociateur()
-  {
+    public function getAgenceWithoutNegociateur()
+    {
 
     $qb = $this->createQueryBuilder('ag')
             ->leftJoin('ag.negociateurs', 'n')
@@ -21,6 +21,6 @@ class AgenceRepository extends \Doctrine\ORM\EntityRepository
     $aResult = $qb->getQuery()->getResult();
     
     return $aResult;
-  }
+    }
   
 }

@@ -8,11 +8,11 @@ namespace JLP\CoreBundle\Tests\Moke;
  */
 abstract class PasserelleMoke {
   
-  public static function mokePasserelleZip($bReturnConformZip = true)
-  {
+    public static function mokePasserelleZip($bReturnConformZip = true)
+    {
     if($bReturnConformZip){
       
     }
-  }
+    }
   
 }

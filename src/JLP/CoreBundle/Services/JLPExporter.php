@@ -15,26 +15,26 @@ use Doctrine\ORM\EntityManagerInterface;
 class JLPExporter
 {
   
-  private $oEm;
+    private $oEm;
   
-  public function __construct(EntityManagerInterface $oEm)
-  {
-      $this->oEm = $oEm;
-  }
+    public function __construct(EntityManagerInterface $oEm)
+    {
+        $this->oEm = $oEm;
+    }
   
-  public function setExportFormat(){
+    public function setExportFormat(){
     
-  }
+    }
   
-  public function setParameters(){
+    public function setParameters(){
     
-  }
+    }
   
-  public function export(){
+    public function export(){
     
-  }
+    }
   
-  public function getName(){
+    public function getName(){
     return 'jlp_core.exporter';
-  }
+    }
 }

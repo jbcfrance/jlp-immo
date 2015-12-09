@@ -46,7 +46,7 @@ class PasserelleInfoCommand extends ContainerAwareCommand
             );
             
             
-            $logger = new ConsoleLogger($output,$verbosityLevelMap,$formatLevelMap);
+            $logger = new ConsoleLogger($output, $verbosityLevelMap, $formatLevelMap);
             
             $output->writeln("\n\r<question>Informations de la passerelle JLP-IMMO</question>");
 
@@ -55,14 +55,14 @@ class PasserelleInfoCommand extends ContainerAwareCommand
             $responseServices = $services->informations($logger);
 
             $output->writeln(
-                "\t<info>Passerelle informations : " . $responseServices . '</info>'
+                "\t<info>Passerelle informations : ".$responseServices.'</info>'
             );
             
             $output->writeln("\n\r");
             
         } catch (\Exception $e) {
             $output->writeln(
-                "\t<error>Passerelle Exception : " . $e . '</error>'
+                "\t<error>Passerelle Exception : ".$e.'</error>'
             );
         }
     }

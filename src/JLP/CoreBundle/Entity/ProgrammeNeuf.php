@@ -73,8 +73,8 @@ class ProgrammeNeuf
     private $url;
     
     /**
-    * @ORM\Column(name="alt", type="string", length=255)
-    */
+     * @ORM\Column(name="alt", type="string", length=255)
+     */
     private $alt;
     
     private $file;
@@ -93,10 +93,10 @@ class ProgrammeNeuf
     // On vérifie si on avait déjà un fichier pour cette entité
     if (null !== $this->url) {
         // On sauvegarde l'extension du fichier pour le supprimer plus tard
-      $this->tempFilename = $this->url;
+        $this->tempFilename = $this->url;
 
-      // On réinitialise les valeurs des attributs url et alt
-      $this->url = null;
+        // On réinitialise les valeurs des attributs url et alt
+        $this->url = null;
         $this->alt = null;
     }
     }
