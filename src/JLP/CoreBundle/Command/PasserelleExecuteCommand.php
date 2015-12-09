@@ -48,6 +48,8 @@ class PasserelleExecuteCommand extends ContainerAwareCommand
             $services = $this->getContainer()->get('jlp_core.passerelle');
             $responseServices = $services->execute($logger);
             
+            $output->writeln("<info>Passerelle resultat : ".print_r($responseServices,true)."</info>");
+            
             $output->writeln("\n\r");
             
         } catch (\Exception $e) {

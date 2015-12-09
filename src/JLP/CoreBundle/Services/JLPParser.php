@@ -258,7 +258,8 @@ class JLPParser
      *  
      * @param SimpleXMLElement $oNode
      */
-    private function deleteImageFromAnnonce(SimpleXMLElement $oNode){
+    private function deleteImageFromAnnonce(SimpleXMLElement $oNode)
+    {
     $iIdAnnonce = $oNode->{$this->oYmlMapping['passerelle']['xml_annonce_key']}->__toString();
     
     $oAnnonceEntity = $this->oEm->getRepository('JLPCoreBundle:Annonce')->findOneBy(array('id'=>$iIdAnnonce));
@@ -312,8 +313,9 @@ class JLPParser
     return $this->iNbAnnonceTraite;
     }
   
-    public function getName() {
-    return 'jlp_core.parser';
+    public function getName()
+    {
+      return 'jlp_core.parser';
     }
   
 }

@@ -79,8 +79,6 @@ class ProgrammeNeuf
     
     private $file;
 
-    private $tempFilename;
-
     public function getFile()
     {
         return $this->file;

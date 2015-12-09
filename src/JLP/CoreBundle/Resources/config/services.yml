@@ -21,4 +21,3 @@ services:
     jlp_core.exporter:
         class: JLP\CoreBundle\Services\JLPExporter
         arguments: [@kernel,@doctrine.orm.entity_manager]
-                

@@ -15,13 +15,13 @@ class AnnonceRepository extends \Doctrine\ORM\EntityRepository
     {
     $oQb = $this
         ->createQueryBuilder('a')
-        ->innerJoin('a.typeBien','tbbien')
+        ->innerJoin('a.typeBien', 'tbbien')
         ->innerJoin('a.typeMandat', 'tmandat')
         ->leftJoin('a.images', 'img')
         ->addSelect('tbbien')   
         ->addSelect('tmandat')  
         ->addSelect('img')
-        ->where('a.coupDeCoeur',true)
+        ->where('a.coupDeCoeur', true)
         ;
 
         return $oQb
