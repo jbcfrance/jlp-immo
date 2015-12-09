@@ -61,7 +61,9 @@ class PasserelleInfoCommand extends ContainerAwareCommand
             $output->writeln("\n\r");
             
         } catch (\Exception $e) {
-            
+            $output->writeln(
+                "\t<error>Passerelle Exception : " . $e . '</error>'
+            );
         }
     }
 }

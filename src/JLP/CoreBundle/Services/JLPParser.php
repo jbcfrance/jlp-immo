@@ -37,7 +37,7 @@ class JLPParser {
   protected $oXml;
   
   /**
-   * @var ConsoleLogger
+   * @var LoggerInterface
    */
   protected $oLogger;
   
@@ -87,7 +87,7 @@ class JLPParser {
     * Method lauching the process.
     *
     * @param string $sXMLFileName
-    * @param Logger $logger
+    * @param LoggerInterface $logger
     */  
   public function execute ($sXMLFileName,$logger)
   {
@@ -124,7 +124,7 @@ class JLPParser {
     * 
     * Method initializing the Entitites by their primary key and creating new one if the id is not found.
     *  
-    * @param simpleXMLElement  $oNode
+    * @param SimpleXMLElement  $oNode
     */
   private function prepareMappedKey($oNode)
   {
@@ -215,7 +215,7 @@ class JLPParser {
     * @param string  $sDateFormat
     * @param string  $date
     *
-    * @return Datetime 
+    * @return \Datetime 
     */
   private function cleanDateFormat($sDateFormat,$date)
   {
