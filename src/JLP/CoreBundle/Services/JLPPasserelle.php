@@ -57,15 +57,48 @@ class JLPPasserelle
      * @var YamlConfig
      */
     protected $oYmlMapping;
-  
+    
+    /**
+     *
+     * @var string
+     */
     private $zipFilename;
+    
+    /**
+     *
+     * @var string
+     */
     private $xmlFilename;
-
-    private $iNbAnnonceTraite = 0,
-            $iNbPhotoMaj = 0,
-            $iNbAnnonceSuppr = 0,
-            $iNbAnnonceAjouter = 0,
-            $bStatusPasserelle = 0;
+    
+    /**
+     *
+     * @var integer
+     */
+    private $iNbAnnonceTraite = 0;
+    
+    /**
+     *
+     * @var integer
+     */
+    private $iNbPhotoMaj = 0;
+    
+    /**
+     *
+     * @var integer
+     */
+    private $iNbAnnonceSuppr = 0;
+    
+    /**
+     *
+     * @var integer
+     */
+    private $iNbAnnonceAjouter = 0;
+    
+    /**
+     *
+     * @var integer
+     */
+    private $bStatusPasserelle = 0;
    
     
     public function __construct($oKernel, $oYmlMapping, EntityManagerInterface $oEm, $bDebug = false) {
@@ -121,7 +154,7 @@ class JLPPasserelle
         if ($this->extractionProcess($sFileName)) {
         $this->oLogger->info("Extraction du fichier ".$sFileName." réussit");    
         $this->moveSourceImage();
-        //$oZipFile->delete();
+
         $this->bStatusPasserelle = 1;
         
         $this->putAnnonceInStandBy();
