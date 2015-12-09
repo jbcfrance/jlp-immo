@@ -83,7 +83,7 @@ class ProgrammeNeuf
     private $file;
     
     /**
-     * @var string
+     * @var UploadedFile
      */
     private $tempFilename;
 
