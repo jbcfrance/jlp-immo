@@ -126,7 +126,7 @@ class JLPParser {
     *  
     * @param SimpleXMLElement  $oNode
     */
-  private function prepareMappedKey($oNode)
+  private function prepareMappedKey(SimpleXMLElement $oNode)
   {
     $aXmlMappedKey = $this->oYmlMapping['passerelle']['keys_parser'];
     foreach ($aXmlMappedKey as $sKeyName => $aKeyInfos)  
@@ -153,9 +153,9 @@ class JLPParser {
     * 
     * Method initializing the Annocne's Sub-Entitites by their primary key and creating new one if the id is not found.
     *  
-    * @param simpleXMLElement  $oNode
+    * @param SimpleXMLElement  $oNode
     */
-  private function prepareTypeField($oNode)
+  private function prepareTypeField(SimpleXMLElement $oNode)
   {
     $aXmlTypeFields = $this->oYmlMapping['passerelle']['type_fields'];
     foreach ($aXmlTypeFields as $sFieldName => $aFieldInfos)  
@@ -184,9 +184,9 @@ class JLPParser {
     * 
     * Method fetching the value for each entity field from the xml following the mapping given in conf. 
     *  
-    * @param simpleXMLElement  $oNode
+    * @param SimpleXMLElement  $oNode
     */
-  private function prepareMappedFields($oNode)
+  private function prepareMappedFields(SimpleXMLElement $oNode)
   {
     $aXmlMappedFields = $this->oYmlMapping['passerelle']['parser'];
     foreach ($aXmlMappedFields as $sFieldName => $aFieldInfos)  

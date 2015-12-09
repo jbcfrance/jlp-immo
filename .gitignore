@@ -15,3 +15,4 @@ site_jlp.sql
 /bin/
 /src/JLP/CoreBundle/Resources/public/images/*
 /src/JLP/CoreBundle/Resources/public/upload/StockZip/*
+/src/JLP/CoreBundle/Resources/public/upload/connectimmo/annonces.xml

@@ -4,9 +4,7 @@ namespace JLP\CoreBundle\Command;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Output\ConsoleOutputInterface;
 use Symfony\Component\Console\Logger\ConsoleLogger;
-use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 
 
@@ -49,14 +47,6 @@ class PasserelleExecuteCommand extends ContainerAwareCommand
             // Appel du service correpondant au CRON
             $services = $this->getContainer()->get('jlp_core.passerelle');
             $responseServices = $services->execute($logger);
-
-            $output->writeln(
-                "\t<info>Passerelle informations : " . $responseServices . '</info>'
-            );
-            
-            $output->writeln(
-                "\t<error>Passerelle informations : " . $responseServices . '</error>'
-            );
             
             $output->writeln("\n\r");
             

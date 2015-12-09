@@ -298,4 +298,3 @@ passerelle:
     emissionGes: 
      entity: "Annonce"
      field: "emissionGes"
-     

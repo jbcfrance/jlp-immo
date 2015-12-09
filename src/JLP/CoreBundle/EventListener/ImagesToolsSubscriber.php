@@ -82,5 +82,4 @@ class ImagesToolsSubscriber implements EventSubscriber
         unset($deleteImageProcess,$sImageLink);
       }
     }
-    
 }
