@@ -4,6 +4,7 @@
 
 namespace JLP\CoreBundle\Services;
 
+use AppKernel;
 use JLP\CoreBundle\Entity\Images;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
@@ -26,7 +27,7 @@ class JLPParser
     protected $oEm;
   
     /**
-     * @var Kernel
+     * @var AppKernel
      */
     protected $oKernel;
   
@@ -71,12 +72,12 @@ class JLPParser
   
   
     // On injecte l'EntityManager
-    public function __construct($oKernel, EntityManagerInterface $oEm, LoggerInterface $oLogger, $sYmlMapping)
+    public function __construct(AppKernel $oKernel, EntityManagerInterface $oEm, LoggerInterface $oLogger, $sYmlConfigFile)
     {
     $this->oEm = $oEm;
     $this->oKernel = $oKernel;
     $this->oLogger = $oLogger;
-    $this->oYmlMapping = Yaml::parse($sYmlMapping);
+    $this->oYmlMapping = Yaml::parse($sYmlConfigFile);
        
     }
   
