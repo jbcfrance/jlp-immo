@@ -5,7 +5,7 @@ parameters:
 services:
     jlp_core.passerelle:
         class: JLP\CoreBundle\Services\JLPPasserelle
-        arguments: [@kernel,%passerelle.yaml_config_file%,@doctrine.orm.entity_manager,"debug"]
+        arguments: [@kernel,%passerelle.yaml_config_file%,@doctrine.orm.entity_manager,@jlp_core.parser,"debug"]
     
     jlp_core.parser:
         class: JLP\CoreBundle\Services\JLPParser

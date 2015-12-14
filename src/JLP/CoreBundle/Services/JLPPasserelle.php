@@ -4,6 +4,7 @@
 
 namespace JLP\CoreBundle\Services;
 
+use AppKernel;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -11,6 +12,7 @@ use Symfony\Component\Finder\Finder;
 use \Symfony\Component\Yaml\Yaml;
 use Doctrine\ORM\EntityManagerInterface;
 use Assetic\Exception\Exception;
+use JLP\CoreBundle\Services\JLPParser;
 
 /**
  * Service Passerelle
@@ -37,7 +39,7 @@ class JLPPasserelle {
   protected $oEm;
 
   /**
-   * @var Kernel
+   * @var AppKernel
    */
   protected $oKernel;
 
@@ -55,7 +57,12 @@ class JLPPasserelle {
    * @var YamlConfig
    */
   protected $oYmlMapping;
-
+  
+  /**
+   * @var JLPParser
+   */
+  protected $oParser;
+  
   /**
    *
    * @var string
@@ -86,11 +93,12 @@ class JLPPasserelle {
    */
   private $bStatusPasserelle = 0;
 
-  public function __construct($oKernel, $oYmlMapping, EntityManagerInterface $oEm, $bDebug = false) {
+  public function __construct(AppKernel $oKernel, $sYmlConfigFile, EntityManagerInterface $oEm, JLPParser $oParser, $bDebug = false) {
     $this->bDebug = $bDebug;
     $this->oKernel = $oKernel;
     $this->oEm = $oEm;
-    $this->oYmlMapping = Yaml::parse($oYmlMapping);
+    $this->oParser = $oParser;
+    $this->oYmlMapping = Yaml::parse($sYmlConfigFile);
     $this->zipFilename = $this->oYmlMapping['passerelle']['zip_name'];
     $this->xmlFilename = $this->oYmlMapping['passerelle']['xml_filename'];
   }
@@ -111,9 +119,8 @@ class JLPPasserelle {
       throw new Exception('Erreur lors de la preparation des annonces : Import stoppé !');
     }
 
-    $oParser = $this->oKernel->getContainer()->get('jlp_core.parser');
-    $oParser->execute(self::TARGET_UNZIP_DIR . "/" . $this->xmlFilename, $oLogger);
-    $this->iNbAnnonceTraite = $oParser->getNbAnnonceTraite();
+    $this->oParser->execute(self::TARGET_UNZIP_DIR . "/" . $this->xmlFilename, $this->oLogger);
+    $this->iNbAnnonceTraite = $this->oParser->getNbAnnonceTraite();
     $this->deleteStandByAnnonce();
     $this->checkNegociateur();
     $this->checkAgence();
