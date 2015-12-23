@@ -48,7 +48,7 @@ class Negociateur
     /**
      * @var integer
      * 
-     * @ORM\Column(name="telephone", type="integer")
+     * @ORM\Column(name="telephone", type="string", length=255)
      */
     private $telephone;
 

@@ -52,7 +52,11 @@ class JLPPasserelle {
    * @var ConsoleLogger
    */
   protected $oLogger;
-
+  
+  /**
+   * @var ProgressBar
+   */
+  protected $oProgressBar;
   /**
    * @var YamlConfig
    */
@@ -110,16 +114,17 @@ class JLPPasserelle {
    *
    * @param Logger  $oLogger
    */
-  public function execute($oLogger) {
+  public function execute($oLogger,$oProgressBar) {
 
     $this->oLogger = $oLogger;
-
+    $this->oProgressBar = $oProgressBar;
+    
     if (!$this->prepAnnonces(self::LOCAL_PATH . $this->zipFilename)) {
       $this->oLogger->error('Erreur lors de la preparation des annonces : Import stoppé !');
       throw new Exception('Erreur lors de la preparation des annonces : Import stoppé !');
     }
 
-    $this->oParser->execute(self::TARGET_UNZIP_DIR . "/" . $this->xmlFilename, $this->oLogger);
+    $this->oParser->execute(self::TARGET_UNZIP_DIR . "/" . $this->xmlFilename, $this->oLogger, $this->oProgressBar);
     $this->iNbAnnonceTraite = $this->oParser->getNbAnnonceTraite();
     $this->deleteStandByAnnonce();
     $this->checkNegociateur();
@@ -201,15 +206,18 @@ class JLPPasserelle {
   private function moveSourceImage() {
     $oFinder = new Finder();
     $oFinder->files()->name('*.jpg');
-
+    $this->oProgressBar->setMessage('Extracting the images to the source dir...');
+    $this->oProgressBar->start(count($oFinder->in(self::TARGET_UNZIP_DIR)));
     foreach ($oFinder->in(self::TARGET_UNZIP_DIR) as $oImage) {
       $oMoveImageProcess = new Process('mv ' . self::TARGET_UNZIP_DIR . '/' . $oImage->getFilename() . ' ' . self::TARGET_IMAGE_DIR . $oImage->getFilename());
       $oMoveImageProcess->run();
+      $this->oProgressBar->advance();
       if (!$oMoveImageProcess->isSuccessful()) {
         throw new ProcessFailedException($oMoveImageProcess);
       }
       unset($oMoveImageProcess);
     }
+    $this->oProgressBar->finish();
   }
 
   /**

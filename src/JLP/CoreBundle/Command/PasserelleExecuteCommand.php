@@ -6,6 +6,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Logger\ConsoleLogger;
 use Psr\Log\LogLevel;
+use Symfony\Component\Console\Helper\ProgressBar;
 
 
 /**
@@ -41,12 +42,13 @@ class PasserelleExecuteCommand extends ContainerAwareCommand
             
             
             $logger = new ConsoleLogger($output, $verbosityLevelMap);
+            $progressBar = new ProgressBar($output);
             
             $output->writeln("\n\r<question>Execution de la passerelle JLP-IMMO</question>");
 
             // Appel du service correpondant au CRON
             $services = $this->getContainer()->get('jlp_core.passerelle');
-            $responseServices = $services->execute($logger);
+            $responseServices = $services->execute($logger,$progressBar);
             
             $output->writeln("<info>Passerelle resultat : ".print_r($responseServices,true)."</info>");
             

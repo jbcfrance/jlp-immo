@@ -70,14 +70,14 @@ class Agence
     /**
      * @var integer
      * 
-     * @ORM\Column(name="telephone", type="integer")
+     * @ORM\Column(name="telephone", type="string", length=255)
      */
     private $telephone;
 
     /**
      * @var integer
      * 
-     * @ORM\Column(name="fax", type="integer")
+     * @ORM\Column(name="fax", type="string", length=255)
      */
     private $fax;
 
@@ -272,7 +272,7 @@ class Agence
     public function setTelephone($telephone)
     {
         $this->telephone = $telephone;
-
+       
         return $this;
     }
 

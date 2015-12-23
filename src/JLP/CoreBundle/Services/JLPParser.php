@@ -9,6 +9,7 @@ use JLP\CoreBundle\Entity\Images;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use \Symfony\Component\Yaml\Yaml;
+use Symfony\Component\Console\Helper\ProgressBar;
 
 /**
 * Service Parser
@@ -46,6 +47,11 @@ class JLPParser
      */
     protected $oYmlMapping;
   
+    /**
+     * @var ProgressBar
+     */
+    protected $oProgressBar;
+    
     /*Agence Variables*/
     protected $aAgenceInfo = array();
     protected $oAgenceEntity = null;
@@ -89,18 +95,20 @@ class JLPParser
      * @param string $sXMLFileName
      * @param LoggerInterface $logger
      */  
-    public function execute($sXMLFileName, $logger)
+    public function execute($sXMLFileName, $logger, $oProgressbar)
     {
     $this->oLogger = $logger;
     $this->oXml = simplexml_load_file($sXMLFileName);
     $this->oLogger->info("Execute JLPParser");
     $sMainNodeName = $this->oYmlMapping['passerelle']['xml_annonce_node'];
-    
-    
+        
+    $this->oProgressBar = $oProgressbar;
+    $this->oProgressBar->setMessage('Parsing the annonces ...');
+    $this->oProgressBar->start(count($this->oXml->{$sMainNodeName}));
     foreach ($this->oXml->{$sMainNodeName} as $oNode)
     {
         /*Traitement préliminaire du XML*/
-      
+        $this->oProgressBar->advance();
         $this->prepareMappedKey($oNode);
       
         $this->prepareTypeField($oNode);
@@ -110,12 +118,12 @@ class JLPParser
         /* Persisting the entities*/
         $this->oAnnonceEntity->setStatusAnnonce("active");
         $this->persistAndFlushEntitites();
-      
+        
         $this->deleteImageFromAnnonce($oNode);
         $this->extractImageFromAnnonce($oNode);
       
     }
-
+    $this->oProgressBar->finish();
     return true; 
     } 
   
@@ -294,6 +302,8 @@ class JLPParser
     
     $oAnnonceEntity = $this->oEm->getRepository('JLPCoreBundle:Annonce')->findOneBy(array('id'=>$iIdAnnonce));
     
+    $this->oProgressBar->setMessage('Preparing the image of the annonce ... ');
+    $this->oProgressBar->start(count($aAnnonceImages->{'photo'}));
     foreach ($aAnnonceImages->{'photo'} as $oImageName)
     {
         $sImageName = $oImageName->__toString();
@@ -301,9 +311,9 @@ class JLPParser
         $oImageEntity->setFileName($sImageName);
         $oImageEntity->setAnnonce($oAnnonceEntity);
         $this->oEm->persist($oImageEntity);
-      
+        $this->oProgressBar->advance();
     }
-
+    $this->oProgressBar->finish();
     $this->oEm->flush();
     
     }

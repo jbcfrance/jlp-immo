@@ -53,14 +53,14 @@ class Annonce
     /**
      * @var integer
      * 
-     * @ORM\Column(name="reference", type="integer")
+     * @ORM\Column(name="reference", type="string", length=255)
      */
     private $reference;
 
     /**
      * @var integer
      * 
-     * @ORM\Column(name="numMandat", type="integer")
+     * @ORM\Column(name="numMandat", type="string", length=255)
      */
     private $numMandat;
 
@@ -72,7 +72,7 @@ class Annonce
     /**
      * @var integer
      * 
-     * @ORM\Column(name="categorieOffre", type="integer")
+     * @ORM\Column(name="categorieOffre", type="string", length=255)
      */
     private $categorieOffre;
 
