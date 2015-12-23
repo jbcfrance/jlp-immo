@@ -302,8 +302,6 @@ class JLPParser
     
     $oAnnonceEntity = $this->oEm->getRepository('JLPCoreBundle:Annonce')->findOneBy(array('id'=>$iIdAnnonce));
     
-    $this->oProgressBar->setMessage('Preparing the image of the annonce ... ');
-    $this->oProgressBar->start(count($aAnnonceImages->{'photo'}));
     foreach ($aAnnonceImages->{'photo'} as $oImageName)
     {
         $sImageName = $oImageName->__toString();
@@ -311,9 +309,9 @@ class JLPParser
         $oImageEntity->setFileName($sImageName);
         $oImageEntity->setAnnonce($oAnnonceEntity);
         $this->oEm->persist($oImageEntity);
-        $this->oProgressBar->advance();
+
     }
-    $this->oProgressBar->finish();
+
     $this->oEm->flush();
     
     }
