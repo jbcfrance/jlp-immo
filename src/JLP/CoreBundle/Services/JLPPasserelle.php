@@ -218,6 +218,7 @@ class JLPPasserelle {
       unset($oMoveImageProcess);
     }
     $this->oProgressBar->finish();
+    $this->oLogger->info(null);
   }
 
   /**

@@ -43,6 +43,10 @@ class PasserelleExecuteCommand extends ContainerAwareCommand
             
             $logger = new ConsoleLogger($output, $verbosityLevelMap);
             $progressBar = new ProgressBar($output);
+            $progressBar->setFormat("<info>[info] %message% : %current%/%max% [</info>%bar%<info>] %percent:3s%% %elapsed:6s%/%estimated:-6s%</info>");
+            $progressBar->setEmptyBarCharacter('<fg=red>-</>');
+            $progressBar->setBarCharacter('<info>=</info>');
+            $progressBar->setProgressCharacter('<info>></info>');
             
             $output->writeln("\n\r<question>Execution de la passerelle JLP-IMMO</question>");
 
