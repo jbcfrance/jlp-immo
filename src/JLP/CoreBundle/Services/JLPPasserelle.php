@@ -29,9 +29,6 @@ class JLPPasserelle {
   const LOCAL_PATH = "web/bundles/jlpcore/upload/";
   const TARGET_UNZIP_DIR = "web/bundles/jlpcore/upload/connectimmo";
   const TARGET_IMAGE_DIR = "web/bundles/jlpcore/images/source/";
-  const AGENCE = "Agence";
-  const NEGOCIATEUR = "Negociateur";
-  const ANNONCE = "Annonce";
 
   /**
    * @var EntityManagerInterface
