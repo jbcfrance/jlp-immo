@@ -1,0 +1,3 @@
+jlp_front_homepage:
+    path:     /
+    defaults: { _controller: JLPFrontBundle:Default:index }

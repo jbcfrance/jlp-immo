@@ -1,0 +1,4 @@
+services:
+#    jlp_front.example:
+#        class: JLP\FrontBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
