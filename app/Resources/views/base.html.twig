@@ -1,13 +1,158 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
+<!--[if IE 9]>
+<html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
+
+<head>
+    <title>JLP-Immo - Immobilier de montagne</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="Jean-Baptiste CIEPKA" name="author">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Web Fonts -->
+    <link rel="shortcut" type="text/css"
+          href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&subset=cyrillic,latin">
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/plugins/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/css/style.css') }}">
+
+    <!-- CSS Header and Footer -->
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/css/headers/header-v6.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/css/footers/footer-v6.css') }}">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/plugins/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/plugins/line-icons/line-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/plugins/font-awesome/css/font-awesome.min.css') }}">
+    {% block stylesheet_plugin %}
+
+    {% endblock %}
+
+
+    <!-- CSS Pages Style -->
+    {% block stylesheet_page %}
+        <link rel="stylesheet" href="{{ asset('bundles/jlpfront/css/pages/page_one.css') }}">
+    {% endblock %}
+
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/css/theme-colors/default.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/css/theme-skins/dark.css') }}">
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/css/custom.css') }}">
+
+</head>
+<body class="dark">
+<div class="wrapper">
+    {% block header %}
+        <!--=== Header v6 ===-->
+        <div class="header-v6 header-sticky header-classic-dark">
+            <div class="navbar mega-menu" role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="menu-container">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-responsive-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <!-- Navbar Brand -->
+                        <div class="navbar-brand">
+                            <a href="{{ path('jlp_front_homepage') }}">
+                                <img class="default-logo" src="{{ asset('bundles/jlpfront/images/logo.png') }}"
+                                     alt="Logo">
+                            </a>
+                        </div>
+                        <!-- ENd Navbar Brand -->
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-responsive-collapse">
+                        <div class="menu-container">
+                            <ul class="nav navbar-nav">
+                                <li><a href="{{ path('jlp_front_homepage') }}">{{ 'home'|trans }}</a></li>
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle"
+                                       data-toggle="dropdown">{{ 'achat'|trans }}</a>
+                                    <ul class="dropdown-menu">
+                                        {% for typeBien in typesBiens %}
+                                            <li>
+                                                <a href="{{ path('jlp_front_typeBien', {'typeBienId': typeBien.id}) }}">{{ typeBien.type|title }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                                <li><a href="{{ path('jlp_front_programmes_neufs') }}">{{ 'prgneuf'|trans }}</a></li>
+                                <li><a href="{{ path('jlp_front_contact') }}">{{ 'contact'|trans }}</a></li>
+                            </ul>
+                        </div>
+                    </div><!--/navbar-collapse-->
+                </div>
+            </div>
+        </div>
+        <!--=== End Header v6 ===-->
+    {% endblock %}
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+    {% block footer %}
+        <!--=== Footer Version 6 ===-->
+        <div class="footer-v6">
+            <div class="footer">
+                <div class="container">
+
+                </div>
+            </div><!--/footer-->
+
+            <div class="copyright">
+                <div class="container">
+
+                </div>
+            </div><!--/copyright-->
+        </div>
+        <!--=== End Footer Version 6 ===-->
+    {% endblock %}
+</div>
+
+
+<!-- JS Global Compulsory -->
+<script src="{{ asset('bundles/jlpfront/plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('bundles/jlpfront/plugins/jquery/jquery-migrate.min.js') }}"></script>
+<script src="{{ asset('bundles/jlpfront/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+
+<!-- JS Implementing Plugins -->
+<script src="{{ asset('bundles/jlpfront/plugins/back-to-top.js') }}"></script>
+
+{% block javascript_plugin %}
+    <script src="{{ asset('bundles/jlpfront/plugins/smoothScroll.js') }}"></script>
+{% endblock %}
+<!-- JS Customization -->
+<script type="text/javascript" src="{{ asset('bundles/jlpfront/js/custom.js') }}"></script>
+
+<!-- JS Page Level -->
+<script src="{{ asset('bundles/jlpfront/js/app.js') }}"></script>
+{% block javascript_page_include %}{% endblock %}
+<script>
+    jQuery(document).ready(function () {
+        App.init();
+        {% block javascript_page_ready %}{% endblock %}
+    });
+</script>
+
+<!--[if lt IE 9]>
+<script src="{{ asset('bundles/jlpfront/plugins/respond.js') }}"></script>
+<script src="{{ asset('bundles/jlpfront/plugins/html5shiv.js') }}"></script>
+<script src="{{ asset('bundles/jlpfront/plugins/placeholder-IE-fixes.js') }}"></script>
+<![endif]-->
+
+</body>
 </html>

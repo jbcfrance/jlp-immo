@@ -143,14 +143,14 @@ class JLPParser
 
         $oObjectName = $this->oEm->getRepository('JLPCoreBundle:'.$aKeyInfos['entity'])
                                 ->findOneBy(array($aKeyInfos['field']=>$oNode->$sKeyName->__toString()));
-        if (!empty($oObjectName)) { 
-        $this->$sEntityObjectName = $oObjectName; 
+        if (!empty($oObjectName)) {
+            $this->$sEntityObjectName = $oObjectName;
         } else {
-        $sEntityClassName = "JLP\CoreBundle\Entity\\".$aKeyInfos['entity'];
-        $this->$sEntityObjectName = new $sEntityClassName;
-        $sSetFunc = 'set'.ucfirst($aKeyInfos['field']);
+            $sEntityClassName = "JLP\CoreBundle\Entity\\" . $aKeyInfos['entity'];
+            $this->$sEntityObjectName = new $sEntityClassName;
+            $sSetFunc = 'set' . ucfirst($aKeyInfos['field']);
 
-        $this->$sEntityObjectName->$sSetFunc($oNode->{$sKeyName}->__toString());
+            $this->$sEntityObjectName->$sSetFunc($oNode->{$sKeyName}->__toString());
         }
         unset($sEntityObjectName, $sSetFunc, $oObjectName);
     }
@@ -241,22 +241,20 @@ class JLPParser
      */
     private function persistAndFlushEntitites()
     {
-    $this->oEm->getClassMetaData(get_class($this->oAgenceEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
-    $this->oEm->getClassMetaData(get_class($this->oNegociateurEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);  
-    $this->oEm->getClassMetaData(get_class($this->oAnnonceEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
-    
-    $this->oEm->persist($this->oAgenceEntity);
-    $this->oNegociateurEntity->setAgence($this->oAgenceEntity);
-    $this->oEm->persist($this->oNegociateurEntity);
-    $this->oAnnonceEntity->setAgence($this->oAgenceEntity);
-    $this->oAnnonceEntity->setNegociateur($this->oNegociateurEntity);
+        $this->oEm->getClassMetaData(get_class($this->oAgenceEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
+        $this->oEm->getClassMetaData(get_class($this->oNegociateurEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
+        $this->oEm->getClassMetaData(get_class($this->oAnnonceEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
 
-    $this->oEm->persist($this->oAnnonceEntity);
+        $this->oEm->persist($this->oAgenceEntity);
+        $this->oNegociateurEntity->setAgence($this->oAgenceEntity);
+        $this->oEm->persist($this->oNegociateurEntity);
+        $this->oAnnonceEntity->setAgence($this->oAgenceEntity);
+        $this->oAnnonceEntity->setNegociateur($this->oNegociateurEntity);
 
-    if ($this->oEm->flush())
-    {
+        $this->oEm->persist($this->oAnnonceEntity);
+
+        $this->oEm->flush();
         $this->iNbAnnonceTraite++;
-    }
     } 
   
     /**

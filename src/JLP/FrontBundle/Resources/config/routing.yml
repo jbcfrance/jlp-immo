@@ -1,3 +1,48 @@
 jlp_front_homepage:
-    path:     /
+    path:     /{_locale}/
     defaults: { _controller: JLPFrontBundle:Default:index }
+    requirements:
+            _locale: en|fr
+
+jlp_front_achat:
+    path:     /{_locale}/achat/
+    defaults: { _controller: JLPFrontBundle:Annonces:achat }
+    requirements:
+            _locale: en|fr
+
+jlp_front_typeBien:
+    path: /{_locale}/typeBien/{typeBienId}
+    defaults: {_controller: JLPFrontBundle:Annonce:typeBien }
+    requirements:
+            _locale: en|fr
+
+jlp_front_programmes_neufs:
+    path:     /{_locale}/programmes_neufs/
+    defaults: { _controller: JLPFrontBundle:ProgrammesNeufs:index }
+    requirements:
+            _locale: en|fr
+
+jlp_front_contact:
+    path:     /{_locale}/contact/
+    defaults: { _controller: JLPFrontBundle:Contact:index }
+    requirements:
+            _locale: en|fr
+
+
+
+
+jlp_front_test:
+    path: /{_locale}/test/
+    defaults: { _controller: JLPFrontBundle:Annonce:test }
+    requirements:
+            _locale: en|fr
+jlp_front_annonce:
+    path: /{_locale}/annonce/{annonceId}
+    defaults: { _controller: JLPFrontBundle:Annonce:index }
+    requirements:
+            _locale: en|fr
+jlp_front_search:
+    path: /{_locale}/search/{searchString}
+    defaults: { _controller: JLPFrontBundle:Annonce:search }
+    requirements:
+            _locale: en|fr
