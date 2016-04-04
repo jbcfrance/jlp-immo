@@ -1,0 +1,12 @@
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #333; }
+
+.navbar {
+  min-height: 100px !important; }
+  .navbar img {
+    height: 100px; }
+  .navbar a {
+    font-size: 2em; }
+
+/*# sourceMappingURL=front.css.map */

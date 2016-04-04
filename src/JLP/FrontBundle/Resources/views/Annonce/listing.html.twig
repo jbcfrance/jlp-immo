@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% if annonces is iterable %}
+        {% for annonce in annonces %}
+            <h1>{{ annonce.typeBien.type|title }} - {% if annonce.villeAAfficher != '' %} {{ annonce.villeAAfficher|title }} {% else %} {{ annonce.villePublique|title }} {% endif %}</h1>
+        {% endfor %}
+    {% else %}
+        <h1>{{ annonces.typeBien.type|title }} - {% if annonces.villeAAfficher != '' %} {{ annonces.villeAAfficher|title }} {% else %} {{ annonces.villePublique|title }} {% endif %}</h1>
+    {% endif %}
+
+{%  endblock %}

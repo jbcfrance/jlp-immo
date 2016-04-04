@@ -1,0 +1,18 @@
+# messages.en.yml
+home: Home
+achat: Buy
+prgneuf: New Developements
+
+contact: Contact
+contact.form: Contact Form
+contact.form.name: Name
+contact.form.email: Email
+contact.form.message: Message
+contact.form.send: Send Message
+contact.form.send.success: Your message was successfully sent!
+contact.form.send.error: There hase been an error, please try again!
+
+contact.block: Contacts
+contact.aboutus: About us
+contact.horraires: Business Hours
+contact.clients: Our Clients

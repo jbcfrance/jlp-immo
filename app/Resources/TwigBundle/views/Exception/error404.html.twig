@@ -1,0 +1,80 @@
+{# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %} Title {% endblock %}
+
+{% block stylesheet_plugin %}
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/plugins/owl-carousel/owl-carousel/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/plugins/sky-forms-pro/skyforms/css/sky-forms.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css') }}">
+    <!--[if lt IE 9]><link rel="stylesheet" href="{{ asset('bundles/jlpfront/plugins/sky-forms-pro/skyforms/css/sky-forms-ie8.css') }}"><![endif]-->
+{% endblock %}
+
+{% block stylesheet_page %}
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/css/pages/page_error3_404.css') }}">
+{% endblock %}
+{% block header %}{% endblock %}
+{% block body %}
+    <!--=== Error V3 ===-->
+    <div class="container content valign__middle">
+        <!-- Error Block -->
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="error-v3">
+                    <h2>404</h2>
+                    <p>Sorry, the page you were looking for could not be found!</p>
+                </div>
+            </div>
+        </div>
+        <!-- End Error Block -->
+
+        <!-- Begin Service Block V2 -->
+        <div class="row service-block-v2">
+            <div class="col-md-4">
+                <div class="service-block-in service-or">
+                    <div class="service-bg"></div>
+                    <i class="icon-bulb"></i>
+                    <h4>Not what you were looking for?</h4>
+                    <p>If the page is not what you are looking for, try searching the page on the search page and find out new things.</p>
+                    <a class="btn-u btn-brd btn-u-light" href="#"> Discover More</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="service-block-in service-or">
+                    <div class="service-bg"></div>
+                    <i class="icon-directions"></i>
+                    <h4>Possible cause of the problem</h4>
+                    <p>The page you requested could not be found. However, the requested resource may be available again in the future.</p>
+                    <a class="btn-u btn-brd btn-u-light" href="{{ path('jlp_front_homepage') }}"> Go back to Home Page</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="service-block-in service-or">
+                    <div class="service-bg"></div>
+                    <i class="icon-users"></i>
+                    <h4>Contact us</h4>
+                    <p>If you have a problem with the website, please contact us, our support team will help you to solve the problem.</p>
+                    <a class="btn-u btn-brd btn-u-light" href={{ path('jlp_front_contact') }}"> Contact Us</a>
+                </div>
+            </div>
+        </div>
+        <!-- End Service Block V2 -->
+    </div>
+    <!--=== End Error-V3 ===-->
+{% endblock %}
+
+{% block javascript_plugin %}
+    <script type="text/javascript" src="{{ asset('bundles/jlpfront/plugins/backstretch/jquery.backstretch.min.js') }}"></script>
+    <script type="text/javascript">
+        $.backstretch([
+            "{{ asset('bundles/jlpfront/img/blur/img1.jpg') }}"
+        ])
+    </script>
+{% endblock %}
+{% block javascript_page_include %}
+    <script type="text/javascript" src="{{ asset('bundles/jlpfront/js/forms/contact.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/jlpfront/js/pages/page_contacts.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/jlpfront/js/plugins/owl-carousel.js') }}"></script>
+{% endblock %}

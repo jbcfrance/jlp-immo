@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="23374626-9b5a-48b8-8751-c585145da218" name="ServerJLP" url="http://new.jlp-immo.com">
+        <fileTransfer host="87.106.163.90" port="22" rootFolder="/var/www/vhosts/jlp-immo.com/httpdocs/new" accessType="SFTP" password="dfe9df9adfcddfc4dfc3dfdedf9adf9adffddfefdfe8" username="root">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

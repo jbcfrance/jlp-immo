@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysis>
+  <link href="https://insight.sensiolabs.com/api/projects/a5fef340-77c0-4220-8e17-93f5083fa572/analyses/58" rel="self" type="application/vnd.com.sensiolabs.insight+xml"/>
+  <link href="https://insight.sensiolabs.com/api/projects/a5fef340-77c0-4220-8e17-93f5083fa572/analyses/58/status" rel="status" type="application/vnd.com.sensiolabs.insight+xml"/>
+  <link href="https://insight.sensiolabs.com/api/projects/a5fef340-77c0-4220-8e17-93f5083fa572" rel="project" type="application/vnd.com.sensiolabs.insight+xml"/>
+  <link href="https://insight.sensiolabs.com/projects/a5fef340-77c0-4220-8e17-93f5083fa572/analyses/58" rel="self" type="text/html"/>
+  <status><![CDATA[finished]]></status>
+  <violations>
+    <violation severity="critical" category="security">
+      <line>0</line>
+      <title>Projects must not depend on dependencies with known security issues</title>
+      <message><![CDATA[The checker detected 1 security issues in package symfony/symfony installed in version 2.7.7.0 1) CVE-2016-1902: SecureRandom's fallback not secure when OpenSSL fails .]]></message>
+      <context/>
+      <link href="https://insight.sensiolabs.com/projects/a5fef340-77c0-4220-8e17-93f5083fa572/analyses/58?status=existing#387414298" rel="self" type="text/html"/>
+    </violation>
+    <violation severity="info" category="bugrisk">
+      <line>0</line>
+      <resource><![CDATA[composer.json]]></resource>
+      <title>The composer.json file should not raise warnings</title>
+      <message><![CDATA[Defining autoload.psr-4 with an empty namespace prefix is a bad idea for performance]]></message>
+      <context/>
+      <link href="https://insight.sensiolabs.com/projects/a5fef340-77c0-4220-8e17-93f5083fa572/analyses/58?status=existing#387414299" rel="self" type="text/html"/>
+    </violation>
+    <violation severity="minor" category="deadcode">
+      <line>88</line>
+      <resource><![CDATA[src/JLP/CoreBundle/Entity/ProgrammeNeuf.php]]></resource>
+      <title>Unused method, property, variable or parameter</title>
+      <message><![CDATA[This tempFilename attribute is declared but never used. You should remove it.]]></message>
+      <context start-line="83" end-line="93"><![CDATA[    private $file;
+    
+    /**
+     * @var UploadedFile
+     */
+    private $tempFilename;
+
+    public function getFile()
+    {
+        return $this->file;
+    }]]></context>
+      <link href="https://insight.sensiolabs.com/projects/a5fef340-77c0-4220-8e17-93f5083fa572/analyses/58?status=existing#387414300" rel="self" type="text/html"/>
+    </violation>
+    <violation severity="minor" category="deadcode">
+      <line>83</line>
+      <resource><![CDATA[src/JLP/CoreBundle/Services/JLPPasserelle.php]]></resource>
+      <title>Unused method, property, variable or parameter</title>
+      <message><![CDATA[This iNbAnnonceTraite attribute is declared but never used. You should remove it.]]></message>
+      <context start-line="78" end-line="88"><![CDATA[
+  /**
+   *
+   * @var integer
+   */
+  private $iNbAnnonceTraite = 0;
+
+  /**
+   *
+   * @var integer
+   */]]></context>
+      <link href="https://insight.sensiolabs.com/projects/a5fef340-77c0-4220-8e17-93f5083fa572/analyses/58?status=existing#387414301" rel="self" type="text/html"/>
+    </violation>
+    <violation severity="minor" category="deadcode">
+      <line>89</line>
+      <resource><![CDATA[src/JLP/CoreBundle/Services/JLPPasserelle.php]]></resource>
+      <title>Unused method, property, variable or parameter</title>
+      <message><![CDATA[This iNbAnnonceSuppr attribute is declared but never used. You should remove it.]]></message>
+      <context start-line="84" end-line="94"><![CDATA[
+  /**
+   *
+   * @var integer
+   */
+  private $iNbAnnonceSuppr = 0;
+
+  /**
+   *
+   * @var integer
+   */]]></context>
+      <link href="https://insight.sensiolabs.com/projects/a5fef340-77c0-4220-8e17-93f5083fa572/analyses/58?status=existing#387414292" rel="self" type="text/html"/>
+    </violation>
+    <violation severity="minor" category="deadcode">
+      <line>95</line>
+      <resource><![CDATA[src/JLP/CoreBundle/Services/JLPPasserelle.php]]></resource>
+      <title>Unused method, property, variable or parameter</title>
+      <message><![CDATA[This bStatusPasserelle attribute is declared but never used. You should remove it.]]></message>
+      <context start-line="90" end-line="100"><![CDATA[
+  /**
+   *
+   * @var integer
+   */
+  private $bStatusPasserelle = 0;
+
+  public function __construct(AppKernel $oKernel, $sYmlConfigFile, EntityManagerInterface $oEm, JLPParser $oParser, $bDebug = false) {
+    $this->bDebug = $bDebug;
+    $this->oKernel = $oKernel;
+    $this->oEm = $oEm;]]></context>
+      <link href="https://insight.sensiolabs.com/projects/a5fef340-77c0-4220-8e17-93f5083fa572/analyses/58?status=existing#387414302" rel="self" type="text/html"/>
+    </violation>
+    <violation severity="info" category="performance">
+      <line>0</line>
+      <resource><![CDATA[app/.htaccess]]></resource>
+      <title>.htaccess should be avoided</title>
+      <message><![CDATA[A .htaccess file has been spotted. You should consider moving it to the server configuration to improve global performances.]]></message>
+      <context/>
+      <link href="https://insight.sensiolabs.com/projects/a5fef340-77c0-4220-8e17-93f5083fa572/analyses/58?status=existing#387414297" rel="self" type="text/html"/>
+    </violation>
+    <violation severity="info" category="performance">
+      <line>0</line>
+      <resource><![CDATA[src/.htaccess]]></resource>
+      <title>.htaccess should be avoided</title>
+      <message><![CDATA[A .htaccess file has been spotted. You should consider moving it to the server configuration to improve global performances.]]></message>
+      <context/>
+      <link href="https://insight.sensiolabs.com/projects/a5fef340-77c0-4220-8e17-93f5083fa572/analyses/58?status=existing#387414294" rel="self" type="text/html"/>
+    </violation>
+    <violation severity="info" category="performance">
+      <line>0</line>
+      <resource><![CDATA[web/.htaccess]]></resource>
+      <title>.htaccess should be avoided</title>
+      <message><![CDATA[A .htaccess file has been spotted. You should consider moving it to the server configuration to improve global performances.]]></message>
+      <context/>
+      <link href="https://insight.sensiolabs.com/projects/a5fef340-77c0-4220-8e17-93f5083fa572/analyses/58?status=existing#387414293" rel="self" type="text/html"/>
+    </violation>
+    <violation severity="info" category="security">
+      <line>0</line>
+      <resource><![CDATA[web/apple-touch-icon.png]]></resource>
+      <title>Default favicon should be changed</title>
+      <message><![CDATA[Default Apple touch Symfony favicon found.
+             This reveals the backend engine of the application and makes it more vulnerable to attackers. Consider using a custom favicon instead - plus, your users will memorize your application more easily.]]></message>
+      <context/>
+      <link href="https://insight.sensiolabs.com/projects/a5fef340-77c0-4220-8e17-93f5083fa572/analyses/58?status=existing#387414296" rel="self" type="text/html"/>
+    </violation>
+    <violation severity="info" category="security">
+      <line>0</line>
+      <resource><![CDATA[web/favicon.ico]]></resource>
+      <title>Default favicon should be changed</title>
+      <message><![CDATA[Default default HiDPI Symfony favicon found.
+             This reveals the backend engine of the application and makes it more vulnerable to attackers. Consider using a custom favicon instead - plus, your users will memorize your application more easily.]]></message>
+      <context/>
+      <link href="https://insight.sensiolabs.com/projects/a5fef340-77c0-4220-8e17-93f5083fa572/analyses/58?status=existing#387414295" rel="self" type="text/html"/>
+    </violation>
+  </violations>
+  <grades>
+    <entry><![CDATA[none]]></entry>
+    <entry><![CDATA[bronze]]></entry>
+    <entry><![CDATA[silver]]></entry>
+    <entry><![CDATA[gold]]></entry>
+    <entry><![CDATA[platinum]]></entry>
+  </grades>
+  <failed>false</failed>
+  <grade><![CDATA[none]]></grade>
+  <next-grade><![CDATA[bronze]]></next-grade>
+  <begin-at><![CDATA[2016-03-11T19:37:10+0100]]></begin-at>
+  <end-at><![CDATA[2016-03-11T19:37:51+0100]]></end-at>
+  <duration>8</duration>
+  <number>58</number>
+  <altered>false</altered>
+  <remediation-cost>15</remediation-cost>
+  <nb-violations>11</nb-violations>
+  <reference><![CDATA[639bc22691be3f5036c59806416b23361d93e324]]></reference>
+  <launched-by><![CDATA[jbcfrance]]></launched-by>
+  <configuration>
+    <ignored-branches>
+      <branch><![CDATA[gh-pages]]></branch>
+    </ignored-branches>
+    <pre-composer-script/>
+    <post-composer-script/>
+    <php-version/>
+    <php-ini/>
+    <global-excluded-dirs>
+      <dir><![CDATA[vendor]]></dir>
+      <dir><![CDATA[vendors]]></dir>
+      <dir><![CDATA[test]]></dir>
+      <dir><![CDATA[tests]]></dir>
+      <dir><![CDATA[Tests]]></dir>
+      <dir><![CDATA[spec]]></dir>
+      <dir><![CDATA[features]]></dir>
+      <dir><![CDATA[Fixtures]]></dir>
+      <dir><![CDATA[DataFixtures]]></dir>
+      <dir><![CDATA[var]]></dir>
+    </global-excluded-dirs>
+    <excluded-patterns>
+      <pattern><![CDATA[app/check.php]]></pattern>
+      <pattern><![CDATA[app/SymfonyRequirements.php]]></pattern>
+      <pattern><![CDATA[web/config.php]]></pattern>
+      <pattern><![CDATA[phpunit.phar]]></pattern>
+      <pattern><![CDATA[web/app_*.php]]></pattern>
+      <pattern><![CDATA[web/app.php]]></pattern>
+      <pattern><![CDATA[vendor/*]]></pattern>
+      <pattern><![CDATA[oldSite/*]]></pattern>
+    </excluded-patterns>
+    <patterns>
+      <file>
+        <pattern><![CDATA[*.php]]></pattern>
+        <pattern><![CDATA[*.twig]]></pattern>
+        <pattern><![CDATA[*.xml]]></pattern>
+        <pattern><![CDATA[*.yml]]></pattern>
+        <pattern><![CDATA[*.yaml]]></pattern>
+        <pattern><![CDATA[*.ini]]></pattern>
+        <pattern><![CDATA[*.dist]]></pattern>
+        <pattern><![CDATA[*.sql]]></pattern>
+        <pattern><![CDATA[composer.*]]></pattern>
+        <pattern><![CDATA[.gitignore]]></pattern>
+        <pattern><![CDATA[license]]></pattern>
+        <pattern><![CDATA[LICENSE]]></pattern>
+        <pattern><![CDATA[readme]]></pattern>
+        <pattern><![CDATA[README]]></pattern>
+        <pattern><![CDATA[makefile]]></pattern>
+        <pattern><![CDATA[Makefile]]></pattern>
+        <pattern><![CDATA[.htaccess]]></pattern>
+      </file>
+      <php>
+        <pattern><![CDATA[*.php]]></pattern>
+      </php>
+      <twig>
+        <pattern><![CDATA[*.twig]]></pattern>
+      </twig>
+    </patterns>
+    <rules/>
+    <parameters>
+      <parameter name="project_type">2</parameter>
+    </parameters>
+    <env/>
+  </configuration>
+  <previous-analyses-references>
+    <analysis-reference number="58">639bc22691be3f5036c59806416b23361d93e324</analysis-reference>
+    <analysis-reference number="57">639bc22691be3f5036c59806416b23361d93e324</analysis-reference>
+    <analysis-reference number="56">639bc22691be3f5036c59806416b23361d93e324</analysis-reference>
+    <analysis-reference number="55">639bc22691be3f5036c59806416b23361d93e324</analysis-reference>
+    <analysis-reference number="54">639bc22691be3f5036c59806416b23361d93e324</analysis-reference>
+    <analysis-reference number="53">62c4dd7179831da8d0d29d662618aa5e0abc57ff</analysis-reference>
+    <analysis-reference number="52">4507611e15008fc6b6c7cf2433a7c5a3af2427f2</analysis-reference>
+    <analysis-reference number="51">2fca4a042472ec363e879b77fbbab62768c55a3c</analysis-reference>
+    <analysis-reference number="50">fa878957c9735b803535febbf95f9987dd5a485c</analysis-reference>
+    <analysis-reference number="49">da985036707c539a295c7756ad709ccf5d37826c</analysis-reference>
+    <analysis-reference number="48">b7cae0ac0b93d8830e72bff0a6d438cec9a4f666</analysis-reference>
+    <analysis-reference number="47">f3a6db5b738209e0f39c71e1dd2bb4f4833b15a0</analysis-reference>
+    <analysis-reference number="46">706df4355480e312e5eebe22a0cc866a8e89b3cd</analysis-reference>
+    <analysis-reference number="45">0f85228d35e819a2f4aa54966ae044ec21d09f8d</analysis-reference>
+    <analysis-reference number="44">5da68600f56100662b76d42a649dce87d9a6b94a</analysis-reference>
+    <analysis-reference number="43">f04bfadebd24dc076e9a49064a21526c59f83775</analysis-reference>
+    <analysis-reference number="42">4d884334e56da418ec9a325a9a1989465fbf0db8</analysis-reference>
+    <analysis-reference number="41">e6560ecd769236f45ed93a5477d0ee522d3d0743</analysis-reference>
+    <analysis-reference number="40">464df4ecc1d6cd245ff41d0ec89db2ff3fad7244</analysis-reference>
+    <analysis-reference number="39">c65dc0a64913ef9948469a027f37fa1f37694aac</analysis-reference>
+    <analysis-reference number="38">4c80efcfefe61d63c87bae6aee1bc96451e051d3</analysis-reference>
+    <analysis-reference number="37">542f1c2a629f507ef1fb86961c2e8c65ff5c3c2c</analysis-reference>
+    <analysis-reference number="36">218c61da06106356fabce1cc42f51a21dea50c00</analysis-reference>
+    <analysis-reference number="35">e2e7214fb4877418da6e4f5f085ab69dd999a8b9</analysis-reference>
+    <analysis-reference number="34">3a5bf9139e17fa18ef6689d5b770c9ae42bbebe0</analysis-reference>
+    <analysis-reference number="33">57d06ddec755e2729e54f777134412470122d217</analysis-reference>
+    <analysis-reference number="32">18630b4dd1393d859ed961327b240e27b221f073</analysis-reference>
+    <analysis-reference number="31">84f833aa4f09c8797fd4818d476f2b3b51d3ffeb</analysis-reference>
+    <analysis-reference number="30">203a838026b33852ba8c4ceaa0b9a73aed7b109b</analysis-reference>
+    <analysis-reference number="29">ce6432ea1e259f23ea19daab4abe0b252bb47672</analysis-reference>
+    <analysis-reference number="28">767165c962c5206d8a0eb83ef5db9e1448320e8a</analysis-reference>
+    <analysis-reference number="27">c183817cdcb369783a6e5c2e6e8deb6524db96a3</analysis-reference>
+    <analysis-reference number="26">fc723690a9867b2228be200ff23f0ef82b7aab7b</analysis-reference>
+    <analysis-reference number="25">aee457120779712af8b7379c84a9e774381ceb1c</analysis-reference>
+    <analysis-reference number="24">d2e925a851c874fc5b261ee5fa7b49070ca607d7</analysis-reference>
+    <analysis-reference number="23">5b169ee1ff10f50dbfe2666dfb2d551fa200f559</analysis-reference>
+    <analysis-reference number="22">01293acf0b1349cb57b77eb1d52ef1bbfeeac7b5</analysis-reference>
+    <analysis-reference number="21">ae3b89ed13c863c4f08b643c2c4c52979854e685</analysis-reference>
+    <analysis-reference number="20">810f0cbef939e96bf3983006bcf9a0576941115b</analysis-reference>
+    <analysis-reference number="18">9f3009a6d886e8d23e87e067ea760d3de4e6a028</analysis-reference>
+    <analysis-reference number="15">dedfe11e35fa80be4787e116bb8b21df3d360eec</analysis-reference>
+    <analysis-reference number="10">4b27318a55277750b43bdea915b0eb99e4a41a3a</analysis-reference>
+    <analysis-reference number="9">b1fcedfd4a88419ed43f38cfe1d57aa427f6f6bb</analysis-reference>
+    <analysis-reference number="8">f95502d500d00552781b702ee8e9faa1def1795d</analysis-reference>
+    <analysis-reference number="7">b25011a4ed57f6e5b46fae2bbfe1a9840a4644d6</analysis-reference>
+    <analysis-reference number="6">1a6a200982ff5a76c6495af5113b5df999bb7f35</analysis-reference>
+    <analysis-reference number="5">b8aa1ec01761c49799f399df140e0358a660040c</analysis-reference>
+    <analysis-reference number="4">a4f885176ecc918582d0a50afedb747150fd3a30</analysis-reference>
+  </previous-analyses-references>
+  <nb-violations-new>0</nb-violations-new>
+  <nb-violations-existing>11</nb-violations-existing>
+  <nb-violations-fixed>0</nb-violations-fixed>
+  <nb-violations-ignored>0</nb-violations-ignored>
+</analysis>
