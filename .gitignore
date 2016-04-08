@@ -1,13 +1,8 @@
-/nbproject
-/oldSite
-/Unifyv1.9.1
 /src/JLP/CoreBundle/Resources/public/images/hd/*
 /src/JLP/CoreBundle/Resources/public/images/source/*
 /src/JLP/CoreBundle/Resources/public/images/sd/*
 /src/JLP/CoreBundle/Resources/public/images/thumb/*
 /src/JLP/CoreBundle/Resources/public/images/coeur/*
-site_jlp.sql
-
 /web/bundles/
 /app/bootstrap.php.cache
 /app/cache/*
