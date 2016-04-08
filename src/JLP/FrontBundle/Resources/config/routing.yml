@@ -28,7 +28,11 @@ jlp_front_contact:
     requirements:
             _locale: en|fr
 
-
+jlp_front_do_contact:
+    path:     /{_locale}/contact/doContact
+    defaults: { _controller: JLPFrontBundle:Contact:doContact }
+    requirements:
+            _locale: en|fr
 
 
 jlp_front_test:

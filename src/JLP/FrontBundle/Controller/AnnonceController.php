@@ -9,14 +9,14 @@ class AnnonceController extends Controller
     public function indexAction($annonceId)
     {
         $annonce = $this->getDoctrine()->getManager()->getRepository('JLP\CoreBundle\Entity\Annonce')->find($annonceId);
-        // Todo : Mettre en place d'annonce.
+
         return $this->render('JLPFrontBundle:Annonce:index.html.twig',array('annonce'=>$annonce));
     }
 
     public function testAction()
     {
         $annonces = $this->getDoctrine()->getManager()->getRepository('JLP\CoreBundle\Entity\Annonce')->findAll();
-        // Todo : Mettre en place d'annonce.
+
         return $this->render('JLPFrontBundle:Annonce:test.html.twig',array('annonces'=>$annonces));
     }
 
@@ -40,13 +40,13 @@ class AnnonceController extends Controller
         }elseif( preg_match('/type(?<type_id>[1-9]*\Z)/',$searchString,$aMatches)) {
 
             $typeBien = $this->getDoctrine()->getManager()->getRepository('JLP\CoreBundle\Entity\TypeBien')->findOneBy(array('id'=>$aMatches['type_id']));
-            var_dump($typeBien);
+
 
             if(false === is_null($typeBien)) {
                 $annonce = $this->getDoctrine()->getManager()->getRepository('JLP\CoreBundle\Entity\Annonce')->findBy(array('typeBien'=>$typeBien->getId()));
             }
         }
-        // Todo : Mettre en place d'annonce.
+       
         return $this->render('JLPFrontBundle:Annonce:index.html.twig',array('annonces'=>$annonce));
     }
 }
