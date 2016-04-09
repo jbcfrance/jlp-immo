@@ -10,14 +10,14 @@ class AnnonceController extends Controller
     {
         $annonce = $this->getDoctrine()->getManager()->getRepository('JLP\CoreBundle\Entity\Annonce')->find($annonceId);
 
-        return $this->render('JLPFrontBundle:Annonce:index.html.twig',array('annonce'=>$annonce));
+        return $this->render('JLPFrontBundle:Annonce:index.html.twig', array('annonce'=>$annonce));
     }
 
     public function testAction()
     {
         $annonces = $this->getDoctrine()->getManager()->getRepository('JLP\CoreBundle\Entity\Annonce')->findAll();
 
-        return $this->render('JLPFrontBundle:Annonce:test.html.twig',array('annonces'=>$annonces));
+        return $this->render('JLPFrontBundle:Annonce:test.html.twig', array('annonces'=>$annonces));
     }
 
     public function typeBienAction($typeBienId)
@@ -29,24 +29,24 @@ class AnnonceController extends Controller
 
         $annonces = $this->getDoctrine()->getRepository('JLP\CoreBundle\Entity\Annonce')->findByTypeBien($typeBien);
 
-        return $this->render('JLPFrontBundle:Annonce:listing.html.twig', array('typesBiens' => $typesBiens,'annonces'=>$annonces));
+        return $this->render('JLPFrontBundle:Annonce:listing.html.twig', array('typesBiens' => $typesBiens, 'annonces'=>$annonces));
 
     }
 
     public function searchAction($searchString)
     {
-        if(true === is_int($searchString)) {
+        if (true === is_int($searchString)) {
             $annonce = $this->getDoctrine()->getManager()->getRepository('JLP\CoreBundle\Entity\Annonce')->findOneBy(array('reference'=>$searchString));
-        } elseif( preg_match('/type(?<type_id>[1-9]*\Z)/',$searchString,$aMatches)) {
+        } elseif (preg_match('/type(?<type_id>[1-9]*\Z)/', $searchString, $aMatches)) {
 
             $typeBien = $this->getDoctrine()->getManager()->getRepository('JLP\CoreBundle\Entity\TypeBien')->findOneBy(array('id'=>$aMatches['type_id']));
 
 
-            if(false === is_null($typeBien)) {
+            if (false === is_null($typeBien)) {
                 $annonce = $this->getDoctrine()->getManager()->getRepository('JLP\CoreBundle\Entity\Annonce')->findBy(array('typeBien'=>$typeBien->getId()));
             }
         }
        
-        return $this->render('JLPFrontBundle:Annonce:index.html.twig',array('annonces'=>$annonce));
+        return $this->render('JLPFrontBundle:Annonce:index.html.twig', array('annonces'=>$annonce));
     }
 }
