@@ -106,25 +106,25 @@ class JLPPasserelle
     $this->oYmlMapping = Yaml::parse($sYmlConfigFile);
     $this->zipFilename = $this->oYmlMapping['passerelle']['zip_name'];
     $this->xmlFilename = $this->oYmlMapping['passerelle']['xml_filename'];
-  }
+    }
 
-  /**
-   * execute
-   * 
-   * Method lauching the process. 
-   *
-   * @param ConsoleLogger  $oLogger
-   * @throws
-   */
-  public function execute($oLogger, $oProgressBar)
-  {
+    /**
+     * execute
+     * 
+     * Method lauching the process. 
+     *
+     * @param ConsoleLogger  $oLogger
+     * @throws
+     */
+    public function execute($oLogger, $oProgressBar)
+    {
 
     $this->oLogger = $oLogger;
     $this->oProgressBar = $oProgressBar;
     
     if (!$this->prepAnnonces(self::LOCAL_PATH.$this->zipFilename)) {
-      $this->oLogger->error('Erreur lors de la preparation des annonces : Import stoppé !');
-      throw new \Exception('Erreur lors de la preparation des annonces : Import stoppé !');
+        $this->oLogger->error('Erreur lors de la preparation des annonces : Import stoppé !');
+        throw new \Exception('Erreur lors de la preparation des annonces : Import stoppé !');
     }
 
     $this->oParser->execute(self::TARGET_UNZIP_DIR."/".$this->xmlFilename, $this->oLogger, $this->oProgressBar);
@@ -132,26 +132,26 @@ class JLPPasserelle
     $this->deleteStandByAnnonce();
     $this->checkNegociateur();
     $this->checkAgence();
-  }
+    }
 
-  /**
-   * prepAnnonces
-   * 
-   * Methode preparing the Annonces by extracting the zip archive and moving the images to the images dir. 
-   *  
-   *
-   * @param string  $sFileName
-   * @return boolean|null
-   */
-  private function prepAnnonces($sFileName)
-  {
+    /**
+     * prepAnnonces
+     * 
+     * Methode preparing the Annonces by extracting the zip archive and moving the images to the images dir. 
+     *  
+     *
+     * @param string  $sFileName
+     * @return boolean|null
+     */
+    private function prepAnnonces($sFileName)
+    {
     $oFilesystem = new Filesystem();
 
     $this->oLogger->info("ZIP : ".$sFileName);
     if ($oFilesystem->exists($sFileName)) {
-      $this->oLogger->info("File Exists true");
-      //Upload du Zip
-      if ($this->extractionProcess($sFileName)) {
+        $this->oLogger->info("File Exists true");
+        //Upload du Zip
+        if ($this->extractionProcess($sFileName)) {
         $this->oLogger->info("Extraction du fichier ".$sFileName." réussit");
         $this->moveSourceImage();
 
@@ -160,180 +160,180 @@ class JLPPasserelle
         $this->putAnnonceInStandBy();
 
         return true;
-      } else {
+        } else {
         $this->oLogger->error("Erreur lors de l'extraction du fichier ".$sFileName);
         $this->bStatusPasserelle = 0;
         return false;
-      }
+        }
     } else {
-      $this->oLogger->error("$sFileName does not exists !");
+        $this->oLogger->error("$sFileName does not exists !");
     }
-  }
+    }
 
-  /**
-   * extractionProcess
-   * 
-   * Method cleaning the target dir inorder to proceed to a new extraction of the ZIP Archive.
-   *
-   * @param string  $sFileToExtract
-   * @return boolean
-   */
-  private function extractionProcess($sFileToExtract)
-  {
+    /**
+     * extractionProcess
+     * 
+     * Method cleaning the target dir inorder to proceed to a new extraction of the ZIP Archive.
+     *
+     * @param string  $sFileToExtract
+     * @return boolean
+     */
+    private function extractionProcess($sFileToExtract)
+    {
     $oCleaningProcess = new Process('rm -rf '.self::TARGET_UNZIP_DIR);
     $oCleaningProcess->run();
     if (!$oCleaningProcess->isSuccessful()) {
-      throw new ProcessFailedException($oCleaningProcess);
+        throw new ProcessFailedException($oCleaningProcess);
     }
 
     $oCleaningSourceProcess = new Process('rm -rf '.self::TARGET_IMAGE_DIR."*");
     $oCleaningSourceProcess->run();
     if (!$oCleaningSourceProcess->isSuccessful()) {
-      throw new ProcessFailedException($oCleaningSourceProcess);
+        throw new ProcessFailedException($oCleaningSourceProcess);
     }
 
     $oExtractProcess = new Process('unzip '.$sFileToExtract.' -d '.self::TARGET_UNZIP_DIR);
     $oExtractProcess->run();
     if (!$oExtractProcess->isSuccessful()) {
-      throw new ProcessFailedException($oExtractProcess);
+        throw new ProcessFailedException($oExtractProcess);
     }
 
     unset($oCleaningProcess, $oCleaningSourceProcess, $oExtractProcess);
 
     return true;
-  }
+    }
 
-  /**
-   * moveSourceImage
-   * 
-   * Method searching the images jpg in the dir extracted from the zip and moving them in the images/source dir.
-   *
-   * @param void
-   */
-  private function moveSourceImage()
-  {
+    /**
+     * moveSourceImage
+     * 
+     * Method searching the images jpg in the dir extracted from the zip and moving them in the images/source dir.
+     *
+     * @param void
+     */
+    private function moveSourceImage()
+    {
     $oFinder = new Finder();
     $oFinder->files()->name('*.jpg');
     $this->oProgressBar->setMessage('Extracting the images to the source dir...');
     $this->oProgressBar->start(count($oFinder->in(self::TARGET_UNZIP_DIR)));
     foreach ($oFinder->in(self::TARGET_UNZIP_DIR) as $oImage) {
-      $oMoveImageProcess = new Process('mv '.self::TARGET_UNZIP_DIR.'/'.$oImage->getFilename().' '.self::TARGET_IMAGE_DIR.$oImage->getFilename());
-      $oMoveImageProcess->run();
-      $this->oProgressBar->advance();
-      if (!$oMoveImageProcess->isSuccessful()) {
+        $oMoveImageProcess = new Process('mv '.self::TARGET_UNZIP_DIR.'/'.$oImage->getFilename().' '.self::TARGET_IMAGE_DIR.$oImage->getFilename());
+        $oMoveImageProcess->run();
+        $this->oProgressBar->advance();
+        if (!$oMoveImageProcess->isSuccessful()) {
         throw new ProcessFailedException($oMoveImageProcess);
-      }
-      unset($oMoveImageProcess);
+        }
+        unset($oMoveImageProcess);
     }
     $this->oProgressBar->finish();
     $this->oLogger->info(null);
-  }
+    }
 
-  /**
-   * putAnnonceInStandBy
-   * 
-   * Method updating the status of each annonce to "Standby".
-   *
-   * @param void
-   */
-  private function putAnnonceInStandBy()
-  {
+    /**
+     * putAnnonceInStandBy
+     * 
+     * Method updating the status of each annonce to "Standby".
+     *
+     * @param void
+     */
+    private function putAnnonceInStandBy()
+    {
     $aAnnonceEntities = $this->oEm->getRepository('JLPCoreBundle:Annonce')->findAll();
 
     foreach ($aAnnonceEntities as $oAnnonce) {
 
-      $oAnnonce->setStatusAnnonce('standby');
-      $this->oEm->persist($oAnnonce);
+        $oAnnonce->setStatusAnnonce('standby');
+        $this->oEm->persist($oAnnonce);
 
     }
-      $this->oEm->flush();
-  }
+        $this->oEm->flush();
+    }
 
-  /**
-   * checkNegociateur
-   * 
-   * Method removing the negociateur without any annonce left. 
-   *
-   * @param void
-   */
-  private function checkNegociateur()
-  {
+    /**
+     * checkNegociateur
+     * 
+     * Method removing the negociateur without any annonce left. 
+     *
+     * @param void
+     */
+    private function checkNegociateur()
+    {
     $this->oLogger->info("Delete Negociateur without any annonce.");
     $aNegociateurEntities = $this->oEm->getRepository('JLPCoreBundle:Negociateur')->getNegociateurWithoutAnnonce();
     foreach ($aNegociateurEntities as $oNegociateur) {
-      $this->oEm->remove($oNegociateur);
+        $this->oEm->remove($oNegociateur);
 
     }
-      $this->oEm->flush();
-  }
+        $this->oEm->flush();
+    }
 
-  /**
-   * checkAgence
-   * 
-   * Method removing the agence without any negociateur left. 
-   *
-   * @param void
-   */
-  private function checkAgence()
-  {
+    /**
+     * checkAgence
+     * 
+     * Method removing the agence without any negociateur left. 
+     *
+     * @param void
+     */
+    private function checkAgence()
+    {
     $this->oLogger->info("Delete Agence without any Negociateur.");
     $aAgenceEntities = $this->oEm->getRepository('JLPCoreBundle:Agence')->getAgenceWithoutNegociateur();
     foreach ($aAgenceEntities as $oAgence) {
-      $this->oEm->remove($oAgence);
+        $this->oEm->remove($oAgence);
 
     }
-      $this->oEm->flush();
-  }
+        $this->oEm->flush();
+    }
 
-  /**
-   * deleteStandByAnnonce
-   * 
-   * This method delete the annonce that a left in standby status by the passerelle's process. 
-   * It's mean that they are not present in the XML source anymore. The images associated with the annonce are deleted two. 
-   *
-   * @param void
-   */
-  private function deleteStandByAnnonce()
-  {
+    /**
+     * deleteStandByAnnonce
+     * 
+     * This method delete the annonce that a left in standby status by the passerelle's process. 
+     * It's mean that they are not present in the XML source anymore. The images associated with the annonce are deleted two. 
+     *
+     * @param void
+     */
+    private function deleteStandByAnnonce()
+    {
     $this->oLogger->info("Delete Annonce still in standby");
     $aAnnonceEntities = $this->oEm->getRepository('JLPCoreBundle:Annonce')->findBy(array('statusAnnonce' => 'standby'));
 
     $this->iNbAnnonceSuppr = count($aAnnonceEntities);
 
     foreach ($aAnnonceEntities as $oAnnonce) {
-      $aImagesCollection = $oAnnonce->getImages();
-      $this->deleteImages($aImagesCollection);
-      $this->oEm->remove($oAnnonce);
+        $aImagesCollection = $oAnnonce->getImages();
+        $this->deleteImages($aImagesCollection);
+        $this->oEm->remove($oAnnonce);
 
     }
-      $this->oEm->flush();
-  }
+        $this->oEm->flush();
+    }
 
-  /**
-   * deleteImages
-   * 
-   * This method delete the images given in a collection
-   *
-   * @param array : $aImagesCollection
-   */
-  private function deleteImages($aImagesCollection)
-  {
+    /**
+     * deleteImages
+     * 
+     * This method delete the images given in a collection
+     *
+     * @param array : $aImagesCollection
+     */
+    private function deleteImages($aImagesCollection)
+    {
     if (!empty($aImagesCollection)) {
-      foreach ($aImagesCollection as $oAnnonceImages) {
+        foreach ($aImagesCollection as $oAnnonceImages) {
         $this->oEm->remove($oAnnonceImages);
-      }
-      $this->oEm->flush();
+        }
+        $this->oEm->flush();
     }
-  }
+    }
 
-  public function informations()
-  {
+    public function informations()
+    {
     return 'Information';
-  }
+    }
 
-  public function getName()
-  {
+    public function getName()
+    {
     return 'jlp_core.passerelle';
-  }
+    }
 
 }
