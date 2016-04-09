@@ -5,6 +5,8 @@
 namespace JLP\CoreBundle\Services;
 
 use AppKernel;
+use Symfony\Component\Console\Logger\ConsoleLogger;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -12,7 +14,7 @@ use Symfony\Component\Finder\Finder;
 use \Symfony\Component\Yaml\Yaml;
 use Doctrine\ORM\EntityManagerInterface;
 use Assetic\Exception\Exception;
-use JLP\CoreBundle\Services\JLPParser;
+use JLP\CoreBundle\Services;
 
 /**
  * Service Passerelle
@@ -42,7 +44,7 @@ class JLPPasserelle
   protected $oKernel;
 
   /**
-   * @var SimpleXMLElement
+   * @var \SimpleXMLElement
    */
   protected $oXml;
 
@@ -56,7 +58,7 @@ class JLPPasserelle
    */
   protected $oProgressBar;
   /**
-   * @var YamlConfig
+   * @var string
    */
   protected $oYmlMapping;
   
@@ -81,19 +83,19 @@ class JLPPasserelle
    *
    * @var integer
    */
-  private $iNbAnnonceTraite = 0;
+  protected $iNbAnnonceTraite = 0;
 
   /**
    *
    * @var integer
    */
-  private $iNbAnnonceSuppr = 0;
+  protected $iNbAnnonceSuppr = 0;
 
   /**
    *
    * @var integer
    */
-  private $bStatusPasserelle = 0;
+  protected $bStatusPasserelle = 0;
 
   public function __construct(AppKernel $oKernel, $sYmlConfigFile, EntityManagerInterface $oEm, JLPParser $oParser, $bDebug = false)
   {
@@ -111,7 +113,8 @@ class JLPPasserelle
    * 
    * Method lauching the process. 
    *
-   * @param Logger  $oLogger
+   * @param ConsoleLogger  $oLogger
+   * @throws
    */
   public function execute($oLogger, $oProgressBar) {
 
@@ -120,7 +123,7 @@ class JLPPasserelle
     
     if (!$this->prepAnnonces(self::LOCAL_PATH.$this->zipFilename)) {
       $this->oLogger->error('Erreur lors de la preparation des annonces : Import stoppé !');
-      throw new Exception('Erreur lors de la preparation des annonces : Import stoppé !');
+      throw new \Exception('Erreur lors de la preparation des annonces : Import stoppé !');
     }
 
     $this->oParser->execute(self::TARGET_UNZIP_DIR."/".$this->xmlFilename, $this->oLogger, $this->oProgressBar);
@@ -137,6 +140,7 @@ class JLPPasserelle
    *  
    *
    * @param string  $sFileName
+   * @return boolean
    */
   private function prepAnnonces($sFileName)
   {
@@ -171,6 +175,7 @@ class JLPPasserelle
    * Method cleaning the target dir inorder to proceed to a new extraction of the ZIP Archive.
    *
    * @param string  $sFileToExtract
+   * @return boolean
    */
   private function extractionProcess($sFileToExtract) {
     $oCleaningProcess = new Process('rm -rf '.self::TARGET_UNZIP_DIR);
@@ -254,7 +259,7 @@ class JLPPasserelle
     $aNegociateurEntities = $this->oEm->getRepository('JLPCoreBundle:Negociateur')->getNegociateurWithoutAnnonce();
     foreach ($aNegociateurEntities as $oNegociateur) {
       $this->oEm->remove($oNegociateur);
-      $this->oEm->flush($oNegociateur);
+      $this->oEm->flush();
     }
   }
 
@@ -271,7 +276,7 @@ class JLPPasserelle
     $aAgenceEntities = $this->oEm->getRepository('JLPCoreBundle:Agence')->getAgenceWithoutNegociateur();
     foreach ($aAgenceEntities as $oAgence) {
       $this->oEm->remove($oAgence);
-      $this->oEm->flush($oAgence);
+      $this->oEm->flush();
     }
   }
 
@@ -294,7 +299,7 @@ class JLPPasserelle
       $aImagesCollection = $oAnnonce->getImages();
       $this->deleteImages($aImagesCollection);
       $this->oEm->remove($oAnnonce);
-      $this->oEm->flush($oAnnonce);
+      $this->oEm->flush();
     }
   }
 

@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use \Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Console\Helper\ProgressBar;
+use Doctrine\ORM\Mapping\ClassMetadata;
 
 /**
 * Service Parser
@@ -94,6 +95,8 @@ class JLPParser
      *
      * @param string $sXMLFileName
      * @param LoggerInterface $logger
+     *
+     * @return boolean
      */  
     public function execute($sXMLFileName, $logger, $oProgressbar)
     {
@@ -241,9 +244,9 @@ class JLPParser
      */
     private function persistAndFlushEntitites()
     {
-        $this->oEm->getClassMetaData(get_class($this->oAgenceEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
-        $this->oEm->getClassMetaData(get_class($this->oNegociateurEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
-        $this->oEm->getClassMetaData(get_class($this->oAnnonceEntity))->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
+        $this->oEm->getClassMetaData(get_class($this->oAgenceEntity))->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
+        $this->oEm->getClassMetaData(get_class($this->oNegociateurEntity))->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
+        $this->oEm->getClassMetaData(get_class($this->oAnnonceEntity))->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         $this->oEm->persist($this->oAgenceEntity);
         $this->oNegociateurEntity->setAgence($this->oAgenceEntity);
