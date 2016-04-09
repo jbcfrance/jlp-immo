@@ -21,8 +21,8 @@ class Agence
     private $id;
     
     /**
-    * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Negociateur", mappedBy="agence")
-    */
+     * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Negociateur", mappedBy="agence")
+     */
     private $negociateurs; // Notez le « s », une annonce est liée à plusieurs candidatures
     
     /**
@@ -70,14 +70,14 @@ class Agence
     /**
      * @var integer
      * 
-     * @ORM\Column(name="telephone", type="integer")
+     * @ORM\Column(name="telephone", type="string", length=255)
      */
     private $telephone;
 
     /**
      * @var integer
      * 
-     * @ORM\Column(name="fax", type="integer")
+     * @ORM\Column(name="fax", type="string", length=255)
      */
     private $fax;
 
@@ -272,7 +272,7 @@ class Agence
     public function setTelephone($telephone)
     {
         $this->telephone = $telephone;
-
+       
         return $this;
     }
 
@@ -356,5 +356,46 @@ class Agence
     public function getSiteWeb()
     {
         return $this->siteWeb;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->negociateurs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add negociateur
+     *
+     * @param \JLP\CoreBundle\Entity\Negociateur $negociateur
+     *
+     * @return Agence
+     */
+    public function addNegociateur(\JLP\CoreBundle\Entity\Negociateur $negociateur)
+    {
+        $this->negociateurs[] = $negociateur;
+
+        return $this;
+    }
+
+    /**
+     * Remove negociateur
+     *
+     * @param \JLP\CoreBundle\Entity\Negociateur $negociateur
+     */
+    public function removeNegociateur(\JLP\CoreBundle\Entity\Negociateur $negociateur)
+    {
+        $this->negociateurs->removeElement($negociateur);
+    }
+
+    /**
+     * Get negociateurs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNegociateurs()
+    {
+        return $this->negociateurs;
     }
 }

@@ -22,25 +22,25 @@ class Annonce
     private $id;
     
     /**
-    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Agence", cascade={"persist", "remove"})
-    * @ORM\JoinColumn(nullable=false)
-    */
+     * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Agence")
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $agence;
 
     /**
-    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Negociateur", cascade={"persist", "remove"})
-    * @ORM\JoinColumn(nullable=false)
-    */
+     * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Negociateur")
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $negociateur;
     
     /**
-    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\ProgrammeNeuf")
-    */
+     * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\ProgrammeNeuf")
+     */
     private $programmeNeuf;
         
     /**
-    * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Images", mappedBy="annonce")
-    */
+     * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Images", mappedBy="annonce")
+     */
     private $images; // Notez le « s », une annonce est liée à plusieurs candidatures
     
     /**
@@ -53,32 +53,32 @@ class Annonce
     /**
      * @var integer
      * 
-     * @ORM\Column(name="reference", type="integer")
+     * @ORM\Column(name="reference", type="string", length=255)
      */
     private $reference;
 
     /**
      * @var integer
      * 
-     * @ORM\Column(name="numMandat", type="integer")
+     * @ORM\Column(name="numMandat", type="string", length=255)
      */
     private $numMandat;
 
     /**
-    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\TypeMandat", cascade={"persist"})
-    */
+     * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\TypeMandat", cascade={"persist"})
+     */
     private $typeMandat;
 
     /**
      * @var integer
      * 
-     * @ORM\Column(name="categorieOffre", type="integer")
+     * @ORM\Column(name="categorieOffre", type="string", length=255)
      */
     private $categorieOffre;
 
     /**
-    * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\TypeBien", cascade={"persist"})
-    */
+     * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\TypeBien", cascade={"persist"})
+     */
     private $typeBien;
 
     /**
@@ -584,13 +584,13 @@ class Annonce
         $this->statusAnnonce = new \Doctrine\Common\Collections\ArrayCollection();
         $this->typeBien = new \Doctrine\Common\Collections\ArrayCollection();
     }
-     /**
-     * Set id
-     *
-     * @param integer $id
-     *
-     * @return Annonce
-     */
+        /**
+         * Set id
+         *
+         * @param integer $id
+         *
+         * @return Annonce
+         */
     public function setId($id)
     {
         $this->id = $id;
@@ -2507,7 +2507,7 @@ class Annonce
     /**
      * Get statusAnnonce
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return string
      */
     public function getStatusAnnonce()
     {
@@ -2627,7 +2627,7 @@ class Annonce
     /**
      * Get images
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Images[]
      */
     public function getImages()
     {
