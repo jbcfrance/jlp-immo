@@ -242,8 +242,9 @@ class JLPPasserelle
 
       $oAnnonce->setStatusAnnonce('standby');
       $this->oEm->persist($oAnnonce);
-      $this->oEm->flush($oAnnonce);
+
     }
+      $this->oEm->flush();
   }
 
   /**
@@ -259,8 +260,9 @@ class JLPPasserelle
     $aNegociateurEntities = $this->oEm->getRepository('JLPCoreBundle:Negociateur')->getNegociateurWithoutAnnonce();
     foreach ($aNegociateurEntities as $oNegociateur) {
       $this->oEm->remove($oNegociateur);
-      $this->oEm->flush();
+
     }
+      $this->oEm->flush();
   }
 
   /**
@@ -276,8 +278,9 @@ class JLPPasserelle
     $aAgenceEntities = $this->oEm->getRepository('JLPCoreBundle:Agence')->getAgenceWithoutNegociateur();
     foreach ($aAgenceEntities as $oAgence) {
       $this->oEm->remove($oAgence);
-      $this->oEm->flush();
+
     }
+      $this->oEm->flush();
   }
 
   /**
@@ -299,8 +302,9 @@ class JLPPasserelle
       $aImagesCollection = $oAnnonce->getImages();
       $this->deleteImages($aImagesCollection);
       $this->oEm->remove($oAnnonce);
-      $this->oEm->flush();
+
     }
+      $this->oEm->flush();
   }
 
   /**

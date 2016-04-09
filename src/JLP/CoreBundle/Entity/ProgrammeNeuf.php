@@ -77,35 +77,11 @@ class ProgrammeNeuf
      */
     private $alt;
     
-    /**
-     * @var string
-     */
-    private $file;
     
-    /**
-     * @var UploadedFile
-     */
-    private $tempFilename;
+    
 
-    public function getFile()
-    {
-        return $this->file;
-    }
 
-    public function setFile(UploadedFile $file)
-    {
-        $this->file = $file;
 
-    // On vérifie si on avait déjà un fichier pour cette entité
-    if (null !== $this->url) {
-        // On sauvegarde l'extension du fichier pour le supprimer plus tard
-        $this->tempFilename = $this->url;
-
-        // On réinitialise les valeurs des attributs url et alt
-        $this->url = null;
-        $this->alt = null;
-    }
-    }
 
     /**
      * Get id
