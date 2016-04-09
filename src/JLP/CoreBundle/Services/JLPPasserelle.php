@@ -29,76 +29,76 @@ use JLP\CoreBundle\Services;
 class JLPPasserelle
 {
 
-  const LOCAL_PATH = "web/bundles/jlpcore/upload/";
-  const TARGET_UNZIP_DIR = "web/bundles/jlpcore/upload/connectimmo";
-  const TARGET_IMAGE_DIR = "web/bundles/jlpcore/images/source/";
+    const LOCAL_PATH = "web/bundles/jlpcore/upload/";
+    const TARGET_UNZIP_DIR = "web/bundles/jlpcore/upload/connectimmo";
+    const TARGET_IMAGE_DIR = "web/bundles/jlpcore/images/source/";
 
-  /**
-   * @var EntityManagerInterface
-   */
-  protected $oEm;
+    /**
+     * @var EntityManagerInterface
+     */
+    protected $oEm;
 
-  /**
-   * @var AppKernel
-   */
-  protected $oKernel;
+    /**
+     * @var AppKernel
+     */
+    protected $oKernel;
 
-  /**
-   * @var \SimpleXMLElement
-   */
-  protected $oXml;
+    /**
+     * @var \SimpleXMLElement
+     */
+    protected $oXml;
 
-  /**
-   * @var ConsoleLogger
-   */
-  protected $oLogger;
+    /**
+     * @var ConsoleLogger
+     */
+    protected $oLogger;
   
-  /**
-   * @var ProgressBar
-   */
-  protected $oProgressBar;
-  /**
-   * @var string
-   */
-  protected $oYmlMapping;
+    /**
+     * @var ProgressBar
+     */
+    protected $oProgressBar;
+    /**
+     * @var string
+     */
+    protected $oYmlMapping;
   
-  /**
-   * @var JLPParser
-   */
-  protected $oParser;
+    /**
+     * @var JLPParser
+     */
+    protected $oParser;
   
-  /**
-   *
-   * @var string
-   */
-  private $zipFilename;
+    /**
+     *
+     * @var string
+     */
+    private $zipFilename;
 
-  /**
-   *
-   * @var string
-   */
-  private $xmlFilename;
+    /**
+     *
+     * @var string
+     */
+    private $xmlFilename;
 
-  /**
-   *
-   * @var integer
-   */
-  protected $iNbAnnonceTraite = 0;
+    /**
+     *
+     * @var integer
+     */
+    protected $iNbAnnonceTraite = 0;
 
-  /**
-   *
-   * @var integer
-   */
-  protected $iNbAnnonceSuppr = 0;
+    /**
+     *
+     * @var integer
+     */
+    protected $iNbAnnonceSuppr = 0;
 
-  /**
-   *
-   * @var integer
-   */
-  protected $bStatusPasserelle = 0;
+    /**
+     *
+     * @var integer
+     */
+    protected $bStatusPasserelle = 0;
 
-  public function __construct(AppKernel $oKernel, $sYmlConfigFile, EntityManagerInterface $oEm, JLPParser $oParser, $bDebug = false)
-  {
+    public function __construct(AppKernel $oKernel, $sYmlConfigFile, EntityManagerInterface $oEm, JLPParser $oParser, $bDebug = false)
+    {
     $this->bDebug = $bDebug;
     $this->oKernel = $oKernel;
     $this->oEm = $oEm;
@@ -116,7 +116,8 @@ class JLPPasserelle
    * @param ConsoleLogger  $oLogger
    * @throws
    */
-  public function execute($oLogger, $oProgressBar) {
+  public function execute($oLogger, $oProgressBar)
+  {
 
     $this->oLogger = $oLogger;
     $this->oProgressBar = $oProgressBar;
@@ -140,7 +141,7 @@ class JLPPasserelle
    *  
    *
    * @param string  $sFileName
-   * @return boolean
+   * @return boolean|null
    */
   private function prepAnnonces($sFileName)
   {
@@ -177,7 +178,8 @@ class JLPPasserelle
    * @param string  $sFileToExtract
    * @return boolean
    */
-  private function extractionProcess($sFileToExtract) {
+  private function extractionProcess($sFileToExtract)
+  {
     $oCleaningProcess = new Process('rm -rf '.self::TARGET_UNZIP_DIR);
     $oCleaningProcess->run();
     if (!$oCleaningProcess->isSuccessful()) {

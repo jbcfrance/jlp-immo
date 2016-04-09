@@ -14,7 +14,8 @@ class ContactController extends Controller
         return $this->render('JLPFrontBundle:Contact:index.html.twig', array('typesBiens' => $typesBiens));
     }
     
-    public function sendMailAction(Request $request) {
+    public function sendMailAction(Request $request)
+    {
 
         echo $request->request->get('name');
         echo $request->request->get('email');
