@@ -24,7 +24,8 @@ use JLP\CoreBundle\Services\JLPParser;
  *
  * 
  */
-class JLPPasserelle {
+class JLPPasserelle
+{
 
   const LOCAL_PATH = "web/bundles/jlpcore/upload/";
   const TARGET_UNZIP_DIR = "web/bundles/jlpcore/upload/connectimmo";
@@ -94,7 +95,8 @@ class JLPPasserelle {
    */
   private $bStatusPasserelle = 0;
 
-  public function __construct(AppKernel $oKernel, $sYmlConfigFile, EntityManagerInterface $oEm, JLPParser $oParser, $bDebug = false) {
+  public function __construct(AppKernel $oKernel, $sYmlConfigFile, EntityManagerInterface $oEm, JLPParser $oParser, $bDebug = false)
+  {
     $this->bDebug = $bDebug;
     $this->oKernel = $oKernel;
     $this->oEm = $oEm;
@@ -111,17 +113,17 @@ class JLPPasserelle {
    *
    * @param Logger  $oLogger
    */
-  public function execute($oLogger,$oProgressBar) {
+  public function execute($oLogger, $oProgressBar) {
 
     $this->oLogger = $oLogger;
     $this->oProgressBar = $oProgressBar;
     
-    if (!$this->prepAnnonces(self::LOCAL_PATH . $this->zipFilename)) {
+    if (!$this->prepAnnonces(self::LOCAL_PATH.$this->zipFilename)) {
       $this->oLogger->error('Erreur lors de la preparation des annonces : Import stoppé !');
       throw new Exception('Erreur lors de la preparation des annonces : Import stoppé !');
     }
 
-    $this->oParser->execute(self::TARGET_UNZIP_DIR . "/" . $this->xmlFilename, $this->oLogger, $this->oProgressBar);
+    $this->oParser->execute(self::TARGET_UNZIP_DIR."/".$this->xmlFilename, $this->oLogger, $this->oProgressBar);
     $this->iNbAnnonceTraite = $this->oParser->getNbAnnonceTraite();
     $this->deleteStandByAnnonce();
     $this->checkNegociateur();
@@ -136,15 +138,16 @@ class JLPPasserelle {
    *
    * @param string  $sFileName
    */
-  private function prepAnnonces($sFileName) {
+  private function prepAnnonces($sFileName)
+  {
     $oFilesystem = new Filesystem();
 
-    $this->oLogger->info("ZIP : " . $sFileName);
+    $this->oLogger->info("ZIP : ".$sFileName);
     if ($oFilesystem->exists($sFileName)) {
       $this->oLogger->info("File Exists true");
       //Upload du Zip
       if ($this->extractionProcess($sFileName)) {
-        $this->oLogger->info("Extraction du fichier " . $sFileName . " réussit");
+        $this->oLogger->info("Extraction du fichier ".$sFileName." réussit");
         $this->moveSourceImage();
 
         $this->bStatusPasserelle = 1;
@@ -153,7 +156,7 @@ class JLPPasserelle {
 
         return true;
       } else {
-        $this->oLogger->error("Erreur lors de l'extraction du fichier " . $sFileName);
+        $this->oLogger->error("Erreur lors de l'extraction du fichier ".$sFileName);
         $this->bStatusPasserelle = 0;
         return false;
       }
@@ -170,19 +173,19 @@ class JLPPasserelle {
    * @param string  $sFileToExtract
    */
   private function extractionProcess($sFileToExtract) {
-    $oCleaningProcess = new Process('rm -rf ' . self::TARGET_UNZIP_DIR);
+    $oCleaningProcess = new Process('rm -rf '.self::TARGET_UNZIP_DIR);
     $oCleaningProcess->run();
     if (!$oCleaningProcess->isSuccessful()) {
       throw new ProcessFailedException($oCleaningProcess);
     }
 
-    $oCleaningSourceProcess = new Process('rm -rf ' . self::TARGET_IMAGE_DIR . "*");
+    $oCleaningSourceProcess = new Process('rm -rf '.self::TARGET_IMAGE_DIR."*");
     $oCleaningSourceProcess->run();
     if (!$oCleaningSourceProcess->isSuccessful()) {
       throw new ProcessFailedException($oCleaningSourceProcess);
     }
 
-    $oExtractProcess = new Process('unzip ' . $sFileToExtract . ' -d ' . self::TARGET_UNZIP_DIR);
+    $oExtractProcess = new Process('unzip '.$sFileToExtract.' -d '.self::TARGET_UNZIP_DIR);
     $oExtractProcess->run();
     if (!$oExtractProcess->isSuccessful()) {
       throw new ProcessFailedException($oExtractProcess);
@@ -200,13 +203,14 @@ class JLPPasserelle {
    *
    * @param void
    */
-  private function moveSourceImage() {
+  private function moveSourceImage()
+  {
     $oFinder = new Finder();
     $oFinder->files()->name('*.jpg');
     $this->oProgressBar->setMessage('Extracting the images to the source dir...');
     $this->oProgressBar->start(count($oFinder->in(self::TARGET_UNZIP_DIR)));
     foreach ($oFinder->in(self::TARGET_UNZIP_DIR) as $oImage) {
-      $oMoveImageProcess = new Process('mv ' . self::TARGET_UNZIP_DIR . '/' . $oImage->getFilename() . ' ' . self::TARGET_IMAGE_DIR . $oImage->getFilename());
+      $oMoveImageProcess = new Process('mv '.self::TARGET_UNZIP_DIR.'/'.$oImage->getFilename().' '.self::TARGET_IMAGE_DIR.$oImage->getFilename());
       $oMoveImageProcess->run();
       $this->oProgressBar->advance();
       if (!$oMoveImageProcess->isSuccessful()) {
@@ -225,7 +229,8 @@ class JLPPasserelle {
    *
    * @param void
    */
-  private function putAnnonceInStandBy() {
+  private function putAnnonceInStandBy()
+  {
     $aAnnonceEntities = $this->oEm->getRepository('JLPCoreBundle:Annonce')->findAll();
 
     foreach ($aAnnonceEntities as $oAnnonce) {
@@ -243,7 +248,8 @@ class JLPPasserelle {
    *
    * @param void
    */
-  private function checkNegociateur() {
+  private function checkNegociateur()
+  {
     $this->oLogger->info("Delete Negociateur without any annonce.");
     $aNegociateurEntities = $this->oEm->getRepository('JLPCoreBundle:Negociateur')->getNegociateurWithoutAnnonce();
     foreach ($aNegociateurEntities as $oNegociateur) {
@@ -259,7 +265,8 @@ class JLPPasserelle {
    *
    * @param void
    */
-  private function checkAgence() {
+  private function checkAgence()
+  {
     $this->oLogger->info("Delete Agence without any Negociateur.");
     $aAgenceEntities = $this->oEm->getRepository('JLPCoreBundle:Agence')->getAgenceWithoutNegociateur();
     foreach ($aAgenceEntities as $oAgence) {
@@ -276,7 +283,8 @@ class JLPPasserelle {
    *
    * @param void
    */
-  private function deleteStandByAnnonce() {
+  private function deleteStandByAnnonce()
+  {
     $this->oLogger->info("Delete Annonce still in standby");
     $aAnnonceEntities = $this->oEm->getRepository('JLPCoreBundle:Annonce')->findBy(array('statusAnnonce' => 'standby'));
 
@@ -297,7 +305,8 @@ class JLPPasserelle {
    *
    * @param array : $aImagesCollection
    */
-  private function deleteImages($aImagesCollection) {
+  private function deleteImages($aImagesCollection)
+  {
     if (!empty($aImagesCollection)) {
       foreach ($aImagesCollection as $oAnnonceImages) {
         $this->oEm->remove($oAnnonceImages);
@@ -306,11 +315,13 @@ class JLPPasserelle {
     }
   }
 
-  public function informations() {
+  public function informations()
+  {
     return 'Information';
   }
 
-  public function getName() {
+  public function getName()
+  {
     return 'jlp_core.passerelle';
   }
 

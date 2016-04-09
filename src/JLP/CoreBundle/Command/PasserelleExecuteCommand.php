@@ -52,9 +52,9 @@ class PasserelleExecuteCommand extends ContainerAwareCommand
 
             // Appel du service correpondant au CRON
             $services = $this->getContainer()->get('jlp_core.passerelle');
-            $responseServices = $services->execute($logger,$progressBar);
+            $responseServices = $services->execute($logger, $progressBar);
             
-            $output->writeln("<info>Passerelle resultat : ".print_r($responseServices,true)."</info>");
+            $output->writeln("<info>Passerelle resultat : ".print_r($responseServices, true)."</info>");
             
             $output->writeln("\n\r");
             
