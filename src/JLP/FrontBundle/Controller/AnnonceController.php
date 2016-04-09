@@ -37,7 +37,7 @@ class AnnonceController extends Controller
     {
         if(true === is_int($searchString)) {
             $annonce = $this->getDoctrine()->getManager()->getRepository('JLP\CoreBundle\Entity\Annonce')->findOneBy(array('reference'=>$searchString));
-        }elseif( preg_match('/type(?<type_id>[1-9]*\Z)/',$searchString,$aMatches)) {
+        } elseif( preg_match('/type(?<type_id>[1-9]*\Z)/',$searchString,$aMatches)) {
 
             $typeBien = $this->getDoctrine()->getManager()->getRepository('JLP\CoreBundle\Entity\TypeBien')->findOneBy(array('id'=>$aMatches['type_id']));
 

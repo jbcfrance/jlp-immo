@@ -146,9 +146,9 @@ class JLPParser
         if (!empty($oObjectName)) {
             $this->$sEntityObjectName = $oObjectName;
         } else {
-            $sEntityClassName = "JLP\CoreBundle\Entity\\" . $aKeyInfos['entity'];
+            $sEntityClassName = "JLP\CoreBundle\Entity\\".$aKeyInfos['entity'];
             $this->$sEntityObjectName = new $sEntityClassName;
-            $sSetFunc = 'set' . ucfirst($aKeyInfos['field']);
+            $sSetFunc = 'set'.ucfirst($aKeyInfos['field']);
 
             $this->$sEntityObjectName->$sSetFunc($oNode->{$sKeyName}->__toString());
         }
@@ -292,7 +292,7 @@ class JLPParser
      *  
      * @param \SimpleXMLElement $oNode
      */
-    private function extractImageFromAnnonce( \SimpleXMLElement $oNode)
+    private function extractImageFromAnnonce(\SimpleXMLElement $oNode)
     {
     $aAnnonceImages = $oNode->{$this->oYmlMapping['passerelle']['xml_images_node']};
     
@@ -321,7 +321,7 @@ class JLPParser
   
     public function getName()
     {
-      return 'jlp_core.parser';
+        return 'jlp_core.parser';
     }
   
 }
