@@ -1,48 +1,213 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="62bbea60-1645-43ae-b9cd-a6b040410045" name="Default" comment="Mise en place du thème Unity&#10;Organisation du routing initial&#10;Installation et configuration du translator&#10;Ajout de la page Contact avec template et traductions&#10;Debut de la page d'accueil&#10;Template base avec traduction en place.&#10;Mise en place de la page error404">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/documentation/css/main.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/documentation/img/thumbnail.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/documentation/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/documentation/js/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/captcha/button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/captcha/font/anorexia.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/captcha/image.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/captcha/process.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/css/font-awesome.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/css/sky-forms-ie8-rtl.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/css/sky-forms-ie8.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/css/sky-forms-rtl.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/css/sky-forms.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms-rtl.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/demo-comment-process.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/demo-comment.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/demo-contacts-process.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/demo-contacts.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/demo-login-process.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/demo-order-process.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/demo-review-process.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/ext-captcha.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/icons/FontAwesome.otf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/icons/fontawesome-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/icons/fontawesome-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/icons/fontawesome-webfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/icons/fontawesome-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/js/jquery.maskedinput.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/js/jquery.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/js/jquery.modal.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/js/jquery.placeholder.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/sky-forms-pro/skyforms/js/sky-forms-ie8.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jlp-immo.iml" afterPath="$PROJECT_DIR$/.idea/jlp-immo.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Controller/AnnonceController.php" afterPath="$PROJECT_DIR$/src/JLP/FrontBundle/Controller/AnnonceController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/views/Contact/index.html.twig" afterPath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/views/Contact/index.html.twig" />
+    <list default="true" id="62bbea60-1645-43ae-b9cd-a6b040410045" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/frameworkRootSettings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/jlp-immo.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/sensiolabsinsight-analysis-storage.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/sensiolabsinsight-settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/sensiolabsinsight-violations.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/symfony2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vagrant.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/webResources.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/webServers.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/bootstrap/css/bootstrap-rtl.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/bootstrap/css/bootstrap-theme.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/bootstrap/css/bootstrap-theme.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/bootstrap/css/bootstrap-theme.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/bootstrap/css/bootstrap-theme.min.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/bootstrap/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/bootstrap/css/bootstrap.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/bootstrap/css/bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/bootstrap/css/bootstrap.min.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/bootstrap/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/bootstrap/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/bootstrap/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/bootstrap/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/bootstrap/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/bootstrap/js/bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/bootstrap/js/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/bootstrap/js/npm.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/jquery/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/jquery/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/jquery/jquery.min.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/css/main.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/basic.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/crop.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/fade.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/fav.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/flow.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/mask.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/ms-logo.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/play.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/rate-master-slider.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/scale.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/screenshots/embed-url.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/screenshots/get-embed-code.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/skins/b-1.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/skins/b-2-r.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/skins/b-2.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/skins/cont.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/skins/default.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/skins/l-2.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/skins/l-3.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/skins/l-4.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/skins/l-5.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/skins/l-6-r.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/skins/l-6.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/skins/metro.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/toggle-arrow.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/images/wave.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/js/averta.csstweener.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/js/jquery-1.8.2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/js/jquery.easing.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/js/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/js/prettify.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/assets/js/prettify.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/bootstrap/css/bootstrap-responsive.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/bootstrap/css/bootstrap-responsive.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/bootstrap/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/bootstrap/css/bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/bootstrap/img/glyphicons-halflings-white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/bootstrap/img/glyphicons-halflings.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/bootstrap/js/bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/bootstrap/js/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shAutoloader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushAS3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushAppleScript.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushBash.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushCSharp.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushColdFusion.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushCpp.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushCss.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushDelphi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushDiff.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushErlang.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushGroovy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushJScript.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushJava.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushJavaFX.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushPerl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushPhp.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushPlain.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushPowerShell.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushPython.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushRuby.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushSass.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushScala.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushSql.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushVb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shBrushXml.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shCore.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/scripts/shLegacy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/styles/shCore.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/styles/shCoreDefault.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/styles/shCoreDjango.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/styles/shCoreEclipse.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/styles/shCoreEmacs.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/styles/shCoreFadeToGrey.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/styles/shCoreMDUltra.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/styles/shCoreMidnight.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/styles/shCoreRDark.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/styles/shThemeDefault.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/styles/shThemeDjango.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/styles/shThemeEclipse.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/styles/shThemeEmacs.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/styles/shThemeFadeToGrey.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/styles/shThemeMDUltra.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/styles/shThemeMidnight.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/master-slider/documentation/syntax-highlighter/styles/shThemeRDark.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/css/bootstrap-responsive.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/css/documenter_style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/images/image_1.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/images/image_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/img/glyphicons-halflings-white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/img/glyphicons-halflings.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/img/glyphicons/glyphicons_009_magic.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/img/glyphicons/glyphicons_042_group.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/img/glyphicons/glyphicons_079_podium.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/img/glyphicons/glyphicons_082_roundabout.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/img/glyphicons/glyphicons_155_show_thumbnails.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/img/glyphicons/glyphicons_163_iphone.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/img/glyphicons/glyphicons_214_resize_small.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/img/glyphicons/glyphicons_266_book_open.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/js/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/js/bootstrap-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/js/google-code-prettify/prettify.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/js/google-code-prettify/prettify.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/js/jquery.easing.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/js/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/js/jquery.scrollTo.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/js/scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/json.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/css/documenter_style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/css/img/info.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/css/img/pre_bg.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/css/img/warning.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/css/shDocumenter.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/documentation.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/js/jquery.1.6.4.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/js/jquery.easing.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/js/jquery.scrollTo-1.4.2-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/js/script.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/js/shBrushCss.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/js/shBrushJScript.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/js/shBrushXml.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/js/shCore.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/amd.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/anchor_target.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/anchors.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/bg_constant_speed_less.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/bg_constant_speed_more.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/circular_motion.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/classic.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/docu/1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/docu/2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/docu/3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/docu/4.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/fixed-positioning.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/fixed_nav.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/gradientsmotherfucker.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/images/bubbles.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/images/bubbles2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/images/bubbles3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/images/bubbles_small.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/images/face.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/images/kitteh1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/images/kitteh2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/images/kitteh3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/images/path.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/images/slj.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/main.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/path.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/pausing.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/scripts/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/scripts/require.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/skrollr/examples/svg.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/TwigBundle/views/Exception/error404.html.twig" afterPath="$PROJECT_DIR$/app/Resources/TwigBundle/views/Exception/error404.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Controller/ContactController.php" afterPath="$PROJECT_DIR$/src/JLP/FrontBundle/Controller/ContactController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.js" afterPath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/modernizr.js" afterPath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/modernizr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/owl-carousel2/owl.carousel.js" afterPath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/owl-carousel2/owl.carousel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/youtube-player/src/jquery.mb.YTPlayer.js" afterPath="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/youtube-player/src/jquery.mb.YTPlayer.js" />
     </list>
     <list id="f10e450b-26c0-4891-a6dd-56353994dd16" name="New changelist" comment="" />
     <ignored path="jlp-immo.iws" />
@@ -115,31 +280,116 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AnnonceController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Controller/AnnonceController.php">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="569">
+              <caret line="158" column="0" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/views/Contact/index.html.twig">
+      <file leaf-file-name="jquery-migrate.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/jquery/jquery-migrate.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="28" column="60" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jquery.cubeportfolio.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="213">
+              <caret line="5351" column="7" selection-start-line="5351" selection-start-column="7" selection-end-line="5351" selection-end-column="7" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <marker date="1460206102000" expanded="true" signature="153008:153019" placeholder="..." />
+                <marker date="1460206102000" expanded="true" signature="154310:154320" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="placeholder-IE-fixes.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/placeholder-IE-fixes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="modernizr.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/modernizr.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="93">
+              <caret line="933" column="0" selection-start-line="933" selection-start-column="0" selection-end-line="933" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="owl.carousel.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/owl-carousel2/owl.carousel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="2845" column="88" selection-start-line="2845" selection-start-column="88" selection-end-line="2845" selection-end-column="88" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <marker date="1460206306000" expanded="true" signature="55552:55596" placeholder="..." />
+                <marker date="1460206306000" expanded="true" signature="57760:57806" placeholder="..." />
+                <marker date="1460206306000" expanded="true" signature="57831:57852" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jquery.mb.YTPlayer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/youtube-player/src/jquery.mb.YTPlayer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="213">
+              <caret line="95" column="7" selection-start-line="95" selection-start-column="7" selection-end-line="95" selection-end-column="7" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/config/routing.yml">
+        <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="20" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="20" />
+            <state relative-caret-position="105">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="error404.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/TwigBundle/views/Exception/error404.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="434">
+              <caret line="71" column="63" selection-start-line="71" selection-start-column="63" selection-end-line="71" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -187,8 +437,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/web/app_dev.php" />
-        <option value="$PROJECT_DIR$/app/config/routing.yml" />
-        <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/.bowerrc" />
         <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/css/front.less" />
         <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/css/front.sass" />
@@ -201,23 +449,30 @@
         <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/css/custom.css" />
         <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/views/Annonce/listing.html.twig" />
-        <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Controller/ContactController.php" />
         <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/js/page_contacts.js" />
         <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/js/pages/page_contacts.js" />
         <option value="$PROJECT_DIR$/oldSite/front/templates/contact/default.htm" />
         <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/translations/menu.fr.yml" />
         <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/translations/menu.en.yml" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
-        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/TwigBundle/views/Exception/error404.html.twig" />
         <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/translations/messages.fr.yml" />
         <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/translations/messages.en.yml" />
         <option value="$PROJECT_DIR$/src/JLP/CoreBundle/Services/JLPParser.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/.sensiolabs.yml" />
         <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/config/routing.yml" />
-        <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/views/Contact/index.html.twig" />
         <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Controller/AnnonceController.php" />
+        <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/js/jquery.js" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/views/Contact/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Controller/ContactController.php" />
+        <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.js" />
+        <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/modernizr.js" />
+        <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/owl-carousel2/owl.carousel.js" />
+        <option value="$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/youtube-player/src/jquery.mb.YTPlayer.js" />
+        <option value="$PROJECT_DIR$/app/config/routing.yml" />
+        <option value="$PROJECT_DIR$/app/Resources/TwigBundle/views/Exception/error404.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -322,8 +577,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -352,7 +605,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -366,184 +619,22 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="JLP" />
+              <option name="myItemId" value="asset" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="FrontBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jlp-immo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jlp-immo" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JLP" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FrontBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jlp-immo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jlp-immo" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JLP" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FrontBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Contact" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jlp-immo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jlp-immo" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JLP" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FrontBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jlp-immo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jlp-immo" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JLP" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FrontBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jlp-immo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jlp-immo" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JLP" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FrontBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jlp-immo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jlp-immo" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JLP" />
+              <option name="myItemId" value="vendor" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -631,7 +722,8 @@
       <workItem from="1459804090815" duration="192000" />
       <workItem from="1459804541017" duration="9000" />
       <workItem from="1459804561844" duration="903000" />
-      <workItem from="1460139871909" duration="1458000" />
+      <workItem from="1460139871909" duration="3952000" />
+      <workItem from="1460204706748" duration="1430000" />
     </task>
     <task id="LOCAL-00001" summary="Installation PHPStorm et configuration projet&#10;Installation bootstrap&#10;Réparation et mise en route du FrontBundle">
       <created>1458164985349</created>
@@ -661,11 +753,39 @@
       <option name="project" value="LOCAL" />
       <updated>1460140427997</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="CodeReview SensioLabsInsight #63 - #64">
+      <created>1460141473190</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1460141473190</updated>
+    </task>
+    <task id="LOCAL-00006" summary="CodeReview SensioLabsInsight #65">
+      <created>1460143202154</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1460143202154</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Debut du developpement du controller Contact.">
+      <created>1460204886899</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1460204886899</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Debut du developpement du controller Contact.">
+      <created>1460205036099</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1460205036099</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33732000" />
+    <option name="totallyTimeSpent" value="37656000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -680,27 +800,27 @@
     <frame x="0" y="23" width="2560" height="1363" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16560763" sideWeight="0.4963437" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296617" sideWeight="0.49841145" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299293" sideWeight="0.49841145" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32887492" sideWeight="0.48888007" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2501967" sideWeight="0.5381255" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.290652" sideWeight="0.4785544" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32887492" sideWeight="0.48411438" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2501967" sideWeight="0.4618745" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16441621" sideWeight="0.4963437" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45239967" sideWeight="0.52462274" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1437649" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45239967" sideWeight="0.4753773" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24970461" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24940991" sideWeight="0.45869738" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13899921" sideWeight="0.5036563" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3299293" sideWeight="0.49841145" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32887492" sideWeight="0.48411438" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299293" sideWeight="0.49682286" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UpdateCopyrightCheckinHandler">
@@ -723,8 +843,10 @@
     <MESSAGE value="Installation PHPStorm et configuration projet&#10;Installation bootstrap&#10;Réparation et mise en route du FrontBundle" />
     <MESSAGE value="Mise en place du thème Unity&#10;Organisation du routing initial&#10;Installation et configuration du translator&#10;Ajout de la page Contact avec template et traductions&#10;Debut de la page d'accueil&#10;Template base avec traduction en place.&#10;Mise en place de la page error404" />
     <MESSAGE value="Nettoyage pour push sur GitHub" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nettoyage pour push sur GitHub" />
-    <option name="PRESELECT_EXISTING_CHANGELIST" value="false" />
+    <MESSAGE value="CodeReview SensioLabsInsight #63 - #64" />
+    <MESSAGE value="CodeReview SensioLabsInsight #65" />
+    <MESSAGE value="Debut du developpement du controller Contact." />
+    <option name="LAST_COMMIT_MESSAGE" value="Debut du developpement du controller Contact." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -733,83 +855,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/css/front.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/JLP/CoreBundle/Services/JLPPasserelle.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="123" column="27" selection-start-line="123" selection-start-column="20" selection-end-line="123" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/JLP/CoreBundle/Command/PasserelleExecuteCommand.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-118">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/JLP/CoreBundle/Resources/config/connectimmo.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1185">
-          <caret line="79" column="22" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oldSite/front/templates/annonce/annonce.htm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1920">
-          <caret line="128" column="61" selection-start-line="128" selection-start-column="61" selection-end-line="128" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oldSite/front/templates/layout.htm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4168">
-          <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Unifyv1.9.1/HTML/page_home1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="132" selection-start-line="17" selection-start-column="132" selection-end-line="17" selection-end-column="132" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Unifyv1.9.1/HTML/feature_header_v6_classic_dark.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="30" selection-start-line="0" selection-start-column="0" selection-end-line="974" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../jobext/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/example.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="809" column="4" selection-start-line="809" selection-start-column="4" selection-end-line="809" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1395">
@@ -831,13 +876,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Unifyv1.9.1/HTML/page_home14.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="1384" column="77" selection-start-line="0" selection-start-column="0" selection-end-line="1423" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Unifyv1.9.1/HTML/page_home14.html" />
     <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/css/custom.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -845,13 +884,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Unifyv1.9.1/HTML/feature_header_v6_semi_dark_transparent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1545">
-          <caret line="103" column="62" selection-start-line="103" selection-start-column="36" selection-end-line="103" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Unifyv1.9.1/HTML/feature_header_v6_semi_dark_transparent.html" />
     <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/views/Annonce/test.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -901,20 +934,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Controller/ContactController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Unifyv1.9.1/HTML/page_contact1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="34" selection-end-column="123" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Unifyv1.9.1/HTML/page_contact1.html" />
     <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/js/pages/page_contacts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -929,13 +949,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oldSite/front/web/js/contact.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="49" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/oldSite/front/web/js/contact.js" />
     <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/translations/messages.fr.xlf" />
     <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/config/services.yml">
       <provider selected="true" editor-type-id="text-editor">
@@ -951,28 +965,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Unifyv1.9.1/HTML/page_404_error3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="93" column="33" selection-start-line="93" selection-start-column="33" selection-end-line="93" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1245">
-          <caret line="83" column="45" selection-start-line="83" selection-start-column="45" selection-end-line="83" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/TwigBundle/views/Exception/error404.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Unifyv1.9.1/HTML/page_404_error3.html" />
     <entry file="file://$PROJECT_DIR$/src/JLP/CoreBundle/Services/JLPParser.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-74">
@@ -984,7 +977,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="10" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -992,23 +984,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oldSite/front/templates/contact/default.htm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1380">
-          <caret line="92" column="51" selection-start-line="92" selection-start-column="51" selection-end-line="92" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/oldSite/front/templates/contact/default.htm" />
     <entry file="file://$PROJECT_DIR$/app/config/config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1016,7 +999,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1024,15 +1006,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1040,7 +1013,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1048,7 +1020,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1056,7 +1027,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1065,17 +1035,8 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="15">
             <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-            <folding />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1087,18 +1048,155 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/views/Contact/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Controller/AnnonceController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="28" column="60" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
+        <state relative-caret-position="435">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Controller/AnnonceController.php">
+    <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/revolution-slider/documentation/assets/js/jquery.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="125190">
+          <caret line="8346" column="40" selection-start-line="8346" selection-start-column="40" selection-end-line="8346" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/example.html.twig" />
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="89" selection-start-line="31" selection-start-column="89" selection-end-line="31" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Emails/contact.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/views/Contact/email.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Controller/ContactController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+          <folding>
+            <element signature="e#46#103#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/views/Contact/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/jquery/jquery-migrate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="5351" column="7" selection-start-line="5351" selection-start-column="7" selection-end-line="5351" selection-end-column="7" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1460206102000" expanded="true" signature="153008:153019" placeholder="..." />
+            <marker date="1460206102000" expanded="true" signature="154310:154320" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/placeholder-IE-fixes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/modernizr.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="933" column="0" selection-start-line="933" selection-start-column="0" selection-end-line="933" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/owl-carousel2/owl.carousel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="2845" column="88" selection-start-line="2845" selection-start-column="88" selection-end-line="2845" selection-end-column="88" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1460206306000" expanded="true" signature="55552:55596" placeholder="..." />
+            <marker date="1460206306000" expanded="true" signature="57760:57806" placeholder="..." />
+            <marker date="1460206306000" expanded="true" signature="57831:57852" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JLP/FrontBundle/Resources/public/plugins/youtube-player/src/jquery.mb.YTPlayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="95" column="7" selection-start-line="95" selection-start-column="7" selection-end-line="95" selection-end-column="7" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/TwigBundle/views/Exception/error404.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="71" column="63" selection-start-line="71" selection-start-column="63" selection-end-line="71" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="158" column="0" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
           <folding />
         </state>
       </provider>

@@ -94,7 +94,7 @@
             return pluginName(t);
         });
 
-        // used by the filters plugin. @todo - remove from here and create proper API with position for plugins
+        // used by the filters plugin. 
         t.triggerEvent('afterPlugins');
 
         // wait to load all images and then go further
@@ -120,7 +120,7 @@
                     widthInitial: width,
                     heightInitial: height,
 
-                    width: width, // used by drag & drop wp @todo - maybe I will use widthAndGap
+                    width: width, // used by drag & drop wp 
                     height: height,
 
                     widthAndGap: width + t.options.gapVertical,
@@ -795,7 +795,7 @@
                     t.addItemsFinish(items, callback);
                 });
             } else {
-                t.addItemsFinish(items, callback); // @todo - on ie8 & ie9 callback trigger to early
+                t.addItemsFinish(items, callback); 
             }
 
             t.loadImages(items, function() {
@@ -885,7 +885,7 @@
                 leftStart: 0,
                 leftEnd: t.widthAvailable,
                 topStart: 0,
-                topEnd: Math.pow(2, 18) // @todo - optimize
+                topEnd: Math.pow(2, 18) 
             }];
 
             for (i = 0; i < blocksLen; i++) {
@@ -1146,7 +1146,7 @@
 
         /**
          * For every Fi check if is another Fj so Fj contains Fi
-         * @todo - refactor
+         * 
          */
         cleanFreeSpaces: function() {
             var t = this;
@@ -2028,7 +2028,7 @@ jQuery.fn.cubeportfolio.options = {
 
     var CubePortfolio = $.fn.cubeportfolio.constructor;
 
-    // @todo - gandit cum ar trebui sa fac aici ca nu prea ar merge un plugin
+    
     // pt slider ca as extinde pe CubePortfolio.prototype la fiecare initializare
     $.extend(CubePortfolio.prototype, {
         updateSliderPagination: function() {
@@ -2068,7 +2068,7 @@ jQuery.fn.cubeportfolio.options = {
 
             t.$ul.off('.cbp');
 
-            $(document).off('.cbp'); // @todo - don't interfer with the lightbox
+            $(document).off('.cbp'); 
 
             if (t.options.auto) {
                 t.stopSliderAuto();
@@ -3386,7 +3386,7 @@ if (typeof Object.create !== 'function') {
                 t.triggerImg();
             });
 
-            // scroll event. @todo - this must be done like the global resize event
+            // scroll event. 
             t.window.on('scroll.cbp', function() {
                 clearTimeout(timeout);
 
@@ -3747,7 +3747,7 @@ if (typeof Object.create !== 'function') {
 
                 t.cubeportfolio.registerEvent('resizeGrid', function() {
                     if (t.isOpen) {
-                        // @todo must add support for this features in the future
+                        
                         t.close(); // workaround
                     }
                 });
@@ -3855,7 +3855,7 @@ if (typeof Object.create !== 'function') {
                         }
 
                         t.openSinglePage(blocks, currentBlock[0]);
-                    } else if (links.length) { // @todo - hack to load items from loadMore
+                    } else if (links.length) { 
                         var fakeLink = document.createElement('a');
                         fakeLink.setAttribute('href', links[0]);
                         t.openSinglePage([fakeLink], fakeLink);
@@ -5188,7 +5188,7 @@ if (typeof Object.create !== 'function') {
             parent.options.singlePageCounter = '';
         }
 
-        // @todo - schedule this in  future
+        
         parent.registerEvent('initStartRead', function() {
             t.run();
         }, true);
@@ -5207,7 +5207,7 @@ if (typeof Object.create !== 'function') {
 
         // LIGHTBOX
         if (p.options.lightboxDelegate && !lightboxInit) {
-            // init only one time @todo
+            // init only one time 
             lightboxInit = true;
 
             p.lightbox = Object.create(popup);
@@ -5256,7 +5256,7 @@ if (typeof Object.create !== 'function') {
 
         // SINGLEPAGE
         if (p.options.singlePageDelegate && !singlePageInit) {
-            // init only one time @todo
+            // init only one time 
             singlePageInit = true;
 
             p.singlePage = Object.create(popup);
@@ -5349,7 +5349,7 @@ if (typeof Object.create !== 'function') {
 
         $(document.body).off('click.cbp');
 
-        // @todo - remove these from here
+       
         lightboxInit = false;
         singlePageInit = false;
 
