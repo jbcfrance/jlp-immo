@@ -1,0 +1,3 @@
+jlp_admin_homepage:
+    path:     /
+    defaults: { _controller: JLPAdminBundle:Default:index }

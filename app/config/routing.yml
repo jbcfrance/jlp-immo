@@ -1,3 +1,7 @@
+jlp_admin:
+   resource: "@JLPAdminBundle/Resources/config/routing.yml"
+   prefix: /admin/
+
 jlp_front:
     resource: "@JLPFrontBundle/Resources/config/routing.yml"
     prefix:   /
@@ -5,3 +9,14 @@ jlp_front:
 jlp_core:
     resource: "@JLPCoreBundle/Resources/config/routing.yml"
     prefix:   /core/
+
+fos_user_security:
+   resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+   resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+   prefix: /admin/profile
+
+fos_user_change_password:
+   resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+   prefix: /admin/profile

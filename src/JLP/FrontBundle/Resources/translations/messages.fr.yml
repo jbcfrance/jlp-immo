@@ -4,7 +4,7 @@ achat: Achat
 prgneuf: Programmes Neufs
 contact: Contact
 
-contact.form: Formulaire de contact
+contact:form: Formulaire de contact
 contact.form.name: Nom
 contact.form.email: Email
 contact.form.message: Message
