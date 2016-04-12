@@ -1,1 +1,36 @@
-{% extends 'admin.html.twig' %}
+{% extends 'Admin/admin.html.twig' %}
+
+{% block admin_content %}
+<div class="row">
+    <div class="col-md-offset-1 col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <!-- Apply any bg-* class to to the icon to color it -->
+            <span class="info-box-icon bg-blue"><i class="fa fa-bookmark-o"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Programmes Neufs</span>
+                <span class="info-box-number">93,139</span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <!-- Apply any bg-* class to to the icon to color it -->
+            <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Annonces</span>
+                <span class="info-box-number">93,139</span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <!-- Apply any bg-* class to to the icon to color it -->
+            <span class="info-box-icon bg-orange"><i class="fa fa-files-o"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Images</span>
+                <span class="info-box-number">93,139</span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div>
+</div>
+{% endblock admin_content %}
