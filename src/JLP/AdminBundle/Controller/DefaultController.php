@@ -10,7 +10,7 @@ class DefaultController extends Controller
 
     public function indexAction()
     {
-        $user = $this->getUser();
+        
         
 
         return $this->render('JLPAdminBundle:Default:index.html.twig');

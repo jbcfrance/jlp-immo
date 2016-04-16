@@ -10,15 +10,15 @@ class PrgNeufsController extends Controller
 
     public function indexAction()
     {
-        $user = $this->getUser();
+
         
 
         return $this->render('JLPAdminBundle:PrgNeufs:index.html.twig');
     }
 
-    public function AddAction()
+    public function addAction()
     {
-        $user = $this->getUser();
+
         
 
         return $this->render('JLPAdminBundle:PrgNeufs:add.html.twig');
