@@ -1,3 +1,27 @@
 jlp_admin_homepage:
     path:     /
     defaults: { _controller: JLPAdminBundle:Default:index }
+
+jlp_admin_param:
+    path: /param
+    defaults: { _controller: JLPAdminBundle:Param:index }
+
+jlp_admin_param_accueil:
+    path: /param
+    defaults: { _controller: JLPAdminBundle:Param:accueil }
+
+jlp_admin_param_contact:
+    path: /param
+    defaults: { _controller: JLPAdminBundle:Param:contact }
+
+jlp_admin_prgneufs:
+    path: /prgneufs
+    defaults: { _controller: JLPAdminBundle:PrgNeufs:index }
+
+jlp_admin_prgneufs_add:
+    path: /prgneufs/add
+    defaults: { _controller: JLPAdminBundle:PrgNeufs:add }
+
+jlp_admin_passerelle:
+    path: /passerelle
+    defaults: { _controller: JLPAdminBundle:Passerelle:index }

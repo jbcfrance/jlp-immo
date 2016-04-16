@@ -3,7 +3,7 @@
 namespace JLP\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use JLP\CoreBundle\Entity\StatusAnnonce;
+use JLP\CoreBundle\Entity;
 /**
  * Annonce
  * 
@@ -21,7 +21,7 @@ class Annonce
      */
     private $id;
     
-    /**
+    /** 
      * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Agence")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -581,21 +581,9 @@ class Annonce
      */
     public function __construct()
     {
-        $this->statusAnnonce = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->typeBien = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
     }
-        /**
-         * Set id
-         *
-         * @param integer $id
-         *
-         * @return Annonce
-         */
-    public function setId($id)
-    {
-        $this->id = $id;
-        return $this;
-    }
+
     /**
      * Get id
      *
@@ -605,11 +593,35 @@ class Annonce
     {
         return $this->id;
     }
-    
+
+    /**
+     * Set statusAnnonce
+     *
+     * @param string $statusAnnonce
+     *
+     * @return Annonce
+     */
+    public function setStatusAnnonce($statusAnnonce)
+    {
+        $this->statusAnnonce = $statusAnnonce;
+
+        return $this;
+    }
+
+    /**
+     * Get statusAnnonce
+     *
+     * @return string
+     */
+    public function getStatusAnnonce()
+    {
+        return $this->statusAnnonce;
+    }
+
     /**
      * Set reference
      *
-     * @param integer $reference
+     * @param string $reference
      *
      * @return Annonce
      */
@@ -623,7 +635,7 @@ class Annonce
     /**
      * Get reference
      *
-     * @return integer
+     * @return string
      */
     public function getReference()
     {
@@ -633,7 +645,7 @@ class Annonce
     /**
      * Set numMandat
      *
-     * @param integer $numMandat
+     * @param string $numMandat
      *
      * @return Annonce
      */
@@ -647,7 +659,7 @@ class Annonce
     /**
      * Get numMandat
      *
-     * @return integer
+     * @return string
      */
     public function getNumMandat()
     {
@@ -655,33 +667,9 @@ class Annonce
     }
 
     /**
-     * Set typeMandat
-     *
-     * @param string $typeMandat
-     *
-     * @return Annonce
-     */
-    public function setTypeMandat($typeMandat)
-    {
-        $this->typeMandat = $typeMandat;
-
-        return $this;
-    }
-
-    /**
-     * Get typeMandat
-     *
-     * @return string
-     */
-    public function getTypeMandat()
-    {
-        return $this->typeMandat;
-    }
-
-    /**
      * Set categorieOffre
      *
-     * @param integer $categorieOffre
+     * @param string $categorieOffre
      *
      * @return Annonce
      */
@@ -695,7 +683,7 @@ class Annonce
     /**
      * Get categorieOffre
      *
-     * @return integer
+     * @return string
      */
     public function getCategorieOffre()
     {
@@ -735,7 +723,6 @@ class Annonce
      */
     public function setDateCreation($dateCreation)
     {
-    
         $this->dateCreation = $dateCreation;
 
         return $this;
@@ -760,7 +747,6 @@ class Annonce
      */
     public function setDateModification($dateModification)
     {
-        
         $this->dateModification = $dateModification;
 
         return $this;
@@ -2459,11 +2445,11 @@ class Annonce
     /**
      * Set programmeNeuf
      *
-     * @param \OC\PlatformBundle\Entity\ProgrammeNeuf $programmeNeuf
+     * @param \JLP\CoreBundle\Entity\ProgrammeNeuf $programmeNeuf
      *
      * @return Annonce
      */
-    public function setProgrammeNeuf(\OC\PlatformBundle\Entity\ProgrammeNeuf $programmeNeuf = null)
+    public function setProgrammeNeuf(\JLP\CoreBundle\Entity\ProgrammeNeuf $programmeNeuf = null)
     {
         $this->programmeNeuf = $programmeNeuf;
 
@@ -2473,131 +2459,11 @@ class Annonce
     /**
      * Get programmeNeuf
      *
-     * @return \OC\PlatformBundle\Entity\ProgrammeNeuf
+     * @return \JLP\CoreBundle\Entity\ProgrammeNeuf
      */
     public function getProgrammeNeuf()
     {
         return $this->programmeNeuf;
-    }
-
-    /**
-     * Add statusAnnonce
-     *
-     * @param \JLP\CoreBundle\Entity\StatusAnnonce $statusAnnonce
-     *
-     * @return Annonce
-     */
-    public function addStatusAnnonce(\JLP\CoreBundle\Entity\StatusAnnonce $statusAnnonce)
-    {
-        $this->statusAnnonce[] = $statusAnnonce;
-
-        return $this;
-    }
-
-    /**
-     * Remove statusAnnonce
-     *
-     * @param \JLP\CoreBundle\Entity\StatusAnnonce $statusAnnonce
-     */
-    public function removeStatusAnnonce(\JLP\CoreBundle\Entity\StatusAnnonce $statusAnnonce)
-    {
-        $this->statusAnnonce->removeElement($statusAnnonce);
-    }
-
-    /**
-     * Get statusAnnonce
-     *
-     * @return string
-     */
-    public function getStatusAnnonce()
-    {
-        return $this->statusAnnonce;
-    }
-
-    /**
-     * Add typeBien
-     *
-     * @param \JLP\CoreBundle\Entity\TypeBien $typeBien
-     *
-     * @return Annonce
-     */
-    public function addTypeBien(\JLP\CoreBundle\Entity\TypeBien $typeBien)
-    {
-        $this->typeBien[] = $typeBien;
-
-        return $this;
-    }
-
-    /**
-     * Remove typeBien
-     *
-     * @param \JLP\CoreBundle\Entity\TypeBien $typeBien
-     */
-    public function removeTypeBien(\JLP\CoreBundle\Entity\TypeBien $typeBien)
-    {
-        $this->typeBien->removeElement($typeBien);
-    }
-
-    /**
-     * Get typeBien
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTypeBien()
-    {
-        return $this->typeBien;
-    }
-
-    /**
-     * Set statusAnnonce
-     *
-     * @param string $statusAnnonce
-     *
-     * @return Annonce
-     */
-    public function setStatusAnnonce($statusAnnonce)
-    {
-        $this->statusAnnonce = $statusAnnonce;
-
-        return $this;
-    }
-
-    /**
-     * Add typeMandat
-     *
-     * @param \JLP\CoreBundle\Entity\TypeMandat $typeMandat
-     *
-     * @return Annonce
-     */
-    public function addTypeMandat(\JLP\CoreBundle\Entity\TypeMandat $typeMandat)
-    {
-        $this->typeMandat[] = $typeMandat;
-
-        return $this;
-    }
-
-    /**
-     * Remove typeMandat
-     *
-     * @param \JLP\CoreBundle\Entity\TypeMandat $typeMandat
-     */
-    public function removeTypeMandat(\JLP\CoreBundle\Entity\TypeMandat $typeMandat)
-    {
-        $this->typeMandat->removeElement($typeMandat);
-    }
-
-    /**
-     * Set typeBien
-     *
-     * @param \JLP\CoreBundle\Entity\TypeBien $typeBien
-     *
-     * @return Annonce
-     */
-    public function setTypeBien(\JLP\CoreBundle\Entity\TypeBien $typeBien = null)
-    {
-        $this->typeBien = $typeBien;
-
-        return $this;
     }
 
     /**
@@ -2627,10 +2493,58 @@ class Annonce
     /**
      * Get images
      *
-     * @return Images[]
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Set typeMandat
+     *
+     * @param \JLP\CoreBundle\Entity\TypeMandat $typeMandat
+     *
+     * @return Annonce
+     */
+    public function setTypeMandat(\JLP\CoreBundle\Entity\TypeMandat $typeMandat = null)
+    {
+        $this->typeMandat = $typeMandat;
+
+        return $this;
+    }
+
+    /**
+     * Get typeMandat
+     *
+     * @return \JLP\CoreBundle\Entity\TypeMandat
+     */
+    public function getTypeMandat()
+    {
+        return $this->typeMandat;
+    }
+
+    /**
+     * Set typeBien
+     *
+     * @param \JLP\CoreBundle\Entity\TypeBien $typeBien
+     *
+     * @return Annonce
+     */
+    public function setTypeBien(\JLP\CoreBundle\Entity\TypeBien $typeBien = null)
+    {
+        $this->typeBien = $typeBien;
+
+        return $this;
+    }
+
+    /**
+     * Get typeBien
+     *
+     * @return \JLP\CoreBundle\Entity\TypeBien
+     */
+    public function getTypeBien()
+    {
+        return $this->typeBien;
     }
 }

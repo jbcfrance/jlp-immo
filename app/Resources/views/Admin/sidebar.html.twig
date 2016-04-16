@@ -5,9 +5,9 @@
         <!-- Logo -->
         <a href="{{ path('jlp_admin_homepage') }}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>A</b>LT</span>
+            <span class="logo-mini"><b>A</b>JLP</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Admin</b>LTE</span>
+            <span class="logo-lg"><b>Admin</b>JLP-IMMO</span>
         </a>
 
         <!-- Header Navbar -->
@@ -32,7 +32,6 @@
                             <li class="user-header">
                                 <p>
                                     {{app.user.username}}
-                                    <small>Member since Nov. 2012</small>
                                 </p>
                             </li>
                             <!-- Menu Footer-->
@@ -50,7 +49,7 @@
             </div>
         </nav>
     </header>
-{% endblock %}
+{% endblock header %}
 {% block sidebar %}
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
@@ -58,19 +57,27 @@
         <section class="sidebar">
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-                <li class="header">HEADER</li>
+                <li class="header">Administration</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+                <li class="active"><a href="{{ path("jlp_admin_homepage") }}"><i class="fa fa-pie-chart"></i> <span>Accueil</span></a></li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <a href="#"><i class="fa fa-laptop"></i> <span>Parametrages</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                        <li><a href="#">Link in level 2</a></li>
-                        <li><a href="#">Link in level 2</a></li>
+                        <li><a href="{{ path("jlp_admin_param") }}">Généraux</a></li>
+                        <li><a href="{{ path("jlp_admin_param_accueil") }}">Page d'accueil</a></li>
+                        <li><a href="{{ path("jlp_admin_param_contact") }}">Page de contact</a></li>
                     </ul>
                 </li>
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-university"></i> <span>Programme neufs</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ path("jlp_admin_prgneufs") }}">Liste des programmes</a></li>
+                        <li><a href="{{ path("jlp_admin_prgneufs_add") }}">Ajouter un programme neuf</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ path("jlp_admin_passerelle") }}"><i class="fa fa-exchange"></i> <span>Passerelle</span></a></li>
             </ul><!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->
     </aside>
-{% endblock %}
+{% endblock sidebar %}

@@ -2,11 +2,11 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
-    database_host:     127.0.0.1
+    database_host:     db621873556.db.1and1.com
     database_port:     ~
-    database_name:     symfony
-    database_user:     root
-    database_password: ~
+    database_name:     db621873556
+    database_user:     dbo621873556
+    database_password:
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
 
@@ -16,5 +16,5 @@ parameters:
     mailer_password:   ~
 
     # A secret key that's used to generate certain security-related tokens
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    secret:            ThisTokenIsNotSoSecretChangeIt~
     passerelle_logiciel_name: connectimmo

@@ -1,3 +1,7 @@
+jlp_front_home:
+    path:     /
+    defaults: { _controller: JLPFrontBundle:Default:index }
+
 jlp_front_homepage:
     path:     /{_locale}/
     defaults: { _controller: JLPFrontBundle:Default:index }

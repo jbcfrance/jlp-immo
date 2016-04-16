@@ -5,7 +5,7 @@ namespace JLP\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
-class DefaultController extends Controller
+class PasserelleController extends Controller
 {
 
     public function indexAction()
@@ -13,6 +13,6 @@ class DefaultController extends Controller
         $user = $this->getUser();
         
 
-        return $this->render('JLPAdminBundle:Default:index.html.twig');
+        return $this->render('JLPAdminBundle:Passerelle:index.html.twig');
     }
 }

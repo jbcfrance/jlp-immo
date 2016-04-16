@@ -61,13 +61,14 @@ desired effect
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
+        {% block section_header %}
         <section class="content-header">
             <h1>
                 Page Header
                 <small>Optional description</small>
             </h1>
         </section>
-
+        {% endblock section_header %}
         <!-- Main content -->
         <section class="content">
             {% if app.request.hasPreviousSession %}
