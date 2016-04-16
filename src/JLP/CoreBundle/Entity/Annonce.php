@@ -635,7 +635,7 @@ class Annonce
     /**
      * Get reference
      *
-     * @return string
+     * @return integer
      */
     public function getReference()
     {
@@ -659,7 +659,7 @@ class Annonce
     /**
      * Get numMandat
      *
-     * @return string
+     * @return integer
      */
     public function getNumMandat()
     {
@@ -683,7 +683,7 @@ class Annonce
     /**
      * Get categorieOffre
      *
-     * @return string
+     * @return integer
      */
     public function getCategorieOffre()
     {
