@@ -9,9 +9,8 @@ class ContactController extends Controller
 {
     public function indexAction()
     {
-        $typesBiens = $this->getDoctrine()->getManager()->getRepository('JLP\CoreBundle\Entity\TypeBien')->findAll();
-
-        return $this->render('JLPFrontBundle:Contact:index.html.twig', array('typesBiens' => $typesBiens));
+        
+        return $this->render('JLPFrontBundle:Contact:index.html.twig');
     }
     
     public function sendMailAction(Request $request)

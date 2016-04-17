@@ -76,51 +76,14 @@
                         </div>
                         <!-- ENd Navbar Brand -->
                     </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse navbar-responsive-collapse">
-                        <div class="menu-container">
-                            <ul class="nav navbar-nav">
-                                <li><a href="{{ path('jlp_front_homepage') }}">{{ 'home'|trans }}</a></li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle"
-                                       data-toggle="dropdown">{{ 'achat'|trans }}</a>
-                                    <ul class="dropdown-menu">
-                                        {% for typeBien in typesBiens %}
-                                            <li>
-                                                <a href="{{ path('jlp_front_typeBien', {'typeBienId': typeBien.id}) }}">{{ typeBien.type|title }}</a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </li>
-                                <li><a href="{{ path('jlp_front_programmes_neufs') }}">{{ 'prgneuf'|trans }}</a></li>
-                                <li><a href="{{ path('jlp_front_contact') }}">{{ 'contact'|trans }}</a></li>
-                            </ul>
-                        </div>
-                    </div><!--/navbar-collapse-->
+                    {{ render(controller('JLPFrontBundle:Theme:menu')) }}
                 </div>
             </div>
         </div>
         <!--=== End Header v6 ===-->
     {% endblock %}
         {% block body %}{% endblock %}
-    {% block footer %}
-        <!--=== Footer Version 6 ===-->
-        <div class="footer-v6">
-            <div class="footer">
-                <div class="container">
-
-                </div>
-            </div><!--/footer-->
-
-            <div class="copyright">
-                <div class="container">
-
-                </div>
-            </div><!--/copyright-->
-        </div>
-        <!--=== End Footer Version 6 ===-->
-    {% endblock %}
+    {{ render(controller('JLPFrontBundle:Theme:footer')) }}
 </div>
 
 
