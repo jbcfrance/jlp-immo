@@ -10,6 +10,8 @@ class AnnonceController extends Controller
     {
         $annonce = $this->getDoctrine()->getManager()->getRepository('JLP\CoreBundle\Entity\Annonce')->find($annonceId);
 
+
+
         return $this->render('JLPFrontBundle:Annonce:index.html.twig', array('annonce'=>$annonce));
     }
 
@@ -23,11 +25,16 @@ class AnnonceController extends Controller
     public function typeBienAction($typeBienId)
     {
 
-        $typeBien = $this->getDoctrine()->getRepository('JLP\CoreBundle\Entity\TypeBien')->find($typeBienId);
+        $typeBiens = $this->getDoctrine()->getRepository('JLP\CoreBundle\Entity\TypeBien')->findAll();
 
-        $annonces = $this->getDoctrine()->getRepository('JLP\CoreBundle\Entity\Annonce')->findByTypeBien($typeBien);
+        $askedTypeBien = $this->getDoctrine()->getRepository('JLP\CoreBundle\Entity\TypeBien')->find($typeBienId);
 
-        return $this->render('JLPFrontBundle:Annonce:listing.html.twig', array( 'annonces'=>$annonces));
+        //$annonces = $this->getDoctrine()->getRepository('JLP\CoreBundle\Entity\Annonce')->getAnnonceByTypeBienWithFirstImage($askedTypeBien->getId());
+        $annonces = $this->getDoctrine()->getRepository('JLP\CoreBundle\Entity\Annonce')->findByTypeBien($askedTypeBien->getId());
+
+        //dump($annonces);
+
+        return $this->render('JLPFrontBundle:Annonce:listing.html.twig', array( 'annonces'=>$annonces, 'typeBiens'=>$typeBiens));
 
     }
 

@@ -1,16 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block stylesheet_page %}
 
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/plugins/cube-portfolio/cubeportfolio/custom/custom-cubeportfolio.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="cube-portfolio margin-bottom-20">
+    <div class="content-xs">
+        <div id="filters-container" class="cbp-l-filters-text content-xs">
+            <div data-filter="*" class="cbp-filter-item-active cbp-filter-item"> All </div>
+            {% if typeBiens is iterable %}
+                {% for typeBien in typeBiens %}
+                    | <div data-filter=".{{ typeBien.type|lower }}" class="cbp-filter-item"> {{ typeBien.type|title }} </div>
+                {% endfor %}
+            {% endif %}
+        </div><!--/end Filters Container-->
+    </div>
+    <div id="grid-container" class="cbp-l-grid-agency">
     {% if annonces is iterable %}
         {% for annonce in annonces %}
-            <h1>{{ annonce.typeBien.type|title }} - {% if annonce.villeAAfficher != '' %} {{ annonce.villeAAfficher|title }} {% else %} {{ annonce.villePublique|title }} {% endif %}</h1>
-            {% for image in annonce.images %}
-                <img src="{{ asset('bundles/jlpcore/images/sd/' ~ image.filename) }}" />
-            {% endfor %}
+            <div class="cbp-item {{ annonce.typeBien.type|lower }}">
+                <a href="{{ path('jlp_front_annonce', {'annonceId': annonce.id}) }}" class="cbp-caption">
+                    <div class="cbp-caption-defaultWrap">
+                        {% for key, image in annonce.images %}
+                            {% if key == 0 %}
+                            <img src="{{ asset('bundles/jlpcore/images/sd/' ~ image.filename) }}" alt="">
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="cbp-caption-activeWrap">
+                        <div class="cbp-l-caption-alignCenter">
+                            <div class="cbp-l-caption-body">
+                                <div class="cbp-l-caption-text">{{ 'achat.moreinfo'|trans|upper }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <div class="cbp-title-dark">
+                    <div class="cbp-l-grid-agency-title">{% if annonce.villeAAfficher != '' %} {{ annonce.villeAAfficher|title }} {% else %} {{ annonce.villePublique|title }} {% endif %}</div>
+                    <div class="cbp-l-grid-agency-desc">{{ annonce.typeBien.type|title }}</div>
+                </div>
+            </div>
         {% endfor %}
     {% else %}
         <h1>{{ annonces.typeBien.type|title }} - {% if annonces.villeAAfficher != '' %} {{ annonces.villeAAfficher|title }} {% else %} {{ annonces.villePublique|title }} {% endif %}</h1>
     {% endif %}
-
+    </div>
+</div>
 {%  endblock %}
+
+{% block javascript_plugin %}
+    <script src="{{ asset('bundles/jlpfront/plugins/smoothScroll.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/jlpfront/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js') }}"></script>
+{% endblock %}
+
+{% block javascript_page_include %}
+    <script type="text/javascript" src="{{ asset('bundles/jlpfront/js/plugins/cube-portfolio/cube-portfolio-3.js') }}"></script>
+{% endblock %}
