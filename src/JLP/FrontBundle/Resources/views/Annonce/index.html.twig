@@ -1,7 +1,165 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheet_page %}
+
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/jlpfront/plugins/cube-portfolio/cubeportfolio/custom/custom-cubeportfolio.css') }}">
+{% endblock %}
+
 {% block body %}
 
+    <div class="container">
+        <div class="content">
+            <!-- Magazine Slider -->
+            <div class="carousel slide carousel-v2 margin-bottom-40" id="portfolio-carousel">
+                <ol class="carousel-indicators">
+                    {% for key, image in annonce.images %}
+                        <li class="{% if key == 0 %} active {% endif %} rounded-x" data-target="#portfolio-carousel" data-slide-to="{{ key }}"></li>
+                    {% endfor %}
+                </ol>
 
+                <div class="carousel-inner">
+                    {% for key, image in annonce.images %}
+                        <div class="item {% if key == 0 %} active {% endif %}">
+                            <img src="{{ asset('bundles/jlpcore/images/hd/' ~ image.filename) }}" alt="">
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <a class="left carousel-control rounded-x" href="#portfolio-carousel" role="button" data-slide="prev">
+                    <i class="fa fa-angle-left arrow-prev"></i>
+                </a>
+                <a class="right carousel-control rounded-x" href="#portfolio-carousel" role="button" data-slide="next">
+                    <i class="fa fa-angle-right arrow-next"></i>
+                </a>
+            </div>
+            <!-- End Magazine Slider -->
+
+            <div class="row margin-bottom-60">
+                <div class="col-sm-8">
+                    <div class="headline"><h2>Product Description</h2></div>
+                    {% if app.request.getLocale() == 'fr' %}
+                        <p>{{ annonce.texte }}</p>
+                    {% else %}
+                        <p>{{ annonce.texteAnglais }}</p>
+                    {% endif %}
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="headline"><h2>Product Details</h2></div>
+                    <ul class="list-unstyled project-details">
+                        <li><strong>{{ 'annonce.reference' |trans }}:</strong> {{ annonce.reference }}</li>
+                        <li><strong>{{ 'annonce.chambres' |trans }}:</strong> {{ annonce.chambres }}</li>
+                        <li><strong>{{ 'annonce.nbSallesDEau' |trans }}:</strong> {{ annonce.nbSallesDEau }}</li>
+                        <li><strong>{{ 'annonce.nbParking' |trans }}:</strong> {{ annonce.nbParking }}</li>
+                        <li><strong>{{ 'annonce.surface' |trans }}:</strong> {{ annonce.surface }} m<sup>2</sup></li>
+                        <li><strong>{{ 'annonce.surfaceTerrain' |trans }}:</strong> {{ annonce.surfaceTerrain }} m<sup>2</sup></li>
+                        <li><strong>{{ 'annonce.ascenseur' |trans }}:</strong> {{ annonce.ascenseur }}</li>
+                        <li><strong>{{ 'annonce.nbGarages' |trans }}:</strong> {{ annonce.nbGarages }}</li>
+                        <li><strong>{{ 'annonce.typeChauffage' |trans }}:</strong> {{ annonce.typeChauffage }}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cube-portfolio">
+                <div id="grid-container" class="cbp-l-grid-agency">
+                    <div class="cbp-item">
+                        <div class="cbp-caption margin-bottom-20">
+                            <div class="cbp-caption-defaultWrap">
+                                <img src="assets/img/portfolio/07.jpg" alt="">
+                            </div>
+                            <div class="cbp-caption-activeWrap">
+                                <div class="cbp-l-caption-alignCenter">
+                                    <div class="cbp-l-caption-body">
+                                        <ul class="link-captions no-bottom-space">
+                                            <li><a href="portfolio_single_item.html"><i class="rounded-x fa fa-link"></i></a></li>
+                                            <li><a href="assets/img/portfolio/07.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cbp-title-dark">
+                            <div class="cbp-l-grid-agency-title">Dashboard</div>
+                            <div class="cbp-l-grid-agency-desc">Web Design / Graphic</div>
+                        </div>
+                    </div>
+                    <div class="cbp-item">
+                        <div class="cbp-caption margin-bottom-20">
+                            <div class="cbp-caption-defaultWrap">
+                                <img src="assets/img/portfolio/08.jpg" alt="">
+                            </div>
+                            <div class="cbp-caption-activeWrap">
+                                <div class="cbp-l-caption-alignCenter">
+                                    <div class="cbp-l-caption-body">
+                                        <ul class="link-captions no-bottom-space">
+                                            <li><a href="portfolio_single_item.html"><i class="rounded-x fa fa-link"></i></a></li>
+                                            <li><a href="assets/img/portfolio/08.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cbp-title-dark">
+                            <div class="cbp-l-grid-agency-title">World Clock Widget</div>
+                            <div class="cbp-l-grid-agency-desc">Logo / Web Design</div>
+                        </div>
+                    </div>
+                    <div class="cbp-item">
+                        <div class="cbp-caption margin-bottom-20">
+                            <div class="cbp-caption-defaultWrap">
+                                <img src="assets/img/portfolio/09.jpg" alt="">
+                            </div>
+                            <div class="cbp-caption-activeWrap">
+                                <div class="cbp-l-caption-alignCenter">
+                                    <div class="cbp-l-caption-body">
+                                        <ul class="link-captions no-bottom-space">
+                                            <li><a href="portfolio_single_item.html"><i class="rounded-x fa fa-link"></i></a></li>
+                                            <li><a href="assets/img/portfolio/09.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cbp-title-dark">
+                            <div class="cbp-l-grid-agency-title">To-Do Dashboard</div>
+                            <div class="cbp-l-grid-agency-desc">Graphic / Logo</div>
+                        </div>
+                    </div>
+                    <div class="cbp-item">
+                        <div class="cbp-caption margin-bottom-20">
+                            <div class="cbp-caption-defaultWrap">
+                                <img src="assets/img/portfolio/10.jpg" alt="">
+                            </div>
+                            <div class="cbp-caption-activeWrap">
+                                <div class="cbp-l-caption-alignCenter">
+                                    <div class="cbp-l-caption-body">
+                                        <ul class="link-captions no-bottom-space">
+                                            <li><a href="portfolio_single_item.html"><i class="rounded-x fa fa-link"></i></a></li>
+                                            <li><a href="assets/img/portfolio/10.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cbp-title-dark">
+                            <div class="cbp-l-grid-agency-title">Events and More</div>
+                            <div class="cbp-l-grid-agency-desc">Web Design / Graphic</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {%  endblock %}
+
+
+{% block javascript_plugin %}
+    <script src="{{ asset('bundles/jlpfront/plugins/smoothScroll.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/jlpfront/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js') }}"></script>
+{% endblock %}
+
+{% block javascript_page_include %}
+    <script type="text/javascript" src="{{ asset('bundles/jlpfront/js/plugins/cube-portfolio/cube-portfolio-4.js') }}"></script>
+{% endblock %}
