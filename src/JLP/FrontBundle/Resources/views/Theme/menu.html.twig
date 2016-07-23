@@ -9,6 +9,9 @@
                     <a href="javascript:void(0);" class="dropdown-toggle"
                        data-toggle="dropdown">{{ 'achat'|trans }}</a>
                     <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{ path('jlp_front_achat') }}">All</a>
+                        </li>
                         {% for typeBien in typesBiens %}
                             <li>
                                 <a href="{{ path('jlp_front_typeBien', {'typeBienId': typeBien.id}) }}">{{ typeBien.type|title }}</a>

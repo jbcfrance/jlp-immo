@@ -22,6 +22,17 @@ class AnnonceController extends Controller
         return $this->render('JLPFrontBundle:Annonce:test.html.twig', array('annonces'=>$annonces));
     }
 
+    public function achatAction()
+    {
+
+        $typeBiens = $this->getDoctrine()->getRepository('JLP\CoreBundle\Entity\TypeBien')->findAll();
+
+        $annonces = $this->getDoctrine()->getRepository('JLP\CoreBundle\Entity\Annonce')->findAll();
+
+        return $this->render('JLPFrontBundle:Annonce:listing.html.twig', array( 'annonces'=>$annonces, 'typeBiens'=>$typeBiens));
+
+    }
+
     public function typeBienAction($typeBienId)
     {
 
