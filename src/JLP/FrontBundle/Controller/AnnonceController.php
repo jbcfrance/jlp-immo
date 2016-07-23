@@ -40,10 +40,10 @@ class AnnonceController extends Controller
 
         $askedTypeBien = $this->getDoctrine()->getRepository('JLP\CoreBundle\Entity\TypeBien')->find($typeBienId);
 
-        //$annonces = $this->getDoctrine()->getRepository('JLP\CoreBundle\Entity\Annonce')->getAnnonceByTypeBienWithFirstImage($askedTypeBien->getId());
+
         $annonces = $this->getDoctrine()->getRepository('JLP\CoreBundle\Entity\Annonce')->findByTypeBien($askedTypeBien->getId());
 
-        //dump($annonces);
+
 
         return $this->render('JLPFrontBundle:Annonce:listing.html.twig', array( 'annonces'=>$annonces, 'typeBiens'=>$typeBiens));
 
