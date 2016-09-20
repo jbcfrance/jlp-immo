@@ -149,7 +149,7 @@ class JLPParser
         if (!empty($oObjectName)) {
             $this->$sEntityObjectName = $oObjectName;
         } else {
-            $sEntityClassName = "JLP\CoreBundle\Entity\\".$aKeyInfos['entity'];
+            $sEntityClassName = 'JLP\CoreBundle\Entity\\'.$aKeyInfos['entity'];
             $this->$sEntityObjectName = new $sEntityClassName;
             $sSetFunc = 'set'.ucfirst($aKeyInfos['field']);
 
@@ -179,7 +179,7 @@ class JLPParser
         $sSetFunc = 'set'.ucfirst($aFieldInfos['field']);
         $this->$sEntityObjectName->$sSetFunc($oTypeEntity);
         } else {
-        $sEntityTypeClassName = "JLP\CoreBundle\Entity\\".$aFieldInfos['entity'];
+        $sEntityTypeClassName = 'JLP\CoreBundle\Entity\\'.$aFieldInfos['entity'];
         $oTypeEntity = new $sEntityTypeClassName;
         $oTypeEntity->setType(strtolower($oNode->{$sFieldName}->__toString()));
         $this->oEm->persist($oTypeEntity);

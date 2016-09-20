@@ -21,7 +21,7 @@ class Negociateur
      */
     private $id;
     /**
-     * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Agence")
+     * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Agence", inversedBy="negociateurs")
      * @ORM\JoinColumn(nullable=false)
      */
     private $agence;

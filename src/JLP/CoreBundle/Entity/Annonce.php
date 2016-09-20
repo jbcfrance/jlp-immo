@@ -28,7 +28,7 @@ class Annonce
     private $agence;
 
     /**
-     * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Negociateur")
+     * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\Negociateur", inversedBy="annonces")
      * @ORM\JoinColumn(nullable=false)
      */
     private $negociateur;
