@@ -9,14 +9,14 @@ var ContactPage = function () {
 			  map = new GMaps({
 				div: '#map',
 				scrollwheel: false,
-				lat: 45.905473,
-				lng: 6.700906
+				lat: 40.748866,
+				lng: -73.988366
 			  });
 
 			  var marker = map.addMarker({
-				lat: 45.905473,
-				lng: 6.700906,
-	            title: 'JLP-Immo - Immobilier de montagne'
+				lat: 40.748866,
+				lng: -73.988366,
+	            title: 'Company, Inc.'
 		       });
 			});
         },
@@ -27,8 +27,8 @@ var ContactPage = function () {
 		    $(document).ready(function(){
 		      panorama = GMaps.createPanorama({
 		        el: '#panorama',
-		        lat : 45.905473,
-		        lng : 6.700906
+		        lat : 40.748866,
+		        lng : -73.988366
 		      });
 		    });
 		}

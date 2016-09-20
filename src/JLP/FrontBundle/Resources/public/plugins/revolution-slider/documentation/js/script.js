@@ -11,7 +11,7 @@ if(typeof Cufon == 'function') Cufon.replace('h1, h2, h3, h4, h5, h6');
  
 $(document).ready(function() {
 	var timeout,
-		sections = [],
+		sections = new Array(),
 		sectionscount = 0,
 		win = $(window),
 		sidebar = $('#documenter_sidebar'),
@@ -151,8 +151,8 @@ $(document).ready(function() {
 				}
 				win.bind('hashchange', hashchange);
 				break;
-            }
-        }
+			};
+		}	
 	}
 	
 	

@@ -153,7 +153,7 @@ var transitionGallery = {
 
 			// Append transition col 1 & 2
 			tr.children().eq(0).text((c+1));
-			tr.children().eq(1).append( jQuery('<a>', { 'href' : '#', 'html' : transitions[c]['name'], 'rel' : 'tr'+(c+1) } ) );;
+			tr.children().eq(1).append( jQuery('<a>', { 'href' : '#', 'html' : transitions[c]['name'], 'rel' : 'tr'+(c+1) } ) )
 			if(transitions.length > (c+1)) {
 				tr.children().eq(2).text((c+2));
 				tr.children().eq(3).append( jQuery('<a>', { 'href' : '#', 'html' : transitions[(c+1)]['name'], 'rel' : 'tr'+(c+2) } ) )

@@ -10,7 +10,7 @@ jlp_front_homepage:
 
 jlp_front_achat:
     path:     /{_locale}/achat/
-    defaults: { _controller: JLPFrontBundle:Annonces:achat }
+    defaults: { _controller: JLPFrontBundle:Annonce:achat }
     requirements:
             _locale: en|fr
 

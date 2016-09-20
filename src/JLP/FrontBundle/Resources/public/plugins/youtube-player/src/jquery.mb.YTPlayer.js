@@ -93,7 +93,7 @@ function onYouTubePlayerAPIReady() {
 		return {videoID: videoID, playlistID: playlistID};
 	};
 
-	/* 
+	/*
 	 setPlaybackRate()
 	 playlist
 	 */

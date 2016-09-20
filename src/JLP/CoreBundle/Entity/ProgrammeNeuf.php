@@ -51,13 +51,6 @@ class ProgrammeNeuf
     private $descriptionEn;
 
     /**
-     * @var integer
-     * 
-     * @ORM\Column(name="partenaire", type="integer")
-     */
-    private $partenaire;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="identifiant", type="string", length=255)
@@ -75,11 +68,6 @@ class ProgrammeNeuf
      * @ORM\Column(name="alt", type="string", length=255)
      */
     private $alt;
-    
-
-    
-
-
 
 
     /**
@@ -189,30 +177,6 @@ class ProgrammeNeuf
     }
 
     /**
-     * Set partenaire
-     *
-     * @param integer $partenaire
-     *
-     * @return ProgrammeNeuf
-     */
-    public function setPartenaire($partenaire)
-    {
-        $this->partenaire = $partenaire;
-
-        return $this;
-    }
-
-    /**
-     * Get partenaire
-     *
-     * @return integer
-     */
-    public function getPartenaire()
-    {
-        return $this->partenaire;
-    }
-
-    /**
      * Set identifiant
      *
      * @param string $identifiant
@@ -235,7 +199,7 @@ class ProgrammeNeuf
     {
         return $this->identifiant;
     }
-    
+
     /**
      * Set url
      *

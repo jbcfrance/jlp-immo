@@ -3,6 +3,11 @@
  * @version 2.0.0
  * @author Bartosz Wojciechowski
  * @license The MIT License (MIT)
+ * @gre Lazy Load Icon
+ * @gre prevent animationend bubling
+ * @gre itemsScaleUp
+ * @gre Test Zepto
+ * @gre stagePadding calculate wrong active classes
  */
 ;(function($, window, document, undefined) {
 
@@ -95,7 +100,7 @@
 
 		/**
 		 * @protected
-		 *
+		 * @gre Must be documented
 		 */
 		this.e = $.extend({}, e);
 
@@ -125,14 +130,14 @@
 
 		/**
 		 * Coordinates of all items in pixel.
-		 *
+		 * @gre The name of this member is missleading.
 		 * @protected
 		 */
 		this._coordinates = [];
 
 		/**
 		 * Current breakpoint.
-		 *
+		 * @gre Real media queries would be nice.
 		 * @protected
 		 */
 		this._breakpoint = null;
@@ -156,7 +161,7 @@
 
 		/**
 		 * Merge values of all items.
-		 *
+		 * @gre Maybe this could be part of a plugin.
 		 * @protected
 		 */
 		this._mergers = [];
@@ -436,7 +441,8 @@
 
 	/**
 	 * Setups the current settings.
-	 *
+	 * @gre Remove responsive classes. Why should adaptive designs be brought into IE8?
+	 * @gre Support for media queries by using `matchMedia` would be nice.
 	 * @public
 	 */
 	Owl.prototype.setup = function() {
@@ -495,7 +501,7 @@
 
 	/**
 	 * Prepares an item before add.
-	 *
+	 * @gre Rename event parameter `content` to `item`.
 	 * @protected
 	 * @returns {jQuery|HTMLElement} - The item container.
 	 */
@@ -759,7 +765,7 @@
 
 	/**
 	 * Handles the touchmove/mousemove events.
-	 *
+	 * @gre Simplify
 	 * @protected
 	 * @param {Event} event - The event arguments.
 	 */
@@ -937,7 +943,7 @@
 
 	/**
 	 * Gets absolute position of the closest item for a coordinate.
-	 *
+	 * @gre Setting `freeDrag` makes `closest` not reusable. See #165.
 	 * @protected
 	 * @param {Number} coordinate - The coordinate in pixel.
 	 * @return {Number} - The absolute position of the closest item.
@@ -1212,7 +1218,7 @@
 
 	/**
 	 * Gets the coordinate of an item.
-	 *
+	 * @gre The name of this method is missleanding.
 	 * @public
 	 * @param {Number} position - The absolute position of the item within `minimum()` and `maximum()`.
 	 * @returns {Number|Array.<Number>} - The coordinate of the item in pixel or all coordinates.
@@ -1376,7 +1382,7 @@
 
 	/**
 	 * Adds an item.
-	 *
+	 * @gre Use `item` instead of `content` for the event arguments.
 	 * @public
 	 * @param {HTMLElement|jQuery|String} content - The item content to add.
 	 * @param {Number} [position] - The relative position at which to insert the item otherwise the item will be added to the end.
@@ -1403,7 +1409,7 @@
 
 	/**
 	 * Removes an item by its position.
-	 *
+	 * @gre Use `item` instead of `content` for the event arguments.
 	 * @public
 	 * @param {Number} position - The relative position of the item to remove.
 	 */
@@ -1484,7 +1490,7 @@
 	/**
 	 * Preloads images with auto width.
 	 * @protected
-	 *
+	 * @gre Still to test
 	 */
 	Owl.prototype.preloadAutoWidthImages = function(imgs) {
 		var loaded, that, $el, img;
@@ -1738,7 +1744,7 @@
 	/**
 	 * Checks for CSS transition support.
 	 * @private
-	 *
+	 * @gre Realy bad design
 	 * @returns {Number}
 	 */
 	function isTransition() {
@@ -2259,7 +2265,7 @@
 
 	/**
 	 * Checks whether an video is currently in full screen mode or not.
-	 *
+	 * @gre Bad style because looks like a readonly method but changes members.
 	 * @protected
 	 * @returns {Boolean}
 	 */
@@ -2485,7 +2491,7 @@
 
 	/**
 	 * @protected
-	 *
+	 * @gre Must be documented.
 	 */
 	Autoplay.prototype.autoplay = function() {
 		if (this.core.settings.autoplay && !this.core.state.videoPlay) {
@@ -2505,7 +2511,7 @@
 	 * @param {Number} [timeout] - ...
 	 * @param {Number} [speed] - ...
 	 * @returns {Boolean|undefined} - ...
-	 *
+	 * @gre Must be documented.
 	 */
 	Autoplay.prototype.play = function(timeout, speed) {
 		// if tab is inactive - doesnt work in <IE10
@@ -2689,7 +2695,7 @@
 	/**
 	 * Default options.
 	 * @public
-	 *
+	 * @gre Rename `slideBy` to `navBy`
 	 */
 	Navigation.Defaults = {
 		nav: false,
@@ -2832,7 +2838,7 @@
 
 	/**
 	 * Draws the user interface.
-	 *
+	 * @gre The option `dotData` wont work.
 	 * @protected
 	 */
 	Navigation.prototype.draw = function() {
