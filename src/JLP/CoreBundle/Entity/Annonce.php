@@ -2,6 +2,7 @@
 
 namespace JLP\CoreBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use JLP\CoreBundle\Entity;
 /**
@@ -32,11 +33,22 @@ class Annonce
      * @ORM\JoinColumn(nullable=false)
      */
     private $negociateur;
-    
+
     /**
-     * @ORM\ManyToOne(targetEntity="JLP\CoreBundle\Entity\ProgrammeNeuf")
+     * @var \Doctrine\Common\Collections\Collection|ProgrammeNeuf[]
+     *
+     * @ORM\ManyToMany(targetEntity="ProgrammeNeuf", inversedBy="annonces")
+     * @ORM\JoinTable(
+     *  name="annonce_programme_neuf",
+     *  joinColumns={
+     *      @ORM\JoinColumn(name="annonce_id", referencedColumnName="id")
+     *  },
+     *  inverseJoinColumns={
+     *      @ORM\JoinColumn(name="programme_neuf_id", referencedColumnName="id")
+     *  }
+     * )
      */
-    private $programmeNeuf;
+    protected $programmeNeuf;
         
     /**
      * @ORM\OneToMany(targetEntity="JLP\CoreBundle\Entity\Images", mappedBy="annonce")
@@ -581,7 +593,8 @@ class Annonce
      */
     public function __construct()
     {
-        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->images = new ArrayCollection();
+        $this->userGroups = new ArrayCollection();
     }
 
     /**
@@ -604,6 +617,29 @@ class Annonce
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param ProgrammeNeuf $programmeNeuf
+     */
+    public function addUserGroup(ProgrammeNeuf $programmeNeuf)
+    {
+        if ($this->programmeNeufs->contains($programmeNeuf)) {
+            return;
+        }
+        $this->programmeNeufs->add($programmeNeuf);
+        $programmeNeuf->addAnnonce($this);
+    }
+    /**
+     * @param ProgrammeNeuf $programmeNeuf
+     */
+    public function removeUserGroup(ProgrammeNeuf $programmeNeuf)
+    {
+        if (!$this->programmeNeufs->contains($programmeNeuf)) {
+            return;
+        }
+        $this->programmeNeufs->removeElement($programmeNeuf);
+        $programmeNeuf->removeAnnonce($this);
     }
 
     /**
@@ -2455,30 +2491,6 @@ class Annonce
     }
 
     /**
-     * Set programmeNeuf
-     *
-     * @param \JLP\CoreBundle\Entity\ProgrammeNeuf $programmeNeuf
-     *
-     * @return Annonce
-     */
-    public function setProgrammeNeuf(\JLP\CoreBundle\Entity\ProgrammeNeuf $programmeNeuf = null)
-    {
-        $this->programmeNeuf = $programmeNeuf;
-
-        return $this;
-    }
-
-    /**
-     * Get programmeNeuf
-     *
-     * @return \JLP\CoreBundle\Entity\ProgrammeNeuf
-     */
-    public function getProgrammeNeuf()
-    {
-        return $this->programmeNeuf;
-    }
-
-    /**
      * Add image
      *
      * @param \JLP\CoreBundle\Entity\Images $image
@@ -2495,9 +2507,9 @@ class Annonce
     /**
      * Remove image
      *
-     * @param \JLP\CoreBundle\Entity\Images $image
+     * @param Images $image
      */
-    public function removeImage(\JLP\CoreBundle\Entity\Images $image)
+    public function removeImage(Images $image)
     {
         $this->images->removeElement($image);
     }
@@ -2515,11 +2527,11 @@ class Annonce
     /**
      * Set typeMandat
      *
-     * @param \JLP\CoreBundle\Entity\TypeMandat $typeMandat
+     * @param TypeMandat $typeMandat
      *
      * @return Annonce
      */
-    public function setTypeMandat(\JLP\CoreBundle\Entity\TypeMandat $typeMandat = null)
+    public function setTypeMandat(TypeMandat $typeMandat = null)
     {
         $this->typeMandat = $typeMandat;
 
@@ -2529,7 +2541,7 @@ class Annonce
     /**
      * Get typeMandat
      *
-     * @return \JLP\CoreBundle\Entity\TypeMandat
+     * @return TypeMandat
      */
     public function getTypeMandat()
     {
@@ -2539,11 +2551,11 @@ class Annonce
     /**
      * Set typeBien
      *
-     * @param \JLP\CoreBundle\Entity\TypeBien $typeBien
+     * @param TypeBien $typeBien
      *
      * @return Annonce
      */
-    public function setTypeBien(\JLP\CoreBundle\Entity\TypeBien $typeBien = null)
+    public function setTypeBien(TypeBien $typeBien = null)
     {
         $this->typeBien = $typeBien;
 
@@ -2553,7 +2565,7 @@ class Annonce
     /**
      * Get typeBien
      *
-     * @return \JLP\CoreBundle\Entity\TypeBien
+     * @return TypeBien
      */
     public function getTypeBien()
     {

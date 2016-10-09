@@ -2,6 +2,7 @@
 
 namespace JLP\CoreBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -69,6 +70,45 @@ class ProgrammeNeuf
      */
     private $alt;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection|Annonce[]
+     *
+     * @ORM\ManyToMany(targetEntity="Annonce", mappedBy="programmeNeuf")
+     */
+    protected $annonces;
+
+
+
+    /**
+     * Default constructor, initializes collections
+     */
+    public function __construct()
+    {
+        $this->annonces = new ArrayCollection();
+    }
+
+    /**
+     * @param Annonce $annonce
+     */
+    public function addUser(Annonce $annonce)
+    {
+        if ($this->annonces->contains($annonce)) {
+            return;
+        }
+        $this->annonces->add($annonce);
+        $annonce->addProgrammeNeuf($this);
+    }
+    /**
+     * @param Annonce $annonce
+     */
+    public function removeUser(Annonce $annonce)
+    {
+        if (!$this->annonces->contains($annonce)) {
+            return;
+        }
+        $this->annonces->removeElement($annonce);
+        $annonce->removeProgrammeNeuf($this);
+    }
 
     /**
      * Get id
